@@ -1,0 +1,72 @@
+{template 'header'}
+<script src="{DT_SKIN}js/layer/layer.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+<section class="homenew">
+    <div class="main">
+        {template 'memberlogo',$module}
+        <div class="content clearfix">
+            {template 'left',$module}
+            <div class="rightColumn">
+                <div class="column">
+                    {template 'horncommon',$module}
+                    <div class="columnCont ProjectManagement">
+                        <div class="project p-m-title">
+                            <ul class="clearfix">
+                                <li class="state" style="width:210px;">时间</li>
+                                <li class="name"  style="width:190px;">折扣</li>
+                                <li class="state"  style="width:190px;">金额</li>
+                                <li class="handle"  style="width:150px;text-align:center;">结算金额</li>
+                            </ul>
+                        </div>
+                        <div class="project showBox">
+                            {if $aCodel}
+                            {loop $aCodel $k $v}
+                            <div class="projectList">
+                                <ul>
+                                    <li style="width:190px;height:auto;">
+                                        <p>{date('Y-m-d',$v['checktime'])}</p>
+                                        <p >备注：{$v['note']}-{$v['typename']}</p>
+                                    </li>
+                                    <li class="type" style="width:170px;height:auto;">
+                                        <p>折扣：{doubleval($v['discount'])}折</p>
+                                    </li>
+                                    <li class="type" style="width:170px;height:auto;">
+                                        <p>总金额：{doubleval($v['allmoney'])}元</p>
+                                        <p>实支金额：{doubleval($v['money'])}元</p>
+                                    </li>
+                                    <li class="list" style="width:170px;height:auto;text-align:center;">
+                                        <p><span style="color:#ea554f;">{doubleval($v['discountfee'])}</span>元</p>
+                                        {if doubleval($v['discountfee'])}
+                                        <p>{if $v['is_apply']==0}<span style="color:#ea554f;">未结算</span>{elseif  $v['is_apply']==1}<span style="color:#f89406;">申请中</span>{else}<span style="color:#03b887;">已结算</span>{/if}</p>
+                                        {/if}
+                                    </li>
+                                </ul>
+                            </div>
+                            {/loop}
+                            {/if}
+                            {if $aCodel}
+                            <div class="pageIcons">
+                                <div class="iconWrap">
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="styleSheet" href="{DT_SKIN}js/layer/skin/layer.css">
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script src="{DT_SKIN}js/user-page.js"></script>
+<script>
+    $(function(){
+        pager({$page}, {$totalpage}, 'iconWrap');
+        $(".iconWrap a[pagenum]").each(function (k, v) {
+            var url = '?page=' + $(this).attr('pagenum');
+            $(this).attr('href', url);
+        });
+    })
+</script>
+{template 'footer'}

@@ -1,0 +1,90 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/cession/index.php">店铺转让</a>
+    </header>
+</section>
+<div class="dnfk">{ad(52)}</div>
+<section class="home clearfix mt20">
+    <article class="food-list food-list2 fl">
+        <section class="food-list-box border-box" >
+            <!--列表选项-->
+            <header class="list-result">
+                {loop $aTou $k $v}
+                <a href="{$v['url']}">{$v['name']}</a>{if $k+1!=count($aTou)}&nbsp;&gt;&nbsp;{/if}
+                {/loop}
+            </header>
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>分类：</label>
+                <ul class="lists lists2">
+                    {if $aCatList}
+                    {loop $aCatList $k $v}
+                    <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/cession/index.php?catid={$v['catid']}&areaid={$areaid}">{$v['catname']} </a></li>
+                    {/loop}
+                    {/if}
+                </ul>
+            </div>
+            {if $aAreaFirst}
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>区域：</label>
+                <ul class="lists lists2">
+                    {if $aAreaFirst}
+                        {loop $aAreaFirst $k $v}<?php if($k==10){ break; } unset($aAreaFirst[$k]); ?>
+                            <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/cession/index.php?catid={$catid}&areaid={$v['areaid']}">{$v['areaname']}</a></li>
+                        {/loop}
+                    {/if}
+                </ul>
+                {if $aAreaFirst}
+                <a class="fr more" href="javascript:;" onclick="getmore(this,10)">更多<i class="icon-more"></i></a>
+                <ul style="display:none;" id="hidearea">
+                    {loop $aAreaFirst $k $v}
+                    <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/cession/index.php?catid={$catid}&areaid={$v['areaid']}">{$v['areaname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            {/if}
+            {if $aHotCity}
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>热门：</label>
+                <ul class="lists lists2">
+                    {loop $aHotCity $k $v}
+                    <li {if $k==$areaid}class="selected"{/if}><a href="/cession/index.php?catid={$catid}&areaid={$k}">{$v}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            {/if}
+        </section>
+        <div class="food-hot">
+            <label>热门推荐：</label>{$sAdPlaceHot}
+            <label>文字链接：</label>{$sAdPlaceTest}
+        </div>
+        {if $aSell}
+            {loop $aSell $k $v}
+            <div class="food-info border-box">
+                <img src="{$v['thumb']}" height="143" width="190" alt="">
+                <a href="/cession/show.php?id={$v['itemid']}" target="_blank" ><h3 title="{$v['title']}">【转让】{dsubstr($v['title'],38)}</h3></a>
+                <p>简介：{dsubstr($v['introduce'],170,'...')}</p>
+                <a class="del-link" href="/cession/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">查看详情</a>
+            </div>
+            {/loop}
+        {/if}
+    </article>
+        {template  'right'}
+</section>
+<section class="foodad">{ad(53)}</section>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+    $(".pager li").click(function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            location.href = '/cession/index.php?catid={$catid}&areaid={$areaid}&page='+pagenum;
+        }
+    })
+</script>
+{template  'footer'}

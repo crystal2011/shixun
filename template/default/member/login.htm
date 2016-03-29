@@ -1,0 +1,58 @@
+{template 'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/login.css"/>
+<section class="home">
+    <header class="sites">
+        <a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/member/login.php">登录</a>
+    </header>
+</section>
+<section class="home clearfix">
+    <article class="login-box fl">
+        <form id="form" action="/member/login.php" method="post">
+            <p>
+                <label class="icon-user"></label>
+                <input id="user" type="text" placeholder="请输入手机号/用户名" name="username" datatype="m|s3-15" errormsg="请输入手机号/用户名" />
+            </p>
+            <p>
+                <label class="icon-pwd"></label>
+                <input id="pwd" type="password" placeholder="请输入登录密码：" name="password" datatype="s6-20" />
+            </p>
+            <input type="hidden" name="submit" value="1" />
+            <input id="login-btn" type="submit" class="submit-btn" value="登录">
+            <input type="hidden" name="forward" value="{$forward}" />
+        </form>
+        <div class="login-box-tip clearfix">
+            <div class="fl">
+                <input id="checkbox" type="checkbox" name="isautologin" value="1" >
+                <a>2周内自动登录</a>
+            </div>
+            <a class="forget-pwd fr" href="/member/findpw.php">忘记密码？</a>
+        </div>
+    </article>
+    <aside class="login-item fl">
+        <span>没有账号，请点击注册</span>
+        <a href="/member/register.php">立即注册</a>
+    </aside>
+</section>
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+    $("#form").Validform({
+        tiptype: 3,
+        postonce:true,
+        ajaxPost:true,
+        beforeSubmit:function(curform){
+            getToken();
+            return true;
+        },
+        callback:function(data){
+            if(data.status=='n'){
+                alert(data.info);
+            }else{
+                window.setTimeout("locationhref('"+data.forward+"')",1000);
+            }
+        }
+    })
+    function locationhref(url){
+        location.href = url;
+    }
+</script>
+{template 'footer'}

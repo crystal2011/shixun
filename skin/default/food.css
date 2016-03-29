@@ -1,0 +1,772 @@
+@charset "UTF-8";
+/*侧边栏广告*/
+.side-menu .aside-ad{
+    border: 1px solid #e2e2e2;
+    display: block;
+    width: 218px;
+    height: 218px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+/*侧边栏广告end*/
+/*列表*/
+.food-list{
+    width: 862px;
+    overflow: hidden;
+}
+.food-list .food-list-box{
+    padding: 10px 15px;
+}
+.food-list .list-result{
+    color: #ea554f;
+}
+.food-list .list-result a{
+    display: inline-block;
+    color: #ea554f;
+    border: 1px solid #ea554f;
+    font-size: 12px;
+    padding:5px;
+}
+.cutline{
+    height: 1px;
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+    background: #fff;
+    border-top: 1px dotted #e2e2e2;
+    display: block;
+    margin: 10px 0;
+}
+.food-list-box .list-result-item label{
+    font-size: 14px;
+    float: left;
+    width:50px;
+    padding-top: 8px;
+}
+.food-list-box .list-result-item .lists{
+    float: left;
+    overflow: hidden;
+    width: 740px;
+    line-height:2;
+}
+.food-list-box .list-result-item .lists li{
+    display: inline-block;
+    float: left;
+    margin: -3px 20px 0 0;
+}
+.food-list-box .list-result-item .lists li a{
+    font-size: 12px;
+    color: #656565;
+}
+.food-list-box .list-result-item .lists li.selected a,.food-list-box .list-result-item .lists li a:hover{
+    color: #ea554f;
+    text-decoration: underline;
+}
+.food-list-box .list-result-item .more i{
+    background: url("../images/public/icon-more.png") no-repeat -2px 2px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-top:4px;
+}
+/*列表end*/
+/*热门推荐*/
+.food-hot{
+    padding: 15px 0;
+    overflow: hidden;
+}
+.food-hot label{
+    font-size: 14px;
+    color: #ea554f;
+    font-weight: bold;
+}
+.food-hot a{
+    display: inline-block;
+    margin:0 15px;
+    font-size: 12px;
+}
+.food-hot a:hover{
+    color: #ea554f;
+}
+/*热门推荐end*/
+/*图文列表*/
+.food-hot-list{
+    margin: 0 -6px;
+}
+.food-hot-list li{
+    width:160px;
+    margin: 0 6px 16px 6px;
+    display: inline-block;
+    float: left;
+    border: 1px solid #e2e2e2;
+}
+.food-hot-list li h2{
+    padding: 0 10px;
+    font-size: 12px;
+    height:40px;
+    line-height:1.5;
+    color: #656565;
+    overflow: hidden;
+}
+.food-hot-list li h3{
+    font-size: 12px;
+    padding: 10px 0;
+    text-align: center;
+    color: #02ca12;
+    overflow: hidden;
+}
+.food-hot-list li .contact-business{
+    color: #ea554f;
+    float: right;
+    padding:0 10px 12px 0;
+}
+/*图文列表end*/
+/*列表覆盖*/
+.food-list-box .list-result-item .lists1{
+    width: 960px;
+}
+.food-hot-list1{
+    margin: 0 -12px;
+}
+.food-hot-list1 li{
+    margin: 0 12px 20px 13px;
+}
+/*列表覆盖*/
+
+/*详情页*/
+.food-del{
+    width: 800px;
+    overflow: hidden;
+}
+.food-menu{
+    width:280px;
+    overflow: hidden;
+}
+.food-menu .aside-pic{
+    border: 1px solid #e2e2e2;
+    width: 278px;
+    height: 278px;
+    overflow: hidden;
+}
+.food-del .food-del-pic{
+    width: 343px;
+    height: 257px;
+    overflow: hidden;
+    display: block;
+    padding: 10px;
+    border-right: 1px solid #e2e2e2;
+}
+.food-del .food-del-box{
+    background: #fef5f6;
+    padding: 10px;
+    width: 412px;
+    height: 257px;
+    overflow: hidden;
+}
+.food-del .food-del-box .food-del-head{
+    padding-top: 8px;
+    padding-bottom: 20px;
+}
+.food-del .food-del-box .food-del-head label{
+    background: #02ca12;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 14px;
+}
+.food-del .food-del-box .food-del-head .icon-angle{
+    display:inline;
+    width:0;
+    height:0;
+    overflow:hidden;
+    font-size:0;
+    border-width:14px;
+    position: relative;
+    top: -5px;
+    left: -5px;
+    border-color:transparent transparent transparent #06b415;
+    border-style:dashed dashed dashed solid
+}
+.food-del .food-del-box .food-del-head span{
+    font-size: 14px;
+    display: inline;
+}
+.food-del .food-del-box .food-del-head .icon-liulan,.food-del .food-del-box .food-del-head .icon-pinlun{
+    width: 16px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 15px;
+}
+.food-del .food-del-box .food-del-head .icon-liulan{
+    background: url("../images/public/icon-liulan.png") no-repeat;
+}
+.food-del .food-del-box .food-del-head .icon-pinlun{
+    background:url("../images/public/icon-pinlun.png") no-repeat;
+}
+.food-del .food-del-box .food-del-head em{
+    font-size: 12px;
+    color: #989898;
+}
+.food-del .food-del-box .food-del-price{
+    height: 30px;
+    line-height: 30px;
+}
+.food-del .food-del-box .food-del-price label{
+  font-size: 16px;
+   font-weight: bold;
+}
+.food-del .food-del-box .food-del-price span{
+    color: #fb9208;
+    font-size: 14px;
+}
+.food-del .food-del-box p{
+    font-size: 14px;
+    line-height: 1.5;
+}
+.food-del .food-del-box .food-del-like{
+    position: relative;
+}
+.food-del .food-del-box .food-del-like .like .like-btn{
+    background: url("../images/public/like-btn.jpg") no-repeat;
+    width: 80px;
+    height: 33px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.food-del .food-del-box .food-del-like .like .like-num{
+    padding:8px 10px;
+    position:absolute;
+    top:0;
+    left:95px;
+    border:1px solid #fb9208;
+    border-radius: 6px;
+    color: #fb9208;
+    font-size: 14px;
+}
+
+.food-del .food-del-box .food-del-like .like .like-num:before{
+    content: '';
+    border-top: 9px solid transparent;/*方框上部分背景颜色为透明*/
+    border-bottom: 9px solid transparent;/*方框下部分背景为透明*/
+    border-right: 9px solid #fb9208;/*箭头背景颜色*/
+    position: absolute;/*绝对定位1*/
+    top:6px;/*距离顶部位置偏移量2*/
+    left: -9px;/*距离左边位置偏移量3*/ /*123都是控制显示位置的*/
+}
+.food-del .food-del-box .food-del-like .like .like-num:after{
+    content: '';
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #fbfdfb;/*箭头背景颜色，覆盖前面的#eee颜色，使其颜色与整体颜色一致*/
+    position: absolute;
+    top:7px;
+    left: -8px;
+}
+.food-del .food-del-main{
+    padding:0 20px;
+    overflow: hidden;
+    margin-top: 22px;
+}
+.food-del .food-del-main p{
+    font-size: 14px;
+    line-height: 1.8;
+}
+/*详情页end*/
+/*评论*/
+.food-del .discuss-head{
+    background:#fef5f6;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 10px 0;
+}
+.food-del .discuss-head a{
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 100px;
+    border-radius: 6px;
+}
+.food-del .discuss-head .btn-discuss{
+    background: #ea554f;
+}
+.food-del .discuss-head .btn-share{
+    background: #07c3e6;
+}
+.food-del .discuss-head .btn-publish{
+    background: #00da50;
+    margin-right: 30px;
+}
+.food-del .discuss-main{
+    padding: 30px;
+    overflow: hidden;
+}
+.food-del .discuss-main-box .person-img{
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    display: block;
+}
+.food-del .discuss-main-box .text-font{
+    height: 190px;
+    border: 1px solid #e2e2e2;
+    width: 620px;
+    resize: none;
+}
+.discuss-main .publish-btn{
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    background:#166188;
+    width: 110px;
+    border-radius: 10px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    outline: none;
+    border: none;
+    margin: 20px 0;
+    cursor: pointer;
+}
+.discuss-main .check-more{
+    border: 1px solid #e2e2e2;
+    height: 40px;
+    line-height: 40px;
+    width: 150px;
+    text-align: center;
+    margin:50px auto 0;
+    font-size: 14px;
+}
+/*评论end*/
+/*商家列表覆盖*/
+.food-list2{
+    width:800px;
+}
+.food-list-box .list-result-item .lists2{
+    width: 660px;
+}
+.food-info{
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.food-info img {
+    height:143px;
+    width: 190px;
+    margin-right: 20px;
+    float: left;
+    overflow: hidden;
+}
+.food-info h3{
+    width: 760px;
+    font-size: 20px;
+    color: #000;
+    font-weight: normal;
+}
+.food-info p{
+    height:65px;
+    font-size: 14px;
+    overflow: hidden;
+    color: #444;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+.food-info .del-link{
+    background: #f97602;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+}
+/*商家列表覆盖*/
+/*招聘信息*/
+.recruit-head{
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #ef2d36;
+}
+.recruit-head li{
+    cursor: pointer;
+    float: left;
+    border-right: 1px solid #fff;
+    display: inline-block;
+    background:#ef2d36;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    width: 80px;
+    text-align: center;
+    font-size: 14px;
+}
+.recruit-head li.selected,.recruit-head li:hover{
+    background: #fff;
+    border: 1px solid #ef2d36;
+    margin-bottom: -3px;
+    color: #ef2d36;
+}
+.recruit-list{
+    empty-cells: show;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: .875em;
+}
+.recruit-list th{
+    height:40px;
+    line-height:40px;
+    border-bottom:1px solid #e2e2e2;
+    text-align:left;
+    padding-left: 10px;
+}
+.recruit-list td{
+    padding-left: 10px;
+    font-size:.85em;
+    line-height:35px;
+    border-bottom:1px dotted #e2e2e2;
+}
+.food-del .food-del-box1{
+    width:95%;
+    padding: 15px 20px 5px;
+}
+.food-del .food-del-box1 p span{
+    width: 360px;
+    height:15px;
+}
+/*名厨展示*/
+.person-items{
+    overflow: hidden;
+    margin: 20px -10px;
+}
+.person-items li{
+    display: inline-block;
+    float: left;
+    width: 182px;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    margin:0 10px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.person-items li h3 {
+    background: rgba(255,255,255,.4);
+    color: #000;
+    text-align: center;
+    position: absolute;
+    bottom:44px;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    font-size: 12px;
+} .person-items li header button{
+    background: #ef2d36;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 12px;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 8px 20px 0 20px;
+    cursor: pointer;
+}
+.person-items li header i {
+    font-size: 12px;
+    color: #ef2d36;
+    text-align: center;
+}
+/*菜品展示*/
+.show-head1{
+    background:#c3f2ec;
+    padding: 10px 0;
+}
+.show-head1 h2{
+    color: #000;
+    padding: 4px 0 0 55px;
+}
+.show-head1 .show-item{
+   line-height: 35px;
+}
+.show-head .icon-cai{
+    background:url("../images/public/icon-cai.png") no-repeat left center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 8px;
+    left:13px;
+}
+.show-foods {
+    margin: 20px -10px 0;
+    overflow: hidden;
+}
+.show-foods li{
+    display: inline-block;
+    float: left;
+    width: 260px;
+    height: 196px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e2e2e2;
+    margin: 0 8px 20px 9px;
+}
+.show-foods li img{
+    width: 260px;
+    height: 196px;
+    display: block;
+}
+.show-foods li .show-food-del{
+    padding: 10px;
+    position: absolute;
+    top: -216px;
+    height: 100%;
+    background: rgba(255, 255, 255, .5);
+}
+.show-foods li:hover .show-food-del{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: .4s all;
+}
+.show-foods li .show-food-del .food-del-head{
+    padding: 8px 0 10px;
+}
+.show-foods li .show-food-del .food-del-head label {
+    background: #3cd6bc;
+    padding: 3px 15px;
+    color: #fff;
+    font-size: 14px;
+}
+.show-foods li .show-food-del .food-del-head .icon-angle {
+    display: inline;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    border-width: 10px;
+    position: relative;
+    top: -5px;
+    left: -5px;
+    border-color: transparent transparent transparent #3cd6bc;
+    border-style: dashed dashed dashed solid;
+}
+.show-foods li .show-food-del h3{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #000;
+}
+.show-foods li .show-food-del p{
+    height:80px;
+    line-height: 1.8;
+    overflow: hidden;
+    font-size: 12px;
+    color: #333;
+    margin-top: -1px;
+}
+.person-info header button,.show-food-del header button{
+    background: #ef2d36;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 12px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.person-info header .num,.show-food-del header .num{
+    color: #ef2d36;
+    font-size: 12px;
+}
+.show-food-del header .icon-share1{
+    background: url("../images/index/icon-share1.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    right: 5px;
+}
+/*名厨展示end*/
+/*明厨列表*/
+.person-items1{
+    margin: 0 -8px;
+}
+.person-items1 li{
+    width: 165px;
+    margin: 0 8px 15px;
+}
+/*明厨列表end*/
+/*名厨展示详情*/
+.person-info p{
+    height: 20px;
+}
+.person-info header .num{
+    display: inline-block;
+    margin: 10px 30px 25px;
+}
+fieldset{
+    display: block;
+    border: 0;
+    border-top: 1px solid #e2e2e2;
+}
+fieldset legend{
+    display: table;
+    position: relative;
+    margin: auto;
+    padding: 5px;
+    color: #333;
+    font-size:22px;
+    text-align: center;
+}
+.food-del .food-del-box .person-info-del{
+    background: #e8e8e8;
+    padding: 15px;
+    overflow: hidden;
+    margin: 14px 0 20px;
+}
+.food-del .food-del-box .person-info-del img {
+    height:72px;
+    width:94px;
+    margin-right:15px;
+    float: left;
+    overflow: hidden;
+}
+.food-del .food-del-box .person-info-del h3{
+    width: 600px;
+    font-size:14px;
+    color:#333;
+    font-weight: normal;
+}
+.food-del .food-del-box .person-info-del p {
+    font-size:12px;
+    overflow: hidden;
+    color: #989898;
+    line-height:35px;
+    height:35px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+.food-del .food-del-box .person-info-del .look-btn{
+    width: 50px;
+    height:25px;
+    display: inline-block;
+}
+/*名厨展示详情end*/
+
+/*羊角会*/
+.horns-ad{
+    overflow: hidden;
+    height: 333px;
+    width: 728px;
+    position: relative;
+}
+.horns-news{
+    width: 350px;
+    overflow: hidden;
+}
+.horns-news h3{
+    font-size: 16px;
+    width: 100%;
+    overflow: hidden;
+}
+.horns-news h3:hover{
+    color: #ea554f;
+}
+.horns-news p {
+    margin-top: 5px;
+    height: 40px;
+    line-height: 1.5;
+    overflow: hidden;
+    font-size: 14px;
+    color: #666;
+}
+.cut-line{
+    margin: 0;
+}
+.horns-head{
+    position: relative;
+    height:30px;
+    width: 100%;
+}
+.horns-head h3{
+    position: absolute;
+    top:-11px;
+    color: #b28601;
+    font-size: 22px;
+    background: #fff;
+    height: 40px;
+    width: 120px;
+}
+.horns-head .more{
+    width: 60px;
+    background: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    
+}
+.horns-head .more i {
+    background: url("../images/public/icon-more.png") no-repeat -2px 2px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 8px;
+}
+.horns-items{
+    overflow: hidden;
+    margin: 0 -10px;
+}
+.horns-items li {
+    display: inline-block;
+    float: left;
+    width: 182px;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    margin: 0 10px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.horns-items li h3 {
+    color: #333;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    font-size: 12px;
+}
+.horns-items li p{
+    margin:0;
+    height: 40px;
+    line-height: 1.5;
+    overflow: hidden;
+    font-size: 12px;
+    color: #666;
+}
+    /*羊角会end*/
+
+/*分享*/
+.share-info h3{
+    color: #ea554f;
+}
+.share-info .time{
+    color: #e4a22f;
+    display: block;
+    height:40px;
+    line-height:40px;
+}
+.share-info p{
+    height: 80px;
+    font-size: 14px;
+    margin: 0;
+}
+.share-info p .del{
+    color: #ea554f;
+}
+/*分享end*/
+

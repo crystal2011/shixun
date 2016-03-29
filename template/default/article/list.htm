@@ -1,0 +1,47 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/article/list.php">文章列表</a>{if isset($catinfo) && $catinfo}&nbsp;&gt;&nbsp;<a href="">{$catinfo['catname']}</a>{/if}
+    </header>
+</section>
+<div class="dnfk">{ad(74)}</div>
+<section class="home clearfix mt20">
+    <article class="food-list food-list2 fl">
+
+        {if $aArticle}
+        {loop $aArticle $k $v}
+        <div class="food-info border-box">
+            <a href="/article/show.php?id={$v['itemid']}" target="_blank">
+                <img src="{$v['thumb']}" height="143" width="190" alt="">
+                <h3 title="{$v['title']}">{dsubstr($v['title'],44)}</h3>
+                <span style="color: #e4a22f;display: block;height: 30px;line-height: 30px;">{date('Y-m-d',$v['addtime'])}</span>
+                <p>简介：{dsubstr($v['introduce'],160,'...')}</p>
+            </a>
+        </div>
+        {/loop}
+        {/if}
+        {if $aArticle}
+        <!--分页功能-->
+        <div class="page-box" style="clear:both;">
+            <ul class="pager"></ul>
+        </div>
+        <!--分页功能end-->
+        {/if}
+
+    </article>
+    {template  'right'}
+</section>
+<section class="foodad">{ad(75)}</section>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+    $(".pager li").click(function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            location.href = '/article/list.php?catid={$catid}&page='+pagenum;
+        }
+    })
+</script>
+{template  'footer'}
+

@@ -1,0 +1,150 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/job/index.php">招聘信息</a>
+    </header>
+</section>
+<div class="dnfk">{ad(38)}</div>
+<section class="home clearfix mt20">
+    <article class="food-list food-list2 fl">
+        <section class="food-list-box border-box" >
+            <!--列表选项-->
+            <header class="list-result">
+                {loop $aTou $k $v}
+                <a href="{$v['url']}">{$v['name']}</a>{if $k+1!=count($aTou)}&nbsp;&gt;&nbsp;{/if}
+                {/loop}
+            </header>
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>分类：</label>
+                <ul class="lists lists2">
+                    {if $aCatList}
+                        {loop $aCatList $k $v}
+                            <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/job/index.php?action={$action}&catid={$v['catid']}&areaid={$areaid}">{$v['catname']} </a></li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+            {if $aAreaFirst}
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>区域：</label>
+                <ul class="lists lists2">
+                    {if $aAreaFirst}
+                        {loop $aAreaFirst $k $v}<?php if($k==10){ break; } unset($aAreaFirst[$k]); ?>
+                            <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/job/index.php?action={$action}&catid={$catid}&areaid={$v['areaid']}">{$v['areaname']}</a></li>
+                        {/loop}
+                    {/if}
+                </ul>
+                {if $aAreaFirst}
+                <a class="fr more" href="javascript:;" onclick="getmore(this,10)">更多<i class="icon-more"></i></a>
+                <ul style="display:none;" id="hidearea">
+                    {loop $aAreaFirst $k $v}
+                    <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/job/index.php?action={$action}&catid={$catid}&areaid={$v['areaid']}">{$v['areaname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            {/if}
+            {if $aHotCity}
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>热门：</label>
+                <ul class="lists lists2">
+                    {loop $aHotCity $k $v}
+                    <li {if $k==$areaid}class="selected"{/if}><a href="/food/index.php?action={$action}&catid={$catid}&areaid={$k}">{$v}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            {/if}
+        </section>
+        <div class="food-hot">
+            <label>热门推荐：</label>{$sAdPlaceHot}
+            <label>文字链接：</label>{$sAdPlaceTest}
+        </div>
+        <!--招聘表头-->
+        <ul class="recruit-head">
+            <li {if empty($action)}class="selected"{/if}><a href="/job/index.php?catid={$catid}&areaid={$areaid}">招聘</a></li>
+            <li {if $action}class="selected"{/if}><a href="/job/index.php?action=resume&catid={$catid}&areaid={$areaid}">简历</a></li>
+        </ul>
+        <!--招聘表头end-->
+
+        {if empty($action)}
+            <!--招聘内容-->
+            <table class="recruit-list">
+                <thead>
+                <tr>
+                    <th style="width:20%;">职位名称</th>
+                    <th style="width:38%;">公司名称</th>
+                    <th style="width:10%;">职位月薪</th>
+                    <th style="width:20%;">工作地点</th>
+                    <th style="width:12%;">发布日期</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {if $aJob}
+                        {loop $aJob $k $v}
+                            <tr>
+                                <td><a href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">{dsubstr($v['title'],20)}</a></td>
+                                <td>{$v['company']}</td>
+                                <td>{if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}</td>
+                                <td>{area_pos($v['areaid'],'')}</td>
+                                <td>{date('Y-m-d',$v['addtime'])}</td>
+                            </tr>
+                        {/loop}
+                    {/if}
+                </tbody>
+            </table>
+        {else}
+            <table class="recruit-list">
+                <thead>
+                <tr>
+                    <th style="width:20%;">姓名</th>
+                    <th style="width:15%;">分类</th>
+                    <th style="width:20%;">职位月薪</th>
+                    <th style="width:10%;">学历</th>
+                    <th style="width:10%;">工作经验</th>
+                    <th style="width:20%;">更新日期</th>
+                </tr>
+                </thead>
+                <tbody>
+                {if $aJob}
+                {loop $aJob $k $v}
+                <tr>
+                    <td><a href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">{dsubstr($v['truename'],10)}</a></td>
+                    <td>{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</td>
+                    <td>{if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}</td>
+                    <td>{$v['education']}</td>
+                    <td>{if $v['experience']}{$v['experience']}年{else}暂无{/if}</td>
+                    <td>{date('Y-m-d',$v['edittime'])}</td>
+                </tr>
+                {/loop}
+                {/if}
+                </tbody>
+            </table>
+        {/if}
+
+        {if $aJob}
+        <!--分页功能-->
+        <div class="page-box" style="clear:both;">
+            <ul class="pager"></ul>
+        </div>
+        <!--分页功能end-->
+        {/if}
+    </article>
+    {template  'right'}
+</section>
+<section class="foodad">{ad(36)}</section>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+    $(".pager li").click(function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            location.href = '/job/index.php?action={$action}&catid={$catid}&areaid={$areaid}&page='+pagenum;
+        }
+    })
+</script>
+{template  'footer'}
+

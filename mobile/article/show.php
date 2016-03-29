@@ -1,0 +1,34 @@
+<?php
+/**
+ * 手机端-文章模块-文章详情
+ */
+define('DT_REWRITE', true);
+require '../../common.inc.php';
+require_once '../../module/article/article.class.php';
+$oArticle = new article(21);
+
+$id = isset($id)?intval($id):0;
+if(empty($id)){
+    dalert('非法操作','/mobile/article/list.php');
+}
+
+$oArticle->itemid = $id;
+$info= $oArticle->get_one();
+
+if(isset($showtype)){   //预览
+    $s = chcekHorn($info,6);
+    if($s!==true) dalert($s,$forward);
+}else{
+    if(!$oArticle->checkArticle($info)){
+        dalert($oArticle->errmsg,'/mobile/article/list.php');
+    }
+    //更新浏览量
+    $oArticle->editHits();
+    addHits($info['userid']);
+}
+
+$aHotFood = $oArticle->getright('title,itemid,introduce,hits,thumb',3,'hits desc'); //热门
+$aRecommendFood = $oArticle->getright('title,itemid,introduce,hits,thumb',3,'addtime desc');  //推荐
+$seo_title = $info['title'].'-新闻详情-';
+$topname = '新闻详情';
+include template('article/show','mobile');

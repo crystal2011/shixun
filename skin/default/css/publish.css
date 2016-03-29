@@ -1,0 +1,77 @@
+@charset "UTF-8";
+.publish-head{
+    background: #d2fbff;
+    text-align: center;
+    height: 87px;
+    line-height: 87px;
+    font-size: 30px;
+}
+.publish-box{
+    padding: 30px 80px;
+}
+.publish-box h3{
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+}
+.publish-box p{
+    margin-bottom:20px;
+    font-size: 14px;
+}
+.publish-box p .publish-title{
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    display: inline-block;
+    width: 100px;
+}
+.publish-box p em{
+    color: #ef2d36;
+    font-size: 16px;
+}
+.publish-box p label{
+    text-align: right;
+    font-size: 14px;
+}
+.publish-box p a{
+    padding: 10px;
+    display: inline-block;
+    margin: 0 5px;
+    border: 1px solid #e2e2e2;
+    cursor: pointer;
+}
+.publish-box p .cur-btn{
+    background: #ea554f;
+    color: #fff;
+}
+.publish-box p span select{
+    height: 30px;
+    line-height: 30px;
+    color: #333;
+    width: 120px;
+    border: 1px solid #e2e2e2;
+}
+.publish-box p span .text-input{
+    height:26px;
+    line-height:26px;
+    border: 1px solid #e2e2e2;
+    width: 280px;
+    padding-left: 15px;
+}
+.publish-box .btn-box{
+    width: 300px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+.publish-box .btn-box input{
+    outline: none;
+    border: none;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    width: 120px;
+    color: #fff;
+    font-size: 18px;
+    margin-right: 20px;
+    cursor: pointer;
+}

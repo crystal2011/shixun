@@ -1,0 +1,32 @@
+<article class="border-box mt20">
+    <header class="discuss-head clearfix">
+        <a class="btn-discuss fl" id="roll-bottom">评论</a>
+        <div class="discuss-head-item fr">
+            <a class="btn-share" id="roll-top">分享</a>
+            <a class="btn-publish" href="/share/publish.php">我要发布</a>
+        </div>
+    </header>
+    <article class="discuss-main">
+        {if $aComment}
+        {loop $aComment $k $v}
+        <div class="discuss-main-box clearfix" style="margin-bottom:10px;">
+            <img class="person-img fl" src="{if $v['thumb']}{$v['thumb']}{else}{$DT['memberlogo']}{/if}" alt=""/>
+            <div class="contentlist">{$v['content']}</div>
+        </div>
+        {/loop}
+        {/if}
+        <div class="discuss-main-box clearfix" id="commentsform">
+            <img class="person-img fl" src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" alt=""/>
+            <textarea class="text-font fr" id="commentscontent" cols="30" rows="10"></textarea>
+        </div>
+        <input type="hidden" id="commentsid" value="{$id}" />
+        <input type="hidden" id="commentstype" value="{$typeid}" />
+        <input class="publish-btn fr clear" type="button" onclick="comments();" value="发表评论"/>
+        {if $HasNextPage}
+        <div class="check-more" data-id="{$id}" data-type="{$typeid}" id="morecomment" data-page="1">查看更多评论></div>
+        {/if}
+    </article>
+</article>
+<script>
+    var defaultmemberlogo = "{$DT['memberlogo']}";
+</script>

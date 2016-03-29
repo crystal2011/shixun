@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.login-box{
+    width: 424px;
+    overflow: hidden;
+    padding:0 70px;
+    margin: 70px 0;
+    border-right: 1px dashed #e2e2e2;
+}
+.login-box p {
+    position: relative;
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+.icon-user, .icon-pwd, .icon-phone, .icon-check {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.login-box p input {
+    width: 388px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 36px;
+    background: #fff;
+    border: 1px solid #ddd;
+    outline: none;
+}
+.submit-btn {
+    color: #fff;
+    font-size: 1.1em;
+    width: 100%;
+    cursor: pointer;
+    background: #429602;
+    height:50px;
+    line-height:50px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+}
+.login-box-tip{
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+}
+.login-box-tip .forget-pwd{
+    color:#ef2d36;
+}
+ .login-item{
+    width: 348px;
+    height:240px;
+    overflow: hidden;
+     margin-top: 84px;
+     text-align: right;
+     color: #989898;
+     font-size: 14px;
+}
+.login-item a{
+    background: #429602;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align:center;
+    color: #fff;
+    display: inline-block;
+}
+.login-box p .check-btn {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    width:35%;
+    color: #989898;
+    background: #e8e8e8;
+    font-size:14px;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #e2e2e2;
+}

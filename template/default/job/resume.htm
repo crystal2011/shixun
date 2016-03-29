@@ -1,0 +1,81 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/job/index.php">招聘信息</a>&nbsp;&gt;&nbsp;<a href="/job/index.php?action=resume">简历</a>&nbsp;&gt;&nbsp;<a href="">详情</a>
+    </header>
+</section>
+<style>
+    .food-del .food-del-box {height:350px;}
+</style>
+<section class="home clearfix">
+    <section class="food-del" style="width:1100px;">
+        <article class="border-box">
+            <section class="food-del-box food-del-box1" style="width:1058px;">
+                <div class="food-del-head clearfix">
+                    <div class="fl">
+                        <label>招聘职位</label>
+                        <i class="icon-angle"></i>
+                        <span style="font-size: 16px">{$aCacheCat9[$aJob['catid']]['catname']}</span>
+                    </div>
+                    <div class="fr">
+                        <i class="icon-liulan"></i>
+                        <em>浏览({$aJob['hits']+1})</em>
+                    </div>
+                </div>
+
+
+                <i class="cutline mt10" style="border-top: 1px dotted #777;"></i>
+                <p class="clearfix">
+                    <span class="fl" style="width:500px">
+                        <span>
+                            姓名：{$aJob['truename']}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            年龄：<?php echo date('Y')-substr($aJob['birthday'],0,4) ?>岁  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            性别：{if $aJob['gender']==1}男士{else}女士{/if} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            婚姻：{if $aJob['marriage']==1}未婚{else}已婚{/if}
+                        </span><br /><br />
+                        <span>
+                            身高：{$aJob['height']} cm  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            体重：{$aJob['weight']} kg  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span><br /><br />
+                        <span>
+                            联系电话：{$aJob['telephone']}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            电子邮箱：{$aJob['email']}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span><br /><br />
+                        <span>现居地点：{area_pos($aJob['areaid'],'')}{$aJob['address']}</span>
+                    </span>
+                    <span class="fr" style="height:150px;"><img src="{$aJob['thumb']}" width="150px" height="150px"/></span>
+                </p>
+
+                <i class="cutline mt10" style="border-top: 1px dotted #777;"></i>
+
+
+                <p class="clearfix">
+                    <span class="fl">毕业院校：{$aJob['school']}</span>
+                    <span class="fr">所学专业：{$aJob['major']}</span>
+                </p>
+                <p class="clearfix">
+                    <span class="fl">专业技能：{$aJob['skill']}</span>
+                    <span class="fr">语言水平：{$aJob['language']}</span>
+                </p>
+                <p class="clearfix">
+                    <span class="fl">学历：{$aSetting['education'][$aJob['education']]}</span>
+                    <span class="fr">工作性质：{$aSetting['type'][$aJob['type']]}</span>
+                </p>
+
+                <p class="clearfix">
+                    <span class="fl">职位月薪：{if $aJob['minsalary'] && $aJob['maxsalary']}{$aJob['minsalary']}-{$aJob['maxsalary']}{elseif $aJob['minsalary']}{$aJob['minsalary']}{elseif $aJob['maxsalary']}{else}面议{/if}</span>
+                    <span class="fr">工作经验：{if $aJob['experience']}{$aJob['experience']}年{else}不限{/if}</span>
+                </p>
+
+            </section>
+        </article>
+        <article class="food-del-main border-box" style="width:1058px;">
+            {$aJob['content']}
+        </article>
+    </section>
+</section>
+<section class="foodad">{ad(36)}</section>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+{template  'footer'}
+

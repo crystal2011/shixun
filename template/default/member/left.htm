@@ -1,0 +1,17 @@
+<div class="leftsidebar">
+    <ul>
+        <li class="{if !isset($active)}active{/if} "><a href="/member/" class="clearfix" ><img src="{DT_SKIN}image/icon0{if !isset($active)}w{/if}.png"><span>会员基本信息</span></a></li>
+        <li class="{if isset($active) && $active=='safe'}active{/if}"><a  class="clearfix" href="/member/safe.php"><img src="{DT_SKIN}image/icon1{if isset($active) && $active=='safe'}w{/if}.png"><span>信息安全中心</span></a></li>
+        <li class="{if isset($active) && $active=='food'}active{/if}"><a  class="clearfix" href="/member/food.php"><img src="{DT_SKIN}image/icon2{if isset($active) && $active=='food'}w{/if}.png"><span>餐饮供应管理</span></a></li>
+        <li class="{if isset($active) && $active=='discount'}active{/if}"><a class="clearfix" href="/member/discount.php"><img src="{DT_SKIN}image/icon3{if isset($active) && $active=='discount'}w{/if}.png"><span>商家优惠管理</span></a></li>
+        <li class="{if isset($active) && $active=='job'}active{/if}"><a class="clearfix" href="/member/job.php"><img src="{DT_SKIN}image/icon4{if isset($active) && $active=='job'}w{/if}.png"><span>招聘信息管理</span></a></li>
+        <li class="{if isset($active) && $active=='cession'}active{/if}"><a class="clearfix" href="/member/cession.php"><img src="{DT_SKIN}image/icon5{if isset($active) && $active=='cession'}w{/if}.png"><span>店铺转让管理</span></a></li>
+        <li class="{if isset($active) && $active=='dish'}active{/if}"><a class="clearfix" href="/member/dish.php"><img src="{DT_SKIN}image/icon6{if isset($active) && $active=='dish'}w{/if}.png"><span>名厨学堂管理</span></a></li>
+        {if $horninfo}
+            <li class="{if isset($active) && $active=='horn'}active{/if}"><a class="clearfix" href="/member/horn.php"><img src="{DT_SKIN}image/icon7{if isset($active) && $active=='horn'}w{/if}.png"><span>羊角会管理</span></a></li>
+        {/if}
+        <li class="{if isset($active) && $active=='share'}active{/if}"><a class="clearfix" href="/member/share.php"><img src="{DT_SKIN}image/icon8{if isset($active) && $active=='share'}w{/if}.png"><span>美食分享管理</span></a></li>
+        <li class="{if isset($active) && $active=='article'}active{/if}"><a class="clearfix" href="/member/article.php"><img src="{DT_SKIN}image/icon9{if isset($active) && $active=='article'}w{/if}.png"><span>文章发布管理</span></a></li>
+        <li class="{if isset($active) && $active=='resume'}active{/if}"><a class="clearfix" href="/member/resume.php"><img src="{DT_SKIN}image/icon10{if isset($active) && $active=='resume'}w{/if}.png"><span>个人简历管理</span></a></li>
+    </ul>
+</div>

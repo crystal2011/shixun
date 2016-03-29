@@ -1,0 +1,83 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/school/food.php">名厨学堂</a>&nbsp;&gt;&nbsp;<a href="/school/foodlist.php">名厨学堂列表</a>
+    </header>
+</section>
+<div class="dnfk">{ad(42)}</div>
+<section class="home clearfix mt20">
+    <article class="food-list food-list2 fl" style="width:100%">
+        <section class="food-list-box border-box" >
+            <!--列表选项-->
+            <header class="list-result">
+                {loop $aTou $k $v}
+                <a href="{$v['url']}">{$v['name']}</a>{if $k+1!=count($aTou)}&nbsp;&gt;&nbsp;{/if}
+                {/loop}
+            </header>
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>分类：</label>
+                <ul class="lists lists1">
+                    {if $aCatList}
+                        {loop $aCatList $k $v}
+                            <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/school/foodlist.php?catid={$v['catid']}">{$v['catname']} </a></li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </section>
+        <div class="food-hot">
+            <label>热门推荐：</label>{$sAdPlaceHot}
+            <label>文字链接：</label>{$sAdPlaceTest}
+        </div>
+
+        <ul class="show-foods">
+            {if $aCai}
+            {loop $aCai $k $v}
+            <li>
+
+                <img src="{$v['thumb']}" width="260" height="196" alt=""/>
+                <div class="show-food-del">
+                    <a href="/school/food.php?id={$v['itemid']}" target="_blank">
+                        <div class="food-del-head">
+                            <label>名厨</label>
+                            <i class="icon-angle"></i>
+                            <span>{$aKnow[$v['userid']]['truename']}</span>
+                        </div>
+                        <h3 title="{$v['title']}">{dsubstr($v['title'],26)}</h3>
+                        <p>{dsubstr($v['introduce'],150,'...')}</p>
+                    </a>
+                    <header>
+                        <button onclick="vote({$v['itemid']},2,this)">投票</button>
+                        <i class="num">票数：<i>{$v['votes']}</i></i>
+                        <a class="fr"><i class="icon-share1" style="filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0;"></i>评论( {$v['comments']} )&nbsp;&nbsp;&nbsp;浏览( {$v['hits']} )</a>
+                    </header>
+                </div>
+
+            </li>
+            {/loop}
+            {/if}
+        </ul>
+        {if $aCai}
+        <!--分页功能-->
+        <div class="page-box">
+            <ul class="pager"></ul>
+        </div>
+        <!--分页功能end-->
+        {/if}
+    </article>
+</section>
+<section class="foodad">{ad(41)}</section>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+    $(".pager li").click(function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            location.href = '/school/foodlist.php?catid={$catid}&page='+pagenum;
+        }
+    })
+</script>
+{template  'footer'}
+

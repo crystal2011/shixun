@@ -1,0 +1,10 @@
+<article class="shop">
+    <header class="header">商家信息</header>
+    <div class="shopinfo clear">
+        <img class="fr phone" onclick="window.location.href='tel:{if isset($info[phone])}{$info[phone]}{else}$info[telephone]{/if}'" src="{DT_SKIN}image/mobile/phone.png" />
+        <div class="shopndl">
+            <span class="ndl">{$info['company']}</span>
+            <span class="fasdf">{area_pos($info['areaid'],'')}{$info['address']}</span>
+        </div>
+    </div>
+</article>

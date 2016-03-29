@@ -1,0 +1,45 @@
+{template 'header'}
+<script src="{DT_SKIN}js/layer/layer.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+<section class="homenew">
+    <div class="main">
+        {template 'memberlogo',$module}
+        <div class="content clearfix">
+            {template 'left',$module}
+            <div class="rightColumn">
+                <div class="column">
+                    <div class="columnHead"><i><img src="{DT_SKIN}image/icon1w.png"></i>
+                        <h1>信息安全中心</h1></div>
+                    <div class="columnCont safety">
+                        <form class="password clearfix" method="post"><p>修改登录密码：</p>
+                            <div class="left"><p><input type="password" name="oldpassword" placeholder="旧密码" datatype="*6-20"></p>
+                                <p><input type="password" placeholder="新密码" name="password" datatype="*6-20,password"></p>
+                                <p><input type="password" placeholder="确认新密码" name="repassword" datatype="*" recheck="password" class="clearfixOff"></p>
+                                <input type="hidden" name="submit" value="1" />
+                                <input type="submit"  value="提交">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.password').Validform({
+            tiptype: 3,
+            datatype: {
+                "password": function (gets, obj, curform, regxp) {
+                    var oldpassword = $("input[name='oldpassword']").val();
+                    if (oldpassword == gets) {
+                        return '新密码不能与旧密码一致';
+                    }
+                    return true;
+                }
+            }
+        });
+    });
+</script>
+{template 'footer'}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <!--[if IE 7]>
+    <meta http-equiv="X-UA-Compatible" content="IE=7"/>
+    <![endif]-->
+    <title>{if isset($seo_title)}{$seo_title}{/if}{$DT['seo_title']}</title>
+    <meta property="qc:admins" content="3621172705630167636" />
+    <meta name="keywords" content="{$DT['seo_keywords']}">
+    <meta name="description" content="{$DT['seo_description']}">
+    <link rel="shortcut icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
+    <link rel="stylesheet" href="{DT_SKIN}css/globals.css"/>
+    <link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+
+    <link rel="stylesheet" href="{DT_SKIN}css/Font-Awesome-3.2.1/css/font-awesome.min.css"/>
+
+
+    <!--[if lt IE 9]>
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
+    <script src="{DT_SKIN}js/layer/layer.js"></script>
+    <script src="{DT_SKIN}js/global.js"></script>
+    <script>
+        var DTPath = "{$CFG['url']}";
+    </script>
+    <style>
+        body {background-color:#f7f7f7;}
+        #Validform_msg *{display:none;}
+        footer {
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            background: #00e6c0;
+            padding: 30px 0 20px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            margin: 20px 0;
+            zoom: 1;
+            line-height: 1;
+            font-family: "微软雅黑", Tahoma,Lucida,Verdana,Arial,"宋体",Helvetica,sans-serif;
+            text-align: center;
+            display: block;
+        }
+        .about-us a {
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            margin: 10px 20px 0 0;
+            font-size: 14px;
+            color: #fff;
+
+        }
+        .about-us a:hover {
+            text-decoration: underline;
+        }
+        .friendLink a {
+            display: inline-block;
+            margin: 0 16px;
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 30px;position: relative;width:100%;"></div>
+<!--顶部固定导航条-->
+<header class="topBar">
+    <div class="home topBar-box clear">
+        <ul class="shortcut fl">
+            <li>
+                <a href="/" target="_blank"> {$_username}</a>,您好！欢迎光临{$DT['sitename']}&nbsp;<a href="/member/logout.php">退出</a>
+            </li>
+        </ul>
+
+        <!--右侧导航条-->
+        <ul class="shortcut shortcut-ml0 fr">
+            <li class="hover-style ml30" style="width:73px;"><a href="/">{$DT['sitename']}</a><i class="pull-down"></i></li>
+            <li><i class="icon-user"></i><a href="/member/index.php">会员中心</a><span>|</span></li>
+            <li><i class="icon-phone"></i><a href="/about/contact.html">联系我们</a><span>|</span></li>
+            <li><i class="icon-star"></i><a href="javascript:;" onclick="AddFavorite(window.location,document.title)">收藏网站</a></li>
+        </ul>
+    </div>
+</header>
+<div class="header">
+    <div class="logoWrap clear"><a href="/"><img class="fl" src="{DT_SKIN}image/public/logo.png"></a></div>
+</div>
+<div style="margin-top:30px"></div>

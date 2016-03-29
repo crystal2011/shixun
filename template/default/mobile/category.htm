@@ -1,0 +1,13 @@
+<article id="categoryselect">
+    <table>
+        {if $aCatList}
+        {loop $aCatList $key $val}
+        <tr>
+            {loop $val $k $v}
+            <td><a  {if $catid==$v['catid']}class="active" href="?{if isset($areaid)}areaid={$areaid}{/if}{if isset($kw)}&kw={$kw}{/if}" {else} href="?catid={$v['catid']}{if isset($areaid)}&areaid={$areaid}{/if}{if isset($kw)}&kw={$kw}{/if}" {/if}>{$v['catname']}</a></td>
+            {/loop}
+        </tr>
+        {/loop}
+        {/if}
+    </table>
+</article>

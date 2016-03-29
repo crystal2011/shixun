@@ -1,0 +1,73 @@
+# Destoon B2B Rewrite Rules
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteCond %{REQUEST_URI} ^/?$
+RewriteRule ^(.*)?$ index.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/$ food/index.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/(\d*)/$ food/index.php?catid=$1&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/(\d*)/(\d*)/$ food/index.php?catid=$1&areaid=$2&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/(\d*)/(\d*)/(\d*)/$ food/index.php?catid=$1&areaid=$2&page=$3&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/list/$ food/list.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/list/(\d*)/$ food/list.php?catid=$1&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/list/(\d*)/(\d*)/$ food/list.php?catid=$1&areaid=$2&city=%1
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food/list/(\d*)/(\d*)/(\d*)/$ food/list.php?catid=$1&areaid=$2&page=$3&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^food(\d*)/$ food/show.php?id=$1
+
+
+
+
+#Job   start <<<<<<<<
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^job/$ job/index.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^job/(\d*)/$ job/index.php?catid=$1&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^job/(\d*)/(\d*)/$ job/index.php?catid=$1&areaid=$2&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^job/(\d*)/(\d*)/(\d*)/$ job/index.php?catid=$1&areaid=$2&page=$3&city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^job(\d*)/$ job/show.php?id=$1
+#Job   >>>>>>>>>>>
+
+
+
+#horn   start <<<<<<<<
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^horn/$ horn/index.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^horn(\d*)/$ horn/show.php?id=$1
+#horn   >>>>>>>>>>>
+
+
+#school   start <<<<<<<<
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^school/$ school/index.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^school/list/$ school/list.php?city=%1
+
+RewriteCond %{HTTP_HOST} ^(.+)\.shixun\.com$
+RewriteRule ^school/list/(\d*)/$ school/list.php?areaid=$1&city=%1
+#school   >>>>>>>>>>>

@@ -1,0 +1,127 @@
+{template 'header'}
+<script src="{DT_SKIN}js/layer/layer.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+<style>
+    .collect .title {margin-right:88px;}
+    .red {color:red;}
+    .demandEdit form select {width:77px;margin-right:0px;}
+</style>
+<section class="homenew">
+    <div class="main">
+        {template 'memberlogo',$module}
+        <div class="content clearfix">
+            {template 'left',$module}
+            <div class="rightColumn">
+                <div class="column">
+                    {template 'horncommon',$module}
+                    <div class="columnCont collect" style="padding:0px;">
+                        <div class="ulWrap demandEdit" style="padding:20px 36px 50px 20px;margin:0px;">
+                            <form method="get" action="/member/horntotal.php" onsubmit="return searchdate();">
+                                <select name="fromyear">
+                                    <option value="0">选择年份</option>
+                                    <?php for($i=2016;$i<=date('Y');$i++){ ?>
+                                    <option value="{$i}" {if $fromyear==$i}selected{/if}>{$i}</option>
+                                    <?php } ?>
+                                </select>
+                                <select name="frommonth">
+                                    <option value="0">选择月份</option>
+                                    <?php for($i=1;$i<=12;$i++){ ?>
+                                        <option value="{$i}" {if $frommonth==$i}selected{/if}>{$i}</option>
+                                    <?php } ?>
+                                </select>
+                                -
+                                <select name="toyear">
+                                    <option value="0">选择年份</option>
+                                    <?php for($i=2016;$i<=date('Y');$i++){ ?>
+                                    <option value="{$i}" {if $toyear==$i}selected{/if}>{$i}</option>
+                                    <?php } ?>
+                                </select>
+                                <select name="tomonth">
+                                    <option value="0">选择月份</option>
+                                    <?php for($i=1;$i<=12;$i++){ ?>
+                                        <option value="{$i}" {if $tomonth==$i}selected{/if}>{$i}</option>
+                                    <?php } ?>
+                                </select>
+                                <input type="submit" name="submit" value="搜索" style="margin:0px 5px 0px 5px;">
+                                总金额：<span class="red">{doubleval($codeAll['allmoney'])}</span>元&nbsp;&nbsp;&nbsp;
+                                优惠：<span class="red">{doubleval($codeAll['money'])}</span>元&nbsp;&nbsp;&nbsp;
+                                折扣：<span class="red">{doubleval($codeAll['discountfee'])}</span>元
+                            </form>
+                        </div>
+                    </div>
+                    <div class="columnCont ProjectManagement">
+                        <div class="project p-m-title">
+                            <ul class="clearfix">
+                                <li class="state" style="width:200px;">时间</li>
+                                <li class="state" style="width:180px;text-align:center;">总金额</li>
+                                <li class="state" style="width:180px;text-align:center;">优惠金额</li>
+                                <li class="state" style="width:180px;text-align:center;">折扣金额</li>
+                            </ul>
+                        </div>
+                        <div class="project showBox">
+                            {if isset($aCodel) && $aCodel}
+                            {loop $aCodel $k $v}
+                            <div class="projectList">
+                                <ul>
+                                    <li  style="width:200px;">
+                                        <p>{$v['ym']}</p>
+                                    </li>
+                                    <li style="width:180px;text-align:center;">
+                                        <p>{doubleval($v['allmoney'])}元</p>
+                                    </li>
+                                    <li style="width:180px;text-align:center;">
+                                        <p>{doubleval($v['money'])}元</p>
+                                    </li>
+                                    <li style="width:180px;text-align:center;">
+                                        <p>{doubleval($v['discountfee'])}元</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            {/loop}
+                            {/if}
+                            {if isset($aCodel) && $aCodel}
+                            <div class="pageIcons">
+                                <div class="iconWrap">
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="styleSheet" href="{DT_SKIN}js/layer/skin/layer.css">
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script src="{DT_SKIN}js/user-page.js"></script>
+<script>
+    $(function(){
+        pager({$page}, {$totalpage}, 'iconWrap');
+        $(".iconWrap a[pagenum]").each(function (k, v) {
+            var url = '?fromyear='+{$fromyear}+'&frommonth='+{$frommonth}+'&toyear='+{$toyear}+'&tomonth='+{$tomonth}+'&page=' + $(this).attr('pagenum');
+            $(this).attr('href', url);
+        });
+    })
+
+    function searchdate(){
+        if($("select[name='fromyear']").val()==0){
+            $("select[name='fromyear']").focus();
+            return false;
+        }
+        if($("select[name='frommonth']").val()==0){
+            $("select[name='frommonth']").focus();
+            return false;
+        }
+        if($("select[name='toyear']").val()==0){
+            $("select[name='toyear']").focus();
+            return false;
+        }
+        if($("select[name='tomonth']").val()==0){
+            $("select[name='tomonth']").focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+{template 'footer'}

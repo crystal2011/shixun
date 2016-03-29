@@ -1,0 +1,35 @@
+{template 'header','mobile'}
+{template 'search','mobile'}
+<section>
+    {template 'category','mobile'}
+    <span class="ids">{ad(80)}</span>
+    {template 'area','mobile'}
+    <article class="list">
+        {if $list}
+        {loop $list $k $v}
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb" href="/mobile/cession/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                <div class="text">
+                    <a class="title" href="/mobile/cession/show.php?id={$v['itemid']}">【转让】{$v['title']}</a>
+                    <p class="introduce">{$v['introduce']}</p>
+                    <p class="price">
+                        <span class="price1">价格：{doubleval($v['price'])}元</span>
+                    </p>
+                </div>
+            </div>
+            <div class="handle clear hasbutton">
+                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
+                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
+                <a class="fr showpng" href="/mobile/cession/show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
+            </div>
+        </div>
+        {/loop}
+        {/if}
+    </article>
+    {if $list && $page!=$totalpage}
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/cession/index.php?catid={$catid}&areaid={$areaid}',this)" data-page="1">
+        <a>查看更多>></a>
+    </article>
+    {/if}
+</section>

@@ -1,0 +1,72 @@
+{template 'header','mobile'}
+{template 'search1','mobile'}
+<section>
+    <article class="list">
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb"><img src="{$info['thumb']}" /></a>
+                <div class="text">
+                    <a class="title">{$info['title']}</a>
+                    <p class="introduce">{$info['introduce']}</p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<section id="content">
+    <article class="line" style="border-top-width: 0px;"></article>
+    {template 'view','mobile'}
+    <article class="line"></article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新羊角会成员</span></div>
+        <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
+    </header>
+    <article class="list">
+        {if $aRecommendFood}
+        {loop $aRecommendFood $k $v}
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb"  href="?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                <div class="text">
+                    <a class="title" href="?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="introduce">{$v['introduce']}</p>
+                </div>
+            </div>
+            <div class="handle clear hasbutton">
+                <span class="handle1 de0000">内容审核号{$v['code']}</span>
+                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
+                <a class="fr showpng" href="?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
+            </div>
+        </div>
+        {/loop}
+        {/if}
+    </article>
+    <article class="line" style="border-top-width: 0px;"></article>
+    <header class="channelheader clear">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png"><span>热门羊角会成员</span></div>
+        <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
+    </header>
+    <article class="list">
+        {if $aHotFood}
+        {loop $aHotFood $k $v}
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb"  href="?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                <div class="text">
+                    <a class="title" href="?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="introduce">{$v['introduce']}</p>
+                </div>
+            </div>
+            <div class="handle clear hasbutton">
+                <span class="handle1 de0000">内容审核号{$v['code']}</span>
+                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
+                <a class="fr showpng" href="?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
+            </div>
+        </div>
+        {/loop}
+        {/if}
+    </article>
+</section>
+{template 'foot1','mobile'}

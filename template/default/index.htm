@@ -1,0 +1,291 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/index.css"/>
+
+    <section class="home clearfix mt20">
+    <aside class="side-menu fl">
+        <article class="border-box">
+            <!--子菜单-->
+            <header class="menu-group-title">
+                <i class="icon-item icon-item1"></i>
+                <a href="/food/index.php">餐饮供应信息</a>
+            </header>
+            <ul class="menu-items">
+                {if $aCatList23}
+                {loop $aCatList23 $k $v}
+                <li><a href="/food/list.php?catid={$v['catid']}">{$v['catname']} </a></li>
+                {/loop}
+                {/if}
+            </ul>
+            <i class="cut-line"></i>
+            <!--子菜单end-->
+            <header class="menu-group-title">
+                <i class="icon-item icon-item2"></i>
+                <a href="javascript:;" target="_blank">其他行业信息</a>
+            </header>
+            <ul class="menu-items menu-items-info">
+                <li><a href="/discount/index.php">商家优惠</a></li>
+                <li><a href="/job/index.php">招聘信息</a></li>
+                <li><a href="/cession/index.php">店铺转让</a></li>
+                <li><a href="/school/index.php">名厨学堂</a></li>
+                <li><a href="/horn/index.php">羊角会</a></li>
+                <li><a href="/share/index.php">分享</a></li>
+            </ul>
+            <i class="cut-line"></i>
+            <a class="publish-info" href="/share/publish.php"><i class="icon-publish"></i>发布信息>></a>
+        </article>
+
+    </aside>
+    <article class="ad fl">
+        <ul>
+
+            <li><a href="{$aAd[60]['image_url']}" target="_blank" title="{$aAd[60]['title']}"><img width="283" height="175" src="{$aAd[60]['image_src']}" alt=""/><h2>{$aAd[60]['title']}</h2></a></li>
+            <li><a href="{$aAd[61]['image_url']}" target="_blank" title="{$aAd[61]['title']}"><img width="278" height="132" src="{$aAd[61]['image_src']}" alt=""/><h2>{$aAd[61]['title']}</h2></a></li>
+            <li><a href="{$aAd[62]['image_url']}" target="_blank" title="{$aAd[62]['title']}"><img width="283" height="175" src="{$aAd[62]['image_src']}" alt=""/><h2>{$aAd[62]['title']}</h2></a></li>
+            <li><a href="{$aAd[63]['image_url']}" target="_blank" title="{$aAd[63]['title']}"><img width="283" height="87" src="{$aAd[63]['image_src']}" alt=""/><h2>{$aAd[63]['title']}</h2></a></li>
+            <li style="margin-top: -45px;"><a href="{$aAd[64]['image_url']}" target="_blank" title="{$aAd[64]['title']}"><img width="278" height="132" src="{$aAd[64]['image_src']}" alt=""/><h2>{$aAd[64]['title']}</h2></a></li>
+            <li><a href="{$aAd[65]['image_url']}" target="_blank" title="{$aAd[65]['title']}"><img width="283" height="87" src="{$aAd[65]['image_src']}" alt=""/><h2>{$aAd[65]['title']}</h2></a></li>
+            <li><a href="{$aAd[66]['image_url']}" target="_blank" title="{$aAd[66]['title']}"><img width="427" height="124" src="{$aAd[66]['image_src']}" alt=""/><h2>{$aAd[66]['title']}</h2></a></li>
+            <li><a href="{$aAd[67]['image_url']}" target="_blank" title="{$aAd[67]['title']}"><img width="208" height="124" src="{$aAd[67]['image_src']}" alt=""/><h2>{$aAd[67]['title']}</h2></a></li>
+            <li><a href="{$aAd[68]['image_url']}" target="_blank" title="{$aAd[68]['title']}"><img width="208" height="124" src="{$aAd[68]['image_src']}" alt=""/><h2>{$aAd[68]['title']}</h2></a></li>
+        </ul>
+    </article>
+</section>
+    <div class="dnfk" >{ad(70)}</div>
+
+    <!--今日热门-->
+    <section class="home clearfix mt20">
+        <aside class="new-box fl border-box">
+            {if $aNewsNew}
+            <a href="/article/show.php?id={$aNewsNew[0]['itemid']}" target="_blank" title="{$aNewsNew[0]['title']}">
+                <img src="{$aNewsNew[0]['thumb']}" height="280" width="298" alt="">
+                <h2>{dsubstr($aNewsNew[0]['title'],30)}</h2>
+                <p>{dsubstr($aNewsNew[0]['introduce'],60,'...')}<strong>详情>></strong></p>
+            </a>
+            {/if}
+        </aside>
+
+        <article class="new-wrap fl">
+            <section class="new-wrap-main fl">
+                <header class="public-header">
+                    <h2 class="fl">今日热门</h2>
+                    <span class="fl">| {if $aNewsHot}<a target="_blank" title="{$aNewsHot[0]['title']}" href="/article/show.php?id={$aNewsHot[0]['itemid']}">{dsubstr($aNewsHot[0]['title'],10)}</a>{/if}</span>
+                    <a class="fr more" href="/article/list.php?type=hot" target="_blank">更多<i class="icon-more"></i></a>
+                </header>
+                <section class="new-head">
+                    {if $aNewsHotPromote}
+                    <h2 ><a href="/article/show.php?id={$aNewsHotPromote[0]['itemid']}" target="_blank" title="{$aNewsHotPromote[0]['title']}" style="color: #ff580a;font-size: 16px;">{dsubstr($aNewsHotPromote[0]['title'],40)}</a></h2>
+                    <p>{dsubstr($aNewsHotPromote[0]['introduce'],120,'...')}<a href="/article/show.php?id={$aNewsHotPromote[0]['itemid']}" target="_blank">查看详情>></a></p>
+                    {/if}
+                </section>
+                <section class="new-list">
+                    {if isset($aNewsHotPromoteCor) && $aNewsHotPromoteCor}
+                    {loop $aNewsHotPromoteCor $nexarr}
+                    <ul class="fl">
+                        {loop $nexarr $key $v}
+                        <li><span>·</span><a href="/article/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">{dsubstr($v['title'],14)}</a></li>
+                        {/loop}
+                    </ul>
+                    {/loop}
+                    {/if}
+                </section>
+                <header class="public-header new-header clearfix">
+                    <h2 class="fl">{if $catPromote1}{$catPromote1['catname']}{/if}</h2>
+                    <a class="fr more" href="/article/list.php{if $catPromote1}?catid={$catPromote1['catid']}{/if}" target="_blank">更多<i class="icon-more"></i></a>
+                </header>
+                <section class="new-show border-box">
+                    <ul>
+                        {if isset($aNewsHotCor) && $aNewsHotCor}
+                        {loop $aNewsHotCor $k $v}
+                        <li>
+                            <a href="/article/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">
+                                <img width="110" height="84" src="{$v['thumb']}" alt=""/>
+                                <h3>{dsubstr($v['title'],14)}</h3>
+                            </a>
+                        </li>
+                        {/loop}
+                        {/if}
+                    </ul>
+                </section>
+            </section>
+
+            <aside class="new-wrap-list fr">
+                <header class="public-header new-header clearfix">
+                    <h2 class="fl">{if $catPromote2}{$catPromote2['catname']}{/if}</h2>
+                    <a class="fr more" href="/article/list.php{if $catPromote2}?catid={$catPromote2['catid']}{/if}" target="_blank">更多<i class="icon-more"></i></a>
+                </header>
+
+                <ul class="new-part">
+                    {if isset($aNewsPromote) && $aNewsPromote}
+                    {loop $aNewsPromote $k $v}
+                    <li>
+                        <a href="/article/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">
+                            <img width="110" height="84" src="{$v['thumb']}" alt=""/>
+                            <h3>{dsubstr($v['title'],14)}</h3>
+                            <p>{dsubstr($v['introduce'],40,'...')}<strong>详情>></strong></p>
+                        </a>
+                    </li>
+                    {/loop}
+                    {/if}
+                </ul>
+                <section class="new-list new-list-box">
+                    <ul class="fl">
+                        {if isset($aNewsPromote_Cor[0]) && $aNewsPromote_Cor[0]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[0]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[0]['title']}">{dsubstr($aNewsPromote_Cor[0]['title'],18)}</a></li>{/if}
+                        {if isset($aNewsPromote_Cor[1]) && $aNewsPromote_Cor[1]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[1]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[1]['title']}">{dsubstr($aNewsPromote_Cor[1]['title'],18)}</a></li>{/if}
+                    </ul>
+                    <ul class="fl">
+                        {if isset($aNewsPromote_Cor[2]) && $aNewsPromote_Cor[2]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[2]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[2]['title']}">{dsubstr($aNewsPromote_Cor[2]['title'],18)}</a></li>{/if}
+                        {if isset($aNewsPromote_Cor[3]) && $aNewsPromote_Cor[3]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[3]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[3]['title']}">{dsubstr($aNewsPromote_Cor[3]['title'],18)}</a></li>{/if}
+                    </ul>
+                </section>
+                <i class="cutline"></i>
+                <section class="new-list new-list-box">
+                    <ul class="fl">
+                        {if isset($aNewsPromote_Cor[4]) && $aNewsPromote_Cor[4]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[4]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[4]['title']}">{dsubstr($aNewsPromote_Cor[4]['title'],18)}</a></li>{/if}
+                        {if isset($aNewsPromote_Cor[5]) && $aNewsPromote_Cor[5]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[5]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[5]['title']}">{dsubstr($aNewsPromote_Cor[5]['title'],18)}</a></li>{/if}
+                    </ul>
+                    <ul class="fl">
+                        {if isset($aNewsPromote_Cor[6]) && $aNewsPromote_Cor[6]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[6]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[6]['title']}">{dsubstr($aNewsPromote_Cor[6]['title'],18)}</a></li>{/if}
+                        {if isset($aNewsPromote_Cor[7]) && $aNewsPromote_Cor[7]}<li><span>·</span><a href="/article/show.php?id={$aNewsPromote_Cor[7]['itemid']}" target="_blank" title="{$aNewsPromote_Cor[7]['title']}">{dsubstr($aNewsPromote_Cor[7]['title'],18)}</a></li>{/if}
+                    </ul>
+                </section>
+                <i class="cutline"></i>
+            </aside>
+        </article>
+    </section>
+    <!--今日热门end-->
+    <div class="dnfk"  style="margin-top:10px;">{ad(71)}</div>
+    <!--名厨展示-->
+    <section class="home clearfix mt20">
+        <article class="show-box fl border-box">
+            <header class="public-header show-head">
+                <i class="icon-show"></i>
+                <h2 class="fl">名厨作品展示</h2>
+                <a class="fr more" href="/school/index.php" target="_blank">更多<i class="icon-more"></i></a>
+            </header>
+            <ul>
+                {if $aCai}
+                {loop $aCai $k $v}
+                <li><a href="/school/show.php?id={$v['userid']}" target="_blank" title="{$aSchool[$v['userid']]['truename']}"><img src="{if $aSchool[$v['userid']]['thumb']}{$aSchool[$v['userid']]['thumb']}{else}{$DT['memberlogo']}{/if}" width="182" height="136" alt=""/><h4 title="{$aSchool[$v['userid']]['truename']}">名厨：{dsubstr($aSchool[$v['userid']]['truename'],10)}</h4></a></li>
+                <li>
+                    <a href="/school/food.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                        <img src="{$v['thumb']}" width="182" height="136" alt=""/>
+                        <h3>{dsubstr($v['title'],16)}</h3>
+                    </a>
+                    <header>
+                        <button onclick="vote({$v['itemid']},2,this)">投票</button>
+                        <i class="num">票数：<i>{$v['votes']}</i></i>
+                    </header>
+                </li>
+                {/loop}
+                {/if}
+            </ul>
+        </article>
+
+        <aside class="show-list2 fr border-box">
+            <header class="public-header show-head">
+                <i class="icon-price"></i>
+                <h2 class="fl">商家优惠</h2>
+                <a class="fr more" href="/discount/index.php" target="_blank">更多优惠<i class="icon-more"></i></a>
+            </header>
+            <article class="new-main">
+                {if $aBrandHot}
+                <a href="/discount/show.php?id={$aBrandHot[0]['itemid']}" title="{$aBrandHot[0]['title']}" target="_blank"><h3>{dsubstr($aBrandHot[0]['title'],28)}</h3></a>
+                <p>{dsubstr($aBrandHot[0]['introduce'],110,'...')}</p>
+                {/if}
+                <i class="cutline"></i>
+                <ul class="point-list">
+                    {if $aBrandHotCor}
+                    {loop $aBrandHotCor $k $v}
+                    <li><span class="ico"></span><a href="/discount/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">{dsubstr($v['title'],26)}</a><span class="fr">{date('Y/m/d',$v['addtime'])}</span></li>
+                    {/loop}
+                    {/if}
+                </ul>
+            </article>
+        </aside>
+    </section>
+    <!--名厨展示end-->
+    <div class="dnfk">{ad(72)}</div>
+    <!--在线分享-->
+    <section class="home mt20 clearfix border-box">
+        <header class="public-header show-head">
+            <i class="icon-share"></i>
+            <h2 class="fl" style="color:#9f8e00">在线分享</h2>
+            <div class="share-head fr">
+                {if $aBuyPormote}
+                {loop $aBuyPormote $k $v}
+                <a href="/share/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">{dsubstr($v['title'],8)}</a>
+                {/loop}
+                {/if}
+            </div>
+        </header>
+
+        <aside class="share-box fl">
+            {if $aButHot}
+            <a href="/share/show.php?id={$aButHot[0]['itemid']}" target="_blank" title="{$aButHot[0]['title']}">
+                <img src="{$aButHot[0]['thumb']}" width="384" height="288" alt="">
+                <h2>{dsubstr($aButHot[0]['title'],30)}</h2>
+                <p>{dsubstr($aButHot[0]['introduce'],80)}</p>
+            </a>
+            <div class="share-item">
+                <a class="fl">作者：{$aButHot[0]['username']}</a>
+                <a class="fr">评论( {$aButHot[0]['comments']} )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览( {$aButHot[0]['hits']} )</a>
+            </div>
+            {/if}
+        </aside>
+
+        <article class="share-show fr">
+            <ul>
+                {if $aBuyHotCor}
+                {loop $aBuyHotCor $k $v}
+                <li>
+                    <a href="/share/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                        <img src="{$v['thumb']}" width="180" height="136" alt=""/>
+                        <h4>{dsubstr($v['title'],24)}</h4>
+                    </a>
+                    <div class="share-item">
+                        <a class="fl">评论( {$v['comments']} )</a>
+                        <a class="fr">浏览( {$v['hits']} )</a>
+                    </div>
+                </li>
+                {/loop}
+                {/if}
+            </ul>
+        </article>
+    </section>
+    <!--在线分享end-->
+
+    <!--作者-->
+    <section class="home clearfix mt20">
+        <article class="person-show fl">
+            <ul>
+                {if $aSpecial}
+                {loop $aSpecial $k $v}
+                <li>
+                    <a href="/horn/hornshow.php?id={$v['itemid']}" target="_blank"  title="{$v['title']}">
+                        <img src="{$v['thumb']}" width="78" height="78" alt=""/>
+                        <h4>{dsubstr($v['title'],10)}</h4>
+                        <p>人气榜：{$v['userds']}</p>
+                    </a>
+                </li>
+                {/loop}
+                {/if}
+            </ul>
+        </article>
+
+        <aside class="qr-show fr border-box">
+            <ul>
+                <li>
+                    <img src="{DT_SKIN}image/index/icon-qr.png" width="100" height="100" alt=""/>
+                    <h4>扫二微码关注微信</h4>
+                </li>
+                <li>
+                    <img src="{DT_SKIN}image/index/icon-qr.png" width="100" height="100" alt=""/>
+                    <h4>扫二微码保存手机</h4>
+                </li>
+            </ul>
+        </aside>
+    </section>
+    <!--作者end-->
+    <section class="foodad">{ad(73)}</section>
+
+{template  'footer'}

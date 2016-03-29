@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <title>中国食讯网</title>
+    <meta name="keywords" content="fsdfadsf">
+    <meta name="description" content="的沙发沙发">
+    <link rel="icon" href="http://shixun.com/skin/default/image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
+    <link rel="shortcut icon" href="http://shixun.com/skin/default/image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
+    <link rel="stylesheet" href="http://shixun.com/skin/default/css/global.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="http://shixun.com/skin/default/js/jquery-1.9.1.min.js"></script>
+    <script src="http://shixun.com/skin/default/js/global.js"></script>
+    <script>
+        var DTPath = "http://shixun.com/";
+        $(function(){
+            //切换城市
+            var isSelectCity = 0;
+            var isClickCity = 0;
+            $('.city').click(function() {
+                if (isClickCity == 1) {
+                    return false;
+                }
+                isClickCity = 1;
+                if(isSelectCity==0){
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:'/ajax.php?action=selectcity&type=getFirstCity',
+                        success:function(data){
+                            $("#selectcity1").append(data);
+                            isSelectCity = 1;
+                        }
+                    })
+                }
+                isClickCity = 0;
+                $('.city-box').toggle();
+            })
+            //切换城市选择
+            $(document).on("change","#selectcity1",function(){
+                var cityid = $(this).val();
+                var cityoption = '<option value="0">选择城市</option>';
+                if(cityid!=0){
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:'/ajax.php?action=selectcity&type=getSecondCity&areaid='+cityid,
+                        success:function(data){
+                            cityoption += data;
+                        }
+                    })
+                }
+                $("#selectcity2").html(cityoption);
+            })
+            $("#selectcitybutton").click(function(){
+                var firstcityid = $("#selectcity1").val();
+                var secondcityid = $("#selectcity2").val();
+                if(firstcityid!=0 && secondcityid==0){
+                    alert('请选择城市');
+                    return false;
+                }
+                $.ajax({
+                    type:'post',
+                    async:false,
+                    url:'/ajax.php?action=selectcity&type=getCityButton&areaid='+secondcityid,
+                    success:function(data){
+                        location.reload();
+                    }
+                })
+            })
+        })
+        function alltouclick(){
+            $(".alltop").remove();
+        }
+    </script>
+</head>
+<body>
+<section class="alltop" style="position:relative;">
+    <article class="alltou"><img src="http://shixun.com/file/upload/201603/08/1121223410.jpg" width="1100" height="50" alt=""/></article>
+    <span style="position:absolute;right:90px;top:5px;cursor:pointer;font-size:12px;line-height:16px" onclick="alltouclick()"><img src="http://shixun.com/skin/default/image/public/delete.jpg" style="width:16px;height:16px;">关闭</span>
+</section>
+<!--头部信息-->
+<section class="home clearfix mtb30">
+    <a class="logo fl" href="/"></a>
+    <form class="search fl" action="/food/list.php">
+        <input class="fl" type="text" name="kw" value="" placeholder="请您输入搜索信息:">
+        <input class="fl" type="submit" id="searchBtn"/>
+    </form>
+        <!--切换城市-->
+    <div class="city fl">
+        <label>全国</label>
+        <span>切换城市</span>
+    </div>
+    <div class="city-box">
+        <em>&#9670;</em>
+        <span>&#9670;</span>
+        <label>选择城市：</label>
+        <select id="selectcity1"><option value="0">全国</option></select>
+        <select id="selectcity2"><option value="0">选择城市</option></select>
+        <button type="button" id="selectcitybutton">确定</button>
+    </div>
+    <!--切换城市end-->
+    <aside class="login-wrap fr">
+        <a id="check-num" href="/about/contact.html"><i class="icon icon-contact"></i>联系我们</a>
+        <a id="register" href="/member/register.php"><i class="icon icon-collect"></i>免费注册</a>
+        <a id="publish"  href="/share/publish.php"><i class="icon icon-publish"></i>我要发布</a>
+    </aside>
+</section>
+<nav>
+    <ul class="home clearfix">
+        <li class="selected"><a href="/">首页</a></li>
+        <li ><a href="/food/index.php">餐饮供应</a></li>
+        <li ><a href="/discount/index.php">商家优惠</a></li>
+        <li ><a href="/job/index.php">招聘信息</a></li>
+        <li ><a href="/cession/index.php">店铺转让</a></li>
+        <li ><a href="/school/index.php">名厨学堂</a></li>
+        <li ><a href="/horn/index.php">羊角会</a></li>
+        <li ><a href="/share/index.php">分享</a></li>
+                    <li><a href="/member/index.php">会员中心</a></li>
+            </ul>
+</nav><link rel="stylesheet" href="http://shixun.com/skin/default/css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a href="/">首页</a> >  <a href="">关于我们</a>
+    </header>
+</section>
+<section class="home clearfix">
+    <section class="food-del fl" style="width:1100px;">
+        <article class="food-del-main border-box">
+            关于我们        </article>
+    </section>
+</section>
+<footer>
+    <h2>中国食讯网&nbsp;&nbsp;&nbsp;&nbsp;http://shixun.com/</h2>
+    <section class="about-us">
+        <a href="/about/index.html" target="_blank">关于我们</a><span>|</span>
+        <a href="/about/contact.html" target="_blank">联系我们</a><span>|</span>
+        <a href="/about/agreement.html" target="_blank">商务合作</a><span>|</span>
+        <a href="/share/publish.php">发布信息</a><span>|</span>
+        <a href="" target="_blank">手机版本</a>
+    </section>
+</footer>
+<section class="friendLink"><a href="http://www.destoon.com/" target="_blank" rel="nofollow">Destoon B2B</a></section></body>
+</html>

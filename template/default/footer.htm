@@ -1,0 +1,30 @@
+<footer>
+    <h2>{$DT['sitename']}&nbsp;&nbsp;&nbsp;&nbsp;{$CFG['url']}</h2>
+    <section class="about-us">
+        <a href="/about/index.html" target="_blank">关于我们</a><span>|</span>
+        <a href="/about/contact.html" target="_blank">联系我们</a><span>|</span>
+        <a href="/about/agreement.html" target="_blank">商务合作</a><span>|</span>
+        <a href="/share/publish.php">发布信息</a><span>|</span>
+        <a href="" target="_blank">手机版本</a>
+    </section>
+</footer>
+{template  'link'}
+
+<script>
+    function getmore(_this,num){
+        if($(_this).attr("getmore")=="getmore"){
+            $(_this).removeAttr("getmore");
+            num = num-1;
+            $(_this).prev().find('li:gt('+num+')').remove();
+            $(_this).html('更多<i class="icon-more" style="background-position:0px 0px;"></i>');
+        }else{
+            $(_this).attr("getmore","getmore");
+            $(_this).prev().append($("#hidearea").html());
+            $(_this).html('拉起<i class="icon-more" style="background-position:0px -43px;"></i>');
+        }
+
+
+    }
+</script>
+</body>
+</html>

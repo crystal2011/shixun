@@ -1,0 +1,72 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/job/index.php">招聘信息</a>&nbsp;&gt;&nbsp;<a href="">详情</a>
+    </header>
+</section>
+<section class="home clearfix">
+    <section class="food-del fl">
+        <article class="border-box" style="overflow: hidden">
+            <section class="food-del-box food-del-box1 fl">
+                <div class="food-del-head clear">
+                    <div class="fl">
+                        <label>招聘职位</label>
+                        <i class="icon-angle"></i>
+                        <span style="font-size: 16px" title="{$aJob['title']}">{dsubstr($aJob['title'],50)}</span>
+                    </div>
+                    <div class="fr">
+                        <i class="icon-liulan"></i>
+                        <em>浏览({$aJob['hits']})</em>
+                        <i class="icon-pinlun"></i>
+                        <em>评论({$aJob['comments']})</em>
+                    </div>
+                </div>
+
+                <div class="food-del-price" style="margin-top:6px;">
+                    <label>公司名称：</label><span style="font-weight: bold;font-size: 16px">{$aJob['company']}</span>
+                </div>
+                <i class="cutline mt10" style="border-top: 1px dotted #777;"></i>
+                <p class="clearfix">
+                    <span class="fl">职位月薪：{if $aJob['minsalary'] && $aJob['maxsalary']}{$aJob['minsalary']}-{$aJob['maxsalary']}{elseif $aJob['minsalary']}{$aJob['minsalary']}{elseif $aJob['maxsalary']}{else}面议{/if}</span>
+                    <span class="fr">招聘人数：{if $aJob['total']}{$aJob['total']}人{else}若干{/if}</span>
+                </p>
+                <p class="clearfix">
+                    <span class="fl">发布日期：{date('Y-m-d',$aJob['addtime'])}</span>
+                    <span class="fr">工作性质：{$aSetting['type'][$aJob['type']]}</span>
+                </p>
+                <p class="clearfix">
+                    <span class="fl">工作经验：{if $aJob['experience']}{$aJob['experience']}年{else}不限{/if}</span>
+                    <span class="fr">最低学历：{$aSetting['education'][$aJob['education']]}</span>
+                </p>
+                <p class="clearfix">
+                    <span class="fl">工作地点：{area_pos($aJob['areaid'],'')}{$aJob['address']}</span>
+                </p>
+                <div class="food-del-like clearfix">
+                    <div class="like fl">
+                        <input class="like-btn" type="button" onclick="like({$aJob['itemid']},3,this)" />
+                        <div class="like-num">{$aJob['likes']}</div>
+                    </div>
+                    <div class="bdsharebuttonbox fr">
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="food-del-main border-box">
+            {$aJob['content']}
+        </article>
+        {template  'comment'}
+    </section>
+
+    {template  'right'}
+</section>
+<section class="foodad">{ad(36)}</section>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+{template  'footer'}
+

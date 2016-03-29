@@ -1,0 +1,24 @@
+<div class="tabsupsdfsd "><span>内容审核号：{$horninfo['code']}</span></div>
+<div class="tabsupshow clearfix">
+    <div class="teshow fl teleft">
+        <p class="dnfl">审核记录</p>
+        <p>已审核<span>{$codenumed}</span>次</p>
+    </div>
+    <div class="teshow fl ">
+        <p  class="dnfl">等待审核</p>
+        <p>待审核<span>{$codenewno}</span>次</p>
+    </div>
+    <div class="fr teright">
+        <p  class="dnfl dfse fr">审核金额</p>
+        <p style="clear:both;"></p>
+        <p>结算金额：<span>{doubleval($applynum)}</span>元{if doubleval($applynum)}<i class="getmoney" onclick="location.href='/member/hornapply.php?action=apply'">提交</i>{/if}</p>
+    </div>
+</div>
+<div class="columnHead clearfix">
+    <i><img src="{DT_SKIN}image/icon7w.png"></i>
+    <h1 class="ml30" {if $snd==1}style="text-decoration:underline;"{else}style="cursor:pointer;" onclick="location.href='/member/horn.php'"{/if}>审核记录</h1>
+    <h1 class="ml30" {if $snd==2}style="text-decoration:underline;"{else}style="cursor:pointer;" onclick="location.href='/member/horncheck.php'"{/if}>待审核</h1>
+    <h1 class="ml30" {if $snd==3}style="text-decoration:underline;"{else}style="cursor:pointer;" onclick="location.href='/member/horntotal.php'"{/if}>月度汇总</h1>
+    <h1 class="ml30" {if $snd==4}style="text-decoration:underline;"{else}style="cursor:pointer;" onclick="location.href='/member/hornapply.php'"{/if}>申请结算</h1>
+    <h1 class="ml30" {if $snd==5}style="text-decoration:underline;"{else}style="cursor:pointer;" onclick="location.href='/member/hornbalance.php'"{/if}>结算记录</h1>
+</div>

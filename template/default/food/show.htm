@@ -1,0 +1,64 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/food/index.php">餐饮供应</a>&nbsp;&gt;&nbsp;<a href="">详情</a>
+    </header>
+</section>
+<style>
+    footer {
+        margin:0px 0px 20px 0px;
+    }
+</style>
+<section class="home clearfix">
+    <section class="food-del fl">
+        <article class="border-box" style="overflow: hidden">
+            <img class="food-del-pic fl" src="{$aFood['thumb']}" width="343" height="257" alt=""/>
+            <section class="food-del-box fl">
+                <div class="food-del-head">
+                    <label>供应产品</label>
+                    <i class="icon-angle"></i>
+                    <span title="{$aFood['title']}">{dsubstr($aFood['title'],50)}</span>
+                </div>
+                <div class="food-del-price">
+                    <label>供应价格：</label><span>{$aFood['price']}元/{$aFood['unit']}</span>
+                    <i class="icon-liulan"></i>
+                    <em>浏览({$aFood['hits']})</em>
+                    <i class="icon-pinlun"></i>
+                    <em>评论({$aFood['comments']})</em>
+                </div>
+                
+                <i class="cutline mt10" style="border-top: 1px dotted #777;"></i>
+                <p>商家：{$aFood['company']}</p>
+                <p>电话：{$aFood['phone']}</p>
+                <p>地址：{$aFood['address']}</p>
+                <div class="food-del-like clearfix">
+                    <div class="like fl">
+                        <input class="like-btn" type="button" onclick="like({$aFood['itemid']},1,this)"/>
+                        <div class="like-num">{$aFood['likes']}</div>
+                    </div>
+                    <div class="bdsharebuttonbox fr">
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="food-del-main border-box">
+            {$aFood['content']}
+        </article>
+        {template  'comment'}
+    </section>
+    {template  'right'}
+</section>
+<section class="foodad">{ad(29)}</section>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+{template  'footer'}
+

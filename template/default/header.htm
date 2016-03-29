@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow"/>
+    <meta http-equiv="x-ua-compatible" content="IE=8"/>
+    <title>{if isset($seo_title)}{$seo_title}{/if}{$DT['seo_title']}</title>
+    <meta name="keywords" content="{$DT['seo_keywords']}">
+    <meta name="description" content="{$DT['seo_description']}">
+    <link rel="icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
+    <link rel="shortcut icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
+    <link rel="stylesheet" href="{DT_SKIN}css/global.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
+    <script src="{DT_SKIN}js/global.js"></script>
+    <script>
+        var DTPath = "{$CFG['url']}";
+        $(function(){
+            //切换城市
+            var isSelectCity = 0;
+            var isClickCity = 0;
+            $('.city').click(function() {
+                if (isClickCity == 1) {
+                    return false;
+                }
+                isClickCity = 1;
+                if(isSelectCity==0){
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:'/ajax.php?action=selectcity&type=getFirstCity',
+                        success:function(data){
+                            $("#selectcity1").append(data);
+                            isSelectCity = 1;
+                        }
+                    })
+                }
+                isClickCity = 0;
+                $('.city-box').toggle();
+            })
+
+            //切换城市选择
+            $(document).on("change","#selectcity1",function(){
+                var cityid = $(this).val();
+                var cityoption = '<option value="0">选择城市</option>';
+                if(cityid!=0){
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:'/ajax.php?action=selectcity&type=getSecondCity&areaid='+cityid,
+                        success:function(data){
+                            cityoption += data;
+                        }
+                    })
+                }
+                $("#selectcity2").html(cityoption);
+            })
+            $("#selectcitybutton").click(function(){
+                var firstcityid = $("#selectcity1").val();
+                var secondcityid = $("#selectcity2").val();
+                if(firstcityid!=0 && secondcityid==0){
+                    alert('请选择城市');
+                    return false;
+                }
+                $.ajax({
+                    type:'post',
+                    async:false,
+                    url:'/ajax.php?action=selectcity&type=getCityButton&areaid='+secondcityid,
+                    success:function(data){
+                        location.reload();
+                    }
+                })
+            })
+        })
+        function alltouclick(){
+            $(".alltop").remove();
+        }
+    </script>
+</head>
+<body>
+<section class="alltop" style="position:relative;width: 1110px;text-align: center;margin: 0 auto;">
+    <article class="alltou">{ad(69)}</article>
+    <span style="position:absolute;right:20px;top:20px;cursor:pointer;font-size:12px;line-height:16px" onclick="alltouclick()"><img src="{DT_SKIN}image/public/delete.jpg" style="width:16px;height:16px;">关闭</span>
+</section>
+<!--头部信息-->
+<section class="home clearfix mtb30">
+    <a class="logo fl" style="background-image:url({$DT[logo]});" href="/"></a>
+    <form class="search fl" action="/food/list.php">
+        <input class="fl" type="text" name="kw" value="{if isset($kw)}{$kw}{/if}" placeholder="请您输入搜索信息:">
+        <input class="fl" type="submit" id="searchBtn"/>
+    </form>
+    <?php $aCacheCity = isset($aCacheCity)?$aCacheCity:cache_read('city.php'); ?>
+    <!--切换城市-->
+    <div class="city fl">
+        <label>{if $dtcity}{$dtcity['name']}{else}全国{/if}</label>
+        <span>切换城市</span>
+    </div>
+    <div class="city-box">
+        <em>&#9670;</em>
+        <span>&#9670;</span>
+        <label>选择城市：</label>
+        <select id="selectcity1"><option value="0">全国</option></select>
+        <select id="selectcity2"><option value="0">选择城市</option></select>
+        <button type="button" id="selectcitybutton">确定</button>
+    </div>
+    <!--切换城市end-->
+    <aside class="login-wrap fr">
+        <a id="check-num" href="/about/contact.html"><i class="icon icon-contact"></i>联系我们</a>
+        <a id="register" href="/member/register.php"><i class="icon icon-collect"></i>免费注册</a>
+        <a id="publish"  href="/share/publish.php"><i class="icon icon-publish"></i>我要发布</a>
+    </aside>
+</section>
+
+<nav>
+    <ul class="home clearfix">
+        <li <?php echo !isset($nav_selected)?'class="selected"':''; ?>><a href="/">首页</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='food'?'class="selected"':''; ?>><a href="/food/index.php">餐饮供应</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='discount'?'class="selected"':''; ?>><a href="/discount/index.php">商家优惠</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='job'?'class="selected"':''; ?>><a href="/job/index.php">招聘信息</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='cession'?'class="selected"':''; ?>><a href="/cession/index.php">店铺转让</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='school'?'class="selected"':''; ?>><a href="/school/index.php">名厨学堂</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='horn'?'class="selected"':''; ?>><a href="/horn/index.php">羊角会</a></li>
+        <li <?php echo isset($nav_selected) && $nav_selected=='share'?'class="selected"':''; ?>><a href="/share/index.php">美食分享</a></li>
+        {if $_userid}
+            <li {if isset($nav_selected) && $nav_selected=='member'}class="selected"{/if}><a href="/member/index.php">会员中心</a></li>
+        {elseif isset($nav_selected) && $nav_selected=='login'}
+            <li class="selected"><a href="/member/login.php">登录</a></li>
+        {elseif isset($nav_selected) && $nav_selected=='register'}
+            <li class="selected"><a href="/member/register.php">注册</a></li>
+        {elseif isset($nav_selected) && $nav_selected=='findpw'}
+            <li class="selected"><a href="/member/findpw.php">忘记密码</a></li>
+        {else}
+            <li><a href="/member/login.php">登录.注册</a></li>
+        {/if}
+    </ul>
+</nav>

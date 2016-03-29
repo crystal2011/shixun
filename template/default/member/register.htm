@@ -1,0 +1,95 @@
+{template 'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/login.css"/>
+<section class="home">
+    <header class="sites">
+        <a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/member/register.php">注册</a>
+    </header>
+</section>
+<section class="home clearfix">
+    <article class="login-box fl">
+        <form id="form" action="/member/register.php" method="post">
+            <p>
+                <label class="icon-phone"></label>
+                <input id="username" type="text" name="username" ajaxurl="/ajax.php?action=member&moduleid=2&job=username" nullmsg="请输入2-12个字" errormsg="请输入2-12个字" placeholder="用户名" datatype="*2-12">
+            </p>
+            <p>
+                <label class="icon-phone"></label>
+                <input id="user" type="text" name="mobile" class="mobile" placeholder="请输入手机号" datatype="m,mobile">
+            </p>
+            <p>
+                <label class="icon-check"></label>
+                <input style="width:53%;" placeholder="请输入验证码：" name="code"  datatype="n6-6">
+                <button type="button" id="check-btn"  class="check-btn fr" onclick="send_mobile_to(this,1)" disabled>获取验证码</button>
+            </p>
+            <p>
+                <label class="icon-pwd icon"></label>
+                <input  type="password"  name="password" placeholder="请设置密码：" datatype="s6-20" datatype="s6-20">
+            </p>
+            <p>
+                <label class="icon-pwd icon"></label>
+                <input  type="password" name="cpassword" placeholder="请确认密码："  datatype="*" recheck="password">
+            </p>
+            <input type="hidden" name="submit" value="1" />
+            <input id="login-btn" type="submit" class="submit-btn" value="注册">
+            <div class="login-box-tip clearfix">
+                <div class="fl">
+                    <input id="checkbox" type="checkbox" name="isautologin" value="1" checked datatype="*" nullmsg="请已同意并接受《用户使用协议》" />
+                    <a>已同意并接受《用户使用协议》</a>
+                </div>
+            </div>
+        </form>
+    </article>
+    <aside class="login-item fl">
+        <span>已有账号，请点击登录</span>
+        <a href="/member/login.php" style="background:#ea554f;">立即登录</a>
+    </aside>
+</section>
+
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script src="{DT_SKIN}js/send.js"></script>
+<script type="text/javascript">
+
+    $("#form").Validform({
+        tiptype: 3,
+        datatype:{
+            "mobile":function(gets,obj,curform,regxp){
+                var istrue = false;
+                $.ajax({
+                    type:'post',
+                    url:"/ajax.php?action=member&job=mobile&moduleid=2&param="+gets,
+                    dataType:'json',
+                    async:false,
+                    success:function(data){
+                        if(data.status=='y'){
+                            istrue = true;
+                            getCodeStatus = getCodeStatus=='10' || getCodeStatus=='00'?'01':getCodeStatus;
+                            $("#check-btn").removeAttr("disabled");
+                        }else{
+                            istrue = data.info;
+                        }
+                    }
+                })
+                return istrue;
+            }
+        },
+        postonce:true,
+        ajaxPost:true,
+        beforeSubmit:function(curform){
+            getToken();
+            return true;
+        },
+        callback:function(data){
+            alert(data.info);
+            if(data.status=='y'){
+                window.setTimeout("locationhref()",1000);
+            }
+        }
+    })
+
+    function locationhref(){
+        location.href = '/member/login.php'
+    }
+
+</script>
+{template 'footer'}
+

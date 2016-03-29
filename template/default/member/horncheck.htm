@@ -1,0 +1,132 @@
+{template 'header'}
+<script src="{DT_SKIN}js/layer/layer.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+<style>
+    .collect .title {margin-right:60px;}
+</style>
+<section class="homenew">
+    <div class="main">
+        {template 'memberlogo',$module}
+        <div class="content clearfix">
+            {template 'left',$module}
+            <div class="rightColumn">
+                <div class="column">
+                    {template 'horncommon',$module}
+                    <div class="columnCont collect">
+                        <div class="ulWrap">
+                            <ul class="upTitle clearfix">
+                                <li class="{if $checktype==0}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=0'">餐饮供应</li>
+                                <li class="{if $checktype==1}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=1'">商家优惠</li>
+                                <li class="{if $checktype==2}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=2'">招聘信息</li>
+                                <li class="{if $checktype==3}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=3'">店铺转让</li>
+                                <li class="{if $checktype==4}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=4'">名厨学堂</li>
+                                <li class="{if $checktype==5}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=5'">分享</li>
+                                <li class="{if $checktype==6}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=6'">文章</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="columnCont ProjectManagement">
+                        <div class="project p-m-title">
+                            <ul class="clearfix">
+                                <li class="name" style="width:200px;">标题/用户</li>
+                                <li class="state" style="width:140px;">折扣</li>
+                                <li class="state" style="width:140px;">金额</li>
+                                <li class="state" style="width:160px;">信息</li>
+                                <li class="handle">审核</li>
+                            </ul>
+                        </div>
+                        <div class="project showBox">
+                            {if $aCodel}
+                            {loop $aCodel $k $v}
+                            <div class="projectList">
+                                <ul class="clearfix">
+                                    <li style="width:200px;">
+                                        <a href="{$v['url']}" target="_blank" title="{$v['t_title']}">{dsubstr($v['t_title'],16)}</a>
+                                        <p >{$getListUser[$v['userid']]['username']}</p>
+                                    </li>
+                                    <li style="width:140px;">
+                                        <p>{doubleval($v['discount'])}折</p>
+                                        <p>折扣金额：{doubleval($v['discountfee'])}元</p>
+                                    </li>
+                                    <li style="width:140px;">
+                                        <p>总金额：{doubleval($v['allmoney'])}元</p>
+                                        <p>实支金额：{doubleval($v['money'])}元</p>
+                                    </li>
+                                    <li style="width:160px;">
+                                        <p >备注：{$v['note']}-{$v['typename']}</p>
+                                        <p >发布时间：{date('Y-m-d',$v['addtime'])}</p>
+                                    </li>
+                                    <li style="width:100px;text-align:right;">
+                                        <p style="margin-bottom:3px;"><input type="button" value="通过" onclick="pass(1,{$v['t_itemid']},this)" style="padding:1px 3px;border:0px;background-color:#03b887;color:#fff;cursor:pointer;" /></p>
+                                        <p ><input type="button" value="不通过" df="pass(0,{$v['t_itemid']},this)" onclick="passinput(this)" style="padding:1px 3px;border:0px;background-color:#ea554f;color:#fff;cursor:pointer;" /></p>
+                                    </li>
+                                </ul>
+                                <div style="text-align:right;margin-top:5px;display:none;">原因：<input type="text" maxlength="50" style="width: 300px;height: 34px;line-height: 34px;border: 1px solid #e2e2e2;padding-left: 10px;" class="errorinfo" /></div>
+                            </div>
+                            {/loop}
+                            {/if}
+                            {if $aCodel}
+                            <div class="pageIcons">
+                                <div class="iconWrap">
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="styleSheet" href="{DT_SKIN}js/layer/skin/layer.css">
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script src="{DT_SKIN}js/user-page.js"></script>
+<script>
+    var checktype = "{$checktype}";
+    $(function(){
+        pager({$page}, {$totalpage}, 'iconWrap');
+        $(".iconWrap a[pagenum]").each(function (k, v) {
+            var url = '?checktype='+checktype+'&page=' + $(this).attr('pagenum');
+            $(this).attr('href', url);
+        });
+    })
+    function passinput(_this){
+        var _this = $(_this);
+        _this.closest('ul').next().css("display","block");
+        _this.closest('ul').next().find('input').focus();
+        _this.attr("onclick",_this.attr('df'));
+    }
+
+    function pass(status,itemid,_this){
+        var inf = status==1?'通过':'不通过';
+        var errormsg = '';
+        if(status==0){
+            var _this = $(_this);
+            var errormsg = _this.closest('ul').next().find('input').val();
+            if(errormsg.length==0){
+                layer.msg('请输入不通过原因');
+                _this.closest('ul').next().find('input').focus();
+                return false;
+            }
+        }
+        if(confirm('您确定对该信息进行'+inf+'操作?')){
+            $.ajax({
+                type:'post',
+                url:'/member/horncheck.php?at=check&checktype='+checktype,
+                data:{'status':status,'itemid':itemid,'errormsg':errormsg},
+                dataType:'json',
+                success:function(data){
+                    layer.msg(data.info);
+                    if(data.status=='y'){
+                        window.setTimeout("locationhref()",1000);
+                    }
+                }
+            })
+        }
+    }
+
+    function locationhref(){
+        location.reload();
+    }
+</script>
+{template 'footer'}

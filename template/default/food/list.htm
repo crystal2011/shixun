@@ -1,0 +1,101 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/food/index.php">餐饮供应</a>&nbsp;&gt;&nbsp;<a href="/food/list.php">餐饮供应列表</a>
+    </header>
+</section>
+<div class="dnfk">{ad(26)}</div>
+<section class="home clearfix">
+    <article class="food-list" style="width: 100%;">
+        <section class="food-list-box border-box">
+            <!--列表选项-->
+            <header class="list-result">
+                {loop $aTou $k $v}
+                <a href="{$v['url']}">{$v['name']}</a>{if $k+1!=count($aTou)}&nbsp;&gt;&nbsp;{/if}
+                {/loop}
+            </header>
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>分类：</label>
+                <ul class="lists lists1">
+                    {if $aCatList}
+                        {loop $aCatList $k $v}
+                            <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/food/list.php?catid={$v['catid']}&areaid={$areaid}&kw={$kw}">{$v['catname']} </a></li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+            {if $aAreaFirst}
+                <i class="cutline"></i>
+                <div class="list-result-item clearfix">
+                    <label>区域：</label>
+                    <ul class="lists lists1">
+                        {if $aAreaFirst}
+                            {loop $aAreaFirst $k $v}<?php if($k==14){ break; } unset($aAreaFirst[$k]); ?>
+                                <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/food/list.php?catid={$catid}&areaid={$v['areaid']}&kw={$kw}">{$v['areaname']}</a></li>
+                            {/loop}
+                        {/if}
+                    </ul>
+                    {if $aAreaFirst}
+                    <a class="fr more" href="javascript:;" onclick="getmore(this,14)">更多<i class="icon-more"></i></a>
+                    <ul style="display:none;" id="hidearea">
+                        {loop $aAreaFirst $k $v}
+                        <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/food/list.php?catid={$catid}&areaid={$v['areaid']}&kw={$kw}">{$v['areaname']}</a></li>
+                        {/loop}
+                    </ul>
+                    {/if}
+                </div>
+            {/if}
+            {if $aHotCity}
+                <i class="cutline"></i>
+                <div class="list-result-item clearfix">
+                    <label>城市：</label>
+                    <ul class="lists lists1">
+                        {loop $aHotCity $k $v}
+                        <li {if $k==$areaid}class="selected"{/if}><a href="/food/list.php?catid={$catid}&areaid={$k}">{$v}</a></li>
+                        {/loop}
+                    </ul>
+                </div>
+            {/if}
+        </section>
+        <div class="food-hot">
+            <label>热门推荐：</label>{$sAdPlaceHot}
+            <label>文字链接：</label>{$sAdPlaceTest}
+        </div>
+        <ul class="food-hot-list food-hot-list1">
+            {if $aFood}
+                {loop $aFood $k $v}
+                    <li>
+                        <a href="/food/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">
+                            <img src="{$v['thumb']}" width="160" height="120" alt=""/>
+                            <h2>{dsubstr($v['title'],36,'...')}</h2>
+                            <h3>供应价格：{$v['price']}元/{$v['unit']}</h3>
+                            <a class="contact-business">联系商家>></a>
+                        </a>
+                    </li>
+                {/loop}
+            {/if}
+        </ul>
+        {if $aFood}
+        <!--分页功能-->
+        <div class="page-box" style="clear:both;">
+            <ul class="pager"></ul>
+        </div>
+        <!--分页功能end-->
+        {/if}
+    </article>
+</section>
+<section class="foodad">{ad(29)}</section>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+    $(".pager li").click(function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            location.href = '/food/list.php?catid={$catid}&areaid={$areaid}&kw={$kw}&page='+pagenum;
+        }
+    })
+</script>
+{template  'footer'}
+

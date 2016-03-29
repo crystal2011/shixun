@@ -1,0 +1,47 @@
+<style>
+    .foodshowright img {
+        border: 1px solid #e2e2e2;
+        width: 348px;
+        height: 278px;
+        overflow: hidden;
+    }
+</style>
+<aside class="food-menu fr">
+    <section class="foodshowright">{ad($foodshowright)}</section>
+    <section class="show-list border-box mt20">
+        <header class="public-header show-head">
+            <i class="icon-tuijian"></i>
+            <h2 class="fl">热门{$catname}</h2>
+        </header>
+        {if $aHotFood}
+        <article class="new-main">
+            <a href="/{$nav_selected}/show.php?id={$aHotFood[0]['itemid']}" title="{$aHotFood[0]['title']}"><h3>{dsubstr($aHotFood[0]['title'],38)}</h3></a>
+            {if $aHotFood[0]['introduce']}<p>{dsubstr($aHotFood[0]['introduce'],88,'...')}</p>{/if}
+            <i class="cutline"></i>
+            {if isset($aHotFood[1])}
+            <ul class="point-list">
+                <?php unset($aHotFood[0]); ?>
+                {loop $aHotFood $k $v}
+                <li><span class="ico"></span><a href="/{$nav_selected}/{if isset($nav_show)}{$nav_show}{else}show.php{/if}?id={$v['itemid']}"  title="{$v['title']}">{dsubstr($v['title'],20)}</a><span class="fr">{date('Y/m/d',$v['addtime'])}</span></li>
+                {/loop}
+            </ul>
+            {/if}
+        </article>
+        {/if}
+    </section>
+    <section class="show-list border-box mt20">
+        <header class="public-header show-head">
+            <i class="icon-show"></i>
+            <h2 class="fl">最新{$catname}</h2>
+        </header>
+        <article class="new-main">
+            {if $aRecommendFood}
+            <ul class="point-list">
+                {loop $aRecommendFood $k $v}
+                <li><span class="ico"></span><a href="/{$nav_selected}/{if isset($nav_show)}{$nav_show}{else}show.php{/if}?id={$v['itemid']}"  title="{$v['title']}">{dsubstr($v['title'],20)}</a><span class="fr">{date('Y/m/d',$v['addtime'])}</span></li>
+                {/loop}
+            </ul>
+            {/if}
+        </article>
+    </section>
+</aside>

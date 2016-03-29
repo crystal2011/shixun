@@ -1,0 +1,55 @@
+<article id="areaselect"  class="clear">
+    <span>
+        <select>
+            <option value="0">省级</option>
+            {if isset($aArea[0])}
+            {loop $aArea[0] $k $v}
+            <option value="{$v['areaid']}" {if in_array($v['areaid'],$areaparentid)}selected{/if}>{$v['areaname']}</option>
+            {/loop}
+            {/if}
+        </select>
+    </span>
+    <span>
+        <select>
+            <option value="0">市级</option>
+            {if isset($aArea[1])}
+            {loop $aArea[1] $k $v}
+            <option value="{$v['areaid']}" {if in_array($v['areaid'],$areaparentid)}selected{/if}>{$v['areaname']}</option>
+            {/loop}
+            {/if}
+        </select>
+    </span>
+    <span>
+        <select>
+            <option value="0">区级</option>
+            {if isset($aArea[2])}
+            {loop $aArea[2] $k $v}
+            <option value="{$v['areaid']}" {if in_array($v['areaid'],$areaparentid)}selected{/if}>{$v['areaname']}</option>
+            {/loop}
+            {/if}
+        </select>
+    </span>
+    <span><a>发布</a></span>
+</article>
+<script>
+    var str = "{$catid}"==""?'':"&catid={$catid}";
+    str += "{$kw}"==""?'':"&kw={$kw}";
+
+    $(function(){
+        $("#areaselect select").change(function(){
+            var areaid = $(this).val();
+            if(areaid==0){
+                $("#areaselect select").each(function(){
+                    var areaid1 = $(this).val();
+                    if(areaid1==0){
+                        return false;
+                    }else{
+                        areaid = areaid1;
+                    }
+                })
+            }
+
+            location.href="?areaid="+areaid+str;
+        })
+    })
+</script>

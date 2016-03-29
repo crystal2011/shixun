@@ -1,0 +1,101 @@
+{template 'header'}
+<script src="{DT_SKIN}js/layer/layer.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+<section class="homenew">
+    <div class="main">
+        {template 'memberlogo',$module}
+        <div class="content clearfix">
+            {template 'left',$module}
+            <div class="rightColumn">
+                <div class="column">
+                    <div class="columnHead"><i><img src="{DT_SKIN}image/icon9w.png"></i>
+                        <h1 class="ml30">文章发布管理</h1>
+                        <div class="tabsup "><span onclick="location.href='/share/publish.php?moduleidtype=6'">发布</span></div>
+                    </div>
+                    <div class="columnCont ProjectManagement">
+                        <div class="project p-m-title">
+                            <ul class="clearfix">
+                                <li class="state">图片</li>
+                                <li class="name">标题</li>
+                                <li class="status">状态</li>
+                                <li class="handle">操作</li>
+                            </ul>
+                        </div>
+                        <div class="project showBox">
+                            {if $aArticle}
+                            {loop $aArticle $k $v}
+                            <div class="projectList">
+                                <ul>
+                                    <li><a href="/article/show.php?id={$v['itemid']}"  target="_blank"><img src="{$v['thumb']}" width="120px" height="120px" /></a></li>
+                                    <li class="type width400">
+                                        <h5><a href="/article/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">{dsubstr($v['title'],30)}</a></h5>
+                                        <p>分类：<em>{if isset($aCatCache[$v['catid']])}{$aCatCache[$v['catid']]['catname']}{/if}</em></p>
+                                    </li>
+                                    <li class="type width50">
+                                        <p>&nbsp;</p>
+                                        <p>{status_show($v['status'])}</p>
+                                    </li>
+                                    <li class="widthhandle">
+                                        <p>&nbsp;</p>
+                                        {if $v['status']==1}
+                                            <span class="del" onclick="location.href='/share/publish.php?moduleidtype=6&itemid={$v[itemid]}'">修改</span> |
+                                        {/if}
+                                        <span class="del delindex" data-id="{$v['itemid']}">删除</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            {/loop}
+                            {/if}
+                            {if $aArticle}
+                            <div class="pageIcons">
+                                <div class="iconWrap">
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="styleSheet" href="{DT_SKIN}js/layer/skin/layer.css">
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script src="{DT_SKIN}js/user-page.js"></script>
+<script>
+    $(function(){
+        pager({$page}, {$totalpage}, 'iconWrap');
+        $(".iconWrap a[pagenum]").each(function (k, v) {
+            var url = '?page=' + $(this).attr('pagenum');
+            $(this).attr('href', url);
+        });
+
+        $(".delindex").click(function () {
+            var itemid = $(this).attr("data-id");
+            var _this = $(this);
+            layer.open({
+                title: '提示',
+                content: '<p style="text-align: center; font-size: 16px;">您确定要删除该文章信息？</p>',
+                closeBtn: 2,
+                area: ['500px', 'auto'],
+                btn: ['确定', '取消'],
+                yes: function () {
+                    $.ajax({
+                        type: 'post',
+                        url: "?action=del",
+                        data: {'itemid': itemid},
+                        dataType: 'json',
+                        success: function (data) {
+                            $(".layui-layer-close").click();
+                            layer.msg(data.info);
+                            if (data.status == 'y') {
+                                _this.closest('.projectList').remove();
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    })
+</script>
+{template 'footer'}

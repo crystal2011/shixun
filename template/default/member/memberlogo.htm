@@ -1,0 +1,95 @@
+<script type="text/javascript" src="{DT_STATIC}lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/color.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<style type="text/css">
+.gotowx{
+	display:block;
+	width: 86px;
+	height: 35px;
+	line-height:35px;
+	text-align:center;
+	background: #0E48B0 none repeat scroll 0% 0%;
+	color: #fff;
+	border-radius: 3px;
+	border: medium none;
+	cursor: pointer;
+	margin-left: 20px;
+}
+a.gotowx:hover{
+	color: #aaa;
+}
+
+ footer {
+     margin:0px;
+
+ }
+.friendLink {background-color:#f0efef;margin-bottom: 0px;padding-bottom:20px;padding-top:20px;}
+
+</style>
+<div class="userWrapeer">
+    <div class="portraitWrap">
+        <div class="shade"></div>
+        <img src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" class="portrait" id="member_logo" onclick="Dthumb(2,'','','',true,'','member_logo',200)">
+        <div class="clickthumb">点击图片即可更改头像</div>
+    </div>
+    <div class="info">
+        <div class="userName clear">
+            <div class="show"><b>{$_username}</b>
+                <button id="amendName">修改用户名称</button>
+            </div>
+            <div class="hide">
+                <form id="editName" action="/ajax.php?action=member&moduleid=2&job=saveinfo&field=username">
+                    <div class="clear"><input type="text" placeholder="请输入2-12个字" datatype="*2-12" ajaxurl="/ajax.php?action=member&moduleid=2&job=username" name="username" errormsg="请输入2-12个字" nullmsg="请输入2-12个字"><input type="submit" value="修改"><span class="msg"></span></div>
+                </form>
+            </div>
+        </div>
+        <div class="userpoint">账户余额：<span>0元</span><a class="userback" href="/member/logout.php">退出</a></div>
+    </div>
+    <div class="userpublish">
+        <p>您已发布内容<span class="userkuang">{$_infopublishs}</span>次。</p>
+        <p>已被<span class="userkuang">{$_infohits}</span>人阅读过。</p>
+    </div>
+    <div class="membererwei">
+        <img src="{DT_SKIN}image/index/icon-qr.png" width="102" height="102" alt=""/>
+        <p>感谢一路有你</p>
+    </div>
+
+</div>
+<script>
+    function member_logo(val){
+        if(val){
+            $.ajax({
+                type:'post',
+                url:'/ajax.php?action=member&job=memberlogo&moduleid=2',
+                data:{'logo':val},
+                success:function(data){
+                    $("#member_logo").attr("src",val);
+                }
+            })
+        }
+    }
+    $('#amendName').click(function () {
+        $('.userWrapeer .hide').show();
+        $('.userWrapeer .show').hide();
+        $('#editName :input:text').val($('.userName b').text());
+
+        // 对修改用户名的表单绑定验证
+
+        $('#editName').Validform({
+            tiptype:3,
+            ajaxPost:true,
+            callback:function(data){
+                if(data.status=='y'){
+                    $('.userWrapeer .hide').hide();
+                    $('.userWrapeer .show').show();
+                    $('.userWrapeer .show b').text($('#editName :input:text').val());
+                    layer.msg(data.info);
+                }else{
+                    layer.msg(data.info);
+                }
+            }
+        });
+    });
+</script>

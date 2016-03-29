@@ -1,0 +1,76 @@
+{template 'header','mobile'}
+{template 'search1','mobile'}
+<section id="content">
+    {template 'thumbinfo','mobile'}
+    <article class="info clear">
+        <span class="fl de0000">供应价格：{doubleval($info['price'])}元/{$info['unit']}</span>
+        <span class="fr de0000"  onclick="window.location.href='tel:{$info[phone]}'">联系商家</span>
+    </article>
+    <article class="line"></article>
+    {template 'nums','mobile'}
+    <article class="line"></article>
+    {template 'shop','mobile'}
+    <article class="line"></article>
+    {template 'view','mobile'}
+    <article class="line"></article>
+    {template 'commentlist','mobile'}
+    <article class="line"></article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新餐饮供应</span></div>
+        <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
+    </header>
+    <article class="list">
+        {if $aRecommendFood}
+            {loop $aRecommendFood $k $v}
+            <div class="content">
+                <div class="clear info">
+                    <a class="thumb"  href="?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <div class="text">
+                        <a class="title" href="?id={$v['itemid']}">{$v['title']}</a>
+                        <p class="introduce">{$v['introduce']}</p>
+                        <p class="price">
+                            <span class="price1">供应价格：{doubleval($v['price'])}元/{$v['unit']}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="handle clear hasbutton">
+                    <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
+                    <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
+                    <a class="fr showpng" href="?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
+                </div>
+            </div>
+            {/loop}
+        {/if}
+    </article>
+    <article class="line" style="border-top-width: 0px;"></article>
+    <header class="channelheader clear">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png"><span>热门餐饮供应</span></div>
+        <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
+    </header>
+    <article class="list">
+        {if $aHotFood}
+        {loop $aHotFood $k $v}
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb"  href="?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                <div class="text">
+                    <a class="title" href="?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="introduce">{$v['introduce']}</p>
+                    <p class="price">
+                        <span class="price1">供应价格：{doubleval($v['price'])}元/{$v['unit']}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="handle clear hasbutton">
+                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
+                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
+                <a class="fr showpng" href="?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
+            </div>
+        </div>
+        {/loop}
+        {/if}
+    </article>
+</section>
+{template 'foot1','mobile'}

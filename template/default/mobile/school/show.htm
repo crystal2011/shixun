@@ -1,0 +1,56 @@
+{template 'header','mobile'}
+{template 'search1','mobile'}
+<section>
+    <article class="list">
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb"><img src="{if $info['thumb']}{$info['thumb']}{else}{$DT['memberlogo']}{/if}" /></a>
+                <div class="text">
+                    <a class="title">{$info['truename']}</a>
+                    <p class="introduce">{$info['introduce']}</p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<section id="content">
+    <article class="line"></article>
+    <article class="handle clear">
+        <span class="fl"><img src="{DT_SKIN}image/mobile/good.png" />{$info['infonums']}</span>
+        <span class="fr"><img src="{DT_SKIN}image/mobile/hit.png" />{$info['hits']}</span>
+    </article>
+    <article class="line"></article>
+    {template 'view','mobile'}
+    <article class="line"></article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear">
+        <article class="schoolname">{$info['truename']}全部作品</article>
+    </header>
+    <article class="list">
+        {if $list}
+        {loop $list $k $v}
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb" href="foodshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                <div class="text">
+                    <a class="title"  href="foodshow.php?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="introduce">{$v['introduce']}</p>
+
+                </div>
+            </div>
+            <div class="handle clear hasbutton">
+                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
+                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
+                <a class="fr showpng" href="foodshow.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
+            </div>
+        </div>
+        {/loop}
+        {/if}
+    </article>
+    {if $list && $page!=$totalpage}
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/school/show.php?id={$id}',this)" data-page="1">
+        <a>查看更多>></a>
+    </article>
+    {/if}
+</section>

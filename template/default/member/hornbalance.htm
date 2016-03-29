@@ -1,0 +1,76 @@
+{template 'header'}
+<script src="{DT_SKIN}js/layer/layer.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
+<section class="homenew">
+    <div class="main">
+        {template 'memberlogo',$module}
+        <div class="content clearfix">
+            {template 'left',$module}
+            <div class="rightColumn">
+                <div class="column">
+                    {template 'horncommon',$module}
+                    <div class="columnCont ProjectManagement">
+                        <div class="project p-m-title">
+                            <ul class="clearfix">
+                                <li class="state" style="width:210px;">申请时间</li>
+                                <li class="name"  style="width:210px;">结算金额</li>
+                                <li class="state" style="width:210px;">结算时间</li>
+                                <li class="state"  style="width:100px;">状态</li>
+                            </ul>
+                        </div>
+                        <div class="project showBox">
+                            {if $aCodel}
+                            {loop $aCodel $k $v}
+                            <div class="projectList">
+                                <ul>
+                                    <li style="width:190px;height:auto;">
+                                        <p>{date('Y-m-d H:i:s',$v['addtime'])}</p>
+                                    </li>
+                                    <li class="type" style="width:190px;height:auto;">
+                                        <p>{doubleval($v['money'])}元</p>
+                                    </li>
+                                    <li class="type" style="width:210px;height:auto;">
+                                        <p> &nbsp;</p>
+                                    </li>
+                                    <li class="list" style="width:100px;height:auto;">
+                                        <p>
+                                            {if $v['status']==0}
+                                            <span style="color:#ea554f;">结算中</span>
+                                            {elseif  $v['status']==1}
+                                            <span style="color:#f89406;">拒绝</span>
+                                            {else}
+                                            <span style="color:#03b887;">完成</span>
+                                            {/if}
+                                        </p>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            {/loop}
+                            {/if}
+                            {if $aCodel}
+                            <div class="pageIcons">
+                                <div class="iconWrap">
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="styleSheet" href="{DT_SKIN}js/layer/skin/layer.css">
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script src="{DT_SKIN}js/user-page.js"></script>
+<script>
+    $(function(){
+        pager({$page}, {$totalpage}, 'iconWrap');
+        $(".iconWrap a[pagenum]").each(function (k, v) {
+            var url = '?page=' + $(this).attr('pagenum');
+            $(this).attr('href', url);
+        });
+    })
+</script>
+{template 'footer'}

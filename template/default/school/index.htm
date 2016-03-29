@@ -1,0 +1,76 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<style>
+    .foodad img {margin-top:0px;}
+</style>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/school/index.php">名厨学堂</a>
+    </header>
+</section>
+<div class="dnfk">{ad(42)}</div>
+<section class="home clearfix mt20">
+    <header class="public-header show-head border-box">
+        <h2 class="fl" style="font-size: 18px;"> <i class="icon-show"></i>名厨风采</h2>
+        <a class="show-item" href="/school/index.php">所有名厨</a>
+        {if $aKnowFend}
+            {loop $aKnowFend $k $v}
+                <span class="show-cut">|</span>
+                <a class="show-item" href="/school/list.php?areaid={$v['areaid']}">{$v['title']}</a>
+            {/loop}
+        {/if}
+        <a class="fr more" href="/school/list.php">更多<i class="icon-more"></i></a>
+    </header>
+    <ul  class="person-items">
+        {if $aKnow}
+            {loop $aKnow $k $v}
+            <li>
+                <a href="/school/show.php?id={$v['userid']}" target="_blank">
+                    <img src="{if $v['thumb']}{$v['thumb']}{else}{$DT['memberlogo']}{/if}" width="182" height="136" alt=""/>
+                </a>
+                <header class="clearfix" style="margin-top:5px;">
+                    <a class="fl" style="font-size:14px;" href="/school/show.php?id={$v['userid']}" target="_blank">名厨：{dsubstr($v['truename'],10)}</a>
+                    <i class="fr" style="font-size:14px;">总票数：<i style="font-size:14px;">{$v['infonums']}</i></i>
+                </header>
+            </li>
+            {/loop}
+        {/if}
+    </ul>
+    <header class="public-header show-head">
+        <a class="fr more" href="/school/foodlist.php">更多<i class="icon-more"></i></a>
+    </header>
+
+    <ul class="show-foods">
+        {if $aCai}
+            {loop $aCai $k $v}
+            <li>
+
+                    <img src="{$v['thumb']}" width="260" height="196" alt=""/>
+
+                    <div class="show-food-del">
+                        <a href="/school/food.php?id={$v['itemid']}" target="_blank">
+                            <div class="food-del-head">
+                                <label>名厨</label>
+                                <i class="icon-angle"></i>
+                                <span>{$memberlist[$v['userid']]['truename']}</span>
+                            </div>
+
+                            <h3 title="{$v['title']}">{dsubstr($v['title'],24)}</h3>
+                            <p>{dsubstr($v['introduce'],100,'...')}</p>
+                        </a>
+                        <header>
+                            <button onclick="vote({$v['itemid']},2,this)">投票</button>
+                            <i class="num">票数：<i>{$v['votes']}</i></i>
+                            <a class="fr"><i class="icon-share1" style="filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0;"></i>评论( {$v['comments']} )&nbsp;&nbsp;&nbsp;浏览( {$v['hits']} )</a>
+                        </header>
+
+                    </div>
+
+            </li>
+            {/loop}
+        {/if}
+    </ul>
+</section>
+<section class="foodad">{ad(41)}</section>
+{template  'footer'}
+

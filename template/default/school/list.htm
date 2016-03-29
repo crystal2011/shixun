@@ -1,0 +1,97 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<style>
+    .person-items li h3 {width:165px;}
+</style>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/school/index.php">名厨学堂</a>&nbsp;&gt;&nbsp;<a href="/school/list.php">名厨学堂列表</a>
+    </header>
+</section>
+<div class="dnfk">{ad(42)}</div>
+<section class="home clearfix mt20">
+    <article class="food-list food-list2 fl">
+        <section class="food-list-box border-box" >
+            <!--列表选项-->
+            <header class="list-result">
+                {loop $aTou $k $v}
+                <a href="{$v['url']}">{$v['name']}</a>{if $k+1!=count($aTou)}&nbsp;&gt;&nbsp;{/if}
+                {/loop}
+            </header>
+            {if $aAreaFirst}
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>区域：</label>
+                <ul class="lists lists2">
+                    {if $aAreaFirst}
+                        {loop $aAreaFirst $k $v}<?php if($k==10){ break; } unset($aAreaFirst[$k]); ?>
+                            <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/school/list.php?catid={$catid}&areaid={$v['areaid']}">{$v['areaname']}</a></li>
+                        {/loop}
+                    {/if}
+                </ul>
+                {if $aAreaFirst}
+                <a class="fr more" href="javascript:;" onclick="getmore(this,10)">更多<i class="icon-more"></i></a>
+                <ul style="display:none;" id="hidearea">
+                    {loop $aAreaFirst $k $v}
+                    <li {if $v['areaid']==$areaid}class="selected"{/if}><a href="/school/list.php?catid={$catid}&areaid={$v['areaid']}">{$v['areaname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            {/if}
+            {if $aHotCity}
+            <i class="cutline"></i>
+            <div class="list-result-item clearfix">
+                <label>热门：</label>
+                <ul class="lists lists2">
+                    {loop $aHotCity $k $v}
+                    <li {if $k==$areaid}class="selected"{/if}><a href="/scholl/list.php?catid={$catid}&areaid={$k}">{$v}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            {/if}
+        </section>
+        <div class="food-hot">
+            <label>热门推荐：</label>{$sAdPlaceHot}
+            <label>文字链接：</label>{$sAdPlaceTest}
+        </div>
+        <!--投票列表-->
+        <ul  class="person-items person-items1">
+            {if $aKnow}
+                {loop $aKnow $k $v}
+                <li>
+                    <a href="/school/show.php?id={$v['userid']}" target="_blank">
+                        <img src="{$v['thumb']}" width="165" height="124" alt=""/>
+                        <h3 title="{$v['truename']}">名厨：{dsubstr($v['truename'],18)}</h3>
+                    </a>
+                    <header>
+                        <i>票数：<i>{$v['infonums']}</i></i>
+                    </header>
+                </li>
+                {/loop}
+            {/if}
+        </ul>
+        <!--投票列表end-->
+        {if $aKnow}
+        <!--分页功能-->
+        <div class="page-box">
+            <ul class="pager"></ul>
+        </div>
+        <!--分页功能end-->
+        {/if}
+    </article>
+    {template  'right'}
+</section>
+<section class="foodad">{ad(41)}</section>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+    $(".pager li").click(function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            location.href = '/school/list.php?catid={$catid}&areaid={$areaid}&page='+pagenum;
+        }
+    })
+</script>
+{template  'footer'}
+

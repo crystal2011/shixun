@@ -1,0 +1,104 @@
+{template  'header'}
+<link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
+<link rel="stylesheet" href="{DT_SKIN}css/flexslider.css"/>
+<section class="home">
+    <header class="sites">
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/horn/index.php">羊角会</a>
+    </header>
+</section>
+<section class="home clearfix">
+    <article class="horns-ad flexslider fl border-box">
+        <!--图片的切换-->
+        <ul class="slides">
+            {$sAdPlaceHot}
+        </ul>
+        <ul class="aside-direction-nav">
+            <li><a class="aside-prev" href="#"></a></li>
+            <li><a class="aside-next" href="#"></a></li>
+        </ul>
+        <!--图片切换end-->
+    </article>
+    <aside class="horns-news fr">
+        {if $aInfo}
+            {loop $aInfo $k $v}
+            <a href="/horn/show.php?id={$v['itemid']}" target="_blank"><h3 title="{$v['title']}">{dsubstr($v['title'],30)}</h3></a>
+            <p>{dsubstr($v['introduce'],70,'...')}</p>
+            <i class="cutline"></i>
+            {/loop}
+        {/if}
+    </aside>
+</section>
+
+<section class="home clearfix mt20">
+    <ul class="horns-items">
+        {if $aIsLongUser}
+        {loop $aIsLongUser $k $v}
+        <li>
+            <a href="/horn/hornshow.php?id={$v['itemid']}" target="_blank"  title="{$v['title']}">
+                <img src="{$v['thumb']}" width="182" height="136" alt=""/>
+                <h3>{dsubstr($v['title'],26)}</h3>
+                <p class="horndsln">内容审核号：{$v['code']}</p>
+                <p class="horndsln">人气榜：{$v['userds']}</p>
+                <p>{dsubstr($v['introduce'],40)}</p>
+            </a>
+        </li>
+        {/if}
+        {/loop}
+    </ul>
+</section>
+<section class="home clearfix">
+    <header><i class="cut-line"></i></header>
+    <ul class="horns-items horns-itemslist">
+        {if $aIsNotLongUser}
+        {loop $aIsNotLongUser $k $v}
+        <li>
+            <a href="/horn/hornshow.php?id={$v['itemid']}" target="_blank"  title="{$v['title']}">
+                <img src="{$v['thumb']}" width="182" height="136" alt=""/>
+                <h3>{$v['title']}</h3>
+                <p class="horndsln">内容审核号：{$v['code']}</p>
+                <p class="horndsln">人气榜：{$v['userds']}</p>
+                <p>{dsubstr($v['introduce'],40)}</p>
+            </a>
+
+        </li>
+        {/if}
+        {/loop}
+    </ul>
+    {if $aIsNotLongUser}
+    <!--分页功能-->
+    <div class="page-box">
+        <ul class="pager"></ul>
+    </div>
+    <!--分页功能end-->
+    {/if}
+</section>
+<section class="foodad">{ad(40)}</section>
+<script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
+<script src="{DT_SKIN}js/jquery.flexslider-min.js"></script>
+<script src="{DT_SKIN}js/pager.js"></script>
+<script>
+    pager({$page},{$totalpage},'pager');
+
+    $(document).on("click",".pager li",function(){
+        var pagenum = $(this).attr('pagenum');
+        if(typeof(pagenum)!='undefined'){
+            $.ajax({
+                type:'post',
+                url:'/horn/index.php?action=ajaxlist&page='+pagenum,
+                dataType:'json',
+                success:function(data){
+                    $(".horns-itemslist").html(data.info);
+                    pager(pagenum,data.totalpage,'pager');
+                }
+            })
+        }
+    })
+    //侧边栏轮播
+    $(".flexslider").flexslider({
+        animation: "slide",//图片滑动方式
+        slideshowSpeed:3000,//展示时间
+        animationSpeed:300 //滚动时间ms
+    });
+</script>
+{template  'footer'}
+
