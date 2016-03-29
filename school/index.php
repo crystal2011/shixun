@@ -8,7 +8,7 @@ require_once '../module/member/member.class.php';
 $oMember = new member();
 $mygetcount = false;
 $pagesize = 20;
-$aKnow = $oMember->get_list('ischu=1 and groupid = 5');
+$aKnow = $oMember->get_list('ischu=1 and groupid = 5','infonums desc');
 
 $aCacheCat13 = cache_read('moduleid-13.php');
 $oKnow = new know(10);
