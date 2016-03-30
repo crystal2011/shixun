@@ -45,12 +45,6 @@ $aRecommendFood = $oJob->getright('title,itemid,addtime',10,'addtime desc');  //
 $catname='招聘';
 $foodshowright = 33;
 
-//热门推荐广告
-require_once '../module/extend/ad.class.php';
-$oAd = new ad;
-$sAdPlaceHot = $oAd->getAdAllText(35);
-$sAdPlaceTest = $oAd->getAdAllText(34);
-
 $nav_selected = 'job';
 $seo_title = '招聘信息-';
 include template('index', 'job');

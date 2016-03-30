@@ -34,13 +34,6 @@ $aAreaFirst = showArea($areainfo);  //列表选择显示地区
 $aCatList = showCat($catinfo,23);     //列表选择显示分类
 $aHotCity = cache_read('hotcity.php');  //热门地区
 
-
-//热门推荐广告
-require_once '../module/extend/ad.class.php';
-$oAd = new ad;
-$sAdPlaceHot = $oAd->getAdAllText(30);
-$sAdPlaceTest = $oAd->getAdAllText(31);
-
 $nav_selected = 'food';
 $seo_title = '餐饮供应-';
 include template('index', 'food');

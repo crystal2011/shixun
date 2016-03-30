@@ -11,8 +11,12 @@
     <article class="list">
         <div class="content">
             <div class="handle clear hasbutton" style="border-bottom-width: 0px">
-                <span class="fr handle1 price1">票数：{$info['votes']}</span>
-                <a class="fr bigvote"><img src="{DT_SKIN}image/mobile/bigvote.png" /></a>
+                <span class="handle1 price1 clearfix" >
+                    <span class="fr">票数：{$info['votes']}</span>
+                    <span class="fr">
+                        <img src="{DT_SKIN}image/mobile/bigvote.png" class="fr bigvote" />
+                    </span>
+                </span>
             </div>
         </div>
     </article>

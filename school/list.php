@@ -20,12 +20,6 @@ list($aKnow,$totalpage) = $oMember->memberList('truename,userid,thumb,infonums',
 $aTou[] = array('url'=>'/school/list.php','name'=>'全部');
 if($ARE) $aTou[] = array('url'=>'/school/list.php','name'=>$ARE['areaname']);
 
-//热门推荐广告
-require_once '../module/extend/ad.class.php';
-$oAd = new ad;
-$sAdPlaceHot = $oAd->getAdAllText(49);
-$sAdPlaceTest = $oAd->getAdAllText(50);
-
 $aAreaFirst = showArea($areainfo);  //列表选择显示地区
 $aHotCity = cache_read('hotcity.php');  //热门地区
 

@@ -27,7 +27,8 @@ if(isset($showtype)){   //预览
 
 $aHotFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes',3,'hits desc'); //热门
 $aRecommendFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes',3,'addtime desc');  //推荐
-
+$commenttypeid = 3;
 $seo_title = $info['title'].'-招聘信息-';
 $topname = '招聘信息';
+$likenum = 3;
 include template('job/show','mobile');

@@ -1,0 +1,21 @@
+<div class="btnsharebg">
+    <section class="btnshare">
+        <div class="bdsharebuttonbox">
+            <p><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><span>分享到QQ空间</span></p>
+            <p><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><span>分享到新浪微博</span></p>
+            <p><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><span>分享到腾讯微博</span></p>
+            <p><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><span>分享到人人网</span></p>
+            <p style="border-bottom-width:0px;"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><span>分享到微信</span></p>
+        </div>
+    </section>
+</div>
+<style>
+    .bdshare-button-style0-32 .bds_more {display:none;}
+    .btnshare p {padding-bottom:10px;border-bottom:1px solid #f1f1f1;}
+    .btnshare p span{line-height:43px;font-size:22px;}
+</style>
+<script>
+    $(".btnshare p").live("click",function(){
+        $("a",this).click();
+    })
+</script>

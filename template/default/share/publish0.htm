@@ -14,28 +14,7 @@
     <article class="publish-box">
         <form id="publishform" method="post" action="/share/publish.php?isajax=1">
             <h3>基本选项</h3>
-            <p class="check-item  clearfix">
-                <span class="publish-title fl"><em>*</em><label>发布类目：</label></span>
-                <span class="fl publish-boxa">
-                    <a class="cur-btn" href="/share/publish.php?moduleidtype=0">餐饮供应</a>
-                    <a href="/share/publish.php?moduleidtype=1">商家优惠</a>
-                    <a href="/share/publish.php?moduleidtype=2">招聘信息</a>
-                    <a href="/share/publish.php?moduleidtype=3">店铺转让</a>
-                    <a href="/share/publish.php?moduleidtype=4">菜系</a>
-                    <a href="/share/publish.php?moduleidtype=5">分享</a>
-                    <a href="/share/publish.php?moduleidtype=6">文章</a>
-                </span>
-            </p>
-            {if empty($itemid)}
-            <p class="clearfix">
-                <span class="publish-title fl">
-                    <em>*</em><label>内容审核号：</label>
-                </span>
-                <span class="fl">
-                    <input type="text" class="text-input" errormsg="请输入正确优惠码"  name="code" ajaxurl="/ajax.php?action=ajax&at=horncode&type=0" datatype="n6-6" /><span class="Validform_checktip" style="display:inline-block"></span>
-                </span>
-            </p>
-            {/if}
+            {template  'publishcommon','share'}
             <p class="clearfix">
                 <span class="publish-title fl">
                     <em>*</em><label>标题：</label>

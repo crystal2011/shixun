@@ -26,10 +26,10 @@ if(isset($showtype)){   //预览
     $oBrand->editHits();
     addHits($info['userid']);
 }
-
+$commenttypeid = 2;
 $aHotFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes',3,'hits desc'); //热门
 $aRecommendFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes',3,'address desc');  //推荐
-
+$likenum = 2;
 $seo_title = $info['title'].'-商家优惠-';
 $topname = '商家优惠';
 include template('discount/show','mobile');

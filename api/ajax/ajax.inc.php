@@ -107,7 +107,7 @@ switch($at){
         if(!$check) exit(json_encode(array('status'=>'n','info'=>$obj->errmsg)));
         $obj->addLike();
         $oLike->add($id,$type);
-        exit(json_encode(array('status'=>'y')));
+        exit(json_encode(array('status'=>'y','info'=>'发表成功')));
         break;
     case 'comment':
         //评论
@@ -123,7 +123,6 @@ switch($at){
         require_once DT_ROOT.'/module/extend/comment.class.php';
         $oComment = new comment();
         if(!$oComment->isCommentd($id,$type)) exit(json_encode(array('status'=>'n','info'=>$oComment->errmsg)));
-
         switch($type) {
             case 1: //餐饮供应
                 require_once DT_ROOT.'/module/food/food.class.php';
@@ -140,7 +139,7 @@ switch($at){
                 $obj = new job(9);
                 $checkName = 'checkJob';
                 break;
-            case 4: //招聘信息
+            case 4: //店铺转让
                 require_once DT_ROOT.'/module/sell/sell.class.php';
                 $obj = new sell(5);
                 $checkName = 'checkSell';
@@ -169,6 +168,11 @@ switch($at){
                 $obj->table_data = $db->pre.'special_data';
                 $checkName = 'checkSpecial';
                 break;
+            case 9: //文章
+                require_once DT_ROOT.'/module/article/article.class.php';
+                $obj = new article(21);
+                $checkName = 'checkArticle';
+                break;
             default:
                 exit(json_encode(array('status'=>'n','info'=>'操作失误')));
                 break;
@@ -177,7 +181,6 @@ switch($at){
         $check = $obj->$checkName($obj->get_one());
         if(!$check) exit(json_encode(array('status'=>'n','info'=>$obj->errmsg)));
         $oComment->addComment($id,$type,$content);
-
         if(!$DT['commentscheck']){
             exit(json_encode(array('status'=>'y','info'=>'评论成功，待审核')));
         }else{

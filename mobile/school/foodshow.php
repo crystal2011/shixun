@@ -39,5 +39,6 @@ $memberlistRec = $oMember->getListUser($aRecommendFood);
 
 $seo_title = $info['title'].'菜系-';
 $topname = '菜系';
-
+$likenum = 5;
+$commenttypeid = 5;
 include template('school/foodshow','mobile');

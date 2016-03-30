@@ -64,7 +64,7 @@
                 {loop $aNewsNew $k $v}
                 <li class="clear">
                     <span class="fr">{date('m-d',$v['addtime'])}</span>
-                    <article><a href="/" >·{$v['title']}</a></article>
+                    <article><a href="/mobile/article/show.php?id={$v['itemid']}" >·{$v['title']}</a></article>
                 </li>
                 {/loop}
                 {/if}
@@ -118,7 +118,7 @@
                     <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">【名厨：{$aSchool[$v['userid']]['truename']}】{$v['title']}</a>
                     <p class="introduce">{$v['introduce']}</p>
                     <p class="handle">
-                        <img src="{DT_SKIN}image/mobile/vote.png" />
+                        <img onclick="vote({$v['itemid']},2,this)" src="{DT_SKIN}image/mobile/vote.png" />
                         <i class="num">票数：<i>{$v['votes']}</i></i>
                     </p>
                 </div>
@@ -138,9 +138,9 @@
             {if $aHotFood}
             {loop $aHotFood $k $v}
             <li class="clear">
-                <a class="schoola"><img src="{$v['thumb']}" class="fl schoolthumb" /></a>
+                <a class="schoola" href="/mobile/food/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" class="fl schoolthumb" /></a>
                 <div class="schoolcontent">
-                    <a class="title">{$v['title']}</a>
+                    <a class="title" href="/mobile/food/show.php?id={$v['itemid']}">{$v['title']}</a>
                     <p class="introduce">{$v['introduce']}</p>
                     <p class="foodhandle">
                         <i>&nbsp;&nbsp;&nbsp;{$v['hits']}人阅读</i>
@@ -155,11 +155,11 @@
 <footer id="footer">
     <article class="footerbutton clear">
         <span class="fl"><img src="{DT_SKIN}image/mobile/top.png" onclick="goTop();" /></span>
-        <span class="fr"><img src="{DT_SKIN}image/mobile/share.png" /></span>
+        <span class="fr"><img src="{DT_SKIN}image/mobile/share.png" onclick="goShare()" /></span>
     </article>
     <article class="footerinfo">
         <p>{$DT['sitename']}&nbsp;&nbsp;&nbsp;{$CFG['url']}</p>
-        <p><a>关于我们</a><i>|</i><a>联系我们</a><i>|</i><a>商务合作</a><i>|</i><a href="/mobile/share/publish.php">发布信息</a></p>
+        <p><a href="/about/mindex.html">关于我们</a><i>|</i><a href="/about/mcontact.html">联系我们</a><i>|</i><a href="/about/magreement.html">商务合作</a><i>|</i><a href="/mobile/share/publish.php">发布信息</a></p>
     </article>
     <article class="footer clear">
         <a href="/mobile/index.php"><img class="footer1" src="{DT_SKIN}image/mobile/index.png" /></a>

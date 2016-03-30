@@ -525,14 +525,17 @@ i {font-style:normal;}
     font-size:0px;
     display:block;
 }
+.fdsfsdf {
+    float:right;
+}
 .list .content .bigvote {
-    width:25%;
+    width:70%;
     max-width:181px;
     font-size:0px;
-    display:block;
     margin-right:10px;
     vertical-align: middle;
 }
+
 .list .content .showpng img {
     width:100%;
 }
@@ -715,3 +718,43 @@ i {font-style:normal;}
     color:#fff;
 }
 a img {font-size:0px;}
+.commentlist {
+    background-color:#fff;
+}
+.commentlist .comlist {
+    border-top:1px solid #f1f1f1;
+    padding:20px;
+}
+.commentlist .comlistp {
+    height:60px;
+    width:60px;
+}
+.commentlist .comimage {
+    display:block;
+    width:60px;
+    height:60px;
+}
+.commentlist .cominfo {
+    padding-left:70px;
+    width:200px;
+}
+.commentlist .comname {
+    font-size:2.5em;
+    color:#000;
+
+    margin:0px;
+}
+.commentlist .comtime {
+    font-size:1.8em;
+    margin:5px 0px 0px 0px;
+    color:#989898;
+}
+.commentlist .commentcon {
+    margin-top:15px;
+    font-size:2.5em;
+}
+
+
+
+
+

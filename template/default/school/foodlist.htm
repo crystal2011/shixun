@@ -18,7 +18,7 @@
             <i class="cutline"></i>
             <div class="list-result-item clearfix">
                 <label>分类：</label>
-                <ul class="lists lists1">
+                <ul class="lists lists1 badf">
                     {if $aCatList}
                         {loop $aCatList $k $v}
                             <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/school/foodlist.php?catid={$v['catid']}">{$v['catname']} </a></li>
@@ -27,10 +27,6 @@
                 </ul>
             </div>
         </section>
-        <div class="food-hot">
-            <label>热门推荐：</label>{$sAdPlaceHot}
-            <label>文字链接：</label>{$sAdPlaceTest}
-        </div>
 
         <ul class="show-foods">
             {if $aCai}

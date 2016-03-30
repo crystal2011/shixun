@@ -28,5 +28,7 @@ $aRecommendFood = $oSpecial->getright('title,itemid,introduce,hits,thumb,code',3
 //更新浏览量
 $oSpecial->editHits();
 $seo_title = $info['title'].'-羊角会-';
-$topname = '羊角会';
+$topname = '羊角会成员';
+$islikenum = true;
+$commenttypeid = 8;
 include template('horn/hornshow','mobile');

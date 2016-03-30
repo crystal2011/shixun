@@ -21,5 +21,7 @@ $names = array (
   'view' => '查看大图',
   'vote' => '投票',
   'webpage' => '单网页',
+  'webpage-1' => 'webpage',
+  'webpage1' => 'webpage',
 );
 ?>

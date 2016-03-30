@@ -18,7 +18,7 @@
             <i class="cutline"></i>
             <div class="list-result-item clearfix">
                 <label>分类：</label>
-                <ul class="lists lists2">
+                <ul class="lists lists2 badf">
                     {if $aCatList}
                         {loop $aCatList $k $v}
                             <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/job/index.php?action={$action}&catid={$v['catid']}&areaid={$areaid}">{$v['catname']} </a></li>
@@ -59,14 +59,10 @@
             </div>
             {/if}
         </section>
-        <div class="food-hot">
-            <label>热门推荐：</label>{$sAdPlaceHot}
-            <label>文字链接：</label>{$sAdPlaceTest}
-        </div>
         <!--招聘表头-->
         <ul class="recruit-head">
             <li {if empty($action)}class="selected"{/if}><a href="/job/index.php?catid={$catid}&areaid={$areaid}">招聘</a></li>
-            <li {if $action}class="selected"{/if}><a href="/job/index.php?action=resume&catid={$catid}&areaid={$areaid}">简历</a></li>
+            <li {if $action}class="selected"{/if}><a href="/job/index.php?action=resume&catid={$catid}&areaid={$areaid}">求职</a></li>
         </ul>
         <!--招聘表头end-->
 
@@ -86,7 +82,7 @@
                     {if $aJob}
                         {loop $aJob $k $v}
                             <tr>
-                                <td><a href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">{dsubstr($v['title'],20)}</a></td>
+                                <td><a href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}"><img width="20px" style="vertical-align: middle" src="{DT_SKIN}image/public/icon-contact.png">{dsubstr($v['title'],18)}</a></td>
                                 <td>{$v['company']}</td>
                                 <td>{if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}</td>
                                 <td>{area_pos($v['areaid'],'')}</td>
@@ -112,7 +108,7 @@
                 {if $aJob}
                 {loop $aJob $k $v}
                 <tr>
-                    <td><a href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">{dsubstr($v['truename'],10)}</a></td>
+                    <td><a href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}"><img width="20px" style="vertical-align: middle" src="{DT_SKIN}image/public/icon-publish.png">{dsubstr($v['truename'],10)}</a></td>
                     <td>{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</td>
                     <td>{if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}</td>
                     <td>{$v['education']}</td>

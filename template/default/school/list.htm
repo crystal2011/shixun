@@ -51,10 +51,6 @@
             </div>
             {/if}
         </section>
-        <div class="food-hot">
-            <label>热门推荐：</label>{$sAdPlaceHot}
-            <label>文字链接：</label>{$sAdPlaceTest}
-        </div>
         <!--投票列表-->
         <ul  class="person-items person-items1">
             {if $aKnow}
@@ -62,10 +58,10 @@
                 <li>
                     <a href="/school/show.php?id={$v['userid']}" target="_blank">
                         <img src="{$v['thumb']}" width="165" height="124" alt=""/>
-                        <h3 title="{$v['truename']}">名厨：{dsubstr($v['truename'],18)}</h3>
                     </a>
-                    <header>
-                        <i>票数：<i>{$v['infonums']}</i></i>
+                    <header style="margin-top:5px;">
+                        <a class="fl" style="font-size:14px;" href="/school/show.php?id={$v['userid']}" target="_blank">名厨：{dsubstr($v['truename'],8)}</a>
+                        <i class="fr" style="font-size:14px;">总票数：<i style="font-size:14px;">{$v['infonums']}</i></i>
                     </header>
                 </li>
                 {/loop}

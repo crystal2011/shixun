@@ -4,8 +4,8 @@ $table = $DT_PRE.'resume';
 require MD_ROOT.'/resume.class.php';
 $do = new resume($moduleid);
 $menus = array (
-    array('添加简历', '?moduleid='.$moduleid.'&file='.$file.'&action=add'),
-    array('简历列表', '?moduleid='.$moduleid.'&file='.$file),
+    array('添加求职', '?moduleid='.$moduleid.'&file='.$file.'&action=add'),
+    array('求职列表', '?moduleid='.$moduleid.'&file='.$file),
 );
 
 if(in_array($action, array('add', 'edit'))) {

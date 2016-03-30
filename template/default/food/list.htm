@@ -18,7 +18,7 @@
             <i class="cutline"></i>
             <div class="list-result-item clearfix">
                 <label>分类：</label>
-                <ul class="lists lists1">
+                <ul class="lists lists1 badf">
                     {if $aCatList}
                         {loop $aCatList $k $v}
                             <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/food/list.php?catid={$v['catid']}&areaid={$areaid}&kw={$kw}">{$v['catname']} </a></li>
@@ -59,10 +59,6 @@
                 </div>
             {/if}
         </section>
-        <div class="food-hot">
-            <label>热门推荐：</label>{$sAdPlaceHot}
-            <label>文字链接：</label>{$sAdPlaceTest}
-        </div>
         <ul class="food-hot-list food-hot-list1">
             {if $aFood}
                 {loop $aFood $k $v}
@@ -70,8 +66,7 @@
                         <a href="/food/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">
                             <img src="{$v['thumb']}" width="160" height="120" alt=""/>
                             <h2>{dsubstr($v['title'],36,'...')}</h2>
-                            <h3>供应价格：{$v['price']}元/{$v['unit']}</h3>
-                            <a class="contact-business">联系商家>></a>
+                            <h3>供应价格：<span style="color:#ea554f;">{$v['price']}元</span>/{$v['unit']}</h3>
                         </a>
                     </li>
                 {/loop}

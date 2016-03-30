@@ -1,10 +1,10 @@
 <article class="comment">
     <div class="buttonlist clear">
         <span><img src="{DT_SKIN}image/mobile/commentbutton.png" /></span>
-        <span><img src="{DT_SKIN}image/mobile/sharebutton.png" /></span>
+        <span><img src="{DT_SKIN}image/mobile/sharebutton.png" onclick="goShare()" /></span>
         <span><img src="{DT_SKIN}image/mobile/publishbutton.png" /></span>
     </div>
-    <a class="comment_view clear">
+    <a class="comment_view clear" href="{$CFG['url']}mobile/comment.php?typeid={$commenttypeid}&id={$id}">
         {if $info['comments']}
         <span class="fl">查看全部{$info['comments']}评价</span>
         <span class="fr"><img src="{DT_SKIN}image/mobile/rightred.png" /></span>
