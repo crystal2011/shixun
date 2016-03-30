@@ -114,6 +114,7 @@ function comments(){
         }
     })
     iscommentsing = false;
+    return true;
 }
 
 //投票

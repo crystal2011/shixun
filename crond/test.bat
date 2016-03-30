@@ -1,0 +1,1 @@
+D:\server67\php\php.exe -q D:\web\meishi\crond\comment.php

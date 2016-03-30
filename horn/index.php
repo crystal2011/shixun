@@ -41,7 +41,7 @@ if($action=='ajaxlist'){
 //常任委员会
     $mygetcount = true;
     $pagesize = 100;
-    $aIsLongUser = $oSpecial->get_list('islong=1 and status=3');
+    $aIsLongUser = $oSpecial->get_list('islong=1 and status=3','sortnum asc');
 
     list($aIsNotLongUser,$totalpage) = $oSpecial->hornList('*','islong=0 and status=3','sortnum asc',100);
 
