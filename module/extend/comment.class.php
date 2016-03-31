@@ -141,6 +141,10 @@ class comment {
                     $obj->table = $this->db->pre.'special';
                     $obj->table_data = $this->db->pre.'special_data';
                     break;
+                case 9://文章
+                    require_once DT_ROOT.'/module/article/article.class.php';
+                    $obj = new article(21);
+                    break;
                 default:
                     exit(json_encode(array('status'=>'n','info'=>'操作失误')));
                     break;
@@ -228,7 +232,7 @@ class comment {
     }
 
     function commentList($id,$type,$page=1){
-        $limit = 1;
+        $limit = 10;
         $slimit = $limit+1;
         $offset = ($page-1)*$limit;
         $result = $this->db->query("select c.content,m.thumb from {$this->table} c inner join {$this->db->pre}member m on m.userid = c.userid and m.groupid = 5 where c.type = ".$type." and c.id = ".$id." and c.status = 3 order by addtime desc limit $offset,$slimit");

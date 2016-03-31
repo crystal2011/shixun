@@ -67,7 +67,7 @@ class special {
         if(strpos($post['content'], 'pagebreak') !== false) $post['content'] = str_replace(array('<hr class="de-pagebreak" /></p>', '<p><hr class="de-pagebreak" />', '<hr class="de-pagebreak" /></div>', '<div><hr class="de-pagebreak" />'), array('</p><hr class="de-pagebreak" />', '<hr class="de-pagebreak" /><p>', '</div><hr class="de-pagebreak" />', '<hr class="de-pagebreak" /><div>'), $post['content']);
         if($post['content'] && empty($post['introduce'])) $post['introduce'] = addslashes(get_intro($post['content'], isset($post['introduce_length']) && $post['introduce_length']?$post['introduce_length']:200));
 
-        $sortnum = isset($sortnum)?intval($sortnum):1000;
+        $sortnum = isset($post['sortnum'])?intval($post['sortnum']):1000;
         if($sortnum<1 || $sortnum>1000) $sortnum = 1000;
         $post['sortnum'] = $sortnum;
         if($this->itemid) {
