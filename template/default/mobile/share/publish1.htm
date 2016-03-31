@@ -25,7 +25,7 @@
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>分类选择</span>
                 <span class="publishright">
-                    {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 23,'class="input-text smallinput"')}
+                    {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 13,'class="input-text smallinput"')}
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
@@ -40,29 +40,22 @@
                 </span>
             </p>
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>价格</span>
+                <span class="publishleft"><i class="red">*</i>上传图片</span>
                 <span class="publishright">
-                    <input type="text" class="input-text smallinput" value="<?php echo isset($info['price'])?doubleval($info['price']):0; ?>" name="price" type="text" datatype="money" placeholder="1000.00"/>
-                    <span style="font-size:0.8em;">元( 注：价格面议请填写为0 )</span>
+                    <input id="date1" name="fromtime" value="<?php echo isset($info['fromtime']) && $info['fromtime']?date('Y-m-d',$info['fromtime']):'' ?>" class="input-text laydate-icon smallinput" type="text"/> -
+                    <input id="date2" name="totime" value="<?php echo isset($info['totime']) && $info['totime']?date('Y-m-d',$info['totime']):'' ?>" class="input-text laydate-icon smallinput" type="text"/>
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
+
+            <br />
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>单位</span>
-                <span class="publishright">
-                    <input type="text" class="input-text smallinput" value="<?php echo isset($info['unit'])?$info['unit']:'' ?>" name="unit" datatype="*1-5" type="text" placeholder="位/份"/>
-                    <br />
-                    <span class="Validform_checktip"></span>
-                </span>
-            </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>供应商</span>
+                <span class="publishleft"><i class="red">*</i>商家</span>
                 <span class="publishright">
                     <input type="text" class="input-text" name="company" value="<?php echo isset($info['company'])?$info['company']:'' ?>" type="text" datatype="*2-50" placeholder="公司"/>
                 </span>
             </p>
-            <br />
             <div class="h3h">联系方式</div>
             <p class="clearfix">
                 <span class="publishleft">电话</span>
@@ -98,13 +91,14 @@
                 <input  type="hidden" name="submit" value="1"/>
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
                 <input  type="hidden" name="beforeurl" value="<?php echo $forward; ?>"/>
-                <input type="hidden" name="moduleidtype" value="0" />
+                <input type="hidden" name="moduleidtype" value="1" />
                 <input style="background:#ea5550;margin-left:150px;border:1px solid #f1f1f1;color:#fff;padding:10px 25px;border-radius:5px;margin-top:10px;font-size:1.4em;" type="submit" value="提交"/>
             </div>
         </form>
     </article>
 </section>
 <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
+<script src="{DT_SKIN}js/laydate/laydate.js"></script>
 <script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
 <script>
     $("#publishform").Validform({
@@ -144,6 +138,13 @@
             return true;
         },
         beforeSubmit:function(curform){
+            var fromtime = $("#date1").val().replace(/[-\W]/g,'');
+            var totime = $("#date2").val().replace(/[-\W]/g,'');
+            if(parseInt(fromtime)>parseInt(totime)){
+                $("#date2").next().removeClass('Validform_right').addClass('Validform_wrong').html('开始时间不能大于结束时间');
+                $("#date2").focus();
+                return false;
+            }
             getToken();
             return true;
         },
@@ -167,4 +168,20 @@
             location.reload();
         }
     }
+
+    // 日期
+    laydate({
+        elem: '#date1', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+        event: 'focus', //响应事件。如果没有传入event，则按照默认的click
+        min: "{date('Y-m-d')}", //最小日期
+        start: "{date('Y-m-d')}"    //开始日期
+    });
+
+    // 日期
+    laydate({
+        elem: '#date2', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+        event: 'focus', //响应事件。如果没有传入event，则按照默认的click
+        min: "{date('Y-m-d')}", //最小日期
+        start: "{date('Y-m-d')}"    //开始日期
+    });
 </script>

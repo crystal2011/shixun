@@ -26,6 +26,7 @@ if(isset($showtype)){   //预览
 }
 $likenum = 1;
 $commenttypeid = 1;
+$moduleidtype = 0;
 $aHotFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',3,'hits desc'); //热门
 $aRecommendFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',3,'addtime desc');     //推荐
 $seo_title = $info['title'].'-餐饮供应-';

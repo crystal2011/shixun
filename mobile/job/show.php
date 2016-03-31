@@ -31,4 +31,5 @@ $commenttypeid = 3;
 $seo_title = $info['title'].'-招聘信息-';
 $topname = '招聘信息';
 $likenum = 3;
+$moduleidtype = 2;
 include template('job/show','mobile');

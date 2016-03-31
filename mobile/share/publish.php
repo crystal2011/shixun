@@ -9,9 +9,9 @@ require DT_ROOT.'/include/post.func.php';
 require DT_ROOT.'/include/module.func.php';
 $moduleidtype = isset($moduleidtype)?$moduleidtype:0;
 $isajax = isset($isajax)?true:false;
-if(!$_userid){
+/*if(!$_userid){
     $isajax?exit(json_encode(array('status'=>'n','info'=>'请先登录'))):dalert('请先登录','/mobile/member/login.php');
-}
+}*/
 $sitetitle = '';
 switch($moduleidtype) {
     case 0: //餐饮供应

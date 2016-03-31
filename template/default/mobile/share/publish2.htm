@@ -14,38 +14,25 @@
             <div class="h3h">基本选项</div>
             {template  'publishcommon','mobile/share'}
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>标题</span>
+                <span class="publishleft"><i class="red">*</i>职位</span>
                 <span class="publishright">
                     <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" placeholder="名称" class="input-text" />
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>分类选择</span>
                 <span class="publishright">
-                    {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 23,'class="input-text smallinput"')}
+                    {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 9,'class="input-text smallinput"')}
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>上传图片</span>
+                <span class="publishleft"><i class="red">*</i>公司名称</span>
                 <span class="publishright">
-                    <input name="thumb" id="thumb" type="text" class="input-text" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
-                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',500);" class="jt">[上传]</span>
-                    <br />
-                    <span class="Validform_checktip"></span>
-                </span>
-            </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>价格</span>
-                <span class="publishright">
-                    <input type="text" class="input-text smallinput" value="<?php echo isset($info['price'])?doubleval($info['price']):0; ?>" name="price" type="text" datatype="money" placeholder="1000.00"/>
-                    <span style="font-size:0.8em;">元( 注：价格面议请填写为0 )</span>
-                    <br />
-                    <span class="Validform_checktip"></span>
+                    <input type="text" class="input-text" name="company" value="<?php echo isset($info['company'])?$info['company']:'' ?>" type="text" datatype="*2-50" placeholder="公司"/>
                 </span>
             </p>
             <p class="clearfix">
@@ -56,12 +43,7 @@
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>供应商</span>
-                <span class="publishright">
-                    <input type="text" class="input-text" name="company" value="<?php echo isset($info['company'])?$info['company']:'' ?>" type="text" datatype="*2-50" placeholder="公司"/>
-                </span>
-            </p>
+
             <br />
             <div class="h3h">联系方式</div>
             <p class="clearfix">
@@ -95,7 +77,7 @@
                 </span>
             </p>
             <div class="btn-box">
-                <input  type="hidden" name="submit" value="1"/>
+                <input  type="hidden" name="submit" value="2"/>
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
                 <input  type="hidden" name="beforeurl" value="<?php echo $forward; ?>"/>
                 <input type="hidden" name="moduleidtype" value="0" />

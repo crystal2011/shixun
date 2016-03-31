@@ -2,7 +2,7 @@
     <div class="buttonlist clear">
         <span><a href="{$CFG['url']}mobile/comment.php?action=publish&typeid={$commenttypeid}&id={$id}"><img src="{DT_SKIN}image/mobile/commentbutton.png" /></a></span>
         <span><img src="{DT_SKIN}image/mobile/sharebutton.png" onclick="goShare()" /></span>
-        <span><img src="{DT_SKIN}image/mobile/publishbutton.png" /></span>
+        <span><a href="{$CFG['url']}mobile/share/publish.php?moduleidtype={$moduleidtype}"><img src="{DT_SKIN}image/mobile/publishbutton.png" /></a></span>
     </div>
     <a class="comment_view clear" href="{$CFG['url']}mobile/comment.php?typeid={$commenttypeid}&id={$id}">
         {if $info['comments']}
