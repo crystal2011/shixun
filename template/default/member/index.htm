@@ -1,5 +1,5 @@
 {template 'header'}
-<script src="{DT_SKIN}js/layer/layer.js"></script>
+
 <link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
 <section class="homenew">
     <div class="main">
@@ -30,9 +30,11 @@
                         <div class="box">
                             <a href="/share/publish.php?moduleidtype=6"><div class="img"><img src="{DT_SKIN}image/iconbig7.png"></div><span>发布食讯文章</span></a>
                         </div>
+                        {if $horninfo}
                         <div class="box">
-                            <a href="/horn/horncheck.php"><div class="img"><img src="{DT_SKIN}image/iconbig8.png"></div><span>审核内容</span></a>
+                            <a href="/member/horncheck.php"><div class="img"><img src="{DT_SKIN}image/iconbig8.png"></div><span>快速审核</span></a>
                         </div>
+                        {/if}
                     </div>
                 </div>
                 <div class="column ">

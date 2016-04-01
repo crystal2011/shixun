@@ -1,0 +1,62 @@
+{template 'header','mobile'}
+{template 'search','mobile'}
+<section class="contentlist">
+    <header class="channelheader clear" style="background-color:#f5f5f5;margin:5px 0;">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/foodcat.png"><span style="font-size:2.6em;">餐饮供应分类</span></div>
+    </header>
+</section>
+<section>
+    <article id="categoryselect">
+        <table>
+            {if $aCatList23}
+            {loop $aCatList23 $key $val}
+            <tr>
+                {loop $val $k $v}
+                <td><a href="/mobile/food/index.php?catid={$v['catid']}">{$v['catname']}</a></td>
+                {/loop}
+            </tr>
+            {/loop}
+            {/if}
+        </table>
+    </article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear" style="background-color:#f5f5f5;margin:5px 0;">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/foodpromote.png"><span style="font-size:2.6em;">菜系分类</span></div>
+    </header>
+</section>
+<section>
+    <article id="categoryselect">
+        <table>
+            {if $aCatList13}
+            {loop $aCatList13 $key $val}
+            <tr>
+                {loop $val $k $v}
+                <td><a href="/mobile/school/food.php?catid={$v['catid']}">{$v['catname']}</a></td>
+                {/loop}
+            </tr>
+            {/loop}
+            {/if}
+        </table>
+    </article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear" style="background-color:#f5f5f5;margin:5px 0;">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/school.png"><span style="font-size:2.6em;">招聘分类</span></div>
+    </header>
+</section>
+<section style="margin-bottom:50px;">
+    <article id="categoryselect">
+        <table>
+            {if $aCatList9}
+            {loop $aCatList9 $key $val}
+            <tr>
+                {loop $val $k $v}
+                <td><a href="/mobile/job/index.php?catid={$v['catid']}">{$v['catname']}</a></td>
+                {/loop}
+            </tr>
+            {/loop}
+            {/if}
+        </table>
+    </article>
+</section>

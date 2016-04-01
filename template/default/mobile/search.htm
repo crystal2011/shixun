@@ -1,6 +1,6 @@
 <header>
     <article  id="header1" class="clear">
-        <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{$topname}</span></a>
+        <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{if isset($topname)}{$topname}{else}{$title}{/if}</span></a>
         <div class="headersearch">
             <input name="keyword" class="searchkey" {if isset($kw) && $kw}style="display:inline-block;" value="{$kw}"{else}style="display:none;"{/if} />
             <img src="{DT_SKIN}image/mobile/search.png" class="serachright" />

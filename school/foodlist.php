@@ -22,12 +22,6 @@ $aKnow = $oMember->getListUser($aCai);
 $aTou[] = array('url'=>'/school/foodlist.php','name'=>'全部');
 if($CAT) $aTou[] = array('url'=>'/school/foodlist.php','name'=>$CAT['catname']);
 
-//热门推荐广告
-require_once '../module/extend/ad.class.php';
-$oAd = new ad;
-$sAdPlaceHot = $oAd->getAdAllText(49);
-$sAdPlaceTest = $oAd->getAdAllText(50);
-
 $aCatList = showCat($catinfo,13);     //列表选择显示分类
 
 $nav_selected = 'school';

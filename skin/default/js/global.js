@@ -22,7 +22,7 @@ function AddFavorite(sURL, sTitle) {
  * @param type 数字类型
  * @param _this 当前对象
  */
-function like(id,type,_this){
+function like(id,type,_this,typeid){
     var _this = $(_this);
     _this.attr("disabled",true);
     getToken();
@@ -32,9 +32,16 @@ function like(id,type,_this){
         async:false,
         dataType:'json',
         success:function(data){
-            if(data.status=='n'){
-                alert(data.info);
+            if(typeid==1){
+                layer.open({
+                    content: data.info,
+                    title:'提示'
+                });
             }else{
+                layer.msg(data.info);
+            }
+
+            if(data.status=='y'){
                 $(".like-num").html(parseInt($(".like-num").html())+1);
             }
         }
@@ -107,6 +114,7 @@ function comments(){
         }
     })
     iscommentsing = false;
+    return true;
 }
 
 //投票
@@ -165,7 +173,27 @@ function getmorecommont(url,_this){
             }else{
                 _this.attr('data-page',page).find('a').html('查看更多>>');
             }
+        }
+    })
+}
 
+function getmorecomment(url,_this){
+    var _this = $(_this);
+    var page = _this.attr('data-page');
+    page = parseInt(page)+1;
+    _this.find('a').html('加载中...');
+    $.ajax({
+        type:'post',
+        url:url,
+        data:{'page':page,'action':'ajax'},
+        dataType:'json',
+        success:function(data){
+            _this.before(data.info);
+            if(data.HasNextPage==0){
+                _this.remove();
+            }else{
+                _this.attr('data-page',page).find('a').html('查看更多>>');
+            }
         }
     })
 }
@@ -222,3 +250,4 @@ $(function(){
 function goTop(){
     $(window).scrollTop(0);
 }
+

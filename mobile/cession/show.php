@@ -25,7 +25,8 @@ if(isset($showtype)){   //预览
     $oSell->editHits();
     addHits($info['userid']);
 }
-
+$likenum = 4;
+$commenttypeid = 4;
 $aHotFood = $oSell->getright('title,itemid,introduce,hits,likes,thumb,price',3,'hits desc'); //热门
 $aRecommendFood = $oSell->getright('title,itemid,introduce,hits,likes,thumb,price',3,'addtime desc');  //推荐
 $seo_title = $info['title'].'-店铺转让-';

@@ -76,6 +76,53 @@ table {
     visibility: hidden;
 }
 
+.Validform_checktip{
+    margin-left:8px;
+    line-height:20px;
+    height:20px;
+    overflow:hidden;
+    color:#999;
+    font-size:12px;
+}
+.Validform_right{
+    color:#71b83d;
+    padding-left:20px;
+    background:url(../image/right.png) no-repeat left center;
+}
+.Validform_wrong{
+    color:red;
+    padding-left:20px;
+    white-space:nowrap;
+    background:url(../image/error.png) no-repeat left center;
+}
+.Validform_loading{
+    padding-left:20px;
+    background:url(../image/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+    background-color:#ffe7e7;
+}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#000;}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#cc0;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #000; border-top:none; text-align:left;}
+#Validform_msg * {display:none;}
+
+#Dtop {
+    background-color: #fff;
+    border: 1px solid #125adc;
+    box-shadow: 0 0 3px #0e48b0;
+    padding: 10px;
+}
+
+#Dtop .dhead {
+    background-color: #ccc;
+}
+#Dtop tr {height:30px;}
+#remote {max-width:100%;width:100%;}
+
 .fl {
     float: left;
 }
@@ -525,14 +572,17 @@ i {font-style:normal;}
     font-size:0px;
     display:block;
 }
+.fdsfsdf {
+    float:right;
+}
 .list .content .bigvote {
-    width:25%;
+    width:70%;
     max-width:181px;
     font-size:0px;
-    display:block;
     margin-right:10px;
     vertical-align: middle;
 }
+
 .list .content .showpng img {
     width:100%;
 }
@@ -715,3 +765,56 @@ i {font-style:normal;}
     color:#fff;
 }
 a img {font-size:0px;}
+.commentlist {
+    background-color:#fff;
+}
+.commentlist .comlist {
+    border-top:1px solid #f1f1f1;
+    padding:20px;
+}
+.commentlist .comlistp {
+    height:60px;
+    width:60px;
+}
+.commentlist .comimage {
+    display:block;
+    width:60px;
+    height:60px;
+}
+.commentlist .cominfo {
+    padding-left:70px;
+    width:200px;
+}
+.commentlist .comname {
+    font-size:2.5em;
+    color:#000;
+
+    margin:0px;
+}
+.commentlist .comtime {
+    font-size:1.8em;
+    margin:5px 0px 0px 0px;
+    color:#989898;
+}
+.commentlist .commentcon {
+    margin-top:15px;
+    font-size:2.5em;
+}
+
+
+
+
+
+.publishform {padding:20px;}
+#publishform .h3h {font-size:2em;color:#737373;margin-bottom:20px;}
+#publishform .publishleft {color:#000;width:72px;font-size:1.6em;text-align:right;float:left;display:block;}
+#publishform .publishright {padding-left:80px;width:100%;display:block;color:#000;font-size:1.6em;}
+#publishform .publishtype {display:block;width:100%;}
+#publishform .publishtype a{padding:3px 5px;background-color:#fff;border:1px solid #f1f1f1;float:left;margin-right:3px;margin-bottom:3px;}
+#publishform .red {color:#f50000;}
+#publishform .input-text {width:100%;line-height:2em;height:2em;border:1px solid #f1f1f1;border-radius: 3px;max-width:400px;}
+#publishform .publishtype a.active {background-color:#f50000;color:#fff;}
+#publishform .smallinput {width:100px;max-width:100%;}
+#publishform .textinput {height:100px;}
+#publishform p{margin:5px 0px 0px 0px;}
+#publishform select {margin-bottom:5px;}

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Mobile Devices Support @end -->
+    <meta name="keywords" content="fsdfadsf">
+    <meta name="description" content="的沙发沙发">
+    <title>中国食讯网</title>
+    <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="http://shixun.com/skin/default/css/mobile.css" rel="stylesheet"/>
+    <script src="http://shixun.com/skin/default/js/zepto.js"></script>
+    <script src="http://shixun.com/skin/default/js/global.js"></script>
+    <script src="http://shixun.com/skin/default/js/layerm/layer.m.js"></script>
+    <link href="http://shixun.com/skin/default/css/layerm/need/layer.css" rel="stylesheet"/>
+</head>
+<body>
+<script>
+    function goShare(){
+        $.get('http://shixun.com/template/default/mobile/btnshare.htm', function (data) {
+            layer.open({
+                content: data,
+                title:'&nbsp;',
+                closeBtn: 2,
+                style: 'width:80%;background-color:#fff;',
+                success:function(elem){
+                    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["mshare","tsina","weixin","renren","tqq","kaixin001","tieba","bdhome","thx","meilishuo","mogujie","diandian","huaban","duitang","hx","fx"],"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                }
+            });
+        })
+    }
+</script>
+<header>
+    <article  id="header1" class="clear">
+        <a class="forback fl" href="http://shixun.com/sxadmin.php?rand=93&moduleid=3&file=webpage&item=1"><img src="http://shixun.com/skin/default/image/mobile/leftpoint.png" />商务合作</span></a>
+        <div class="headersearch">
+            <input name="keyword" class="searchkey" style="display:none;" />
+            <img src="http://shixun.com/skin/default/image/mobile/search.png" class="serachright" />
+        </div>
+    </article>
+</header>
+<script>
+    $(function(){
+        $(".serachright").click(function(){
+            $("#header1 .searchkey").css("display","inline-block;");
+            if($(this).attr("form")=="form"){
+                var keyword = $(".searchkey").val();
+                location.href = "/mobile/food/index.php?kw="+keyword;
+            }else{
+                $(this).attr("form","form");
+            }
+        })
+    })
+</script><section id="content">
+<div class="viewinfo clear"><a href="http://shixun.com/about/mcontact.html" target="_blank" style="word-break: break-all; font-family: Verdana, Arial; text-decoration: none; color: rgb(0, 0, 0); font-size: 12px; line-height: 22px; background-color: rgb(241, 242, 243);">商务合作</a></div>
+</section>

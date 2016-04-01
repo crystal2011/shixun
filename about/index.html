@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="robots" content="noindex,nofollow"/>
+    <meta http-equiv="x-ua-compatible" content="IE=8"/>
     <title>中国食讯网</title>
     <meta name="keywords" content="fsdfadsf">
     <meta name="description" content="的沙发沙发">
@@ -78,13 +79,13 @@
     </script>
 </head>
 <body>
-<section class="alltop" style="position:relative;">
+<section class="alltop" style="position:relative;width: 1110px;text-align: center;margin: 0 auto;">
     <article class="alltou"><img src="http://shixun.com/file/upload/201603/08/1121223410.jpg" width="1100" height="50" alt=""/></article>
-    <span style="position:absolute;right:90px;top:5px;cursor:pointer;font-size:12px;line-height:16px" onclick="alltouclick()"><img src="http://shixun.com/skin/default/image/public/delete.jpg" style="width:16px;height:16px;">关闭</span>
+    <span style="position:absolute;right:20px;top:20px;cursor:pointer;font-size:12px;line-height:16px" onclick="alltouclick()"><img src="http://shixun.com/skin/default/image/public/delete.jpg" style="width:16px;height:16px;">关闭</span>
 </section>
 <!--头部信息-->
 <section class="home clearfix mtb30">
-    <a class="logo fl" href="/"></a>
+    <a class="logo fl" style="background-image:url(http://shixun.com/file/upload/201603/13/103504960.jpg);" href="/"></a>
     <form class="search fl" action="/food/list.php">
         <input class="fl" type="text" name="kw" value="" placeholder="请您输入搜索信息:">
         <input class="fl" type="submit" id="searchBtn"/>
@@ -119,7 +120,7 @@
         <li ><a href="/school/index.php">名厨学堂</a></li>
         <li ><a href="/horn/index.php">羊角会</a></li>
         <li ><a href="/share/index.php">分享</a></li>
-                    <li><a href="/member/index.php">会员中心</a></li>
+                    <li><a href="/member/login.php">登录.注册</a></li>
             </ul>
 </nav><link rel="stylesheet" href="http://shixun.com/skin/default/css/food.css"/>
 <section class="home">
@@ -143,5 +144,19 @@
         <a href="" target="_blank">手机版本</a>
     </section>
 </footer>
-<section class="friendLink"><a href="http://www.destoon.com/" target="_blank" rel="nofollow">Destoon B2B</a></section></body>
+<section class="friendLink"><a href="http://www.destoon.com/" target="_blank" rel="nofollow">Destoon B2B</a></section><script>
+    function getmore(_this,num){
+        if($(_this).attr("getmore")=="getmore"){
+            $(_this).removeAttr("getmore");
+            num = num-1;
+            $(_this).prev().find('li:gt('+num+')').remove();
+            $(_this).html('更多<i class="icon-more" style="background-position:0px 0px;"></i>');
+        }else{
+            $(_this).attr("getmore","getmore");
+            $(_this).prev().append($("#hidearea").html());
+            $(_this).html('拉起<i class="icon-more" style="background-position:0px -43px;"></i>');
+        }
+    }
+</script>
+</body>
 </html>

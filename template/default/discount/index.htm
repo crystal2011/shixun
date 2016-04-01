@@ -16,7 +16,7 @@
             <i class="cutline"></i>
             <div class="list-result-item clearfix">
                 <label>分类：</label>
-                <ul class="lists lists2">
+                <ul class="lists lists2 badf">
                     {loop $aCatList $k $v}
                         <li <?php echo $catid==$v['catid']?'class="selected"':''; ?>><a href="/discount/index.php?catid={$v['catid']}&areaid={$areaid}">{$v['catname']} </a></li>
                     {/loop}
@@ -55,10 +55,6 @@
                 </div>
             {/if}
         </section>
-        <div class="food-hot">
-            <label>热门推荐：{$sAdPlaceHot}
-            <label>文字链接：</label>{$sAdPlaceTest}
-        </div>
         {if $aBrand}
         {loop $aBrand $k $v}
         <div class="food-info border-box">

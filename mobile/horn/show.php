@@ -25,4 +25,6 @@ $aHotFood = $oInfo->getright('title,itemid,addtime',10,'hits desc'); //热门
 $aRecommendFood = $oInfo->getright('title,itemid,addtime',10,'addtime desc');  //推荐
 $seo_title = $info['title'].'-羊角会-';
 $topname = '羊角会';
+$commenttypeid = 7;
+$islikenum = true;
 include template('horn/show','mobile');

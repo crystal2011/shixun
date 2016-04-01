@@ -33,12 +33,6 @@ $aAreaFirst = showArea($areainfo);  //列表选择显示地区
 $aCatList = showCat($catinfo,13);     //列表选择显示分类
 $aHotCity = cache_read('hotcity.php');  //热门地区
 
-//热门推荐广告
-require_once '../module/extend/ad.class.php';
-$oAd = new ad;
-$sAdPlaceHot = $oAd->getAdAllText(47);
-$sAdPlaceTest = $oAd->getAdAllText(48);
-
 $aHotFood = $oBrand->getright('title,itemid,introduce,addtime',11,'hits desc'); //热门
 $aRecommendFood = $oBrand->getright('title,itemid,addtime',10,'addtime desc');  //推荐
 $catname = '优惠';

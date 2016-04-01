@@ -30,4 +30,6 @@ $aHotFood = $oBuy->getright('title,itemid,introduce,hits,likes,thumb',3,'hits de
 $aRecommendFood = $oBuy->getright('title,itemid,introduce,hits,likes,thumb',3,'addtime desc');  //推荐
 $seo_title = $info['title'].'-分享-';
 $topname = '分享';
+$commenttypeid = 6;
+$islikenum = true;
 include template('share/show','mobile');

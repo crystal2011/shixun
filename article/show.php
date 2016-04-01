@@ -31,5 +31,11 @@ $catname='文章';
 $foodshowright = 76;
 $nav_selected = 'article';
 
+//评论
+require_once '../module/extend/comment.class.php';
+$oComment = new comment;
+$typeid = 9;
+list($aComment,$HasNextPage) = $oComment->commentList($id,$typeid);
+
 include template('show', 'article');
 ?>

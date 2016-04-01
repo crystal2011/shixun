@@ -5,29 +5,37 @@
         <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/article/list.php">文章列表</a>&nbsp;&gt;&nbsp;<a href="">详情</a>
     </header>
 </section>
-<section class="home clearfix">
-    <section class="food-del fl">
-        <div class="person-info food-info border-box">
-            <img src="{$aArticle['thumb']}" height="143" width="190" alt="">
-            <h3 title="{$aArticle['title']}">{dsubstr($aArticle['title'],46)} </h3>
-            <p>浏览( {$aArticle['hits']} )</p>
-            <p>简介：{dsubstr($aArticle['introduce'],50,'...')}</p>
-            <div class="bdsharebuttonbox">
-                <a href="#" class="bds_more" data-cmd="more"></a>
-                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-                <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-            </div>
-        </div>
-        <article class="food-del-main border-box">
-            {$aArticle['content']}
-        </article>
+
+<section class="homenew">
+    <section class="home clearfix">
+        <section class="food-del fl">
+            <article class="horntop" style="overflow: hidden">
+                <div class="horntitle">{$aArticle['title']}</div>
+                <p class="clearfix">
+                <div class="fl horntime">{date('Y-m-d H:i:s',$aArticle['addtime'])}</div>
+                <div class="fr share clearfix">
+                    <span class="numsnd"><i class="icon-liulan"></i><em>浏览({$aArticle['hits']})</em><i class="icon-pinlun"></i><em>评论({$aArticle['comments']})</em></span>
+                    <div class="bdsharebuttonbox fr" >
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    </div>
+
+                </div>
+                </p>
+            </article>
+            <article class="food-del-main">
+                {$aArticle['content']}
+            </article>
+            {template  'comment'}
+        </section>
+        {template  'right'}
     </section>
-    {template  'right'}
+    <section class="foodad">{ad(75)}</section>
 </section>
-<section class="foodad">{ad(75)}</section>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 {template  'footer'}
 

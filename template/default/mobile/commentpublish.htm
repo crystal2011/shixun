@@ -1,0 +1,33 @@
+{template 'header','mobile'}
+<header>
+    <article  id="header1" class="clear">
+        <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{$topname}</span></a>
+        <div class="headersearch" style="color:#ff8125;font-size:3em;" onclick="publishcomment()">发布</div>
+    </article>
+</header>
+<section>
+    <article class="list">
+        <div class="content">
+            <div class="clear info">
+                <a class="thumb" href="{$url}{$id}"><img src="{$info['thumb']}" /></a>
+                <div class="text">
+                    <a class="title" href="{$url}{$id}">{$info['title']}</a>
+                    <p class="introduce">简介：{$info['introduce']}</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article style="padding:20px 20px 50px 20px;background-color:#fff;margin-top:20px;border-top:1px solid #e6e6e6;">
+        <textarea style="width:100%;height:200px;border:1px solid #e6e6e6;border-radius:5px;" maxlength="200" id="commentscontent"></textarea>
+        <div style="text-align:right;font-size:2em;color:#b3b3b3;">200字</div>
+    </article>
+    <input type="hidden" id="commentsid" value="{$id}" />
+    <input type="hidden" id="commentstype" value="{$typeid}" />
+</section>
+<script>
+    function publishcomment(){
+        if(comments()){
+            location.href = '/mobile/comment.php?typeid={$typeid}&id={$id}';
+        }
+    }
+</script>

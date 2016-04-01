@@ -46,7 +46,6 @@ if($action=='ajax'){
 }else {
 //更新浏览量
     $oMember->editHits();
-
     $seo_title = $info['truename'] . '-名厨学堂-';
     $topname = '名厨学堂';
     include template('school/show', 'mobile');

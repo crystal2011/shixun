@@ -2,7 +2,7 @@
 <script src="{DT_SKIN}js/layer/layer.js"></script>
 <link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
 <style>
-    .collect .title {margin-right:60px;}
+    .collect .title {margin-right:0px;width:108px;}
 </style>
 <section class="homenew">
     <div class="main">
@@ -15,13 +15,13 @@
                     <div class="columnCont collect">
                         <div class="ulWrap">
                             <ul class="upTitle clearfix">
-                                <li class="{if $checktype==0}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=0'">餐饮供应</li>
-                                <li class="{if $checktype==1}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=1'">商家优惠</li>
-                                <li class="{if $checktype==2}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=2'">招聘信息</li>
-                                <li class="{if $checktype==3}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=3'">店铺转让</li>
-                                <li class="{if $checktype==4}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=4'">名厨学堂</li>
-                                <li class="{if $checktype==5}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=5'">分享</li>
-                                <li class="{if $checktype==6}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=6'">文章</li>
+                                <li class="{if $checktype==0}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=0'">餐饮供应{if $num0}<span style="color:#ea554f;">{$num0}</span>{/if}</li>
+                                <li class="{if $checktype==1}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=1'">商家优惠{if $num1}<span style="color:#ea554f;">{$num1}</span>{/if}</li>
+                                <li class="{if $checktype==2}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=2'">招聘信息{if $num2}<span style="color:#ea554f;">{$num2}</span>{/if}</li>
+                                <li class="{if $checktype==3}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=3'">店铺转让{if $num3}<span style="color:#ea554f;">{$num3}</span>{/if}</li>
+                                <li class="{if $checktype==4}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=4'">名厨学堂{if $num4}<span style="color:#ea554f;">{$num4}</span>{/if}</li>
+                                <li class="{if $checktype==5}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=5'">美食分享{if $num5}<span style="color:#ea554f;">{$num5}</span>{/if}</li>
+                                <li class="{if $checktype==6}active{/if} title" style="cursor:pointer" onclick="location.href='/member/horncheck.php?checktype=6'">文章发布{if $num6}<span style="color:#ea554f;">{$num6}</span>{/if}</li>
                             </ul>
                         </div>
                     </div>

@@ -155,7 +155,7 @@ class vote {
      */
     function isVoted($id,$type){
         global $_userid,$DT_TIME;
-        $aVote = $this->db->get_one("select addtime from {$this->table} where userid=".$_userid." and type = ".$type." and id = ".$id);
+        $aVote = $this->db->get_one("select addtime from {$this->table} where userid=".$_userid." and type = ".$type." and id = ".$id." order by addtime desc");
         if($aVote && $DT_TIME-$aVote['addtime']<=3600*24){
             return $this->_('明天再来，一天24小时投一次');
         }

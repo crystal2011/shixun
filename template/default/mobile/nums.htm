@@ -1,5 +1,10 @@
 <article class="handle clear">
+    {if !isset($islikenum)}
     <span class="fl"><img src="{DT_SKIN}image/mobile/love.png" />{$info['likes']}</span>
     <span class="fr"><img src="{DT_SKIN}image/mobile/hit.png" />{$info['hits']}</span>
     <span class="center"><img src="{DT_SKIN}image/mobile/shares.png" />{$info['comments']}</span>
+    {else}
+    <span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" />{$info['hits']}</span>
+    <span class="fr"><img src="{DT_SKIN}image/mobile/shares.png" />{$info['comments']}</span>
+    {/if}
 </article>

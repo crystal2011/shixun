@@ -235,7 +235,7 @@ class comment {
         $limit = 10;
         $slimit = $limit+1;
         $offset = ($page-1)*$limit;
-        $result = $this->db->query("select c.content,m.thumb from {$this->table} c inner join {$this->db->pre}member m on m.userid = c.userid and m.groupid = 5 where c.type = ".$type." and c.id = ".$id." and c.status = 3 order by addtime desc limit $offset,$slimit");
+        $result = $this->db->query("select c.content,m.thumb,c.addtime,m.truename,m.username from {$this->table} c inner join {$this->db->pre}member m on m.userid = c.userid and m.groupid = 5 where c.type = ".$type." and c.id = ".$id." and c.status = 3 order by addtime desc limit $offset,$slimit");
         $arr = array();
         while($r = $this->db->fetch_array($result)){
             $arr[] = $r;

@@ -53,7 +53,7 @@ show_menu($menus);
     <tr>
         <td class="tl"><span class="f_red">*</span>排序</td>
         <td>
-            <input errormsg="请输入1-1000" nullmsg="1-1000" type="text"  size="6" name="sortnum" value="<?php echo isset($sortnum)?$sortnum:1000;?>" id="username"/> 请输入1-1000 默认1000
+            <input errormsg="请输入1-1000" nullmsg="1-1000" type="text"  size="6" name="post[sortnum]" value="<?php echo isset($sortnum)?$sortnum:1000;?>" id="username"/> 请输入1-1000 默认1000
         </td>
     </tr>
 <tr>

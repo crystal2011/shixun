@@ -25,6 +25,6 @@ $aSetting['education'] = explode('|',$aSetting['education']);
 $aSetting['type'] = explode('|',$aSetting['type']);
 
 $nav_selected = 'job';
-$seo_title = $aJob['truename'].'-简历-招聘信息-';
+$seo_title = $aJob['truename'].'-求职-招聘信息-';
 include template('resume', 'job');
 ?>

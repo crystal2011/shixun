@@ -6,7 +6,7 @@ $menus = array (
     array('评论列表', '?moduleid='.$moduleid.'&file='.$file),
     array('评论审核', '?moduleid='.$moduleid.'&file='.$file.'&action=check'),
 );
-$cat_type = array('全部','餐饮供应','商家优惠','招聘信息','店铺转让','名厨学堂-菜系','分享','羊角会','羊角会成员');
+$cat_type = array('全部','餐饮供应','商家优惠','招聘信息','店铺转让','名厨学堂-菜系','分享美食','羊角会','羊角会成员','文章发布');
 
 $this_forward = '?moduleid='.$moduleid.'&file='.$file;
 if(in_array($action, array('', 'check'))) {
