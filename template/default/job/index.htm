@@ -82,11 +82,31 @@
                     {if $aJob}
                         {loop $aJob $k $v}
                             <tr>
-                                <td><a href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}"><img width="20px" style="vertical-align: middle" src="{DT_SKIN}image/public/icon-contact.png">{dsubstr($v['title'],18)}</a></td>
-                                <td>{$v['company']}</td>
-                                <td>{if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}</td>
-                                <td>{area_pos($v['areaid'],'')}</td>
-                                <td>{date('Y-m-d',$v['addtime'])}</td>
+                                <td>
+                                    <a style="display:block;" href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                                        <img width="20px" style="vertical-align: middle" src="{DT_SKIN}image/public/icon-contact.png">{dsubstr($v['title'],18)}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a style="display:block;" href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                                        {$v['company']}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a style="display:block;" href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                                        {if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a style="display:block;" href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                                        {area_pos($v['areaid'],'')}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a style="display:block;" href="/job/show.php?id={$v['itemid']}" target="_blank" title="{$v['title']}">
+                                        {date('Y-m-d',$v['addtime'])}
+                                    </a>
+                                </td>
                             </tr>
                         {/loop}
                     {/if}
@@ -108,12 +128,32 @@
                 {if $aJob}
                 {loop $aJob $k $v}
                 <tr>
-                    <td><a href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}"><img width="20px" style="vertical-align: middle" src="{DT_SKIN}image/public/icon-publish.png">{dsubstr($v['truename'],10)}</a></td>
-                    <td>{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</td>
-                    <td>{if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}</td>
-                    <td>{$v['education']}</td>
-                    <td>{if $v['experience']}{$v['experience']}年{else}暂无{/if}</td>
-                    <td>{date('Y-m-d',$v['edittime'])}</td>
+                    <td><a style="display:block;" href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}"><img width="20px" style="vertical-align: middle" src="{DT_SKIN}image/public/icon-publish.png">{dsubstr($v['truename'],10)}</a></td>
+                    <td>
+                        <a style="display:block;" href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">
+                            {if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}
+                        </a>
+                    </td>
+                    <td>
+                        <a style="display:block;" href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">
+                            {if $v['maxsalary']}{$v['maxsalary']}元{elseif $v['minsalary']}{$v['minsalary']}元{else}面议{/if}
+                        </a>
+                    </td>
+                    <td>
+                        <a style="display:block;" href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">
+                            {$v['education']}
+                        </a>
+                    </td>
+                    <td>
+                        <a style="display:block;" href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">
+                            {if $v['experience']}{$v['experience']}年{else}暂无{/if}
+                        </a>
+                    </td>
+                    <td>
+                        <a style="display:block;" href="/job/resume.php?id={$v['itemid']}" target="_blank" title="{$v['truename']}">
+                            {date('Y-m-d',$v['edittime'])}
+                        </a>
+                    </td>
                 </tr>
                 {/loop}
                 {/if}

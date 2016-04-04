@@ -31,5 +31,6 @@ $aRecommendFood = $oBuy->getright('title,itemid,introduce,hits,likes,thumb',3,'a
 $seo_title = $info['title'].'-分享-';
 $topname = '分享';
 $commenttypeid = 6;
+$moduleidtype = 5;
 $islikenum = true;
 include template('share/show','mobile');

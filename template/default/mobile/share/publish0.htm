@@ -33,8 +33,8 @@
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>上传图片</span>
                 <span class="publishright">
-                    <input name="thumb" id="thumb" type="text" class="input-text" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
-                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',500);" class="jt">[上传]</span>
+                    <input name="thumb" id="thumb" type="text" class="input-text" style="width:70%;max-width:300px;" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
+                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);" class="jt">[上传]</span>
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
@@ -43,17 +43,18 @@
                 <span class="publishleft"><i class="red">*</i>价格</span>
                 <span class="publishright">
                     <input type="text" class="input-text smallinput" value="<?php echo isset($info['price'])?doubleval($info['price']):0; ?>" name="price" type="text" datatype="money" placeholder="1000.00"/>
-                    <span style="font-size:0.8em;">元( 注：价格面议请填写为0 )</span>
-                    <br />
-                    <span class="Validform_checktip"></span>
+                    <span style="font-size:0.8em;">元</span><span class="Validform_checktip"></span>
+                    <br /><span style="font-size:0.8em;">( 注：价格面议请填写为0 )</span>
+
                 </span>
             </p>
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>单位</span>
                 <span class="publishright">
                     <input type="text" class="input-text smallinput" value="<?php echo isset($info['unit'])?$info['unit']:'' ?>" name="unit" datatype="*1-5" type="text" placeholder="位/份"/>
-                    <br />
                     <span class="Validform_checktip"></span>
+                    <br />
+                    <span style="height:2em;">&nbsp;</span>
                 </span>
             </p>
             <p class="clearfix">

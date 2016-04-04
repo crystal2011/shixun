@@ -1,0 +1,44 @@
+{template 'top','mobile/member'}
+<section class="mu mu-pay-info">
+    <ul>
+        <li class="clear">
+            <a href="?action=username_edit" class="db clear">
+                <label class="name db fl">用户名 :</label><span class="db fl info grey">{$member_info['username']}</span>
+                <i class="fa fa-angle-right fr"></i>
+            </a>
+        </li>
+        <li class="clear">
+            <a href="?action=truename_edit" class="db clear">
+                <label class="name db fl">真实姓名 :</label><span class="db fl info grey">{if $member_info['truename']}{$member_info['truename']}{else}请输入真实姓名{/if}</span>
+                <i class="fa fa-angle-right fr"></i>
+            </a>
+        </li>
+        <li class="clear">
+            <a href="?action=gender_edit" class="db clear">
+                <label class="name db fl">性别 :</label><span class="db fl info grey">{if $member_info['gender']==1}男{elseif $member_info['gender']==2}女{else}请选择性别{/if}</span>
+                <i class="fa fa-angle-right fr"></i>
+            </a>
+        </li>
+
+        <li class="clear">
+            <a href="?action=change_mobile" class="db clear">
+                <label class="name db fl">手机号码 :</label><span class="db fl info grey">{if $member_info['mobile']}{$member_info['mobile']}{else}完善手机{/if}</span>
+                <i class="fa fa-angle-right fr"></i>
+            </a>
+        </li>
+        <li class="clear">
+            <a href="?action=area_edit" class="db clear">
+                <label class="name db fl">地址 :</label><span class="db fl info grey">{if $member_info['areaid']}{area_pos($member_info['areaid'],'')}{else}请选择地区{/if}{if $member_info['address']}{$member_info['address']}{/if}</span>
+                <i class="fa fa-angle-right fr"></i>
+            </a>
+        </li>
+        <li class="clear">
+            <a href="?action=info_edit" class="db clear">
+                <label class="name db fl">个人简介 :</label><span class="db fl info grey">{if $member_info['introduce']}{$member_info['introduce']}{else}请填写个人简介{/if}</span>
+                <i class="fa fa-angle-right fr"></i>
+            </a>
+        </li>
+    </ul>
+</section>
+</body>
+</html>

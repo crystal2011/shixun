@@ -54,6 +54,7 @@ if($action=='ajax'){
     $areaparentid = $areainfo?explode(',',$areainfo['arrparentid'].','.$areainfo['areaid']):array();
     $seo_title = '商家优惠-';
     $topname = '商家优惠';
+    $moduleidtype = 1;
     include template('discount/index','mobile');
 }
 

@@ -1,14 +1,19 @@
 {template 'header','mobile'}
 {template 'search1','mobile'}
+<style>
+    .dfas {font-size:0.8em;line-height:1.8em;}
+</style>
 <section id="content">
-    {template 'thumbinfo','mobile'}
-    <article class="info clear">
-        <span class="fl de0000">招聘职位：{$info['title']}</span>
+    <article class="line"></article>
+    <article class="info clear" style="padding-bottom:10px;">
+        <span class="de0000">招聘职位：{$info['title']}</span>
+        <div class="clear dfas"><span class="fl">职位月薪：{if $info['minsalary'] && $info['maxsalary']}{$info['minsalary']}-{$info['maxsalary']}{elseif $info['minsalary']}{$info['minsalary']}{elseif $info['maxsalary']}{$info['maxsalary']}{else}面议{/if}</span><span class="fr">招聘人数：{if $info['total']}{$info['total']}人{else}若干{/if}</span></div>
+        <div class="clear dfas"><span class="fl">发布日期：{date('Y-m-d',$info['addtime'])}</span><span class="fr">工作性质：{$aSetting['type'][$info['type']]}</span></div>
+        <div class="clear dfas"><span class="fl">工作经验：{if $info['experience']}{$info['experience']}年{else}不限{/if}</span><span class="fr">最低学历：{$aSetting['education'][$info['education']]}</span></div>
+        <div class="clear dfas"><span class="fl">工作地点：{area_pos($info['areaid'],'')}{$info['address']}</span></div>
     </article>
     <article class="line"></article>
     {template 'nums','mobile'}
-    <article class="line"></article>
-    {template 'shop','mobile'}
     <article class="line"></article>
     {template 'view','mobile'}
     <article class="line"></article>

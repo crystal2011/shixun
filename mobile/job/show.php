@@ -32,4 +32,7 @@ $seo_title = $info['title'].'-招聘信息-';
 $topname = '招聘信息';
 $likenum = 3;
 $moduleidtype = 2;
+$aSetting = cache_read('module-9.php');
+$aSetting['education'] = explode('|',$aSetting['education']);
+$aSetting['type'] = explode('|',$aSetting['type']);
 include template('job/show','mobile');

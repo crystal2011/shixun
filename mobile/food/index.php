@@ -63,6 +63,7 @@ if($action=='ajax'){
     $areaparentid = $areainfo?explode(',',$areainfo['arrparentid'].','.$areainfo['areaid']):array();
     $seo_title = '餐饮供应-';
     $topname = '餐饮供应';
+    $moduleidtype = 0;
     include template('food/index','mobile');
 }
 

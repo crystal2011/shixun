@@ -29,7 +29,9 @@
             {/if}
         </select>
     </span>
-    <span><a>发布</a></span>
+    {if isset($moduleidtype)}
+    <span><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布</a></span>
+    {/if}
 </article>
 <script>
     var str = "{$catid}"==""?'':"&catid={$catid}";

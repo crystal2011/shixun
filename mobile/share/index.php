@@ -37,5 +37,6 @@ if($action=='ajax'){
 }else{
     $seo_title = '分享-';
     $topname = '分享';
+    $moduleidtype = 5;
     include template('share/index','mobile');
 }

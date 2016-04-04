@@ -1,0 +1,26 @@
+{template 'top','mobile/member'}
+<section id="login-main">
+    <form id="res-form" action="/ajax.php?action=member&moduleid=2&job=saveinfo&field=username">
+        <article class="input-wrap"><span class="input-key">用户名：</span>
+            <input type="text" placeholder="请输入2-12个字" datatype="*2-12" value="{$_username}" ajaxurl="/ajax.php?action=member&moduleid=2&job=username" name="username" errormsg="请输入2-12个字" nullmsg="请输入2-12个字" class="input-value" autocomplete="off"/>
+        </article>
+        <input type="submit" value="提交" class="submit-btn"/>
+    </form>
+</section>
+
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+    $('#res-form').Validform({
+        tiptype:3,
+        ajaxPost:true,
+        callback:function(data){
+            alert(data.info);
+            if(data.status=='y'){
+                location.href = 'info.php';
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

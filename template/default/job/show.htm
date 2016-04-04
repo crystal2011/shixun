@@ -9,11 +9,12 @@
     <section class="food-del fl">
         <article class="border-box" style="overflow: hidden">
             <section class="food-del-box food-del-box1 fl">
-                <div class="food-del-head">
+                <div class="food-del-head clearfix">
                     <div class="fl">
                         <label>招聘职位</label>
                         <i class="icon-angle"></i>
                         <span style="font-size: 16px" title="{$aJob['title']}">{dsubstr($aJob['title'],50)}</span>
+
                     </div>
                     <div class="fr">
                         <i class="icon-liulan"></i>
@@ -28,7 +29,7 @@
                 </div>
                 <i class="cutline mt10" style="border-top: 1px dotted #777;"></i>
                 <p class="clearfix">
-                    <span class="fl">职位月薪：{if $aJob['minsalary'] && $aJob['maxsalary']}{$aJob['minsalary']}-{$aJob['maxsalary']}{elseif $aJob['minsalary']}{$aJob['minsalary']}{elseif $aJob['maxsalary']}{else}面议{/if}</span>
+                    <span class="fl">职位月薪：{if $aJob['minsalary'] && $aJob['maxsalary']}{$aJob['minsalary']}-{$aJob['maxsalary']}{elseif $aJob['minsalary']}{$aJob['minsalary']}{elseif $aJob['maxsalary']}{$aJob['maxsalary']}{else}面议{/if}</span>
                     <span class="fr">招聘人数：{if $aJob['total']}{$aJob['total']}人{else}若干{/if}</span>
                 </p>
                 <p class="clearfix">

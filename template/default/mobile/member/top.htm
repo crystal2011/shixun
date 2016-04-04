@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html>
+<head>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <!-- Mobile Devices Support @begin -->
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=yes, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <!-- Mobile Devices Support @end -->
+    <meta name="keywords" content="{$DT['seo_keywords']}">
+    <meta name="description" content="{$DT['seo_description']}">
+    <title>{if isset($seo_title)}{$seo_title}{/if}{$DT['seo_title']}</title>
+    <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="{DT_SKIN}css/mobile.css" rel="styleSheet"/>
+    <script src="{DT_STATIC}file/script/config.js"></script>
+    <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
+    <script src="{DT_SKIN}js/lib/sea.js"></script>
+    <script src="{DT_SKIN}js/global.js"></script>
+</head>
+<link href="{DT_SKIN}css/nmc.h5.main.min.css" rel="stylesheet"/>
+<style>
+    body {padding-top:0rem!important}
+</style>
+<header id="page-headert" class="clear" style="position:relative;">
+    <i onclick="history.go(-1)" class="fa fa-angle-left fl"></i>
+    <h2 class="fl">{$topname}</h2>
+    {if isset($moduleidtype)}  <!-- 头部右边显示需求发布的按钮 -->
+        <button id="release-btn" onclick="location.href='/mobile/share/publish.php?moduleidtype={$moduleidtype}'" style="background-color:#f60;color:#fff;padding:5px 10px;top:5px;right:10px;position:absolute" class="fr">发布</button>
+    {/if}
+</header>

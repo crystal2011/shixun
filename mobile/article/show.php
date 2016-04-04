@@ -9,7 +9,7 @@ $oArticle = new article(21);
 
 $id = isset($id)?intval($id):0;
 if(empty($id)){
-    dalert('非法操作','/mobile/article/list.php');
+    dalert('非法操作','/mobile/article/index.php');
 }
 
 $oArticle->itemid = $id;
@@ -32,4 +32,5 @@ $aRecommendFood = $oArticle->getright('title,itemid,introduce,hits,thumb',3,'add
 $seo_title = $info['title'].'-文章详情-';
 $topname = '文章详情';
 $commenttypeid = 9;
+$moduleidtype = 6;
 include template('article/show','mobile');

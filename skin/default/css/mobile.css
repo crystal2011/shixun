@@ -163,6 +163,8 @@ i {font-style:normal;}
     color:#fff;
     font-size:1.8em;
     padding-left:20px;
+    position:relative;
+    z-index:2;
 }
 #index-page .area i {margin-left:5px;}
 #index-page h2 {
@@ -173,7 +175,7 @@ i {font-style:normal;}
     position:absolute;
 }
 #index-page h2 img {vertical-align:middle;margin-right:5px;}
-#index-page .user {padding-right:20px;text-align:right;}
+#index-page .user {padding-right:20px;text-align:right;position:relative;z-index:2;}
 #index-page .user a {color:#fff;font-size:1.8em;}
 #index-page .user span {font-size:24px;}
 #index {background-color:#f5f5f5;}
@@ -817,4 +819,4 @@ a img {font-size:0px;}
 #publishform .smallinput {width:100px;max-width:100%;}
 #publishform .textinput {height:100px;}
 #publishform p{margin:5px 0px 0px 0px;}
-#publishform select {margin-bottom:5px;}
+#publishform select {margin-bottom:5px;background-color:#fff;color:#000;}

@@ -41,4 +41,5 @@ $seo_title = $info['title'].'菜系-';
 $topname = '菜系';
 $likenum = 5;
 $commenttypeid = 5;
+$moduleidtype = 4;
 include template('school/foodshow','mobile');
