@@ -50,5 +50,6 @@ if($action=='ajax'){
     $aCatList = array_chunk(showCat($catinfo,13),4);     //列表选择显示分类
     $seo_title = '菜系-';
     $topname = '菜系';
+    $moduleidtype = 4;
     include template('school/food','mobile');
 }

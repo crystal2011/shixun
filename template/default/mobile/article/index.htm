@@ -1,7 +1,11 @@
 {template 'header','mobile'}
 {template 'search','mobile'}
 <section>
-    <span class="ids">{ad(80)}</span>
+    <span class="ids">{ad(84)}</span>
+    <article id="areaselect"  class="clear">
+        <span  style="float:right;"><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布</a></span>
+    </article>
+    <article class="line" style="border-width:0px;"></article>
     <article class="list">
         {if $list}
         {loop $list $k $v}

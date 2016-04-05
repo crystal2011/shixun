@@ -1,0 +1,179 @@
+{template 'top','mobile/member'}
+<section class="mu">
+    <section class="mu-list mu-collist active mh-home">
+        <ul>
+            {if $list}
+                <article class="pullDownLabel">继续下拉刷新列表</article>
+                {loop $list $k $v}
+                <li class="clear">
+                    <a href="/mobile/cession/show.php?id={$v['itemid']}"  target="_blank"style="background-image: url({$v['thumb']});background-size:100%" class="mucollect-img db fl" title="{$v['title']}"></a>
+                    <div class="message fl">
+                        <span class="info db"><a href="/mobile/cession/show.php?id={$v['itemid']}"  target="_blank">{dsubstr($v['title'],40)}</a></span>
+                        <span class="money orange db">价格：{$v['price']}</span>
+                        分类：{if isset($aCatCache[$v['catid']])}{$aCatCache[$v['catid']]['catname']}{/if}&nbsp;&nbsp;&nbsp;状态：{status_show($v['status'])}
+                    </div>
+                    <span class="fr  tc ">
+                        {if $v['status']==1}
+                        <span class="check-btn orange bk-white" onclick="location.href='/mobile/share/publish.php?moduleidtype=3&itemid={$v[itemid]}'" style="display:block;">修改</span>
+                        {/if}
+                        <span  onclick="del({$v['itemid']},this)" class="check-btn orange bk-white" style="display:block;">删除</span>
+                    </span>
+                </li>
+                {/loop}
+                {if $list && $page<$totalpage}
+                <article class="pullUpLabel">继续拉动加载更多</article>
+                {/if}
+            {/if}
+        </ul>
+    </section>
+</section>
+<script src="{DT_SKIN}js/popup.js"></script>
+<script src="{DT_SKIN}js/iscroll.js"></script>
+<script>
+    var page = 1;
+    function get_collect(){
+        page++;
+        $.ajax({
+            type:'post',
+            url:"?action=ajax",
+            data:{'page':page},
+            dataType:'json',
+            success:function(data){
+                if(data.status=='n'){
+                    alert(data.info);
+                }else{
+                    $('.pullUpLabel').before(data.info);
+                    if(page == data.totalpage){
+                        $(".pullUpLabel").remove();
+                    }
+                }
+            }
+        })
+    }
+
+    //删除
+    function del(itemid,_this){
+        Alert.Popup({
+            content: '<p style="text-align: center; font-size: 16px;">您确定要删除该店铺转让？</p><div style="text-align: center"><input type="button" value="确定" class="affirm" style="width: 30%;border: none;height:2rem;text-align:center;"><input type="button" value="取消" class="cancel" style="width: 30%;border: none;text-align:center;height:2rem;margin-left: 10px"></div>',//  弹出内容
+            type: 1,//弹出层类型
+            Width:"auto",//宽度
+            success:function () {
+                $('.affirm').click(function(){
+                    $.ajax({
+                        type: 'post',
+                        url: "?action=del",
+                        data: {'itemid': itemid},
+                        dataType: 'json',
+                        success: function (data) {
+                            Alert.close();
+                            alert(data.info);
+                            if (data.status == 'y') {
+                                $(_this).closest('li').remove();
+                            }
+                        }
+                    })
+                })
+                $('.cancel').click(function () {
+                    Alert.close();
+                })
+            }
+        })
+    }
+
+    /* 列表顶部下拉刷新，底部上拉加载更多 */
+    (function() {
+        var className, getList, i, j, len, list, pullUpLabel, ref, refreshList, windows;
+
+        list = {
+            lists: [],
+            element: '.mh-home',
+            className: 'mh-home',
+            addListElement: $('.pullUpLabel'),
+            thresholdValue: 45,
+            addTip: {
+                initialize: '继续拉动加载更多',
+                load: '正在加载...',
+                soonLoad: '释放手指加载更多',
+                state: false
+            },
+            refreshTip: {
+                element: $('.pullDownLabel'),
+                initialize: '继续下拉刷新列表',
+                soonLoad: '释放手指刷新列表',
+                state: false
+            }
+        };
+
+        windows = {
+            width: $(window).width(),
+            height: $(window).height()
+        };
+
+        $(list.element).css({
+            height: windows.height - 101 + 'px'
+        });
+
+
+        /*
+         ajax 下拉请求列表
+         fn {Function} 回调函数
+         i {Number} 当前滚动的列表索引值
+         */
+        getList = function(fn) {
+            get_collect();
+            return fn();
+        };
+
+
+        pullUpLabel = function(i) {
+            list.addListElement.text(list.addTip.load);
+            return getList(function() {
+                list.lists[i].refresh();
+                return list.addListElement.text(list.addTip.initialize);
+            }, i);
+        };
+
+        refreshList = function(element, i) {
+            var scroll;
+            scroll = new iScroll(element, {
+                useTransform: true,
+                fadeScrollbars: false,
+                onRefresh: function() {},
+                onScrollMove: function() {
+                    if (this.y < (this.maxScrollY - list.thresholdValue)) {
+                        list.addListElement.text(list.addTip.soonLoad);
+                        list.addTip.state = true;
+                    } else {
+                        list.addListElement.text(list.addTip.initialize);
+                        list.addTip.state = false;
+                    }
+                    if (this.y > list.thresholdValue) {
+                        list.refreshTip.element.text(list.refreshTip.soonLoad);
+                        return list.refreshTip.state = true;
+                    } else {
+                        list.refreshTip.element.text(list.refreshTip.initialize);
+                        return list.refreshTip.state = false;
+                    }
+                },
+                onScrollEnd: function() {
+                    if (list.addTip.state) {
+                        pullUpLabel(i);
+                    }
+                    if (list.refreshTip.state) {
+                        return location.reload();
+                    }
+                }
+            });
+            return list.lists.push(scroll);
+        };
+
+        ref = $(list.element);
+        for (i = j = 0, len = ref.length; j < len; i = ++j) {
+            className = ref[i];
+            refreshList(document.getElementsByClassName(list.className)[i], i);
+        }
+
+    }).call(this);
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+{template 'top','mobile/member'}
+<style>
+    body {background-color:#fff;}
+    .adtable {width:100%;}
+    .bottomtr {border-bottom:1px solid #f1f1f1;}
+    .adtable td {height:30px;line-height:30px;}
+    #formhorn {padding:0px 5px;}
+    #formhorn select {background-color:#fff;padding:5px;margin-bottom:5px;line-height:30px;height:30px;}
+    #formhorn select option {line-height:30px;height:30px;}
+    .red {color:red;}
+</style>
+<section class="mu" style="border-top:1px solid #f1f1f1;">
+    <section class="mu-list mu-collist active mh-home">
+        <ul>
+            {if $list}
+            <article class="pullDownLabel">继续下拉刷新列表</article>
+            <li style="border-bottom:0px;">
+                <table class="adtable">
+                    <tr><td>申请时间</td><td>结算金额</td><td>结算时间</td><td>状态</td></tr>
+                    {loop $list $k $v}
+                    <tr class="bottomtr"><td>{date('Y-m-d H:i:s',$v['addtime'])}</td><td>{doubleval($v['money'])}元</td><td></td><td>
+                        {if $v['status']==0}
+                        <span style="color:#ea554f;">结算中</span>
+                        {elseif  $v['status']==1}
+                        <span style="color:#f89406;">拒绝</span>
+                        {else}
+                        <span style="color:#03b887;">完成</span>
+                        {/if}
+                    </td></tr>
+                    {/loop}
+                </table>
+            </li>
+            {/if}
+            {if $list && $page<$totalpage}
+            <article class="pullUpLabel">继续拉动加载更多</article>
+            {/if}
+            <ul>
+    </section>
+</section>
+<script src="{DT_SKIN}js/popup.js"></script>
+<script src="{DT_SKIN}js/iscroll.js"></script>
+<script>
+    var page = 1;
+    function get_collect(){
+        page++;
+        $.ajax({
+            type:'post',
+            url:"?action=ajax",
+            data:{'page':page},
+            dataType:'json',
+            success:function(data){
+                if(data.status=='n'){
+                    alert(data.info);
+                }else{
+                    $('.adtable').append(data.info);
+                    if(page == data.totalpage){
+                        $(".pullUpLabel").remove();
+                    }
+                }
+            }
+        })
+    }
+
+    /* 列表顶部下拉刷新，底部上拉加载更多 */
+    (function() {
+        var className, getList, i, j, len, list, pullUpLabel, ref, refreshList, windows;
+
+        list = {
+            lists: [],
+            element: '.mh-home',
+            className: 'mh-home',
+            addListElement: $('.pullUpLabel'),
+            thresholdValue: 45,
+            addTip: {
+                initialize: '继续拉动加载更多',
+                load: '正在加载...',
+                soonLoad: '释放手指加载更多',
+                state: false
+            },
+            refreshTip: {
+                element: $('.pullDownLabel'),
+                initialize: '继续下拉刷新列表',
+                soonLoad: '释放手指刷新列表',
+                state: false
+            }
+        };
+
+        windows = {
+            width: $(window).width(),
+            height: $(window).height()
+        };
+
+        $(list.element).css({
+            height: windows.height - 101 + 'px'
+        });
+
+
+        /*
+         ajax 下拉请求列表
+         fn {Function} 回调函数
+         i {Number} 当前滚动的列表索引值
+         */
+        getList = function(fn) {
+            get_collect();
+            return fn();
+        };
+
+
+        pullUpLabel = function(i) {
+            list.addListElement.text(list.addTip.load);
+            return getList(function() {
+                list.lists[i].refresh();
+                return list.addListElement.text(list.addTip.initialize);
+            }, i);
+        };
+
+        refreshList = function(element, i) {
+            var scroll;
+            scroll = new iScroll(element, {
+                useTransform: true,
+                fadeScrollbars: false,
+                onRefresh: function() {},
+                onScrollMove: function() {
+                    if (this.y < (this.maxScrollY - list.thresholdValue)) {
+                        list.addListElement.text(list.addTip.soonLoad);
+                        list.addTip.state = true;
+                    } else {
+                        list.addListElement.text(list.addTip.initialize);
+                        list.addTip.state = false;
+                    }
+                    if (this.y > list.thresholdValue) {
+                        list.refreshTip.element.text(list.refreshTip.soonLoad);
+                        return list.refreshTip.state = true;
+                    } else {
+                        list.refreshTip.element.text(list.refreshTip.initialize);
+                        return list.refreshTip.state = false;
+                    }
+                },
+                onScrollEnd: function() {
+                    if (list.addTip.state) {
+                        pullUpLabel(i);
+                    }
+                    if (list.refreshTip.state) {
+                        return location.reload();
+                    }
+                }
+            });
+            return list.lists.push(scroll);
+        };
+
+        ref = $(list.element);
+        for (i = j = 0, len = ref.length; j < len; i = ++j) {
+            className = ref[i];
+            refreshList(document.getElementsByClassName(list.className)[i], i);
+        }
+
+    }).call(this);
+</script>
+</body>
+</html>

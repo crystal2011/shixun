@@ -1,0 +1,45 @@
+{template 'top','mobile/member'}
+<style>
+    span#load_area_1 select{padding:.2rem;color: #666;height: 3rem;border: 1px solid #b6b6b6;box-shadow: none;background-color:#fff;width:30%;max-width:150px;}
+</style>
+<script type="text/javascript" src="{DT_STATIC}lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/color.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<section id="login-main">
+    <form id="res-form" action="/ajax.php?action=member&moduleid=2&job=saveinfo&field=address">
+        <article class="input-wrap">
+            <?php echo ajax_area_select('areaid', '请选择', $member_info['areaid']);?>
+        </article>
+        <article class="input-wrap"><span class="input-key">详细地址：</span>
+            <input type="text" placeholder="详细地址" maxlength="50" dataType="*" errormsg="地址不能为纯数字" nullmsg="请输入详细地址" name="address" value="{$member_info['address']}"  class="input-value" autocomplete="off"/>
+        </article>
+        <input type="submit" value="提交" class="submit-btn"/>
+    </form>
+</section>
+
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+    $("#res-form").Validform({
+        tiptype: 3,
+        postonce:true,
+        ajaxPost:true,
+        beforeSubmit:function(curform){
+            var areaid_1 = $("#areaid_1").val();
+            if(areaid_1==0){
+                $("#addresssubmit").next().removeClass('Validform_right').addClass('Validform_checktip Validform_wrong').html('请选择地区');
+                return false;
+            }
+        },
+        callback:function(data){
+            alert(data.info);
+            if(data.status=='y'){
+                location.href = 'info.php';
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

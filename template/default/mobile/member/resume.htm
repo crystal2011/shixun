@@ -1,0 +1,156 @@
+{template 'top','mobile/member'}
+<style>
+    select{padding:.2rem;color: #666;height: 3rem;border: 1px solid #b6b6b6;box-shadow: none;background-color:#fff;}
+    #load_area_1 select {width:70px;}
+    .red {color:red;}
+    .slnd {line-height:2.6rem;display:block;background-color:#fff;}
+    .radios {appearance:radio;-moz-appearance:radio;-webkit-appearance:radio;}
+</style>
+<script type="text/javascript" src="<?php echo DT_STATIC;?>lang/<?php echo DT_LANG;?>/lang.js"></script>
+<script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
+<script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/common.js"></script>
+<script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/admin.js"></script>
+<section id="login-main">
+    <form id="res-form" method="post" action="/mobile/member/resume.php?action=add">
+        <article class="input-wrap">
+            <span><i class="red">*</i>分类：</span><?php echo ajax_category_select('catid', '请选择',isset($info['catid'])?$info['catid']:'', 9);?><span class="Validform_checktip" style="float:none;"></span>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>真实姓名</span>
+            <input name="truename"  type="text" datatype="*2-10" value="<?php echo isset($info['truename'])?$info['truename']:'' ?>" nullmsg="请填写真实姓名" errormsg="请填写真实姓名" class="input-value" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>联系电话</span>
+            <input  class="input-value" name="telephone"  type="text" datatype="mobile" value="<?php echo isset($info['telephone'])?$info['telephone']:'' ?>" nullmsg="请填写联系电话" errormsg="请填写联系电话" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>电子邮箱</span>
+            <input  class="input-value" name="email"  type="text" datatype="e" value="<?php echo isset($info['email'])?$info['email']:'' ?>" nullmsg="请填写电子邮箱" errormsg="请填写电子邮箱" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>免冠照片</span>
+            <input class="input-value" name="thumb" id="thumb" style="width:80%;" type="text" datatype="empty|url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>&nbsp;&nbsp;<span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);" class="jt">[上传]</span>
+        </article>
+        <article class="input-wrap clear"><span class="input-key"><i class="red">*</i>性别</span>
+            <span class="input-value slnd" >
+                <input name="gender"  type="radio" class="radios"  value="1" <?php echo empty($info['gender']) || $info['gender']==1?'checked':'' ?> id="gender1" /><label for="gender1"> 男士</label>
+                <input name="gender"  class="radios" type="radio"  value="2" <?php echo isset($info['gender']) && $info['gender']==2?'checked':'' ?> id="gender2" /><label for="gender2"> 女士</label>
+            </span>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>婚姻状况</span>
+            <span class="input-value slnd" >
+                <?php foreach($aSetting9['marriage'] as $k=>$v) { if($k == 0) continue; ?>
+                    <input type="radio" class="radios" name="marriage" id="marriage_<?php echo $k;?>" value="<?php echo $k;?>" <?php echo (isset($info['marriage']) && $k == $info['marriage']) || (!isset($info['marriage']) && $k==1) ? ' checked' : '';?>/><label for="marriage_<?php echo $k;?>"> {$v}</label>
+                <?php }?>
+            </span>
+        </article>
+        <article class="input-wrap"><span><i class="red">*</i>现居住地：</span>
+            {ajax_area_select('areaid', '请选择', isset($info['areaid'])?$info['areaid']:0)}
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>联系地址</span>
+            <input  class="input-value" name="address"  type="text" datatype="*2-50" value="<?php echo isset($info['address'])?$info['address']:'' ?>" nullmsg="请填写地址" errormsg="请输入2-50个字" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>生日：</span>
+            <input name="byear" type="text" id="byear" class="input-value" size="4" datatype="n4-4" style="width:130px;max-width:50%" errormsg="请输入生日" value="<?php echo isset($info['byear'])?$info['byear']:'';?>"/> 年
+            <select name="bmonth" datatype="*">
+                <?php for($i = 1; $i < 13; $i++) {
+                                        echo '<option value="'.$i.'"'.(isset($info['bmonth']) && $info['bmonth']==$i ? ' selected' : '').'>'.$i.'</option>';
+                }
+                ?>
+            </select>
+            月
+            <select name="bday" datatype="*">
+                <?php for($i = 1; $i < 32; $i++) {
+                                        echo '<option value="'.$i.'"'.(isset($info['bday']) && $info['bday']==$i ? ' selected' : '').'>'.$i.'</option>';
+                }
+                ?>
+            </select>
+            日
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>身高</span>
+            <input name="height" type="text" id="height" size="10" style="width:130px;max-width:100%;" datatype="empty|n2-3" errormsg="请输入身高" value="<?php echo isset($info['height']) && $info['height']?$info['height']:'';?>" class="input-value" autocomplete="off" /> cm
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>体重</span>
+            <input style="width:130px;max-width:100%;" name="weight" type="text" id="weight" size="10" datatype="empty|n2-3" errormsg="请输入体重" value="<?php echo isset($info['weight']) && $info['weight']?$info['weight']:'';?>" class="input-value" autocomplete="off" /> kg
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>学历</span>
+            <span class="input-value slnd" style="height:auto;">
+                <?php foreach($aSetting9['education'] as $k=>$v) { if($k == 0) continue;?>
+                <input type="radio" class="radios" name="education" id="education_<?php echo $k;?>" value="<?php echo $k;?>"<?php echo (isset($info['education']) && $info['education']==$k) || (!isset($info['education']) && $k==1) ? ' checked' : '';?>/><label for="education_<?php echo $k;?>"> <?php echo $v;?></label>
+                <?php } ?>
+                &nbsp;&nbsp;(以上)
+            </span>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>毕业院校</span>
+            <input  class="input-value" name="school" type="text" id="school" datatype="*2-50"  errormsg="请输入院校" size="30" value="<?php echo isset($info['school'])?$info['school']:'';?>" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>所学专业</span>
+            <input  class="input-value" name="major"  type="text" datatype="empty|*2-50" value="<?php echo isset($info['major'])?$info['major']:'' ?>" errormsg="请输入专业" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>专业技能</span>
+            <input  class="input-value" name="skill"  type="text" datatype="empty|*2-50" value="<?php echo isset($info['skill'])?$info['skill']:'' ?>" errormsg="请输入技能" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>语言水平</span>
+            <input  class="input-value" name="language"  type="text" datatype="empty|*2-50" value="<?php echo isset($info['language'])?$info['language']:'' ?>" errormsg="请输入语言水平" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>工作性质</span>
+            <span class="input-value slnd" >
+                <?php foreach($aSetting9['type'] as $k=>$v) { ?>
+                <input type="radio" name="type" class="radios" id="type_<?php echo $k;?>" value="<?php echo $k;?>"<?php echo (isset($info['type']) && $info['type']==$k) || (!isset($info['type']) && $k == 0) ? ' checked' : '';?>/><label for="type_<?php echo $k;?>"> <?php echo $v;?></label>
+                <?php } ?>
+            </span>
+        </article>
+        <article class="input-wrap"><span><i class="red"></i>期待薪资：</span>
+            <input name="minsalary" type="text" class="input-value" id="minsalary" datatype="empty|n1-7" errormsg="请输入期望薪资" size="6" style="width:80px;padding-left:.2rem" value="<?php echo isset($info['minsalary'])?$info['minsalary']:0;?>"/> 至
+            <input name="maxsalary" type="text" id="maxsalary" class="input-value" style="width:80px;padding-left:.2rem" datatype="empty|n1-7" errormsg="请输入期望薪资" size="6" value="<?php echo isset($info['maxsalary'])?$info['maxsalary']:0;?>"/> 元/月 <br />(不填或者填0为不限)
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red">*</i>工作经验</span>
+            <input class="input-value" name="experience" datatype="n1-2" style="width:130px;max-width:80%;" errormsg="请输入工作经验"  value="<?php echo isset($info['experience'])?$info['experience']:0;?>" size="4" id="experience" autocomplete="off"/> 年
+        </article>
+        <article class="input-wrap"><span><i class="red">*</i>求职状态：</span>
+            <select name="situation">
+                <?php foreach($aSetting9['situation'] as $k=>$v) { if($k == 0) continue; ?>
+                <option value="<?php echo $k;?>" <?php echo isset($info['situation']) && $k == $info['situation'] ? ' selected' : ''?>><?php echo $v;?></option>
+                <?php }  ?>
+            </select>
+        </article>
+        <article class="input-wrap"><span class="input-key"><i class="red"></i>简介</span>
+            <textarea name="content" id="content" class="input-value" style="height:100px;"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
+        </article>
+        <input type="hidden" name="submit" value="1" />
+        <input type="hidden" name="forward" value="{$forward}" />
+        <input type="submit" value="提交" class="submit-btn"/>
+    </form>
+</section>
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script>
+    $("#res-form").Validform({
+        tiptype: 3,
+        datatype:{
+            "mobile":function(gets,obj,curform,regxp){
+                if(!is_mobile(gets) && !is_phone(gets)) return '输入错误';
+                return true;
+            },
+            'empty':function(gets,obj,curform,regxp){
+                if(gets.length==0) return true;
+                return false;
+            }
+        },
+        beforeCheck:function(curform){
+            var isnotselect = true;
+            $("#res-form select").each(function(){
+                var selvel = $(this).val();
+                if(selvel==0){
+                    isnotselect = false;
+                    $(this).parent().parent().find('.Validform_checktip').removeClass('Validform_right').addClass('Validform_wrong').html('请选择');
+                    $(this).focus();
+                    return false;
+                }
+            })
+            if(!isnotselect) return false;
+            getToken();
+            return true;
+        }
+    })
+    $(document).on("change","select",function(){
+        $(this).parent().parent().find('.Validform_checktip').removeClass('Validform_wrong').html('');
+    })
+</script>
+</body>
+</html>

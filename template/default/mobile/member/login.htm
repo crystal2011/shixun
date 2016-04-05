@@ -1,0 +1,41 @@
+{template 'top','mobile/member'}
+<section id="login-main">
+    <form id="res-form" action="/mobile/member/login.php" method="post">
+        <article class="input-wrap"><span class="input-key">用户名：</span>
+            <input type="text" placeholder="请输入手机号/用户名" name="username" datatype="m|s3-15" errormsg="请输入手机号/用户名" class="input-value" autocomplete="off"/>
+        </article>
+        <article class="input-wrap"><span class="input-key">密&nbsp;&nbsp;&nbsp;码：</span>
+            <input style="display:none">
+            <input type="password" placeholder="请输入登录密码" name="password" datatype="s6-20" class="input-value" autocomplete="off"/>
+        </article>
+        <input type="hidden" name="submit" value="1" />
+        <input type="hidden" name="forward" value="{$forward}" />
+        <input type="submit" value="立即登录" class="submit-btn"/>
+    </form>
+    <article class="page-skip-box clear"><span class="fl">还没账号，<a href="register.php">立即注册</a></span><span class="fr"><a href="findpw.php">忘记密码</a></span></article>
+    <script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+    <script src="{DT_SKIN_TWO}js/popup.js"></script>
+    <script type="text/javascript">
+        $("#res-form").Validform({
+            tiptype: 3,
+            postonce:true,
+            ajaxPost:true,
+            beforeSubmit:function(curform){
+                getToken();
+                return true;
+            },
+            callback:function(data){
+                if(data.status=='n'){
+                    alert(data.info);
+                }else{
+                    window.setTimeout("locationhref('"+data.forward+"')",1000);
+                }
+            }
+        })
+        function locationhref(url){
+            location.href = url;
+        }
+    </script>
+</section>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{template 'header','mobile'}
+{template 'search','mobile'}
+<script>
+    $(function(){
+        $.ajax({
+            type:'post',
+            async:false,
+            url:'/ajax.php?action=selectcity&type=getFirstCity',
+            success:function(data){
+                $("#selectcity1").append(data);
+            }
+        })
+        //切换城市选择
+        $(document).on("change","#selectcity1",function(){
+            var cityid = $(this).val();
+            var cityoption = '<option value="0">选择城市</option>';
+            if(cityid!=0){
+                $.ajax({
+                    type:'post',
+                    async:false,
+                    url:'/ajax.php?action=selectcity&type=getSecondCity&areaid='+cityid,
+                    success:function(data){
+                        cityoption += data;
+                    }
+                })
+            }
+            $("#selectcity2").html(cityoption);
+        })
+        $("#selectcitybutton").click(function(){
+            var firstcityid = $("#selectcity1").val();
+            var secondcityid = $("#selectcity2").val();
+            if(firstcityid!=0 && secondcityid==0){
+                alert('请选择城市');
+                return false;
+            }
+            $.ajax({
+                type:'post',
+                async:false,
+                url:'/ajax.php?action=selectcity&type=getCityButton&areaid='+secondcityid,
+                success:function(data){
+                    location.href = '/mobile/index.php';
+                }
+            })
+        })
+    })
+</script>
+<section>
+    <article id="areaselect"  class="clear">
+        <span>
+            <select id="selectcity1">
+                <option value="0">全国</option>
+            </select>
+        </span>
+        <span>
+            <select id="selectcity2">
+                <option value="0">选择市级</option>
+            </select>
+        </span>
+        <span><a href="javascript:;" id="selectcitybutton">确定</a></span>
+    </article>
+</section>

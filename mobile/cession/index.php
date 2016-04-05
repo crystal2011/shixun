@@ -57,5 +57,6 @@ if($action=='ajax'){
     $areaparentid = $areainfo?explode(',',$areainfo['arrparentid'].','.$areainfo['areaid']):array();
     $seo_title = '店铺转让-';
     $topname = '店铺转让';
+    $moduleidtype = 3;
     include template('cession/index','mobile');
 }

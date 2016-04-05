@@ -1,0 +1,27 @@
+{template 'top','mobile/member'}
+<section id="login-main">
+    <form id="res-form" action="/ajax.php?action=member&moduleid=2&job=saveinfo&field=introduce">
+        <article class="input-wrap"><span class="input-key">个人简介：</span>
+
+            <textarea name="introduce" datatype="*5-200" errormsg="请输入5-200字" nullmsg="请输入5-200字" class="input-value" style="height:100px;">{$member_info['introduce']}</textarea>
+        </article>
+        <input type="submit" value="提交" class="submit-btn"/>
+    </form>
+</section>
+
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+    $('#res-form').Validform({
+        tiptype:3,
+        ajaxPost:true,
+        callback:function(data){
+            alert(data.info);
+            if(data.status=='y'){
+                location.href = 'info.php';
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

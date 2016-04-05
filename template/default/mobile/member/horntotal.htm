@@ -1,0 +1,187 @@
+{template 'top','mobile/member'}
+<style>
+    body {background-color:#fff;}
+    .adtable {width:100%;}
+    .bottomtr {border-bottom:1px solid #f1f1f1;}
+    .adtable td {height:30px;line-height:30px;}
+    #formhorn {padding:0px 5px;}
+    #formhorn select {background-color:#fff;padding:5px;margin-bottom:5px;line-height:30px;height:30px;}
+    #formhorn select option {line-height:30px;height:30px;}
+    .red {color:red;}
+</style>
+<form method="get" id="formhorn" action="/mobile/member/horntotal.php" onsubmit="return searchdate();">
+    <select name="fromyear">
+        <option value="0">选择年份</option>
+        <?php for($i=2016;$i<=date('Y');$i++){ ?>
+        <option value="{$i}" {if $fromyear==$i}selected{/if}>{$i}</option>
+        <?php } ?>
+    </select>
+    <select name="frommonth">
+        <option value="0">选择月份</option>
+        <?php for($i=1;$i<=12;$i++){ ?>
+        <option value="{$i}" {if $frommonth==$i}selected{/if}>{$i}</option>
+        <?php } ?>
+    </select>
+    -
+    <select name="toyear">
+        <option value="0">选择年份</option>
+        <?php for($i=2016;$i<=date('Y');$i++){ ?>
+        <option value="{$i}" {if $toyear==$i}selected{/if}>{$i}</option>
+        <?php } ?>
+    </select>
+    <select name="tomonth">
+        <option value="0">选择月份</option>
+        <?php for($i=1;$i<=12;$i++){ ?>
+        <option value="{$i}" {if $tomonth==$i}selected{/if}>{$i}</option>
+        <?php } ?>
+    </select>
+    <input type="submit" value="搜索" style="padding:3px 5px;"><br />
+    总金额：<span class="red">{doubleval($codeAll['allmoney'])}</span>元&nbsp;&nbsp;&nbsp;
+    优惠：<span class="red">{doubleval($codeAll['money'])}</span>元&nbsp;&nbsp;&nbsp;
+    折扣：<span class="red">{doubleval($codeAll['discountfee'])}</span>元
+</form>
+<section class="mu" style="border-top:1px solid #f1f1f1;">
+    <section class="mu-list mu-collist active mh-home">
+
+        <ul>
+            {if $list}
+            <article class="pullDownLabel">继续下拉刷新列表</article>
+            <li style="border-bottom:0px;">
+                <table class="adtable">
+                    <tr><td>时间</td><td>总金额</td><td>优惠金额</td><td>折扣金额</td></tr>
+                    {loop $list $k $v}
+                    <tr class="bottomtr"><td>{$v['ym']}</td><td>{doubleval($v['allmoney'])}元</td><td>{doubleval($v['money'])}元</td><td>{doubleval($v['discountfee'])}折</td></tr>
+                    {/loop}
+                </table>
+            </li>
+            {/if}
+            {if $list && $page<$totalpage}
+            <article class="pullUpLabel">继续拉动加载更多</article>
+            {/if}
+        <ul>
+    </section>
+</section>
+<script src="{DT_SKIN}js/popup.js"></script>
+<script src="{DT_SKIN}js/iscroll.js"></script>
+<script>
+    var page = 1;
+    var fromyear = "{$fromyear}";
+    var frommonth = "{$frommonth}";
+    var tomonth = "{$tomonth}";
+    function get_collect(){
+        page++;
+        $.ajax({
+            type:'post',
+            url:"?action=ajax",
+            data:{'page':page,'fromyear':fromyear,'frommonth':tomonth},
+            dataType:'json',
+            success:function(data){
+                if(data.status=='n'){
+                    alert(data.info);
+                }else{
+                    $('.adtable').append(data.info);
+                    if(page == data.totalpage){
+                        $(".pullUpLabel").remove();
+                    }
+                }
+            }
+        })
+    }
+
+    /* 列表顶部下拉刷新，底部上拉加载更多 */
+    (function() {
+        var className, getList, i, j, len, list, pullUpLabel, ref, refreshList, windows;
+
+        list = {
+            lists: [],
+            element: '.mh-home',
+            className: 'mh-home',
+            addListElement: $('.pullUpLabel'),
+            thresholdValue: 45,
+            addTip: {
+                initialize: '继续拉动加载更多',
+                load: '正在加载...',
+                soonLoad: '释放手指加载更多',
+                state: false
+            },
+            refreshTip: {
+                element: $('.pullDownLabel'),
+                initialize: '继续下拉刷新列表',
+                soonLoad: '释放手指刷新列表',
+                state: false
+            }
+        };
+
+        windows = {
+            width: $(window).width(),
+            height: $(window).height()
+        };
+
+        $(list.element).css({
+            height: windows.height - 101 + 'px'
+        });
+
+
+        /*
+         ajax 下拉请求列表
+         fn {Function} 回调函数
+         i {Number} 当前滚动的列表索引值
+         */
+        getList = function(fn) {
+            get_collect();
+            return fn();
+        };
+
+
+        pullUpLabel = function(i) {
+            list.addListElement.text(list.addTip.load);
+            return getList(function() {
+                list.lists[i].refresh();
+                return list.addListElement.text(list.addTip.initialize);
+            }, i);
+        };
+
+        refreshList = function(element, i) {
+            var scroll;
+            scroll = new iScroll(element, {
+                useTransform: true,
+                fadeScrollbars: false,
+                onRefresh: function() {},
+                onScrollMove: function() {
+                    if (this.y < (this.maxScrollY - list.thresholdValue)) {
+                        list.addListElement.text(list.addTip.soonLoad);
+                        list.addTip.state = true;
+                    } else {
+                        list.addListElement.text(list.addTip.initialize);
+                        list.addTip.state = false;
+                    }
+                    if (this.y > list.thresholdValue) {
+                        list.refreshTip.element.text(list.refreshTip.soonLoad);
+                        return list.refreshTip.state = true;
+                    } else {
+                        list.refreshTip.element.text(list.refreshTip.initialize);
+                        return list.refreshTip.state = false;
+                    }
+                },
+                onScrollEnd: function() {
+                    if (list.addTip.state) {
+                        pullUpLabel(i);
+                    }
+                    if (list.refreshTip.state) {
+                        return location.reload();
+                    }
+                }
+            });
+            return list.lists.push(scroll);
+        };
+
+        ref = $(list.element);
+        for (i = j = 0, len = ref.length; j < len; i = ++j) {
+            className = ref[i];
+            refreshList(document.getElementsByClassName(list.className)[i], i);
+        }
+
+    }).call(this);
+</script>
+</body>
+</html>

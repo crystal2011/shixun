@@ -23,7 +23,7 @@ switch($action){
         list($aCai,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status',$where.' and (status=3 or status = 2 or status = 1)','hits desc','10');
 
         $active = 'dish';
-        $seo_title = '菜系管理-会员中心-';
+        $seo_title = '名厨学堂管理-会员中心-';
         $aCatCache = cache_read('category-13.php');
         $nav_selected='member';
         include template('dish', $module);

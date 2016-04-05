@@ -1,0 +1,67 @@
+{template 'top','mobile/member'}
+<script type="text/javascript" src="{DT_STATIC}lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/color.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<script>
+    function member_logo(val){
+        if(val){
+            $.ajax({
+                type:'post',
+                url:'/ajax.php?action=member&job=memberlogo&moduleid=2',
+                data:{'logo':val},
+                success:function(data){
+                    $("#member_logo").attr("src",val);
+                }
+            })
+        }
+    }
+    </script>
+<section style="background-image: url({DT_SKIN}image/mobile/back.jpg);background-size:100%" class="person">
+    <div class="bg-person bk-white" ><img src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" style="width:100%;height:100%;border-radius: 50px;" id="member_logo" onclick="Dthumb(2,'','','',true,'','member_logo',200)" /></div>
+    <div class="name white tc">{$_username} </div>
+</section>
+<section class="mu mu-info-list">
+    <a href="info.php" class="db">个人信息<i class="fa fa-angle-right fr"></i></a>
+    <a href="safe.php" class="db">安全中心<i class="fa fa-angle-right fr"></i></a>
+    <a href="food.php" class="db">餐饮供应管理<i class="fa fa-angle-right fr"></i></a>
+    <a href="discount.php" class="db">商家优惠管理<i class="fa fa-angle-right fr"></i></a>
+    <a href="job.php" class="db">招聘信息管理<i class="fa fa-angle-right fr"></i></a>
+    <a href="cession.php" class="db">店铺转让管理<i class="fa fa-angle-right fr"></i></a>
+    <a href="dish.php" class="db">名厨学堂管理<i class="fa fa-angle-right fr"></i></a>
+    {if $horninfo}
+    <a href="hornindex.php" class="db">羊角会管理<i class="fa fa-angle-right fr"></i></a>
+    {/if}
+    <a href="share.php" class="db">美食分享管理<i class="fa fa-angle-right fr"></i></a>
+    <a href="article.php" class="db">文章发布管理<i class="fa fa-angle-right fr"></i></a>
+    <a href="resume.php" class="db">个人简介管理<i class="fa fa-angle-right fr"></i></a>
+    <a  class="db quit">退出<i class="fa fa-angle-right fr"></i></a>
+</section>
+<aside class="mh-pop user-pop hide">
+    <p><i>！</i><span>是否退出登入</span></p>
+    <input type="button" value="是" class="on"/>
+    <input type="button" value="否" class="off"/>
+</aside>
+<script src="{DT_SKIN}js/popup.js"></script>
+<script>
+    //退出登入弹出
+    var openHtml = $('.user-pop').prop("outerHTML");
+    $(".mu .quit").click(function(){
+        Alert.Popup({
+            content: openHtml,
+            Width: '17.38rem',
+            type: 1,
+            success: function () {
+                $('.mh-pop input.on').click(function(){
+                    location.href="logout.php";
+                })
+                $('.mh-pop input.off').click(function(){
+                    Alert.close();
+                })
+            }
+        });
+    });
+</script>
+</body>
+</html>

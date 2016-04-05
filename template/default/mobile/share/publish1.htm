@@ -33,17 +33,17 @@
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>上传图片</span>
                 <span class="publishright">
-                    <input name="thumb" id="thumb" type="text" class="input-text" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
-                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',500);" class="jt">[上传]</span>
+                    <input name="thumb" id="thumb" type="text" class="input-text" style="width:70%;max-width:300px;" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
+                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);" class="jt">[上传]</span>
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>上传图片</span>
+                <span class="publishleft"><i class="red">*</i>优惠时间</span>
                 <span class="publishright">
-                    <input id="date1" name="fromtime" value="<?php echo isset($info['fromtime']) && $info['fromtime']?date('Y-m-d',$info['fromtime']):'' ?>" class="input-text laydate-icon smallinput" type="text"/> -
-                    <input id="date2" name="totime" value="<?php echo isset($info['totime']) && $info['totime']?date('Y-m-d',$info['totime']):'' ?>" class="input-text laydate-icon smallinput" type="text"/>
+                    <input id="date1" name="fromtime" value="<?php echo isset($info['fromtime']) && $info['fromtime']?date('Y-m-d',$info['fromtime']):'' ?>" class="input-text laydate-icon smallinput" style="width:80px;" type="text"/> -
+                    <input id="date2" name="totime" value="<?php echo isset($info['totime']) && $info['totime']?date('Y-m-d',$info['totime']):'' ?>" class="input-text laydate-icon smallinput" style="width:80px;" type="text"/>
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>

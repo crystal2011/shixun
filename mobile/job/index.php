@@ -31,8 +31,7 @@ if($action=='ajax'){
         foreach($list as $k=>$v){
             $info .= '<div class="content">
                         <div class="clear info">
-                            <a class="thumb" href="/mobile/job/show.php?id='.$v['itemid'].'"><img src="'.$v['thumb'].'" /></a>
-                            <div class="text">
+                            <div class="text" style="padding-left:0px;">
                                 <a class="title" href="/mobile/job/show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
                                 <p class="introduce">简介：'.$v['introduce'].'</p>
                             </div>
@@ -52,5 +51,6 @@ if($action=='ajax'){
     $areaparentid = $areainfo?explode(',',$areainfo['arrparentid'].','.$areainfo['areaid']):array();
     $seo_title = '招聘信息-';
     $topname = '招聘信息';
+    $moduleidtype = 2;
     include template('job/index','mobile');
 }

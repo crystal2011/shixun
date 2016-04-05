@@ -31,4 +31,5 @@ $aHotFood = $oSell->getright('title,itemid,introduce,hits,likes,thumb,price',3,'
 $aRecommendFood = $oSell->getright('title,itemid,introduce,hits,likes,thumb,price',3,'addtime desc');  //推荐
 $seo_title = $info['title'].'-店铺转让-';
 $topname = '店铺转让';
+$moduleidtype = 3;
 include template('cession/show','mobile');

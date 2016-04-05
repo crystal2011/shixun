@@ -38,7 +38,8 @@ if($action=='ajax'){
     }
     exit(json_encode(array('info'=>$info,'totalpage'=>$totalpage)));
 }else{
-    $seo_title = '新闻列表-';
-    $topname = '新闻列表';
+    $seo_title = '文章发布-';
+    $topname = '文章发布';
+    $moduleidtype = 6;
     include template('article/index','mobile');
 }

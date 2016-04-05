@@ -137,7 +137,19 @@ if(isset($forward)) {
 } else {
 	$forward = strpos($DT_REF, (DT_DOMAIN ? DT_DOMAIN : DT_PATH)) === false ? DT_PATH : $DT_REF;
 }
+
+$isMobile = isMobile();
+$isMobilestr = strpos($_SERVER['PHP_SELF'],'mobile');
+if($isMobile && $isMobilestr===false){
+    dheader($CFG['url'].'mobile/index.php');
+}
+if($isMobile && $isMobilestr){
+    $forward = wapforward();
+}
+
 strip_uri($forward);
+
+
 
 (isset($action) && check_name($action)) or $action = '';
 $submit = (isset($_POST['submit']) || isset($_POST['dsubmit'])) ? 1 : 0;

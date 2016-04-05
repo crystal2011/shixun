@@ -1,0 +1,7 @@
+<nav id="home-nav" class="clear">
+    <a href="{$CFG['mobile_url']}" class="fl {if empty($activecur)}active{/if}"><i class="fa fa-home"></i><br/><span>首页</span></a>
+    <a href="{$CFG['mobile_url']}classify.php" class="fl"><i class="fa fa-eye"></i><br/><span>分类</span></a>
+    <a href="{$CFG['mobile_url']}ranking.php" class="fl"><i class="fa fa-list-ol"></i><br/><span>排行榜</span></a>
+    <a href="{$CFG['mobile_url']}trail.php" class="fl"><i class="fa fa-compass"></i><br/><span>足迹</span></a>
+    <a href="{$CFG['mobile_url']}member/" class="fl {if isset($activecur) && $activecur=='member'}active{/if}"><i class="fa fa-cubes"></i><br/><span>会员中心</span></a>
+</nav>

@@ -1,0 +1,31 @@
+{template 'top','mobile/member'}
+<section class="mu mu-pay-info">
+    <form id="res-form" action="/ajax.php?action=member&moduleid=2&job=saveinfo&field=gender">
+        <ul>
+            <li class="clear">
+                <label class="name db fl">性别 :</label>
+                <input type="radio"  style="appearance:radio;-moz-appearance:radio;-webkit-appearance:radio;" name="gender" value="1" {if $member_info['gender']==1}checked{/if} />男
+                <input type="radio" style="appearance:radio;-moz-appearance:radio;-webkit-appearance:radio;"  name="gender" value="2" datatype="*" {if $member_info['gender']==2}checked{/if} />女
+            </li>
+        </ul>
+        <input type="submit" value="提交" class="mu-recharge bk-orange white"/>
+
+    </form>
+</section>
+
+<script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+    $('#res-form').Validform({
+        tiptype:3,
+        ajaxPost:true,
+        callback:function(data){
+            alert(data.info);
+            if(data.status=='y'){
+                location.href = 'info.php';
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

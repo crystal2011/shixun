@@ -33,17 +33,65 @@
                 <span class="publishleft"><i class="red">*</i>公司名称</span>
                 <span class="publishright">
                     <input type="text" class="input-text" name="company" value="<?php echo isset($info['company'])?$info['company']:'' ?>" type="text" datatype="*2-50" placeholder="公司"/>
-                </span>
-            </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>单位</span>
-                <span class="publishright">
-                    <input type="text" class="input-text smallinput" value="<?php echo isset($info['unit'])?$info['unit']:'' ?>" name="unit" datatype="*1-5" type="text" placeholder="位/份"/>
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
+            <p class="clearfix">
+                <span class="publishleft"><i class="red">*</i>招聘人数</span>
+                <span class="publishright">
+                    <input type="text" class="input-text smallinput" name="total" value="<?php echo isset($info['total'])?$info['total']:'' ?>" type="text" datatype="n1-4" placeholder="填0为若干"/> [填0为若干]
+                    <br />
+                    <span class="Validform_checktip"></span>
+                </span>
+            </p>
+            <p class="clearfix">
+                <span class="publishleft"><i class="red">*</i>职位月薪</span>
+                <span class="publishright">
+                    <input type="text" class="input-text smallinput" value="<?php echo isset($info['minsalary'])?$info['minsalary']:'' ?>" name="minsalary" type="text" datatype="n1-8" placeholder="1000"/> -
+                    <input style="width:100px;" class="input-text smallinput" value="<?php echo isset($info['maxsalary'])?$info['maxsalary']:'' ?>" name="maxsalary" type="text" datatype="n1-8" placeholder="9000"/>
+                    [填0为面议]<span class="Validform_checktip"></span>
+                    <br />
 
+                </span>
+            </p>
+            <p class="clearfix">
+                <span class="publishleft"><i class="red">*</i>工作性质</span>
+                <span class="publishright">
+                    <select name="type" datatype="*" class="input-text smallinput">
+                        {loop $aSetting9['type'] $k $v}
+                        <option value="{$k}" <?php echo isset($info['type']) && $info['type']==$k?'selected':'' ?> >{$v}</option>
+                        {/loop}
+                    </select>
+                    <br />
+                    <span class="Validform_checktip"></span>
+                </span>
+            </p>
+            <p class="clearfix">
+                <span class="publishleft"><i class="red">*</i>学历要求</span>
+                <span class="publishright">
+                    <select name="education" datatype="*" class="input-text smallinput">
+                        {loop $aSetting9['education'] $k $v}
+                        <option value="{$k}" <?php echo isset($info['education']) && $info['education']==$k?'selected':'' ?>>{$v}</option>
+                        {/loop}
+                    </select>
+                    <br />
+                    <span class="Validform_checktip"></span>
+                </span>
+            </p>
+            <p class="clearfix">
+                <span class="publishleft"><i class="red">*</i>工作经验</span>
+                <span class="publishright">
+                    <select name="experience" datatype="*" class="input-text smallinput">
+                        <option value="0">不限</option>
+                        <?php for($i = 1; $i < 21; $i++) { ?>
+                        <option value="<?php echo $i;?>" <?php echo isset($info['experience']) && $info['experience']==$i?'selected':''; ?>><?php echo $i;?></option>
+                        <?php } ?>
+                    </select>&nbsp;&nbsp;年以上
+                    <br />
+                    <span class="Validform_checktip"></span>
+                </span>
+            </p>
             <br />
             <div class="h3h">联系方式</div>
             <p class="clearfix">
@@ -80,7 +128,7 @@
                 <input  type="hidden" name="submit" value="2"/>
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
                 <input  type="hidden" name="beforeurl" value="<?php echo $forward; ?>"/>
-                <input type="hidden" name="moduleidtype" value="0" />
+                <input type="hidden" name="moduleidtype" value="2" />
                 <input style="background:#ea5550;margin-left:150px;border:1px solid #f1f1f1;color:#fff;padding:10px 25px;border-radius:5px;margin-top:10px;font-size:1.4em;" type="submit" value="提交"/>
             </div>
         </form>
@@ -115,6 +163,7 @@
                 if($(this).attr("isarea")==1 && selvel!=0){
                     dn = dn+1;
                 }
+
                 if(selvel==0 && !($(this).attr("isarea")==1 && dn>=2)){
                     isnotselect = false;
                     $(this).parent().parent().find('.Validform_checktip').removeClass('Validform_right').addClass('Validform_wrong').html('请选择');
