@@ -140,10 +140,11 @@ if(isset($forward)) {
 
 $isMobile = isMobile();
 $isMobilestr = strpos($_SERVER['PHP_SELF'],'mobile');
-if($isMobile && $isMobilestr===false){
+$isallowhost = in_array($_SERVER['HTTP_HOST'],array('shixun.com','192.168.0.103','06.8660.org'))?true:false;
+/*if($isMobile && $isMobilestr===false && $isallowhost && strpos($_SERVER['PHP_SELF'],'ajax')===false){
     dheader($CFG['url'].'mobile/index.php');
-}
-if($isMobile && $isMobilestr){
+}*/
+if($isMobile && $isMobilestr && $isallowhost){
     $forward = wapforward();
 }
 

@@ -12,7 +12,7 @@ if(!$_userid) $action=='ajax'?exit(json_encode(array('status'=>'n','info'=>'è¯·å
 if(!$horninfo = $oSpecial->checkHasUser()) $action=='ajax'?exit(json_encode(array('status'=>'n','info'=>$oSpecial->errmsg))):dalert($oSpecial->errmsg,'/mobile/member/index.php');
 
 $where = ' c.codeid = '.$horninfo['itemid'];
-list($list,$totalpage) = $oSpecial->codeList($where,'2');
+list($list,$totalpage) = $oSpecial->codeList($where,'10');
 require_once DT_ROOT.'/module/member/member.class.php';
 $member_do = new member;
 $getListUser = $member_do->getListUser($list,'username');

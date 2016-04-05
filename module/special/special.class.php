@@ -555,10 +555,9 @@ class special {
         return true;
     }
 
-    function codeListTable($checktype,$codeid){
+    function codeListTable($checktype,$codeid,$type='pc',$limit=10){
         global $page;
         $table = $this->codetable($checktype);
-        $limit = 10;
         $offset = ($page-1)*$limit;
         $where = " c.codeid = {$codeid} and c.type = {$checktype} and c.status = 2 and t.status = 2 ";
 
@@ -566,7 +565,7 @@ class special {
         $list = array();
         while($r = $this->db->fetch_array($result)){
             $r['typename'] = $this->typearr($r['type']);
-            $r['url'] = $this->urlarr($r['type'],$r['t_itemid']);
+            $r['url'] = $this->urlarr($r['type'],$r['t_itemid'],$type);
             $list[] = $r;
         }
         $count = $this->db->get_one("select count(*) as num from {$this->db->pre}code c inner join {$this->db->pre}{$table} t on t.itemid = c.id where {$where}");
@@ -579,16 +578,29 @@ class special {
         return $arr[$type];
     }
 
-    function urlarr($type,$id){
-        $arr = array(
-            '/food/show.php?id='.$id.'&showtype=preview',
-            '/discount/show.php?id='.$id.'&showtype=preview',
-            '/job/show.php?id='.$id.'&showtype=preview',
-            '/cession/show.php?id='.$id.'&showtype=preview',
-            '/school/food.php?id='.$id.'&showtype=preview',
-            '/share/show.php?id='.$id.'&showtype=preview',
-            '/article/show.php?id='.$id.'&showtype=preview',
-        );
+    function urlarr($type,$id,$typ1e='pc'){
+        if($typ1e=='pc'){
+            $arr = array(
+                '/food/show.php?id='.$id.'&showtype=preview',
+                '/discount/show.php?id='.$id.'&showtype=preview',
+                '/job/show.php?id='.$id.'&showtype=preview',
+                '/cession/show.php?id='.$id.'&showtype=preview',
+                '/school/food.php?id='.$id.'&showtype=preview',
+                '/share/show.php?id='.$id.'&showtype=preview',
+                '/article/show.php?id='.$id.'&showtype=preview',
+            );
+        }else if($typ1e=='wap'){
+            $arr = array(
+                '/mobile/food/show.php?id='.$id.'&showtype=preview',
+                '/mobile/discount/show.php?id='.$id.'&showtype=preview',
+                '/mobile/job/show.php?id='.$id.'&showtype=preview',
+                '/mobile/cession/show.php?id='.$id.'&showtype=preview',
+                '/mobile/school/foodshow.php?id='.$id.'&showtype=preview',
+                '/mobile/share/show.php?id='.$id.'&showtype=preview',
+                '/mobile/article/show.php?id='.$id.'&showtype=preview',
+            );
+        }
+
         return $arr[$type];
     }
 

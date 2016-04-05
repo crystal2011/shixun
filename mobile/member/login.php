@@ -13,7 +13,7 @@ $forward = $forward ? linkurl($forward) : $CFG['url'].'mobile/index.php';
 $forward = wapforward();
 if($submit) {
     if($_userid) exit(json_encode(array('status'=>'n','info'=>'您已登录')));
-    if(!check_token()) exit(json_encode(array('status'=>'n','info'=>'登录失效，请重试')));
+    if(!check_token()) exit(json_encode(array('status'=>'n','info'=>'登录失效，请重试1')));
     $username = isset($username)?trim($username):'';
     $password = isset($password)?trim($password):'';
     $isautologin = isset($isautologin)?$isautologin:'';

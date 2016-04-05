@@ -153,16 +153,17 @@ i {font-style:normal;}
 
 /* 首页 */
 #index-page {
-    height:96px;
+    height:85px;
     background-color:#e9544e;
     padding-top:30px;
     color:#fff;
     position:relative;
 }
+#upthumb {width:200px;height:35px;opacity:0;}
 #index-page .area {
     color:#fff;
     font-size:1.8em;
-    padding-left:20px;
+    padding-left:10px;
     position:relative;
     z-index:2;
 }
@@ -175,9 +176,9 @@ i {font-style:normal;}
     position:absolute;
 }
 #index-page h2 img {vertical-align:middle;margin-right:5px;}
-#index-page .user {padding-right:20px;text-align:right;position:relative;z-index:2;}
+#index-page .user {padding-right:10px;text-align:right;position:relative;z-index:2;}
 #index-page .user a {color:#fff;font-size:1.8em;}
-#index-page .user span {font-size:24px;}
+#index-page .user span {font-size:18px;}
 #index {background-color:#f5f5f5;}
 #index .module {margin-bottom:20px;background-color:#fff;}
 #index .module li{
@@ -225,6 +226,7 @@ i {font-style:normal;}
 }
 #index .article .articlelist a {
     font-size:1.6em;
+    line-height:1.6em;
 }
 #index .article .articlelist span {
     width:50px;
@@ -245,8 +247,10 @@ i {font-style:normal;}
 }
 .channelheader img {
     vertical-align:top;
-    margin-right:20px;
+    margin-right:10px;
     margin-left:5px;
+    width:20px;
+    height:auto;
 }
 .channelheader {
     padding:20px 20px;
@@ -333,6 +337,7 @@ i {font-style:normal;}
     height:4.2em;
     overflow: hidden;
     margin:5px 0px;
+    line-height:1.4em;
 }
 #index  .schoolchannelul li .schoolcontent .handle img{
     vertical-align:middle;
@@ -368,14 +373,14 @@ i {font-style:normal;}
 }
 #footer .footerbutton {
     border-top:1px solid #d1d1d1;
-    padding:30px 0px;
+    padding:30px 0px 10px 0px;
 }
 #footer .footerbutton span {
     width:50%;
 }
 #footer .footerbutton .fl img,#footer .footerbutton .fr img  {
-    max-width:178px;
-    width:80%;
+    max-width:150px;
+    width:70%;
     height:auto;
 }
 #footer .footerbutton .fl{
@@ -388,7 +393,6 @@ i {font-style:normal;}
 }
 #footer .footerinfo {
     background-color:#f5f5f5;
-    padding:20px 0px;
     text-align:center;
 }
 #footer .footerinfo p{
@@ -429,6 +433,8 @@ i {font-style:normal;}
 #header1 .forback img {
     vertical-align:middle;
     margin-right:10px;
+    width:15px;
+    height:auto;
 }
 #header1 .headersearch{
      text-align:right;
@@ -436,12 +442,16 @@ i {font-style:normal;}
 #header1 .headersearch .span1{
     margin-right:40px;
 }
+#header1 .headersearch img {
+    width:26px;
+    height:auto;
+}
 #header1 .searchkey{
     border:1px solid #fff;
     border-radius:8px;
     width:40%;
-    height:2.8em;
-    line-height:2.8em;
+    height:26px;
+    line-height:26px;
     background-color:#f5f5f5;
     vertical-align:top;
     text-indent: 1em;
@@ -473,7 +483,7 @@ i {font-style:normal;}
     color:#6d6d6d;
 }
 #areaselect {
-    height:4.8em;
+
     display:block;
     background-color:#fff;
     border-top:1px solid #e6e6e6;
@@ -483,22 +493,36 @@ i {font-style:normal;}
     float:left;
     width:25%;
     display:block;
-    margin-top:3px;
+    text-align:center;
+    border-right:1px solid #f1f1f1;
+    height:2em;
+    margin-top:2px;
+    margin-bottom:2px;
+    line-height:2em;
+    font-size:2em;
+    color:#6d6d6d;
+    position:relative;
 }
 #areaselect span select {
     width:100%;
-    font-size:2em;
+    position:absolute;
+    font-size:1em;
+    top:0px;
+    left:0px;
     text-align:center;
     display:block;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity: 0;
+    opacity: 0;
     height:2em;
-    border:0px solid #f5f5f5;
-    border-right:1px solid #e6e6e6;
     background-color:#fff;
+    color:#6d6d6d;
+
 }
 
 #areaselect span a {
     width:100%;
-    font-size:2em;
     text-align:center;
     display:block;
     color:#e9544e;
@@ -546,9 +570,10 @@ i {font-style:normal;}
     height: 2.8em;
     overflow: hidden;
     margin: 5px 0px;
+    line-height:1.6em;
 }
 .list .content .price1 {
-    font-size: 1.8em;
+    font-size: 1.4em;
     color: #ff8125;
 }
 .list .content .handle {
@@ -563,6 +588,8 @@ i {font-style:normal;}
 .list .content .handle img {
     vertical-align:middle;
     margin-right:5px;
+    width:1em;
+    height:auto;
 }
 .list .content .handle .handle1 {
     margin-right:10px;
@@ -591,9 +618,9 @@ i {font-style:normal;}
 .hasbutton span{padding-top:10px;}
 .readmore a{
     text-align:center;
-    padding:50px 0px;
+    padding:20px 0px;
     display:block;
-    font-size:2.4em;
+    font-size:1.6em;
 }
 /* 内容 */
 #content .thumbinfo {
@@ -668,6 +695,8 @@ i {font-style:normal;}
 }
 #content .handle img {
     vertical-align:middle;margin-right:5px;
+    width:20px;
+    height:auto;
 }
 #content .shop {
     background-color:#fff;
@@ -706,10 +735,13 @@ i {font-style:normal;}
     display:block;
     height:auto;
     border-left:1px solid #e6e6e6;
+    width:50px;
+    height:auto;
 }
 #content .comment{
     background-color:#fff;
-    padding:20px 0px;
+    padding:20px 0px 0px 0px;
+
 }
 #content .comment .buttonlist {
     text-align:center;
@@ -727,13 +759,16 @@ i {font-style:normal;}
 #content .comment_view {
     border-top:1px solid #e6e6e6;
     margin-top:20px;
-    padding:20px 20px 0px 20px;
+    padding:20px;
     display:block;
     color:#ff8125;
-    font-size:2.4em;
+    font-size:2em;
+
 }
 #content .comment_view img {
     vertical-align: middle;
+    width:12px;
+    height:auto;
 }
 #content .view {
     background-color:#fff;
@@ -745,6 +780,7 @@ i {font-style:normal;}
 }
 #content .viewinfo img {
     max-width:100%;
+    height:auto;
 }
 .contentlist .channelheader{
     background-color:#fff;
@@ -755,8 +791,9 @@ i {font-style:normal;}
     text-align:center;
 }
 #footer1 img {
-    width:40%;
-    max-width:178px;
+    width:30%;
+    max-width:120px;
+    height:auto;
 }
 .schoolname {
     text-align:center;

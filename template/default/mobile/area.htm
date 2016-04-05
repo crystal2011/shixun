@@ -1,5 +1,12 @@
 <article id="areaselect"  class="clear">
     <span>
+        <?php $fiarea = '省级'; ?>
+        {if isset($aArea[0])}
+            {loop $aArea[0] $k $v}
+            {if in_array($v['areaid'],$areaparentid)}<?php $fiarea = $v['areaname']; ?>{/if}
+            {/loop}
+        {/if}
+        {$fiarea}
         <select>
             <option value="0">省级</option>
             {if isset($aArea[0])}
@@ -10,6 +17,13 @@
         </select>
     </span>
     <span>
+        <?php $fiarea = '市级'; ?>
+        {if isset($aArea[1])}
+            {loop $aArea[1] $k $v}
+            {if in_array($v['areaid'],$areaparentid)}<?php $fiarea = $v['areaname']; ?>{/if}
+            {/loop}
+        {/if}
+        {$fiarea}
         <select>
             <option value="0">市级</option>
             {if isset($aArea[1])}
@@ -20,6 +34,13 @@
         </select>
     </span>
     <span>
+        <?php $fiarea = '区级'; ?>
+        {if isset($aArea[2])}
+            {loop $aArea[2] $k $v}
+            {if in_array($v['areaid'],$areaparentid)}<?php $fiarea = $v['areaname']; ?>{/if}
+            {/loop}
+        {/if}
+        {$fiarea}
         <select>
             <option value="0">区级</option>
             {if isset($aArea[2])}

@@ -34,7 +34,7 @@
                 <span class="publishleft"><i class="red">*</i>上传图片</span>
                 <span class="publishright">
                     <input name="thumb" id="thumb" type="text" class="input-text" style="width:70%;max-width:300px;" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
-                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);" class="jt">[上传]</span>
+                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);thumbo()" class="jt">[上传]</span>
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
