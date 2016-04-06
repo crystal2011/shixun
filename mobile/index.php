@@ -24,7 +24,7 @@ if(isset($dtcity['areaid'])){
 //名厨
 require_once '../module/know/know.class.php';
 $oCai = new know();
-$pagesize = 3;
+$pagesize = 4;
 $aCai = $oCai->get_list($where.' and status = 3');
 $aSchool = $oMember->getListUser($aCai);
 

@@ -41,6 +41,7 @@ body, input, textarea {
 body {
     font-size:62.5%;
     background-color:#f5f5f5;
+    width:100%;
 }
 
 ol, ul {
@@ -153,9 +154,9 @@ i {font-style:normal;}
 
 /* 首页 */
 #index-page {
-    height:85px;
+    height:66px;
     background-color:#e9544e;
-    padding-top:30px;
+    padding-top:20px;
     color:#fff;
     position:relative;
 }
@@ -180,7 +181,7 @@ i {font-style:normal;}
 #index-page .user a {color:#fff;font-size:1.8em;}
 #index-page .user span {font-size:18px;}
 #index {background-color:#f5f5f5;}
-#index .module {margin-bottom:20px;background-color:#fff;}
+#index .module {margin-bottom:10px;background-color:#fff;}
 #index .module li{
     width:25%;
     float:left;
@@ -200,14 +201,14 @@ i {font-style:normal;}
 #index .module a p {margin-top:20px;margin-bottom:5px;}
 #index .module a span {font-size:1.6em;}
 
-#index .article {padding:20px;margin-top:20px;background-color:#fff;}
+#index .article {padding:10px;background-color:#fff;}
 #index .article .articleimgleft {
     width:50%;
-    padding-right:10px;
+    padding-right:5px;
 }
 #index .article .articleimgright {
     width:50%;
-    padding-left:10px;
+    padding-left:5px;
     display:block;
 }
 #index .article .articleimgleft img,#index .article .articleimgright img{
@@ -222,23 +223,23 @@ i {font-style:normal;}
 #index .article .articlelist article {
     padding-right:20px;
     overflow:hidden;
-    height:2.2em;
+    height:2em;
 }
 #index .article .articlelist a {
-    font-size:1.6em;
-    line-height:1.6em;
+    font-size:1.4em;
+    line-height:1.4em;
 }
 #index .article .articlelist span {
-    width:50px;
-    font-size:1.6em;
-    height:2.2em;
+    width:48px;
+    font-size:1.4em;
+    height:2em;
     color:#a4a4a4;
 }
-.more {text-align:right;margin-right:10px;font-size:1.6em;color:#a4a4a4;}
+.more {text-align:right;margin-right:10px;font-size:1.4em;color:#a4a4a4;}
 .more i {font-size:1.6em;}
 
 #index .hotchannel {
-    margin-top:20px;
+    margin-top:10px;
     background-color:#fff;
 }
 .channelheader a{
@@ -253,7 +254,7 @@ i {font-style:normal;}
     height:auto;
 }
 .channelheader {
-    padding:20px 20px;
+    padding:20px 10px;
 }
 .channelheader span{
     font-size:2em;
@@ -272,23 +273,23 @@ i {font-style:normal;}
     height:auto;
 }
 #index .foodpromote {
-    margin-top:20px;
+    margin-top:10px;
     background-color:#fff;
 }
 #index .foodpromote .foodpromoteul{
     border-top:1px solid #d1d1d1;
-    padding:20px 20px;
+    padding:10px;
 }
 #index .foodpromote .foodleft {
     width:50%;
-    padding-right:10px;
+    padding-right:5px;
 }
 #index .foodpromote .foodleft a,#index .foodpromote .foodright a {
     font-size:0px;
 }
 #index .foodpromote .foodright {
      width:50%;
-    padding-left:10px;
+    padding-left:5px;
  }
 #index .foodpromote .foodpromoteul img{
     width:100%;
@@ -303,7 +304,7 @@ i {font-style:normal;}
     display:block;
 }
 #index .schoolchannel {
-    margin-top:20px;
+    margin-top:10px;
     background-color:#fff;
 }
 #index  .schoolchannelul li{
@@ -421,19 +422,18 @@ i {font-style:normal;}
 }
 #header1 {
     background-color:#fff;
-    height:76px;
     vertical-align:middle;
     padding:20px;
 }
 #header1 .forback{
-    font-size:2.4em;
+    font-size:2em;
     color:#000;
     float:left;
 }
 #header1 .forback img {
     vertical-align:middle;
     margin-right:10px;
-    width:15px;
+    width:12px;
     height:auto;
 }
 #header1 .headersearch{
@@ -443,15 +443,15 @@ i {font-style:normal;}
     margin-right:40px;
 }
 #header1 .headersearch img {
-    width:26px;
+    width:22px;
     height:auto;
 }
 #header1 .searchkey{
     border:1px solid #fff;
     border-radius:8px;
     width:40%;
-    height:26px;
-    line-height:26px;
+    height:22px;
+    line-height:22px;
     background-color:#f5f5f5;
     vertical-align:top;
     text-indent: 1em;
@@ -459,7 +459,7 @@ i {font-style:normal;}
 
 /* 分类 */
 .line {
-    height:20px;
+    height:10px;
     display:block;
     background-color:#f5f5f5;
     border-bottom:1px solid #e6e6e6;
@@ -840,9 +840,81 @@ a img {font-size:0px;}
     font-size:2.5em;
 }
 
+.comul {
+    width:100%;
+    background-color:#f5f5f5;
+    padding:10px 5px 0px 5px;
 
+}
+.comul li {
+    width:50%;
+    float:left;
+    padding:0px 5px 0px 5px;
+}
+.comul li .lidiv {
+    background-color:#fff;
+    width:100%;
+}
+.comul li .lidiv .schoola {
+    width:100%;
+    display:block;
+    position:relative;
+    height:0px;
+    padding:0px 0px 80%;
+}
+.comul li .lidiv .schoola img {
+    width:100%;
+    height:100%;
+    font-size:10px;
+    position:absolute;
+}
+.comul li .lidiv .schoola span {
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    text-align:center;
+    height:1.6em;
+    font-size:1.4em;
+    color:#fff;
+    line-height:1.6em;
+    overflow: hidden;
+}
+.comul li .lidiv .schoola .hiddensl {
+    background-color: #000;
+    filter: alpha(opacity=20);
+    -moz-opacity: 0.2;
+    opacity: 0.2;
+}
+.comul li .lidiv .title {
+    width:100%;
+    line-height:1.4em;
+    color:#4e4d4d;
+    font-size:1.4em;
+    height:1.4em;
+    overflow:hidden;
+    margin:5px;
+    display:block;
+}
+.comul li .lidiv .handle {
+    margin-top:0px;
+    padding:0px 10px 5px 10px;
+}
+.comul li .lidiv .handle .votes{
+    float:left;
+    width:50%;
+    max-width:100px;
+    vertical-align: middle;
 
-
+}
+.comul li .lidiv .handle .num{
+    float:right;
+    color:#ff8125;
+    font-size:1.2em;
+    line-height:1.2em;
+    height:1.2em;
+    margin-top:5px;
+}
 
 .publishform {padding:20px;}
 #publishform .h3h {font-size:2em;color:#737373;margin-bottom:20px;}

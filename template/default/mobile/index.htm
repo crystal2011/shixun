@@ -109,16 +109,20 @@
             <div class="fl"><img src="{DT_SKIN}image/mobile/school.png" /><span>名厨名菜</span></div>
             <a class="fr" href="/mobile/school/food.php">查看全部&nbsp;&gt;</a>
         </header>
-        <ul class="schoolchannelul clear">
+        <ul class="comul clear">
+
             {if $aCai}
             {loop $aCai $k $v}
             <li class="clear">
-                <a class="schoola" href="/mobile/school/foodshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" class="fl schoolthumb" /></a>
-                <div class="schoolcontent">
-                    <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">【名厨：{$aSchool[$v['userid']]['truename']}】{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
-                    <p class="handle">
-                        <img onclick="vote({$v['itemid']},2,this)" src="{DT_SKIN}image/mobile/vote.png" />
+                <div class="lidiv">
+                    <a class="schoola" href="/mobile/school/foodshow.php?id={$v['itemid']}">
+                        <img src="{$v['thumb']}" />
+                        <span>名厨：{$aSchool[$v['userid']]['truename']}</span>
+                        <span class="hiddensl">名厨：{$aSchool[$v['userid']]['truename']}</span>
+                    </a>
+                    <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="handle clear">
+                        <img onclick="vote({$v['itemid']},2,this)" class="votes" src="{DT_SKIN}image/mobile/vote.png" />
                         <i class="num">票数：<i>{$v['votes']}</i></i>
                     </p>
                 </div>
@@ -127,7 +131,6 @@
             {/if}
         </ul>
     </article>
-    <article class="line"></article>
     <span class="ids">{ad(99)}</span>
     <article class="foodchannel">
         <header class="channelheader clear">
