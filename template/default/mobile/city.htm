@@ -13,6 +13,8 @@
         //切换城市选择
         $(document).on("change","#selectcity1",function(){
             var cityid = $(this).val();
+            $(this).prev().html($("#selectcity1").find("option[value='"+cityid+"']").html());
+            $("#selectcity2").prev().html('选择城市');
             var cityoption = '<option value="0">选择城市</option>';
             if(cityid!=0){
                 $.ajax({
@@ -25,6 +27,11 @@
                 })
             }
             $("#selectcity2").html(cityoption);
+        })
+        //切换城市选择
+        $(document).on("change","#selectcity2",function(){
+            var cityid = $(this).val();
+            $(this).prev().html($("#selectcity2").find("option[value='"+cityid+"']").html());
         })
         $("#selectcitybutton").click(function(){
             var firstcityid = $("#selectcity1").val();
@@ -47,13 +54,15 @@
 <section>
     <article id="areaselect"  class="clear">
         <span>
+            <i>全国</i>
             <select id="selectcity1">
                 <option value="0">全国</option>
             </select>
         </span>
         <span>
+            <i>选择城市</i>
             <select id="selectcity2">
-                <option value="0">选择市级</option>
+                <option value="0">选择城市</option>
             </select>
         </span>
         <span><a href="javascript:;" id="selectcitybutton">确定</a></span>

@@ -1,24 +1,24 @@
 {template 'header','mobile'}
 {template 'search1','mobile'}
+<style>
+    .list .content .info {border-top:0px;padding-top:0px;margin-top:-10px;color:#989898;font-size:1.4em;line-height:1.4em;border-bottom:0px;max-height:5.2em;overflow: hidden;}
+</style>
+<section id="content">
+    {template 'thumbinfo1','mobile'}
+
+</section>
 <section>
     <article class="list">
         <div class="content">
             <div class="clear info">
-                <a class="thumb"><img src="{if $info['thumb']}{$info['thumb']}{else}{$DT['memberlogo']}{/if}" /></a>
-                <div class="text">
-                    <a class="title">{$info['truename']}</a>
-                    <p class="introduce">{$info['introduce']}</p>
-                </div>
+                名厨简介：{$info['introduce']}
             </div>
+            <div class="clear" style="padding:0px 20px;"><span class="fl" style="color:#989898;"><img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})</span><span class="fr" style="color:#ea5550;font-size:2.2em;">总票数：{$info['infonums']}</span></div>
         </div>
+
     </article>
 </section>
 <section id="content">
-    <article class="line"></article>
-    <article class="handle clear">
-        <span class="fl"><img src="{DT_SKIN}image/mobile/good.png" />{$info['infonums']}</span>
-        <span class="fr"><img src="{DT_SKIN}image/mobile/hit.png" />{$info['hits']}</span>
-    </article>
     <article class="line"></article>
     {template 'view','mobile'}
     <article class="line"></article>
@@ -28,29 +28,29 @@
         <article class="schoolname">{$info['truename']}全部作品</article>
     </header>
     <article class="list">
-        {if $list}
-        {loop $list $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb" href="foodshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title"  href="foodshow.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
-
+        <ul class="comul clear">
+            {if $list}
+            {loop $list $k $v}
+            <li class="clear">
+                <div class="lidiv">
+                    <a class="schoola" href="/mobile/school/foodshow.php?id={$v['itemid']}">
+                        <img src="{$v['thumb']}" />
+                    </a>
+                    <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="handle clear">
+                        <img onclick="vote({$v['itemid']},2,this)" class="votes" src="{DT_SKIN}image/mobile/vote.png" />
+                        <i class="num">票数：<i>{$v['votes']}</i></i>
+                    </p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="foodshow.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
-        {/loop}
-        {/if}
+            </li>
+            {/loop}
+            {/if}
+        </ul>
     </article>
     {if $list && $page!=$totalpage}
-    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/school/show.php?id={$id}',this)" data-page="1">
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/school/show.php?id={$id}',this,'comul')" data-page="1">
         <a>查看更多>></a>
     </article>
     {/if}
 </section>
+{template 'footer','mobile'}

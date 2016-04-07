@@ -31,15 +31,19 @@ $oMember->userid = $info['userid'];
 $aKnow = $oMember->get_one();
 
 
-$aHotFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb',3,'hits desc'); //热门
-$aRecommendFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb',3,'addtime desc');  //推荐
+$aHotFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb,votes',6,'hits desc'); //热门
+$aRecommendFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb,votes',6,'addtime desc');  //推荐
 
 $memberlistHot = $oMember->getListUser($aHotFood);
 $memberlistRec = $oMember->getListUser($aRecommendFood);
 
-$seo_title = $info['title'].'菜系-';
-$topname = '菜系';
+$seo_title = $info['title'].'-名厨学堂-名菜展示-';
+$topname = '名厨学堂-名菜展示';
 $likenum = 5;
 $commenttypeid = 5;
 $moduleidtype = 4;
+//当时发布的code
+require_once '../../module/special/special.class.php';
+$oSpecial = new special(11);
+$codetishicode = $oSpecial->getShowCode($id,4);
 include template('school/foodshow','mobile');

@@ -228,6 +228,7 @@ i {font-style:normal;}
 #index .article .articlelist a {
     font-size:1.4em;
     line-height:1.4em;
+    display:block;
 }
 #index .article .articlelist span {
     width:48px;
