@@ -4,6 +4,9 @@
         <span><img src="{DT_SKIN}image/mobile/sharebutton.png" onclick="goShare()" /></span>
         <span><a href="{$CFG['url']}mobile/share/publish.php?moduleidtype={$moduleidtype}"><img src="{DT_SKIN}image/mobile/publishbutton.png" /></a></span>
     </div>
+    {if !isset($nocode)}
+    <div class="codetishi">重要提示：发布请输入  <span class="codetishicode">{$codetishicode}</span>  审核号</div>
+    {/if}
     <a class="comment_view clear" href="{$CFG['url']}mobile/comment.php?typeid={$commenttypeid}&id={$id}">
         {if $info['comments']}
         <span class="fl">查看全部{$info['comments']}评价</span>

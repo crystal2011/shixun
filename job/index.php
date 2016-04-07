@@ -26,6 +26,8 @@ if(empty($action)){
     list($aJob,$totalpage) = $oJob->jobList('title,userid,itemid,addtime,areaid,maxsalary,minsalary,company',$where.' and status=3 ','addtime desc','20');
 }else{
     require_once '../module/job/resume.class.php';
+    $aSetting = cache_read('module-9.php');
+    $aSetting['education'] = explode('|',$aSetting['education']);
     $oResume = new resume(9);
     list($aJob,$totalpage) = $oResume->jobList('*',$where.' and situation = 1 and status=3 ','edittime desc','20');
 }

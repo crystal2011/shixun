@@ -25,14 +25,21 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 
-$aHotFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes',3,'hits desc'); //热门
-$aRecommendFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes',3,'addtime desc');  //推荐
+$aHotFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes,company,areaid',10,'hits desc'); //热门
+$aRecommendFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes,company,areaid',10,'addtime desc');  //推荐
+
+//当时发布的code
+require_once '../../module/special/special.class.php';
+$oSpecial = new special(11);
+$codetishicode = $oSpecial->getShowCode($id,2);
+
+$aSetting = cache_read('module-9.php');
+$aSetting['education'] = explode('|',$aSetting['education']);
+$aSetting['type'] = explode('|',$aSetting['type']);
+
 $commenttypeid = 3;
 $seo_title = $info['title'].'-招聘信息-';
 $topname = '招聘信息';
 $likenum = 3;
 $moduleidtype = 2;
-$aSetting = cache_read('module-9.php');
-$aSetting['education'] = explode('|',$aSetting['education']);
-$aSetting['type'] = explode('|',$aSetting['type']);
 include template('job/show','mobile');

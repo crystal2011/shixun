@@ -161,7 +161,7 @@ function is_username(val){
     return  msg.test(val)?true:false;
 }
 
-function getmorecommont(url,_this){
+function getmorecommont(url,_this,appenddiv){
     var _this = $(_this);
     var page = _this.attr('data-page');
     page = parseInt(page)+1;
@@ -172,7 +172,12 @@ function getmorecommont(url,_this){
         data:{'page':page,'action':'ajax'},
         dataType:'json',
         success:function(data){
-            _this.prev().append(data.info);
+            if(typeof(appenddiv)=='undefined'){
+                _this.prev().append(data.info);
+            }else{
+                $("."+appenddiv).append(data.info);
+            }
+
             if(data.totalpage==page){
                 _this.remove();
             }else{

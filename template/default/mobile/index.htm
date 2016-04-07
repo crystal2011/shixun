@@ -132,22 +132,19 @@
         </ul>
     </article>
     <span class="ids">{ad(99)}</span>
-    <article class="foodchannel">
+    <article class="foodchannel" style="margin-top:0px;">
         <header class="channelheader clear">
             <div class="fl"><img src="{DT_SKIN}image/mobile/foodchannel.png" /><span>餐饮供应</span></div>
             <a class="fr" href="/mobile/food/index.php">查看全部&nbsp;&gt;</a>
         </header>
-        <ul class="schoolchannelul clear">
+        <ul class="comul clear">
+
             {if $aHotFood}
             {loop $aHotFood $k $v}
             <li class="clear">
-                <a class="schoola" href="/mobile/food/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" class="fl schoolthumb" /></a>
-                <div class="schoolcontent">
-                    <a class="title" href="/mobile/food/show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
-                    <p class="foodhandle">
-                        <i>&nbsp;&nbsp;&nbsp;{$v['hits']}人阅读</i>
-                    </p>
+                <div class="lidiv">
+                    <a class="schoola" href="/mobile/food/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="/mobile/food/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
                 </div>
             </li>
             {/loop}
@@ -155,19 +152,4 @@
         </ul>
     </article>
 </section>
-<footer id="footer">
-    <article class="footerbutton clear">
-        <span class="fl"><img src="{DT_SKIN}image/mobile/top.png" onclick="goTop();" /></span>
-        <span class="fr"><img src="{DT_SKIN}image/mobile/share.png" onclick="goShare()" /></span>
-    </article>
-    <article class="footerinfo">
-        <p>{$DT['sitename']}&nbsp;&nbsp;&nbsp;{$CFG['url']}</p>
-        <p><a href="/about/mindex.html">关于我们</a><i>|</i><a href="/about/mcontact.html">联系我们</a><i>|</i><a href="/about/magreement.html">商务合作</a><i>|</i><a href="/mobile/share/publish.php">发布信息</a></p>
-    </article>
-    <article class="footer clear">
-        <a href="/mobile/index.php"><img class="footer1" src="{DT_SKIN}image/mobile/index.png" /></a>
-        <a href="/mobile/cat.php"><img class="footer2" src="{DT_SKIN}image/mobile/cat.png" /></a>
-        <a href="/mobile/share/publish.php"><img class="footer3" src="{DT_SKIN}image/mobile/publish.png" /></a>
-        <a href="/mobile/member/index.php"><img class="footer4" src="{DT_SKIN}image/mobile/membercenter.png" /></a>
-    </article>
-</footer>
+{template 'footer','mobile'}

@@ -31,6 +31,6 @@ $aSchool = $oMember->getListUser($aCai);
 //餐饮供应
 require_once '../module/food/food.class.php';
 $oFood = new food(23);
-$aHotFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',3,'addtime desc');
+$aHotFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',4,'addtime desc');
 
 include template('index','mobile');

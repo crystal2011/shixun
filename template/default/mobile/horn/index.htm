@@ -50,6 +50,14 @@
         -webkit-backface-visibility: hidden;
         -webkit-transform-style: preserve-3d;
     }
+    #index .article .articlelist article {height:auto;}
+    #index .article .articlelist a {color:#000;line-height:2em;font-size:1.8em;}
+    #index .article .articlelist li {border-bottom:1px solid #e6e6e6;}
+    #index .article .articlelist span {line-height:2em;font-size:1.8em;}
+    #index .article {padding:0px;}
+    .schoola img{padding:10px 10px 0px 10px;}
+    .comul li .lidiv .title {color:#000;}
+
 </style>
 <section id="roll-banner" class="sliderBox">
     <ul class="slider">{$sAdPlaceHot}</ul>
@@ -70,59 +78,30 @@
         </div>
     </article>
 </section>
-<article class="line"></article>
 <section class="contentlist">
-    <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/memberlogo.png"><span>常务委员会</span></div>
-    </header>
     <article class="list">
-        {if $aIsLongUser}
-        {loop $aIsLongUser $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title" href="hornshow.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
+        <ul class="comul clear">
+            {if $list}
+            {loop $list $k $v}
+            <li class="clear">
+                <div class="lidiv">
+                    <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">荣誉创会成员：{$v['title']}</a>
+                    <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
+                    <a class="introudce" href="hornshow.php">{$v['introduce']}</a>
+                    <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1 de0000">内容审核号{$v['code']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="hornshow.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
-        {/loop}
-        {/if}
-    </article>
-    <article class="line" style="border-top-width: 0px;"></article>
-    <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/boshi.png"><span>研究院成员</span></div>
-    </header>
-    <article class="list">
-        {if $list}
-        {loop $list $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title" href="hornshow.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
-                </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1 de0000">内容审核号{$v['code']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="hornshow.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
-        {/loop}
-        {/if}
+            </li>
+            {/loop}
+            {/if}
+        </ul>
     </article>
 
     {if $list && $page!=$totalpage}
-    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/horn/index.php?catid={$catid}&areaid={$areaid}',this)" data-page="1">
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/horn/index.php?catid={$catid}&areaid={$areaid}',this,'comul')" data-page="1">
         <a>查看更多>></a>
     </article>
     {/if}
 </section>
+
+{template 'footer','mobile'}

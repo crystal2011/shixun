@@ -6,28 +6,33 @@
     {template 'category','mobile'}
     <article class="line" style="border-width:0px;"></article>
     {template 'area','mobile'}
+    <article class="line" style="border-bottom-width:0px;"></article>
+    <article id="areaselect" class="clear">
+        <span ><a href="/mobile/job/index.php" style="background-color:#e9544e;color:#fff;display:block;">招聘信息</a></span>
+        <span ><a href="/mobile/job/resume.php" style="color:#6d6d6d;display:block;">求职信息</a></span>
+    </article>
     <article class="list">
         {if $list}
-        {loop $list $k $v}
-        <div class="content">
-            <div class="clear info">
-                <div class="text" style="padding-left:0px;">
-                    <a class="title"  href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">简介：{$v['introduce']}</p>
-                </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
-        {/loop}
+        <table class="jobtable">
+            <tr><th>职位名称</th><th>公司名称</th><th>月薪</th><th>工作地</th></tr>
+            {loop $list $k $v}
+            <tr>
+                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['title'],16)}</a></td>
+                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['company'],8)}</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">面议</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">{implode('/',array_slice(explode('/',area_pos($v['areaid'],'/')),1,2))}</a></td>
+            </tr>
+            {/loop}
+        </table>
         {/if}
     </article>
     {if $list && $page!=$totalpage}
-    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/job/index.php?catid={$catid}&areaid={$areaid}',this)" data-page="1">
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/job/index.php?catid={$catid}&areaid={$areaid}',this,'jobtable')" data-page="1">
         <a>查看更多>></a>
     </article>
+    {else}
+    <article class="line" style="border-width:0px;"></article>
     {/if}
 </section>
+
+{template 'footer','mobile'}

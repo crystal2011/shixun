@@ -23,25 +23,18 @@ if($catinfo){
 }
 
 $oJob = new job(9);
-list($list,$totalpage) = $oJob->jobList('title,thumb,hits,likes,itemid,introduce',$where.' and status=3 ','addtime desc','6');
+list($list,$totalpage) = $oJob->jobList('title,itemid,company,addtime,areaid',$where.' and status=3 ','addtime desc','20');
 
 if($action=='ajax'){
     $info = '';
     if($list){
         foreach($list as $k=>$v){
-            $info .= '<div class="content">
-                        <div class="clear info">
-                            <div class="text" style="padding-left:0px;">
-                                <a class="title" href="/mobile/job/show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
-                                <p class="introduce">简介：'.$v['introduce'].'</p>
-                            </div>
-                        </div>
-                        <div class="handle clear hasbutton">
-                            <span class="handle1"><img src="'.DT_SKIN.'image/mobile/love.png" />'.$v['likes'].'</span>
-                            <span><img src="'.DT_SKIN.'image/mobile/hit.png" />'.$v['hits'].'</span>
-                            <a class="fr showpng" href="/mobile/job/show.php?id='.$v['itemid'].'"><img src="'.DT_SKIN.'image/mobile/show.png" /></a>
-                        </div>
-                    </div>';
+            $info .= '<tr>
+                        <td><a href="show.php?id='.$v['itemid'].'">'.dsubstr($v['title'],16).'</a></td>
+                        <td><a href="show.php?id='.$v['itemid'].'">'.dsubstr($v['company'],8).'</a></td>
+                        <td><a href="show.php?id='.$v['itemid'].'">面议</a></td>
+                        <td><a href="show.php?id='.$v['itemid'].'">'.implode('/',array_slice(explode('/',area_pos($v['areaid'],'/')),1,2)).'</a></td>
+                    </tr>';
         }
     }
     exit(json_encode(array('info'=>$info,'totalpage'=>$totalpage)));

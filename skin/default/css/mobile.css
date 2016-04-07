@@ -402,24 +402,20 @@ i {font-style:normal;}
 #footer .footerinfo i{
     padding:0px 5px;
 }
-#footer .footer {
-    padding:10px 0px;
-    background-color:#fff;
-    text-align:center;
+#footer .footer{
+    background-color:#ea5550;
 }
 #footer .footer a {
     width:25%;
     display:block;
     float:left;
 }
-#footer .footer a .footer1,#footer .footer a .footer3,#footer .footer a .footer2{
-    max-width:48px;
-    width:36.66%;
+#footer .footer a img{
+    width:100%;
+    height:auto;
+    max-width:180px;
 }
-#footer .footer a .footer4{
-    max-width:99px;
-    width:75%;
-}
+
 #header1 {
     background-color:#fff;
     vertical-align:middle;
@@ -440,7 +436,7 @@ i {font-style:normal;}
      text-align:right;
  }
 #header1 .headersearch .span1{
-    margin-right:40px;
+    margin-right:20px;
 }
 #header1 .headersearch img {
     width:22px;
@@ -499,9 +495,10 @@ i {font-style:normal;}
     margin-top:2px;
     margin-bottom:2px;
     line-height:2em;
-    font-size:2em;
-    color:#6d6d6d;
+    font-size:1.6em;
+    color:#e9544e;
     position:relative;
+
 }
 #areaselect span select {
     width:100%;
@@ -531,8 +528,7 @@ i {font-style:normal;}
 }
 
 .list .content{
-
-    margin-top:20px;
+    margin-top:10px;
     background:#fff;
 }
 .list .content:first-child{
@@ -559,19 +555,19 @@ i {font-style:normal;}
 .list .content .info .text .title {
     font-size: 1.8em;
     color: #000;
-    height: 1.8em;
-    line-height: 1.8em;
+    height: 2.8em;
+    line-height: 1.4em;
     overflow: hidden;
     display: block;
 }
 .list .content .info .text .introduce {
-    font-size: 1.6em;
+    font-size: 1.4em;
     color: #989898;
-    height: 2.8em;
     overflow: hidden;
-    margin: 5px 0px;
-    line-height:1.6em;
+    margin:0px;
+
 }
+.numviesshow {margin:0px;}
 .list .content .price1 {
     font-size: 1.4em;
     color: #ff8125;
@@ -648,7 +644,7 @@ i {font-style:normal;}
 }
 #content .thumbinfo .aplainfo {
     position:absolute;
-    bottom:0em;
+    bottom:3px;
     margin:0px;
     padding-bottom:10px;
     width:100%;
@@ -660,6 +656,7 @@ i {font-style:normal;}
     color:#fff;
     width:100%;
     display:block;
+    text-align:center;
 }
 #content .thumbinfo .introduce {
     font-size:1.6em;
@@ -676,10 +673,10 @@ i {font-style:normal;}
 }
 #content .info {
     font-size:2em;
-    font-weight: bold;
     padding:0px 20px;
-    line-height:2.4em;
+    line-height:2.6em;
     background-color:#fff;
+    color:#e56101;
 }
 #content .handle {
     position:relative;
@@ -687,6 +684,50 @@ i {font-style:normal;}
     font-size:2em;
     background-color:#fff;
 }
+.numsview {width:100%;display:block;text-align:right;font-size:0.5em;line-height:0.5em;padding-top:5px;color:#939393;}
+.numsview img {vertical-align: middle;}
+.numsview img.likethujmsd {width:12px;height:auto;}
+.huiyui {font-size:0.5em;line-height:0.5em;padding-top:5px;color:#939393;}
+.numviesshow {margin-top:5px;}
+.numsviews {float:right;font-size:0.5em;line-height:0.5em;color:#939393;}
+.numtimes {color:#939393;}
+.numsviews img {vertical-align: middle;}
+.numsviews img.likethujmsd {width:12px;height:auto;}
+.thumbinfo1 {
+    padding:0px 20px 20px 20px;
+    border-top:1px solid #e6e6e6;
+    background-color:#fff;
+}
+.thumbinfo1 p {
+    margin:0px;
+    font-size:2em;
+    color:#000;
+    line-height:2em;
+    font-weight: bold;
+}
+.thumbinfo1 img {
+    width:100%;
+
+}
+
+.jobtable {width:100%;background-color:#fff;}
+.jobtable th {background-color:#ffeeee;line-height:2.8em;color:#6d6d6d;font-weight: normal;font-size:1.4em;}
+.jobtable td {font-size:1.4em;line-height:2em;color:#6d6d6d;border-bottom:1px solid #e6e6e6;padding:5px;}
+.jobtable td a {
+    display:block;
+}
+.lnfh {color:#ff6600;}
+.lidiv .introudce {  width: 100%;
+    line-height: 1.6em;
+    color: #4e4d4d;
+    font-size: 1.6em;
+    height:3.2em;
+    overflow: hidden;
+    padding: 5px 10px;
+    display: block;
+    color: #818181;
+}
+.fndklf {padding:0px 10px;color:#818181;}
 #content .handle .center{
     position:absolute;
     width:100%;
@@ -739,10 +780,12 @@ i {font-style:normal;}
     height:auto;
 }
 #content .comment{
-    background-color:#fff;
+    background-color:#fff6f6;
     padding:20px 0px 0px 0px;
 
 }
+.codetishi {padding-right:4%;text-align:right;color:#333333;font-size:1.4em;line-height:2.4em;}
+.codetishicode {color:#ff0000;}
 #content .comment .buttonlist {
     text-align:center;
 }
@@ -758,7 +801,6 @@ i {font-style:normal;}
 }
 #content .comment_view {
     border-top:1px solid #e6e6e6;
-    margin-top:20px;
     padding:20px;
     display:block;
     color:#ff8125;
@@ -850,6 +892,7 @@ a img {font-size:0px;}
     width:50%;
     float:left;
     padding:0px 5px 0px 5px;
+    margin-bottom:10px;
 }
 .comul li .lidiv {
     background-color:#fff;
@@ -860,7 +903,7 @@ a img {font-size:0px;}
     display:block;
     position:relative;
     height:0px;
-    padding:0px 0px 80%;
+    padding:0px 0px 75%;
 }
 .comul li .lidiv .schoola img {
     width:100%;
@@ -888,17 +931,20 @@ a img {font-size:0px;}
 }
 .comul li .lidiv .title {
     width:100%;
-    line-height:1.4em;
+    line-height:1.6em;
     color:#4e4d4d;
-    font-size:1.4em;
-    height:1.4em;
+    font-size:1.6em;
+    height:2.2em;
     overflow:hidden;
-    margin:5px;
+    padding:5px 10px;
     display:block;
+    color:#818181;
 }
+
 .comul li .lidiv .handle {
     margin-top:0px;
     padding:0px 10px 5px 10px;
+    margin-bottom:0px;
 }
 .comul li .lidiv .handle .votes{
     float:left;
@@ -914,8 +960,9 @@ a img {font-size:0px;}
     line-height:1.2em;
     height:1.2em;
     margin-top:5px;
-}
 
+}
+.comul li .lidiv .handle .pricesdf {float:left;font-size:1.6em;line-height:1.6em;height:1.6em;color:#ff8125;}
 .publishform {padding:20px;}
 #publishform .h3h {font-size:2em;color:#737373;margin-bottom:20px;}
 #publishform .publishleft {color:#000;width:72px;font-size:1.6em;text-align:right;float:left;display:block;}

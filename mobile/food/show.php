@@ -24,11 +24,18 @@ if(isset($showtype)){   //预览
     $oFood->editHits();  //更新浏览量
     addHits($info['userid']);
 }
+
+$aHotFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',4,'hits desc'); //热门
+$aRecommendFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',4,'addtime desc');     //推荐
+
+//当时发布的code
+require_once '../../module/special/special.class.php';
+$oSpecial = new special(11);
+$codetishicode = $oSpecial->getShowCode($id,0);
+
 $likenum = 1;
 $commenttypeid = 1;
 $moduleidtype = 0;
-$aHotFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',3,'hits desc'); //热门
-$aRecommendFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',3,'addtime desc');     //推荐
 $seo_title = $info['title'].'-餐饮供应-';
 $topname = '餐饮供应';
 include template('food/show','mobile');

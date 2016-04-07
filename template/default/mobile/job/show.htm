@@ -13,8 +13,6 @@
         <div class="clear dfas"><span class="fl">工作地点：{area_pos($info['areaid'],'')}{$info['address']}</span></div>
     </article>
     <article class="line"></article>
-    {template 'nums','mobile'}
-    <article class="line"></article>
     {template 'view','mobile'}
     <article class="line"></article>
     {template 'commentlist','mobile'}
@@ -27,22 +25,17 @@
     </header>
     <article class="list">
         {if $aRecommendFood}
-        {loop $aRecommendFood $k $v}
-            <div class="content">
-                <div class="clear info">
-                    <a class="thumb" href="show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                    <div class="text">
-                        <a class="title"  href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                        <p class="introduce">简介：{$v['introduce']}</p>
-                    </div>
-                </div>
-                <div class="handle clear hasbutton">
-                    <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
-                    <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                    <a class="fr showpng" href="show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-                </div>
-            </div>
-        {/loop}
+        <table class="jobtable">
+            <tr><th>职位名称</th><th>公司名称</th><th>月薪</th><th>工作地</th></tr>
+            {loop $aRecommendFood $k $v}
+            <tr>
+                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['title'],16)}</a></td>
+                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['company'],8)}</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">面议</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">{implode('/',array_slice(explode('/',area_pos($v['areaid'],'/')),1,2))}</a></td>
+            </tr>
+            {/loop}
+        </table>
         {/if}
     </article>
     <article class="line" style="border-top-width: 0px;"></article>
@@ -52,23 +45,19 @@
     </header>
     <article class="list">
         {if $aHotFood}
-        {loop $aHotFood $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb" href="show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title"  href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">简介：{$v['introduce']}</p>
-                </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
-        {/loop}
+        <table class="jobtable">
+            <tr><th>职位名称</th><th>公司名称</th><th>月薪</th><th>工作地</th></tr>
+            {loop $aHotFood $k $v}
+            <tr>
+                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['title'],16)}</a></td>
+                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['company'],8)}</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">面议</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">{implode('/',array_slice(explode('/',area_pos($v['areaid'],'/')),1,2))}</a></td>
+            </tr>
+            {/loop}
+        </table>
         {/if}
     </article>
 </section>
-{template 'foot1','mobile'}
+<article class="line" style="border-top-width: 0px;"></article>
+{template 'footer','mobile'}

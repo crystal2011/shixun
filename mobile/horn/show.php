@@ -26,5 +26,6 @@ $aRecommendFood = $oInfo->getright('title,itemid,addtime',10,'addtime desc');  /
 $seo_title = $info['title'].'-羊角会-';
 $topname = '羊角会';
 $commenttypeid = 7;
+$nocode = true;
 $islikenum = true;
 include template('horn/show','mobile');

@@ -1,9 +1,14 @@
 {template 'header','mobile'}
 {template 'search1','mobile'}
 <section id="content">
-    {template 'thumbinfo','mobile'}
-    <article class="line"></article>
-    {template 'nums','mobile'}
+    {template 'thumbinfo1','mobile'}
+    <article class="info clear" style="padding-bottom:10px;">
+        <span class="fl huiyui">{date('Y-m-d',$info['addtime'])}</span>
+        <span class="numsviews">
+            <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})&nbsp;&nbsp;&nbsp;
+            <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$info['comments']})
+        </span>
+    </article>
     <article class="line"></article>
     {template 'view','mobile'}
     <article class="line"></article>
@@ -59,4 +64,5 @@
         {/if}
     </article>
 </section>
-{template 'foot1','mobile'}
+<article class="line" style="border-width:0px;"></article>
+{template 'footer','mobile'}

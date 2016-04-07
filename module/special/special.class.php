@@ -366,6 +366,12 @@ class special {
         }
     }
 
+    function getShowCode($itemid,$type){
+        global $DT_TIME;
+        $info = $this->db->get_one("select code from {$this->db->pre}code where id = ".$itemid." and type = ".$type."");
+        return $info?$info['code']:'无';
+    }
+
 
 
     function fee($type){

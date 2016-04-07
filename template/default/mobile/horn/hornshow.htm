@@ -1,21 +1,47 @@
 {template 'header','mobile'}
 {template 'search1','mobile'}
+<article class="line"></article>
+<style>
+    .hornshow {
+        background-color:#fff;
+        padding:10px 20px;
+    }
+    .hornshow p{
+        margin:0px;
+    }
+    .hornshow p.huiyuan{
+        font-size:2.4em;
+        line-height:2.4em;
+        color:#000;
+    }
+    .hornshow p.huishows {
+        color:#adacac;
+    }
+    .hornimage {margin:0 auto;text-align:center;}
+    .hornimage img{width:70%;padding-top:10px;height:auto;padding-bottom:10px;}
+
+
+</style>
 <section>
-    <article class="list">
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb"><img src="{$info['thumb']}" /></a>
-                <div class="text">
-                    <a class="title">{$info['title']}</a>
-                    <p class="introduce">{$info['introduce']}</p>
-                </div>
-            </div>
-        </div>
+    <article class="hornshow">
+        <p class="huiyuan">荣誉创会成员：{$info['title']}</p>
+        <p class="clear huishows"><span class="fl">{date('Y-m-d',$info['addtime'])}</span><span class="fr">内容审核号：<span style="color:#fe0000;">{$info['code']}</span></span></p>
+        <p class="hornimage">
+            <img src="{$info['thumb']}" />
+        </p>
+        <p class="numviesshow clear">
+                            <span class="fl numtimes">
+                                人气榜：{$info['userds']}
+                            </span>
+                            <span class="numsviews">
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})&nbsp;&nbsp;&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$info['comments']})
+                            </span>
+        </p>
     </article>
+
 </section>
 <section id="content">
-    <article class="line"></article>
-    {template 'nums','mobile'}
     <article class="line"></article>
     {template 'view','mobile'}
     <article class="line"></article>
@@ -28,24 +54,21 @@
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">
-        {if $aRecommendFood}
-        {loop $aRecommendFood $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb"  href="?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title" href="?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
+        <ul class="comul clear">
+            {if $aRecommendFood}
+            {loop $aRecommendFood $k $v}
+            <li class="clear">
+                <div class="lidiv">
+                    <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">荣誉创会成员：{$v['title']}</a>
+                    <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
+                    <a class="introudce" href="hornshow.php">{$v['introduce']}</a>
+                    <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1 de0000">内容审核号{$v['code']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
-        {/loop}
-        {/if}
+            </li>
+            {/loop}
+            {/if}
+        </ul>
     </article>
     <article class="line" style="border-top-width: 0px;"></article>
     <header class="channelheader clear">
@@ -53,24 +76,21 @@
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">
+        <ul class="comul clear">
         {if $aHotFood}
         {loop $aHotFood $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb"  href="?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title" href="?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{$v['introduce']}</p>
+            <li class="clear">
+                <div class="lidiv">
+                    <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">荣誉创会成员：{$v['title']}</a>
+                    <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
+                    <a class="introudce" href="hornshow.php">{$v['introduce']}</a>
+                    <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1 de0000">内容审核号{$v['code']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-            </div>
-        </div>
+            </li>
         {/loop}
         {/if}
+            </ul>
     </article>
 </section>
-{template 'foot1','mobile'}
+{template 'footer','mobile'}

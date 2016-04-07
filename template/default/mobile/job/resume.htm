@@ -1,0 +1,41 @@
+{template 'header','mobile'}
+{template 'search','mobile'}
+
+<section>
+    <span class="ids">{ad(79)}</span>
+    {template 'category','mobile'}
+    <article class="line" style="border-width:0px;"></article>
+    {template 'area','mobile'}
+    <article class="line" style="border-bottom-width:0px;"></article>
+    <article id="areaselect" class="clear">
+        <span ><a href="/mobile/job/index.php" style="color:#6d6d6d;display:block;">招聘信息</a></span>
+        <span ><a href="/mobile/job/resume.php" style="background-color:#e9544e;color:#fff;display:block;">求职信息</a></span>
+    </article>
+    <article class="list">
+        {if $list}
+        <table class="jobtable">
+            <tr><th>姓名</th><th>分类</th><th>学历</th><th>工作经验</th></tr>
+            {loop $list $k $v}
+            <tr>
+                <td><a href="resumeshow.php?id={$v['itemid']}">{dsubstr($v['truename'],16)}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">{$aSetting['education'][$v['education']]}</a></td>
+                <td align="center"><a href="show.php?id={$v['itemid']}">{if $v['experience']}{$v['experience']}年{else}暂无{/if}</a></td>
+            </tr>
+            {/loop}
+        </table>
+        {/if}
+    </article>
+    {if $list && $page!=$totalpage}
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/job/resume.php?catid={$catid}&areaid={$areaid}',this,'jobtable')" data-page="1">
+        <a>查看更多>></a>
+    </article>
+    {else}
+    <article class="line" style="border-width:0px;"></article>
+    {/if}
+</section>
+<script>
+    $("#areaselect").first().find('span').last().find('a').attr('href','/mobile/member/resume.php');
+</script>
+
+{template 'footer','mobile'}

@@ -23,7 +23,7 @@ if($catinfo){
 }
 
 $oBrand = new brand(13);
-list($list,$totalpage) = $oBrand->brandList('title,userid,itemid,thumb,introduce,likes,hits',$where.' and status=3 ','addtime desc','4');
+list($list,$totalpage) = $oBrand->brandList('title,userid,itemid,thumb,areaid,address,comments,likes,hits,addtime',$where.' and status=3 ','addtime desc','10');
 
 $action=isset($action)?$action:'';
 
@@ -33,16 +33,20 @@ if($action=='ajax'){
         foreach($list as $k=>$v){
             $info .= '<div class="content">
                         <div class="clear info">
-                            <a class="thumb" href="/mobile/discount/show.php?id='.$v['itemid'].'"><img src="'.$v['thumb'].'" /></a>
+                            <a class="thumb" href="show.php?id='.$v['itemid'].'"><img src="'.$v['thumb'].'" /></a>
                             <div class="text">
-                                <a class="title" href="/mobile/discount/show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
-                                <p class="introduce">简介：'.$v['introduce'].'</p>
+                                <a class="title"  href="show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
+                                <p class="introduce">'.area_pos($v['areaid'],'').$v['address'].'</p>
+                                <p class="numviesshow">
+                                    <span class="fl numtimes">
+                                        '.date('Y-m-d',$v['addtime']).'
+                                    </span>
+                                    <span class="numsview">
+                                        <img src="'.DT_SKIN.'image/public/icon-liulan.png" />浏览('.$v['hits'].')&nbsp;&nbsp;&nbsp;
+                                        <img src="'.DT_SKIN.'image/public/icon-pinlun.png" />评论('.$v['comments'].')
+                                    </span>
+                                </p>
                             </div>
-                        </div>
-                        <div class="handle clear hasbutton">
-                            <span class="handle1"><img src="'.DT_SKIN.'image/mobile/love.png" />'.$v['likes'].'</span>
-                            <span><img src="'.DT_SKIN.'image/mobile/hit.png" />'.$v['hits'].'</span>
-                            <a class="fr showpng" href="/mobile/discount/show.php?id='.$v['itemid'].'"><img src="'.DT_SKIN.'image/mobile/show.png" /></a>
                         </div>
                     </div>';
         }

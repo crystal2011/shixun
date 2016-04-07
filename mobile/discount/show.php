@@ -27,8 +27,12 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 $commenttypeid = 2;
-$aHotFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes',3,'hits desc'); //热门
-$aRecommendFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes',3,'address desc');  //推荐
+$aHotFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes,address,areaid,comments,addtime',3,'hits desc'); //热门
+$aRecommendFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes,address,areaid,comments,addtime',3,'address desc');  //推荐
+//当时发布的code
+require_once '../../module/special/special.class.php';
+$oSpecial = new special(11);
+$codetishicode = $oSpecial->getShowCode($id,1);
 $likenum = 2;
 $moduleidtype = 1;
 $seo_title = $info['title'].'-商家优惠-';

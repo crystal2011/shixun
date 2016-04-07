@@ -33,4 +33,8 @@ $seo_title = $info['title'].'-文章详情-';
 $topname = '文章详情';
 $commenttypeid = 9;
 $moduleidtype = 6;
+//当时发布的code
+require_once '../../module/special/special.class.php';
+$oSpecial = new special(11);
+$codetishicode = $oSpecial->getShowCode($id,6);
 include template('article/show','mobile');
