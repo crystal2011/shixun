@@ -1,9 +1,10 @@
 {template 'header','mobile'}
 {template 'search','mobile'}
 <style>
-    .comul li .lidiv .handle .num {font-size:2em;}
-    .comul li .lidiv .title {color:#434343;font-size:2em;line-height:2em;}
-    .numsviews {margin-top:10px;}
+    .comul li .lidiv .handle .num {font-size:1.6em;}
+    .comul li .lidiv .title {color:#434343;}
+    .numsviews {font-size:10px;margin-top:5px;}
+
 </style>
 <section>
     <span class="ids">{ad(81)}</span>
@@ -26,7 +27,7 @@
                     <a class="title clear" href="show.php?id={$v['userid']}">
                         <span class="fl">名厨：{$v['truename']}</span>
                         <span class="numsviews">
-                            <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})
+                            <img src="{DT_SKIN}image/public/icon-liulan.png" />({$v['hits']})
                         </span>
                     </a>
                     <p class="handle clear">

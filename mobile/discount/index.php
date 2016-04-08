@@ -42,7 +42,7 @@ if($action=='ajax'){
                                         '.date('Y-m-d',$v['addtime']).'
                                     </span>
                                     <span class="numsview">
-                                        <img src="'.DT_SKIN.'image/public/icon-liulan.png" />浏览('.$v['hits'].')&nbsp;&nbsp;&nbsp;
+                                        <img src="'.DT_SKIN.'image/public/icon-liulan.png" />浏览('.$v['hits'].')&nbsp;
                                         <img src="'.DT_SKIN.'image/public/icon-pinlun.png" />评论('.$v['comments'].')
                                     </span>
                                 </p>

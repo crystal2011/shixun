@@ -1,58 +1,81 @@
 {template 'header','mobile'}
 {template 'header1','mobile'}
+<link href="{DT_SKIN}css/swiper-3.3.1.min.css" rel="stylesheet"/>
+<script src="{DT_SKIN}js/swiper-3.3.1.jquery.min.js"></script>
+<style>
+    .abdf img{width:100%;max-height:328px;}
+    #index .hotchannel ul.channeluldf {padding:0px 10px 10px 10px;}
+    #index .hotchannel ul.channeluladf {padding-right:10px;}
+    #index .hotchannel ul.channeluldf li{width:50%;}
+    #index .hotchannel ul.channeluladf li {padding-left:10px;}
+    .dfleft {padding-right:5px;}
+    .dfright {padding-left:5px;}
+</style>
+
 <section id="index">
-    <article class="module">
-        <ul class="clear">
-            <li>
-                <a href="/mobile/food/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-1.png"  /></p>
-                    <span>餐饮供应</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/discount/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-2.png"  /></p>
-                    <span>商家优惠</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/job/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-3.png"  /></p>
-                    <span>招聘信息</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/cession/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-4.png"  /></p>
-                    <span>店铺转让</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/school/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-5.png"  /></p>
-                    <span>名厨学堂</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/horn/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-6.png"  /></p>
-                    <span>羊角会</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/share/index.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-7.png"  /></p>
-                    <span>分享</span>
-                </a>
-            </li>
-            <li>
-                <a href="/mobile/cat.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-8.png"  /></p>
-                    <span>总分类</span>
-                </a>
-            </li>
-        </ul>
-    </article>
+    <div class="swiper-container">
+        <div class="swiper-wrapper asdf">
+            <article class="module swiper-slide">
+                <ul class="clear">
+                    <li>
+                        <a href="/mobile/food/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-1.png"  /></p>
+                            <span>餐饮供应</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/discount/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-2.png"  /></p>
+                            <span>商家优惠</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/job/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-3.png"  /></p>
+                            <span>招聘信息</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/cession/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-4.png"  /></p>
+                            <span>店铺转让</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/school/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-5.png"  /></p>
+                            <span>名厨学堂</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/horn/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-6.png"  /></p>
+                            <span>羊角会</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/share/index.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-7.png"  /></p>
+                            <span>分享</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mobile/cat.php">
+                            <p><img src="{DT_SKIN}image/mobile/module-8.png"  /></p>
+                            <span>总分类</span>
+                        </a>
+                    </li>
+                </ul>
+            </article>
+            <article class="swiper-slide abdf">{ad(100)}</article>
+            <article class="swiper-slide abdf">{ad(101)}</article>
+        </div>
+        <div class="swiper-pagination swiper-pagination-bullets">
+            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            <span class="swiper-pagination-bullet "></span>
+            <span class="swiper-pagination-bullet"></span>
+        </div>
+    </div>
     <article class="article">
         <div class="clear">
             <span class="fl articleimgleft">{ad(86)}</span>
@@ -78,35 +101,20 @@
         <header class="channelheader clear">
             <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png" /><span>热门频道</span></div>
         </header>
-        <ul class="channelul clear">
-            <li>{ad(88)}</li>
-            <li>{ad(89)}</li>
+        <ul class="channelul clear channeluldf">
+            <li class="dfleft">{ad(88)}</li>
+            <li  class="dfright">{ad(89)}</li>
+        </ul>
+        <ul class="channelul clear channeluladf">
             <li>{ad(90)}</li>
             <li>{ad(91)}</li>
             <li>{ad(92)}</li>
             <li>{ad(93)}</li>
-            <li>{ad(94)}</li>
-            <li>{ad(95)}</li>
         </ul>
-    </article>
-    <article class="foodpromote">
-        <header class="channelheader clear">
-            <div class="fl"><img src="{DT_SKIN}image/mobile/foodpromote.png"  /><span>美食推荐</span></div>
-            <a class="fr" href="/mobile/food/indes.php">查看全部&nbsp;&gt;</a>
-        </header>
-        <div class="foodpromoteul clear">
-            <div class="fl foodleft">
-                {ad(96)}
-            </div>
-            <div class="fr foodright">
-                {ad(97)}
-                {ad(98)}
-            </div>
-        </div>
     </article>
     <article class="schoolchannel">
         <header class="channelheader clear">
-            <div class="fl"><img src="{DT_SKIN}image/mobile/school.png" /><span>名厨名菜</span></div>
+            <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png" style="margin-top:7px;" /><span>名厨学堂</span></div>
             <a class="fr" href="/mobile/school/food.php">查看全部&nbsp;&gt;</a>
         </header>
         <ul class="comul clear">
@@ -131,11 +139,11 @@
             {/if}
         </ul>
     </article>
-    <span class="ids">{ad(99)}</span>
+
     <article class="foodchannel" style="margin-top:0px;">
         <header class="channelheader clear">
-            <div class="fl"><img src="{DT_SKIN}image/mobile/foodchannel.png" /><span>餐饮供应</span></div>
-            <a class="fr" href="/mobile/food/index.php">查看全部&nbsp;&gt;</a>
+            <div class="fl"><img src="{DT_SKIN}image/mobile/foodchannel.png" /><span>在线分享</span></div>
+            <a class="fr" href="/mobile/share/index.php">查看全部&nbsp;&gt;</a>
         </header>
         <ul class="comul clear">
 
@@ -143,8 +151,8 @@
             {loop $aHotFood $k $v}
             <li class="clear">
                 <div class="lidiv">
-                    <a class="schoola" href="/mobile/food/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                    <a class="title" href="/mobile/food/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
+                    <a class="schoola" href="/mobile/share/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="/mobile/share/show.php?id={$v['itemid']}">{$v['title']}</a>
                 </div>
             </li>
             {/loop}
@@ -152,4 +160,13 @@
         </ul>
     </article>
 </section>
+<script>
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination : '.swiper-pagination',
+        paginationHide :true
+    })
+    $(function(){
+        $(".abdf img").css('height',$(".swiper-slide").eq(0).height());
+    })
+</script>
 {template 'footer','mobile'}

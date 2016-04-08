@@ -3,9 +3,8 @@
 <style>
     .dfas {font-size:0.8em;line-height:1.8em;}
 </style>
-<section id="content">
-    <article class="line"></article>
-    <article class="info clear" style="padding-bottom:10px;">
+<section id="content" style="border-top:1px solid #e6e6e6;">
+    <article class="info clear">
         <span class="de0000">招聘职位：{$info['title']}</span>
         <div class="clear dfas"><span class="fl">职位月薪：{if $info['minsalary'] && $info['maxsalary']}{$info['minsalary']}-{$info['maxsalary']}{elseif $info['minsalary']}{$info['minsalary']}{elseif $info['maxsalary']}{$info['maxsalary']}{else}面议{/if}</span><span class="fr">招聘人数：{if $info['total']}{$info['total']}人{else}若干{/if}</span></div>
         <div class="clear dfas"><span class="fl">发布日期：{date('Y-m-d',$info['addtime'])}</span><span class="fr">工作性质：{$aSetting['type'][$info['type']]}</span></div>
@@ -40,7 +39,7 @@
     </article>
     <article class="line" style="border-top-width: 0px;"></article>
     <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png"><span>热门招聘信息</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门招聘信息</span></div>
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">

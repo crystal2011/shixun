@@ -44,7 +44,7 @@ if($action=='ajax'){
                             </a>
                             <a class="title" href="/mobile/food/show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
                             <p class="handle clear">
-                                <i class="num pricesdf">供应价格：<i>'.doubleval($v['price']).'元/'.$v['unit'].'</i></i>
+                                <i class="num pricesdf"><i>'.doubleval($v['price']).'元/'.$v['unit'].'</i></i>
                             </p>
                         </div>
                     </li>

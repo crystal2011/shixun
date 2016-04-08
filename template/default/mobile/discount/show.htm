@@ -2,13 +2,15 @@
 {template 'search1','mobile'}
 <section id="content">
     {template 'thumbinfo1','mobile'}
-    <article class="info clear">
+    <article class="info clear" style="font-size:1em;margin-top:-15px;line-height:1em;">
         <span class="fl huiyui">{date('Y-m-d',$info['addtime'])}</span>
         <span class="numsviews">
             <img src="{DT_SKIN}image/mobile/biglove.png" class="likethujmsd" />喜欢({$info['likes']})&nbsp;&nbsp;&nbsp;
             <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})&nbsp;&nbsp;&nbsp;
             <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$info['comments']})
         </span>
+        </article>
+    <article class="info clear">
         <span class="fl" style="text-align:center;width:100%">优惠: {date('Y-m-d',$info['fromtime'])} 至 {date('Y-m-d',$info['totime'])}</span>
     </article>
     <article class="line"></article>
@@ -38,7 +40,7 @@
                                 {date('Y-m-d',$v['addtime'])}
                             </span>
                             <span class="numsviews">
-                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;&nbsp;&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
                                 <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
                             </span>
                     </p>
@@ -48,8 +50,7 @@
         {/loop}
         {/if}
     </article>
-    <article class="line" style="border-top-width: 0px;"></article>
-    <header class="channelheader clear">
+    <header class="channelheader clear" style="border-top: 1px solid #e6e6e6;">
         <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门商家优惠</span></div>
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
@@ -67,7 +68,7 @@
                                 {date('Y-m-d',$v['addtime'])}
                             </span>
                             <span class="numsviews">
-                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;&nbsp;&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
                                 <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
                             </span>
                     </p>
@@ -78,5 +79,4 @@
         {/if}
     </article>
 </section>
-<article class="line" style="border-width:0px"></article>
 {template 'footer','mobile'}

@@ -26,6 +26,11 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 
+//当时发布的code
+require_once '../../module/special/special.class.php';
+$oSpecial = new special(11);
+$codetishicode = $oSpecial->getShowCode($id,5);
+
 $aHotFood = $oBuy->getright('title,itemid,introduce,hits,likes,thumb',3,'hits desc'); //热门
 $aRecommendFood = $oBuy->getright('title,itemid,introduce,hits,likes,thumb',3,'addtime desc');  //推荐
 $seo_title = $info['title'].'-分享-';

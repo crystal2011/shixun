@@ -21,7 +21,7 @@
                                 {date('Y-m-d',$v['addtime'])}
                             </span>
                             <span class="numsviews">
-                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;&nbsp;&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
                                 <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
                             </span>
                         </p>
@@ -35,8 +35,6 @@
     <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/discount/index.php?catid={$catid}&areaid={$areaid}',this)" data-page="1">
         <a>查看更多>></a>
     </article>
-    {else}
-    <article class="line" style="border-width:0px;"></article>
     {/if}
 </section>
 {template 'footer','mobile'}

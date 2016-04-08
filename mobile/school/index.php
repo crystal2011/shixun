@@ -30,7 +30,7 @@ if($action=='ajax'){
                         <a class="title clear" href="show.php?id='.$v['userid'].'">
                             <span class="fl">名厨：'.$v['truename'].'</span>
                             <span class="numsviews">
-                                <img src="'.DT_SKIN.'image/public/icon-liulan.png" />浏览('.$v['hits'].')
+                                <img src="'.DT_SKIN.'image/public/icon-liulan.png" />('.$v['hits'].')
                             </span>
                         </a>
                         <p class="handle clear">
