@@ -1,0 +1,80 @@
+{template 'header','mobile'}
+{template 'search1','mobile'}
+<style>
+    .dfas {font-size:0.8em;line-height:1.8em;}
+</style>
+<section id="content" style="border-top:1px solid #e6e6e6;">
+    <article class="info clear">
+        <span class="de0000">招聘职位：{$aCacheCat9[$info['catid']]['catname']}</span>
+        <div class="clear dfas">
+            <span class="fl">
+                姓名：{$info['truename']}<br />
+                年龄：<?php echo date('Y')-substr($info['birthday'],0,4) ?>岁<br />
+                性别：{if $info['gender']==1}男士{else}女士{/if}<br />
+                婚姻：{if $info['marriage']==1}未婚{else}已婚{/if}<br />
+                身高：{$info['height']} cm<br />
+                体重：{$info['weight']} kg<br />
+            </span>
+            <span class="fr"><img src="{$info['thumb']}" width="150px" height="150px"/></span>
+        </div>
+        <div class="clear dfas">
+            联系电话：{$info['telephone']}<br />
+            电子邮箱：{$info['email']}<br />
+            现居地点：{area_pos($info['areaid'],'')}{$info['address']}
+        </div>
+
+    </article>
+    <article class="line"></article>
+    <article class="info clear">
+        <div class="clear dfas"><span class="fl">毕业院校：{$info['school']}</span><span class="fr">所学专业：{$info['major']}</span></div>
+        <div class="clear dfas"><span class="fl">专业技能：{$info['skill']}</span><span class="fr">语言水平：{$info['language']}</span></div>
+        <div class="clear dfas"><span class="fl">学历：{$aSetting['education'][$info['education']]}</span><span class="fr">工作性质：{$aSetting['type'][$info['type']]}</span></div>
+        <div class="clear dfas"><span class="fl">职位月薪：{if $info['minsalary'] && $info['maxsalary']}{$info['minsalary']}-{$info['maxsalary']}{elseif $info['minsalary']}{$info['minsalary']}{elseif $info['maxsalary']}{else}面议{/if}</span><span class="fr">工作经验：{if $info['experience']}{$info['experience']}年{else}不限{/if}</span></div>
+    </article>
+    <article class="line"></article>
+    {template 'view','mobile'}
+    <article class="line"></article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新求职信息</span></div>
+        <a class="fr" href="resume.php">查看全部&nbsp;&gt;</a>
+    </header>
+    <article class="list">
+        {if $aRecommendFood}
+        <table class="jobtable">
+            <tr><th>姓名</th><th>分类</th><th>学历</th><th>工作经验</th></tr>
+            {loop $aRecommendFood $k $v}
+            <tr>
+                <td><a href="resumeshow.php?id={$v['itemid']}">{dsubstr($v['truename'],16)}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{$aSetting['education'][$v['education']]}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if $v['experience']}{$v['experience']}年{else}暂无{/if}</a></td>
+            </tr>
+            {/loop}
+        </table>
+        {/if}
+    </article>
+    <article class="line" style="border-top-width: 0px;"></article>
+    <header class="channelheader clear">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门求职信息</span></div>
+        <a class="fr" href="resume.php">查看全部&nbsp;&gt;</a>
+    </header>
+    <article class="list">
+        {if $aHotFood}
+        <table class="jobtable">
+            <tr><th>姓名</th><th>分类</th><th>学历</th><th>工作经验</th></tr>
+            {loop $aHotFood $k $v}
+            <tr>
+                <td><a href="resumeshow.php?id={$v['itemid']}">{dsubstr($v['truename'],16)}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{$aSetting['education'][$v['education']]}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if $v['experience']}{$v['experience']}年{else}暂无{/if}</a></td>
+            </tr>
+            {/loop}
+        </table>
+        {/if}
+    </article>
+</section>
+<article class="line" style="border-top-width: 0px;"></article>
+{template 'footer','mobile'}

@@ -27,13 +27,15 @@ if($action=='ajax'){
                             <div class="text">
                                 <a class="title" href="/mobile/article/show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
                                 <p class="introduce">简介：'.$v['introduce'].'</p>
+                                <p class="numviesshow clear">
+                                    <span class="fl numtimes">'.date('Y-m-d',$v['addtime']).'</span>
+                                    <span class="numsviews">
+                                        <img src="'.DT_SKIN.'image/public/icon-liulan.png" />浏览('.$v['hits'].')&nbsp;
+                                        <img src="'.DT_SKIN.'image/public/icon-pinlun.png" />评论('.$v['comments'].')
+                                    </span>
+                                </p>
                             </div>
-                        </div>
-                        <div class="handle clear hasbutton">
-                            <span><img src="'.DT_SKIN.'image/mobile/hit.png" />'.$v['hits'].'</span>
-                            <a class="fr showpng" href="/mobile/article/show.php?id='.$v['itemid'].'"><img src="'.DT_SKIN.'image/mobile/show.png" /></a>
-                        </div>
-                    </div>';
+                        </div>';
         }
     }
     exit(json_encode(array('info'=>$info,'totalpage'=>$totalpage)));

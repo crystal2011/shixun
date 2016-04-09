@@ -17,6 +17,22 @@ class resume {
 		$this->fields = array('catid','areaid','level','title','style','fee','introduce','truename','userid','gender','birthday','age','marriage','height', 'weight','education','school','major','skill','language','minsalary','maxsalary','situation','type','experience','mobile','telephone','address','email','msn','qq','ali','skype','thumb','username','addtime','editor','edittime','ip','template','status','hits','open','note');
     }
 
+    function getright($field='*',$limit,$order=''){
+        global $dtcity;
+        $where = ' status=3 ';
+        if($dtcity){
+            $info = get_area($dtcity['areaid']);
+            $arrchildid = $info['arrchildid'];
+            $where .= " and areaid in ($arrchildid)";
+        }
+        $list = array();
+        $result = $this->db->query("select {$field} from {$this->table} where {$where} order by {$order} limit $limit");
+        while($r=$this->db->fetch_array($result)){
+            $list[] = $r;
+        }
+        return $list;
+    }
+
 	function pass($post,$isadmin=true) {
 		global $DT_TIME, $MOD;
 		if(!is_array($post)) return false;

@@ -4,7 +4,30 @@
 <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
 <script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
 <script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
-
+<style>
+    .person {height:auto;}
+    .person .bg-persons {width:17%;max-width:5rem;margin:0 auto;}
+    .person .kuang {  width: 100%;display: block;position: relative;height: 0px;padding: 0px 0px 100%;}
+    .person .kuang img {  width: 100%;height: 100%;font-size: 10px;position: absolute;}
+    .person .name {font-size:1.8rem;padding-top:0rem;}
+    .usermoney {padding-right:20px;text-align:right;font-size:1rem;}
+    .usermoney span {color:#e9544e;font-size:1rem;}
+    .indetishi {padding-left:10px;font-size:1.2rem;line-height:2.4rem;border-bottom:2px solid #f1f1f1;}
+    .indetishi span {color:#e9544e;}
+    .userinfosl {padding:10px 0px;}
+    .userinfosl img {vertical-align: middle;margin-right:3px;}
+    .userinfosl div {width:50%;text-align:center;}
+    .userinfosl div a {font-size:1.4rem;color:#000;}
+    .userinfosl .fr {border-left:1px solid #000;}
+    #index .module a span {font-size:1.1rem;}
+    .channelheader {border-bottom:1px solid #e6e6e6;padding:0px 0px 10px 10px;}
+    .channelheader span {font-size:1.4em;color:#03b887;}
+    .channelheader img {vertical-align: middle;}
+    .guangli table {width:100%;text-align:center;}
+    .guangli table td {border-top:1px solid #e6e6e6;}
+    .guangli a{display:block;font-size:1.2em;line-height:2.6em;}
+    .guangli img {vertical-align: middle;margin-right:3px;}
+</style>
 <script>
     function member_logo(val){
         if(val){
@@ -19,27 +42,98 @@
         }
     }
     </script>
-<section style="background-image: url({DT_SKIN}image/mobile/back.jpg);background-size:100%" class="person">
-    <div class="bg-person bk-white" ><img src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" style="width:100%;height:100%;border-radius: 50px;" id="member_logo" onclick="Dthumb(2,'','','',true,'','member_logo',200);thumbo();" /></div>
-    <div class="name white tc">{$_username} </div>
-</section>
-<section class="mu mu-info-list">
-    <a href="info.php" class="db">个人信息<i class="fa fa-angle-right fr"></i></a>
-    <a href="safe.php" class="db">安全中心<i class="fa fa-angle-right fr"></i></a>
-    <a href="food.php" class="db">餐饮供应管理<i class="fa fa-angle-right fr"></i></a>
-    <a href="discount.php" class="db">商家优惠管理<i class="fa fa-angle-right fr"></i></a>
-    <a href="job.php" class="db">招聘信息管理<i class="fa fa-angle-right fr"></i></a>
-    <a href="cession.php" class="db">店铺转让管理<i class="fa fa-angle-right fr"></i></a>
-    <a href="dish.php" class="db">名厨学堂管理<i class="fa fa-angle-right fr"></i></a>
-    {if $horninfo}
-    <a href="hornindex.php" class="db">羊角会管理<i class="fa fa-angle-right fr"></i></a>
-    {/if}
-    <a href="share.php" class="db">美食分享管理<i class="fa fa-angle-right fr"></i></a>
-    <a href="article.php" class="db">文章发布管理<i class="fa fa-angle-right fr"></i></a>
-    <a href="resume.php" class="db">个人简历管理<i class="fa fa-angle-right fr"></i></a>
-    <a  class="db quit">退出<i class="fa fa-angle-right fr"></i></a>
+<section style="background: url({DT_SKIN}image/mobile/back1.jpg) no-repeat;background-size:100%;padding-top:10px;" class="person">
+    <div class="bg-persons" >
+        <span class="kuang">
+            <img src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" style="border:3px solid #fff;width:100%;height:100%;border-radius: 50px;" id="member_logo" onclick="Dthumb(2,'','','',true,'','member_logo',200);thumbo();" />
+        </span>
 
+    </div>
+    <div class="name tc">{$_username} </div>
+    <div class="usermoney">账号资金：<span>0元</span></div>
 </section>
+<section>
+    <article class="indetishi">您已发布内容<span>{$_infopublishs}</span>次，已被<span>{$_infohits}</span>人阅读过。</article>
+    <article class="line" style="border: 0px;"></article>
+    <article class="clear userinfosl"><div class="fl"><a href="info.php"><img src="{DT_SKIN}image/mobile/handle.png" />设置用户资料</a></div><div class="fr"><a href="safe.php"><img src="{DT_SKIN}image/mobile/sale.png" />用户安全中心</a></div></article>
+    <article class="line" style="border: 0px;"></article>
+</section>
+<section id="index">
+    <article class="hotchannel">
+        <header class="channelheader clear">
+            <div class="fl"><img src="{DT_SKIN}image/mobile/btnshare.png" /><span>发布信息</span></div>
+        </header>
+
+    </article>
+    <article class="module">
+        <ul class="clear">
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=0">
+                    <p><img src="{DT_SKIN}image/mobile/module-1.png"  /></p>
+                    <span>餐饮供应</span>
+                </a>
+            </li>
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=1">
+                    <p><img src="{DT_SKIN}image/mobile/module-2.png"  /></p>
+                    <span>商家优惠</span>
+                </a>
+            </li>
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=2">
+                    <p><img src="{DT_SKIN}image/mobile/module-3.png"  /></p>
+                    <span>招聘信息</span>
+                </a>
+            </li>
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=3">
+                    <p><img src="{DT_SKIN}image/mobile/module-4.png"  /></p>
+                    <span>店铺转让</span>
+                </a>
+            </li>
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=4">
+                    <p><img src="{DT_SKIN}image/mobile/module-5.png"  /></p>
+                    <span>名厨学堂</span>
+                </a>
+            </li>
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=5">
+                    <p><img src="{DT_SKIN}image/mobile/module-7.png"  /></p>
+                    <span>美食分享</span>
+                </a>
+            </li>
+            <li>
+                <a href="/mobile/share/publish.php?moduleidtype=6">
+                    <p><img src="{DT_SKIN}image/mobile/module-6.png"  /></p>
+                    <span>文章发布</span>
+                </a>
+            </li>
+            {if $horninfo}
+            <li>
+                <a href="/mobile/member/hornindex.php">
+                    <p><img src="{DT_SKIN}image/mobile/module-6.png"  /></p>
+                    <span>内容审核</span>
+                </a>
+            </li>
+            {/if}
+        </ul>
+    </article>
+    <article class="hotchannel">
+        <header class="channelheader clear" style="border-bottom:0px;padding-top:10px;">
+            <div class="fl"><img src="{DT_SKIN}image/mobile/guagnli.png" /><span>管理信息</span></div>
+        </header>
+        <article class="guangli">
+            <table>
+                <tr><td><a href="food.php"><img src="{DT_SKIN}image/mobile/gmodule1.png" />供应管理</a></td><td><a href="discount.php"><img src="{DT_SKIN}image/mobile/gmodule2.png" />优惠管理</a></td><td><a href="job.php"><img src="{DT_SKIN}image/mobile/gmodule3.png" />招聘管理</a></td></tr>
+                <tr><td><a href="cession.php"><img src="{DT_SKIN}image/mobile/gmodule5.png" />店铺转让</a></td><td><a href="dish.php"><img src="{DT_SKIN}image/mobile/gmodule5.png" />名厨学堂</a></td><td><a><img href="share.php" src="{DT_SKIN}image/mobile/gmodule6.png" />美食分享</a></td></tr>
+                <tr><td><a href="article.php"><img src="{DT_SKIN}image/mobile/gmodule7.png" />文章发布</a></td><td><a href="resume.php"><img src="{DT_SKIN}image/icon10.png" />简历管理</a></td><td></td></tr>
+            </table>
+        </article>
+    </article>
+    <article class="line" style="border: 0px;"></article>
+</section>
+
 <aside class="mh-pop user-pop hide">
     <p><i>！</i><span>是否退出</span></p>
     <input type="button" value="是" class="on"/>
@@ -65,5 +159,4 @@
         });
     });
 </script>
-</body>
-</html>
+{template 'footer','mobile'}

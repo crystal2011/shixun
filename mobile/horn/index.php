@@ -20,7 +20,7 @@ if($action=='ajax'){
                     <a class="schoola" href="hornshow.php?id='.$v['itemid'].'"><img src="'.$v['thumb'].'" /></a>
                     <a class="title" href="hornshow.php?id='.$v['itemid'].'">荣誉创会成员：'.$v['title'].'</a>
                     <a class="title">内容审核号：<span class="lnfh">'.$v['code'].'</span></a>
-                    <a class="introudce" href="hornshow.php">'.$v['introduce'].'</a>
+                    <a class="introudce" href="hornshow.php?id='.$v['itemid'].'">'.$v['introduce'].'</a>
                     <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />'.$v['hits'].'</span><span class="fr">人气榜：'.$v['userds'].'</span></p>
                 </div>
             </li>';

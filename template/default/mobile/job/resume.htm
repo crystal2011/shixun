@@ -19,8 +19,8 @@
             <tr>
                 <td><a href="resumeshow.php?id={$v['itemid']}">{dsubstr($v['truename'],16)}</a></td>
                 <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if isset($aCacheCat9[$v['catid']])}{$aCacheCat9[$v['catid']]['catname']}{/if}</a></td>
-                <td align="center"><a href="show.php?id={$v['itemid']}">{$aSetting['education'][$v['education']]}</a></td>
-                <td align="center"><a href="show.php?id={$v['itemid']}">{if $v['experience']}{$v['experience']}年{else}暂无{/if}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{$aSetting['education'][$v['education']]}</a></td>
+                <td align="center"><a href="resumeshow.php?id={$v['itemid']}">{if $v['experience']}{$v['experience']}年{else}暂无{/if}</a></td>
             </tr>
             {/loop}
         </table>

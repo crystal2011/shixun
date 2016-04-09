@@ -9,5 +9,6 @@ if(!$_userid || $action == 'logout') dheader('/mobile/member/login.php');
 require DT_ROOT.'/include/post.func.php';
 $seo_title = '会员中心-';
 $topname = '会员中心';
+$notop = true; //不显示头部
 include template('index', 'mobile/member');
 ?>

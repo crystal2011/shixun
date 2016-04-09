@@ -1,9 +1,14 @@
 {template 'header','mobile'}
 {template 'search1','mobile'}
 <section id="content">
-    {template 'thumbinfo','mobile'}
-    <article class="line"></article>
-    {template 'nums','mobile'}
+    {template 'thumbinfo1','mobile'}
+    <article class="info clear" style="font-size:1em;margin-top:-15px;line-height:1em;padding-bottom:10px;">
+        <span class="fl huiyui">{date('Y-m-d',$info['addtime'])}</span>
+        <span class="numsviews">
+            <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})&nbsp;&nbsp;&nbsp;
+            <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$info['comments']})
+        </span>
+    </article>
     <article class="line"></article>
     {template 'view','mobile'}
     <article class="line"></article>
@@ -12,7 +17,7 @@
 </section>
 <section class="contentlist">
     <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新分享</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新美食分享</span></div>
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">
@@ -23,21 +28,24 @@
                 <a class="thumb" href="show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
                 <div class="text">
                     <a class="title"  href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">简介：{$v['introduce']}</p>
+                    <p class="introduce">{area_pos($v['areaid'],'')}{$v['address']}</p>
+                    <p class="numviesshow clear">
+                            <span class="fl numtimes">
+                                {date('Y-m-d',$v['addtime'])}
+                            </span>
+                            <span class="numsviews">
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
+                            </span>
+                    </p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span class="handle1"><img src="{DT_SKIN}image/mobile/love.png" />{$v['likes']}</span>
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
             </div>
         </div>
         {/loop}
         {/if}
     </article>
-    <article class="line" style="border-top-width: 0px;"></article>
-    <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png"><span>热门分享</span></div>
+    <header class="channelheader clear" style="border-top:1px solid #e6e6e6;">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门美食分享</span></div>
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">
@@ -48,16 +56,21 @@
                 <a class="thumb" href="show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
                 <div class="text">
                     <a class="title"  href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">简介：{$v['introduce']}</p>
+                    <p class="introduce">{area_pos($v['areaid'],'')}{$v['address']}</p>
+                    <p class="numviesshow clear">
+                            <span class="fl numtimes">
+                                {date('Y-m-d',$v['addtime'])}
+                            </span>
+                            <span class="numsviews">
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
+                            </span>
+                    </p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
             </div>
         </div>
         {/loop}
         {/if}
     </article>
 </section>
-{template 'foot1','mobile'}
+{template 'footer','mobile'}

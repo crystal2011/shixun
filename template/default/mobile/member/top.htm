@@ -28,6 +28,7 @@
 <style>
     body {padding-top:0rem!important;background-color:#fff;}
 </style>
+{if !isset($notop)}
 <header id="page-headert" class="clear" style="position:relative;">
     <i onclick="history.go(-1)" class="fa fa-angle-left fl"></i>
     <h2 class="fl">{$topname}</h2>
@@ -35,3 +36,4 @@
         <button id="release-btn" onclick="location.href='/mobile/share/publish.php?moduleidtype={$moduleidtype}'" style="background-color:#f60;color:#fff;padding:5px 10px;top:5px;right:10px;position:absolute" class="fr">发布</button>
     {/if}
 </header>
+{/if}

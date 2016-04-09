@@ -1,9 +1,9 @@
 {template 'header','mobile'}
 {template 'search1','mobile'}
 <style>
-    .list .content .info .text .title {color:#000;font-size:2.2em;height:1.8em;}
-    .list .content .info .text .introduce {font-size:1.6em;height:4.8em;line-height:1.6em;}
-    .list .content .info {padding-top:10px;}
+    .list .content .info .text .title {color:#000;font-size:2em;height:1.8em;}
+    .list .content .info .text .introduce {font-size:1.6em;max-height:4.2em;line-height:1.4em;}
+    .list .content .info {padding-top:10px;padding-bottom:10px;}
     .list .content .handle img {width: 20%;
         max-width: 181px;
         min-width:100px;
@@ -16,27 +16,18 @@
 </section>
 <section>
     <article class="list">
-        <div class="content">
+        <div class="content" style="margin-bottom:0px;">
             <div class="clear info">
                 <a class="thumb"><img src="{if $aKnow['thumb']}{$aKnow['thumb']}{else}{$DT['memberlogo']}{/if}" /></a>
-                <span class="numsviews">
-                            <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})&nbsp;&nbsp;&nbsp;
-                            <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$info['comments']})
-                        </span>
+                <span class="numsviews" style="float:none;text-align:right;display:block;margin-top:-5px;">
+                    <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})&nbsp;&nbsp;&nbsp;
+                    <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$info['comments']})
+                </span>
                 <div class="text">
-                        <a class="title">名厨：{$aKnow['truename']}</a>
-
-
+                    <a class="title">名厨：{$aKnow['truename']}</a>
                     <p class="introduce">{$aKnow['introduce']}</p>
                 </div>
             </div>
-        </div>
-    </article>
-</section>
-
-<section>
-    <article class="list">
-        <div class="content">
             <div class="handle clear hasbutton" style="border-bottom-width: 0px;padding-top:0px;padding-bottom:10px;text-align:right;">
                 <span class="handle1 price1 " style="width:100%;display:block;">
                  <img onclick="vote({$info['itemid']},2,this)" src="{DT_SKIN}image/mobile/bigvote.png" class="bigvote" />票数：{$info['votes']}

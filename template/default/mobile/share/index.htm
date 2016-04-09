@@ -2,9 +2,7 @@
 {template 'search','mobile'}
 <section>
     <span class="ids">{ad(83)}</span>
-    <article id="areaselect"  class="clear">
-        <span  style="float:right;"><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布</a></span>
-    </article>
+    {template 'area','mobile'}
     <article class="line" style="border-width:0px;"></article>
     <article class="list">
         {if $list}
@@ -14,14 +12,17 @@
                 <a class="thumb" href="show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
                 <div class="text">
                     <a class="title" href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">简介：{$v['introduce']}</p>
+                    <p class="introduce">{area_pos($v['areaid'],'')}{$v['address']}</p>
+                    <p class="numviesshow clear">
+                            <span class="fl numtimes">
+                                {date('Y-m-d',$v['addtime'])}
+                            </span>
+                            <span class="numsviews">
+                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
+                                <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
+                            </span>
+                    </p>
                 </div>
-            </div>
-            <div class="handle clear hasbutton">
-
-                <span><img src="{DT_SKIN}image/mobile/hit.png" />{$v['hits']}</span>
-                <a class="fr showpng" href="show.php?id={$v['itemid']}"><img src="{DT_SKIN}image/mobile/show.png" /></a>
-
             </div>
         </div>
         {/loop}
@@ -33,3 +34,4 @@
     </article>
     {/if}
 </section>
+{template 'footer','mobile'}

@@ -22,8 +22,8 @@ if(!$oSpecial->checkSpecial($info)){
     dalert($oSpecial->errmsg,'/mobile/horn/index.php');
 }
 
-$aHotFood = $oSpecial->getright('title,itemid,introduce,hits,code,thumb,userds',3,'hits desc'); //热门
-$aRecommendFood = $oSpecial->getright('title,itemid,introduce,hits,thumb,code,userds',3,'addtime desc');  //推荐
+$aHotFood = $oSpecial->getright('title,itemid,introduce,hits,code,thumb,userds',6,'hits desc'); //热门
+$aRecommendFood = $oSpecial->getright('title,itemid,introduce,hits,thumb,code,userds',6,'addtime desc');  //推荐
 
 //更新浏览量
 $oSpecial->editHits();

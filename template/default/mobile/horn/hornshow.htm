@@ -11,7 +11,7 @@
     }
     .hornshow p.huiyuan{
         font-size:2.4em;
-        line-height:2.4em;
+        line-height:2em;
         color:#000;
     }
     .hornshow p.huishows {
@@ -19,12 +19,15 @@
     }
     .hornimage {margin:0 auto;text-align:center;}
     .hornimage img{width:70%;padding-top:10px;height:auto;padding-bottom:10px;}
-
+    .comul li .lidiv .title {color:#000;font-size:1.4em;line-height:1.6em;height:1.6em;}
+    .lidiv .introudce {font-size:1.4em;line-height:1.4em;height:2.8em;}
+    .fndklf img {vertical-align:middle;}
+    .fndklf {padding-bottom:5px;padding-top:5px;margin:0px;}
 
 </style>
 <section>
     <article class="hornshow">
-        <p class="huiyuan">荣誉创会成员：{$info['title']}</p>
+        <p class="huiyuan">{$info['title']}</p>
         <p class="clear huishows"><span class="fl">{date('Y-m-d',$info['addtime'])}</span><span class="fr">内容审核号：<span style="color:#fe0000;">{$info['code']}</span></span></p>
         <p class="hornimage">
             <img src="{$info['thumb']}" />
@@ -60,9 +63,9 @@
             <li class="clear">
                 <div class="lidiv">
                     <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                    <a class="title" href="hornshow.php?id={$v['itemid']}">荣誉创会成员：{$v['title']}</a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">{$v['title']}</a>
                     <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
-                    <a class="introudce" href="hornshow.php">{$v['introduce']}</a>
+                    <a class="introudce" href="hornshow.php?id={$v['itemid']}">{$v['introduce']}</a>
                     <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
                 </div>
             </li>
@@ -70,9 +73,8 @@
             {/if}
         </ul>
     </article>
-    <article class="line" style="border-top-width: 0px;"></article>
     <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png"><span>热门羊角会成员</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门羊角会成员</span></div>
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">
@@ -82,9 +84,9 @@
             <li class="clear">
                 <div class="lidiv">
                     <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                    <a class="title" href="hornshow.php?id={$v['itemid']}">荣誉创会成员：{$v['title']}</a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">{$v['title']}</a>
                     <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
-                    <a class="introudce" href="hornshow.php">{$v['introduce']}</a>
+                    <a class="introudce" href="hornshow.php?id={$v['itemid']}">{$v['introduce']}</a>
                     <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
                 </div>
             </li>

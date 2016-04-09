@@ -34,8 +34,8 @@ if($action=='ajax'){
             $info .= '<tr>
                         <td><a href="resumeshow.php?id='.$v['itemid'].'">'.dsubstr($v['title'],16).'</a></td>
                         <td align="center"><a href="resumeshow.php?id='.$v['itemid'].'">'.$catnamesd.'</a></td>
-                        <td align="center"><a href="show.php?id='.$v['itemid'].'">'.$aSetting['education'][$v['education']].'</a></td>
-                        <td align="center"><a href="show.php?id='.$v['itemid'].'">'.$experiencesd.'</a></td>
+                        <td align="center"><a href="resumeshow.php?id='.$v['itemid'].'">'.$aSetting['education'][$v['education']].'</a></td>
+                        <td align="center"><a href="resumeshow.php?id='.$v['itemid'].'">'.$experiencesd.'</a></td>
                     </tr>';
         }
     }

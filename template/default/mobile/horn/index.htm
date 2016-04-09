@@ -50,14 +50,17 @@
         -webkit-backface-visibility: hidden;
         -webkit-transform-style: preserve-3d;
     }
+    #index .article .articlelist li {padding:0 10px;}
     #index .article .articlelist article {height:auto;}
-    #index .article .articlelist a {color:#000;line-height:2em;font-size:1.8em;}
+    #index .article .articlelist a {color:#000;line-height:2em;font-size:1.8em;height:2em;overflow: hidden;}
     #index .article .articlelist li {border-bottom:1px solid #e6e6e6;}
     #index .article .articlelist span {line-height:2em;font-size:1.8em;}
     #index .article {padding:0px;}
     .schoola img{padding:10px 10px 0px 10px;}
-    .comul li .lidiv .title {color:#000;}
-
+    .comul li .lidiv .title {color:#000;font-size:1.4em;line-height:1.6em;height:1.6em;}
+    .lidiv .introudce {font-size:1.4em;line-height:1.4em;height:2.8em;}
+    .fndklf img {vertical-align:middle;}
+    .fndklf {padding-bottom:5px;padding-top:5px;margin:0px;}
 </style>
 <section id="roll-banner" class="sliderBox">
     <ul class="slider">{$sAdPlaceHot}</ul>
@@ -86,9 +89,9 @@
             <li class="clear">
                 <div class="lidiv">
                     <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                    <a class="title" href="hornshow.php?id={$v['itemid']}">荣誉创会成员：{$v['title']}</a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">{$v['title']}</a>
                     <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
-                    <a class="introudce" href="hornshow.php">{$v['introduce']}</a>
+                    <a class="introudce" href="hornshow.php?id={$v['itemid']}">{$v['introduce']}</a>
                     <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
                 </div>
             </li>
