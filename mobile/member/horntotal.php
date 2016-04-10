@@ -10,22 +10,11 @@ $oSpecial->table_data = $db->pre.'special_data';
 $action = isset($action)?$action:'';
 if(!$_userid) $action=='ajax'?exit(json_encode(array('status'=>'n','info'=>'请先登录'))):dheader('/mobile/member/login.php');
 if(!$horninfo = $oSpecial->checkHasUser()) $action=='ajax'?exit(json_encode(array('status'=>'n','info'=>$oSpecial->errmsg))):dalert($oSpecial->errmsg,'/mobile/member/index.php');
-
+$applynum = applynum($horninfo['itemid']);
 
 $where = ' status = 6 and  codeid = '.$horninfo['itemid'];
-$fromyear = isset($fromyear)?$fromyear:'';
-$frommonth = isset($frommonth)?$frommonth:'';
-$toyear = isset($toyear)?$toyear:'';
-$tomonth = isset($tomonth)?$tomonth:'';
-$list = array();
-if($fromyear && $frommonth && $toyear && $tomonth){
-    $fromtime = strtotime($fromyear.'-'.$frommonth);
-    $where .= ' and checktime >= '.$fromtime;
-    $totime = strtotime('+1 months'.$toyear.'-'.$tomonth);
-    $where .= ' and checktime < '.$totime;
-    //获取每个月的
-    list($list,$totalpage) = $oSpecial->codeListGroup($where);
-}
+list($list,$totalpage) = $oSpecial->codeListGroup($where,100);
+
 if($action=='ajax'){
     $str = '';
     if($list){
@@ -35,10 +24,17 @@ if($action=='ajax'){
     }
     exit(json_encode(array('status'=>'y','info'=>$str,'totalpage'=>$totalpage)));
 }
+if($list){
+    $codeAll = $oSpecial->codeAll($where);
+}
 
-$codeAll = $oSpecial->codeAll($where);
+
+$where = ' codeid = '.$horninfo['itemid'].' ';
+list($applylog,$totalpagess) = $oSpecial->codeListApplyList($where,'100');
+
 $topname = '月度汇总';
 $seo_title = '月度汇总-会员中心-';
+$ishorn = true;
 include template('horntotal', 'mobile/'.$module);
 
 ?>

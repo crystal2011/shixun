@@ -30,17 +30,24 @@ if($at=='check'){
     $str = '';
     if($list){
         foreach($list as $k=>$v){
-            $str .= '<tr><td colspan="2"><a href="'.$v['url'].'" target="_blank" title="'.$v['t_title'].'">'.$v['t_title'].'</a></td></tr>
-                    <tr><td>总金额：'.doubleval($v['allmoney']).'元</td><td>实支金额：'.doubleval($v['money']).'元</td></tr>
-                    <tr><td>折扣：'.doubleval($v['discount']).'折</td><td>折扣金额：'.doubleval($v['discountfee']).'元</td></tr>
-                    <tr><td>备注：'.$v['note'].'-'.$v['typename'].'</td><td>发布时间：'.date('Y-m-d',$v['addtime']).'</td></tr>
-                    <tr class="bottomtr">
-                        <td colspan="2">
-                            <input type="button" value="通过" onclick="pass(1,'.$v['t_itemid'].',this)" style="padding:1px 3px;border:0px;background-color:#03b887;color:#fff;cursor:pointer;" />
-                            <input type="button" value="不通过" df="pass(0,'.$v['t_itemid'].',this)" onclick="passinput(this)" style="padding:1px 3px;border:0px;background-color:#ea554f;color:#fff;cursor:pointer;" />
+            $str .= '<div class="df">
+                    <div>
+                        <p class="hornmtitle"><a href="'.$v['url'].'" target="_blank" title="'.$v['t_title'].'">'.$v['t_title'].'</a></p>
+                        <p class="hornmintroduce">分类：'.$v['note'].'-'.$v['typename'].'&nbsp;&nbsp;&nbsp;时间：'.date('Y-m-d',$v['addtime']).'</p>
+                        <p class="hornmintroduce">状态：待审
+                            &nbsp;&nbsp;&nbsp;金额：<span style="color:#ea554f">'.doubleval($v['discountfee']).'</span>元
+                        </p>
+
+                        <p class="hornmintroduce">
+                            <input type="button" value="通过" onclick="pass(1,'.$v['t_itemid'].',this)" style="padding:5px 15px;border:0px;background-color:#03b887;color:#fff;cursor:pointer;" />
+                            <input type="button" value="不通过" df="pass(0,'.$v['t_itemid'].',this)" onclick="passinput(this)" style="padding:5px 15px;border:0px;background-color:#ea554f;color:#fff;cursor:pointer;" />
                             <span style="display:none;">原因：<input type="text" maxlength="50" style="width: 100px;height: 20px;line-height: 20px;border: 1px solid #e2e2e2;padding-left: 5px;" /></span>
-                        </td>
-                    </tr>';
+                        </p>
+                    </div>
+                </div>
+                <div class="line"></div>
+            </li>
+                    ';
         }
     }
     exit(json_encode(array('status'=>'y','info'=>$str,'totalpage'=>$totalpage)));
@@ -58,6 +65,7 @@ if($at=='check'){
     $topnamea = array('餐饮供应','商家优惠','招聘信息','店铺转让','名厨学堂','美食分享','文章发布');
     $seo_title = '审核'.$topnamea[$checktype].'-会员中心-';
     $topname = '审核'.$topnamea[$checktype];
+    $ishorn = true;
     include template('checklist', 'mobile/'.$module);
 }else{
     if(!$_userid) dalert('请先登录','/mobile/member/login.php');
@@ -65,6 +73,7 @@ if($at=='check'){
     $seo_title = '待审核-会员中心-';
     $topname = '待审核';
     $oSpecial->codenewno($horninfo['itemid']);
+    $ishorn = true;
     include template('horncheck', 'mobile/'.$module);
 }
 ?>

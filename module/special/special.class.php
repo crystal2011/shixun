@@ -475,7 +475,7 @@ class special {
     function codeListGroup($condition='1=1',$limit=10){
         global $page;
         $offset = ($page-1)*$limit;
-        $result = $this->db->query("select sum(allmoney) as allmoney,sum(money) as money,sum(discountfee) as discountfee,ym from {$this->db->pre}code where $condition  group by ym order by checktime desc limit $offset,$limit");
+        $result = $this->db->query("select sum(allmoney) as allmoney,sum(money) as money,sum(discountfee) as discountfee,ym,checktime from {$this->db->pre}code where $condition  group by ym order by checktime desc limit $offset,$limit");
         $list = array();
         while($r = $this->db->fetch_array($result)){
             $list[] = $r;
@@ -566,7 +566,6 @@ class special {
         $table = $this->codetable($checktype);
         $offset = ($page-1)*$limit;
         $where = " c.codeid = {$codeid} and c.type = {$checktype} and c.status = 2 and t.status = 2 ";
-
         $result = $this->db->query("select c.*,t.itemid as t_itemid,t.title as t_title from {$this->db->pre}code c inner join {$this->db->pre}{$table} t on t.itemid = c.id where {$where} order by c.addtime desc limit $offset,$limit");
         $list = array();
         while($r = $this->db->fetch_array($result)){

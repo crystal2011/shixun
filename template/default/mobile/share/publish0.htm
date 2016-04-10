@@ -1,4 +1,5 @@
 {template 'header','mobile'}
+
 <script type="text/javascript" src="<?php echo DT_STATIC;?>lang/<?php echo DT_LANG;?>/lang.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/common.js"></script>
@@ -11,16 +12,52 @@
 <section class="publishform">
     <article>
         <form id="publishform" method="post" action="/share/publish.php?isajax=1">
-            <div class="h3h">基本选项</div>
-            {template  'publishcommon','mobile/share'}
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>标题</span>
                 <span class="publishright">
-                    <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" placeholder="名称" class="input-text" />
+                    <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" class="input-text" />
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
+            <script>
+                function show_logo(val,type){
+                    if(val){
+                        $("#thumb"+type).attr("src",val);
+                    }
+                }
+                function thumb1(val){show_logo(val,1);}
+                function thumb2(val){show_logo(val,2);}
+                function thumb3(val){show_logo(val,3);}
+                function thumb4(val){show_logo(val,4);}
+                function thumb5(val){show_logo(val,5);}
+                function thumb6(val){show_logo(val,6);}
+                function thumb7(val){show_logo(val,7);}
+                function thumb8(val){show_logo(val,8);}
+                function thumb9(val){show_logo(val,9);}
+
+            </script>
+            <p class="clearfix">
+                <span class="imagedivjia">
+                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb1" onclick="Dthumb(2,'','','',true,'','thumb1',200);thumbo();" />
+                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb2" onclick="Dthumb(2,'','','',true,'','thumb2',200);thumbo();" />
+                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb3" onclick="Dthumb(2,'','','',true,'','thumb3',200);thumbo();" />
+                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb4" onclick="Dthumb(2,'','','',true,'','thumb4',200);thumbo();" />
+                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb5" onclick="Dthumb(2,'','','',true,'','thumb5',200);thumbo();" />
+                </span>
+                <span class="Validform_checktip"></span>
+
+            </p>
+            <p class="clearfix">
+                <span class="publishleft"><i class="red"></i>描述</span>
+
+            </p>
+            <p>
+                <textarea name="content" id="content" class="dsn"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
+                <?php echo deditor(2, 'content','', '100%', 350);  ?>
+            </p>
+            {template  'publishcommon','mobile/share'}
+
 
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>分类选择</span>
@@ -30,15 +67,7 @@
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>上传图片</span>
-                <span class="publishright">
-                    <input name="thumb" id="thumb" type="text" class="input-text" style="width:70%;max-width:300px;" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
-                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);thumbo()" class="jt">[上传]</span>
-                    <br />
-                    <span class="Validform_checktip"></span>
-                </span>
-            </p>
+
             <p class="clearfix">
                 <span class="publishleft"><i class="red">*</i>价格</span>
                 <span class="publishright">
@@ -89,12 +118,7 @@
                 </span>
 
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red"></i>详细内容</span>
-                <span class="publishright">
-                    <textarea class="input-text textinput" name="content" id="content"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                </span>
-            </p>
+
             <div class="btn-box">
                 <input  type="hidden" name="submit" value="1"/>
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
@@ -108,6 +132,12 @@
 <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
 <script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
 <script>
+    //实例化编辑器
+    var ue = UE.getEditor('editor', {
+        toolbars: [
+            ['inserttitle','undo', 'redo','|', 'link','unlink','|','bold','searchreplace','insertimage','|','blockquote','titlebar',]
+        ]
+    });
     $("#publishform").Validform({
         tiptype: 3,
         postonce:true,

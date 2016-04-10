@@ -67,9 +67,9 @@ if($itemid){
     $info = $obj->get_one();
     $check = is_can_edit($info);
     if($check!==true) $isajax?exit(json_encode(array('status'=>'n','info'=>$check))):dalert($check,$forward);
-    $sitetitle .= '编辑';
+    $sitetitle = '信息编辑—'.$sitetitle;
 }else{
-    $sitetitle .= '发布';
+    $sitetitle = '信息发布—'.$sitetitle;
 }
 
 if($submit){

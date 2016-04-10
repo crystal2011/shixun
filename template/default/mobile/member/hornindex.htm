@@ -1,27 +1,27 @@
 {template 'top','mobile/member'}
 <style>
+    body {background-color:#f5f5f5;}
     .tabsupshow {
         background-color: #fff;
         padding-top: 10px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #f9f9f9;
-        margin-bottom: 10px;
     }
     .tabsupshow .teshow {
         width: 33.333333%;
         text-align:center;
         padding:0 3px;
+
     }
+    .tabsupshow .teshow img {width:50%;max-width:88px;}
     .dnfl {
         width: 100%;
-        max-width:150px;
+
         margin:0 auto;
         height: 50px;
-        background-color: #ea554f;
-        color: #fff;
+        color: #000;
         text-align: center;
         line-height: 50px;
         font-size: 20px;
+
     }
     .tabsupshow span {
         color: #ea554f;
@@ -34,31 +34,55 @@
         cursor: pointer;
         font-size: 14px;
     }
+    .tabsupshow1 {
+        padding-top:0px;
+    }
+    .tabsupshow1 .teshow p{
+        font-size:1.2em;
+        color:#000;
+    }
+    .tabsupshow1 .teshow p span {
+        font-size:1em;
+    }
 </style>
 <section>
-    <div style="background-color:#fff;text-align:center;">内容审核号：{$horninfo['code']}</div>
+    <div class="hornmembershow">内容审核号：<span>{$horninfo['code']}</span></div>
+    <article class="line"></article>
     <div class="tabsupshow clear">
-        <div class="teshow fl teleft">
-            <p class="dnfl">审核记录</p>
-            <p>已审核<span>{$codenumed}</span>次</p>
+        <div style="border-bottom:1px solid #e6e6e6;" class="clear">
+            <div class="teshow fl teleft">
+                <img src="{DT_SKIN}image/mobile/hornchecklog.png" width="50%" />
+                <p class="dnfl">审核记录</p>
+
+            </div>
+            <div class="teshow fl ">
+                <img src="{DT_SKIN}image/mobile/hornckeckwait.png" width="50%" />
+                <p class="dnfl">等待审核</p>
+
+            </div>
+            <div class="fr teshow teright">
+                <img src="{DT_SKIN}image/mobile/horncheckmoney.png" width="50%" />
+                <p class="dnfl">审核金额</p>
+            </div>
         </div>
-        <div class="teshow fl ">
-            <p class="dnfl">等待审核</p>
-            <p>待审核<span>{$codenewno}</span>次</p>
-        </div>
-        <div class="fr teshow teright">
-            <p class="dnfl">审核金额</p>
-            <p style="clear:both;"></p>
-            <p>结算金额：<span>{doubleval($applynum)}</span>元{if doubleval($applynum)}<i class="getmoney" onclick="location.href='/mobile/member/hornapply.php?action=apply'">提交</i>{/if}</p>
+        <div class="tabsupshow tabsupshow1 clear">
+            <div class="teshow fl teleft">
+                <p>已审核<span>{$codenumed}</span>次</p>
+            </div>
+            <div class="teshow fl ">
+                <p>待审核<span>{$codenewno}</span>次</p>
+            </div>
+            <div class="fr teshow teright">
+            <p>结算金额：<span>{doubleval($applynum)}</span>元</p>
+            </div>
         </div>
     </div>
+    <article class="line" style="border-bottom:0px;"></article>
 </section>
-<section class="mu mu-info-list">
-    <a href="horn.php" class="db">审核记录<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php" class="db">待审核<i class="fa fa-angle-right fr"></i></a>
-    <a href="horntotal.php" class="db">月度汇总<i class="fa fa-angle-right fr"></i></a>
-    <a href="hornapply.php" class="db">申请结算<i class="fa fa-angle-right fr"></i></a>
-    <a href="hornbalance.php" class="db">结算记录<i class="fa fa-angle-right fr"></i></a>
+<section class="mu mu-info-list mu-info-list1">
+    <a href="horn.php" class="db"><img src="{DT_SKIN}image/mobile/horns2.png" style="width:20px;height:auto;vertical-align:middle;margin-right:3px;margin-top:-4px;" />审核记录<i class="fa fa-angle-right fr"></i></a>
+    <a href="horncheck.php" class="db"><img src="{DT_SKIN}image/mobile/horns3.png" style="width:16px;height:auto;vertical-align:middle;margin-right:3px;margin-top:-4px;" />等待审核<i class="fa fa-angle-right fr"></i></a>
+    <a href="horntotal.php" class="db"><img src="{DT_SKIN}image/mobile/horns4.png" style="width:22px;height:auto;vertical-align:middle;margin-right:3px;margin-top:-4px;" />资金管理<i class="fa fa-angle-right fr"></i></a>
+
 </section>
-</body>
-</html>
+{template 'footer','mobile'}

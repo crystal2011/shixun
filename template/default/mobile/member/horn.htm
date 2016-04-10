@@ -4,32 +4,52 @@
     .adtable {width:100%;}
     .bottomtr {border-bottom:1px solid #f1f1f1;}
     .adtable td {height:30px;line-height:30px;}
+
 </style>
-<section class="mu" style="border-top:1px solid #f1f1f1;">
-    <section class="mu-list mu-collist active mh-home">
-        <ul>
+<section>
+    <div class="hornmembershow">内容审核号：<span>{$horninfo['code']}</span></div>
+    <div class="line"></div>
+    <div class="horntoptitle">
+        <img src="{DT_SKIN}image/mobile/checklogbig.png" /><br />
+        审核记录
+    </div>
+    <div class="line"></div>
+</section>
+<section>
+    <article class="mu-list mu-collist active mh-home hornmu">
+        <ul class="adtable">
             {if $list}
-            <article class="pullDownLabel">继续下拉刷新列表</article>
-            <li style="border-bottom:0px;">
-                <table class="adtable">
-                    {loop $list $k $v}
-                    <tr><td>{$getListUser[$v['userid']]['username']} </td><td>备注：{$v['note']}-{$v['typename']}</td></tr>
-                    <tr><td>总金额：{doubleval($v['allmoney'])}元</td><td>实支金额：{doubleval($v['money'])}元</td></tr>
-                    <tr><td>折扣：{doubleval($v['discount'])}折</td><td>折扣金额：{doubleval($v['discountfee'])}元</td></tr>
-                    <tr {if $v['cc_status']!=0}class="bottomtr"{/if}><td>审核时间：{date('Y-m-d',$v['cc_addtime'])}</td><td>状态：{if $v['cc_status']==0}<span style="color:#ea554f">不通过</span>{else}<span style="color:#03b887">通过</span>{/if}</td>
-                    {if $v['cc_status']==0}<tr class="bottomtr"><td colspan="2"><span style="color:#ea554f">原因：{$v['cc_note']}</span></td></tr>{/if}
-                    {/loop}
-                </table>
-            </li>
+                {loop $list $k $v}
+                <li>
+                    <div class="df">
+                        <div>
+                            <p class="hornmtitle">{if isset($v['iteminfo']['title'])}<a href="{$v['urlarr']}" >{$v['iteminfo']['title']}</a>{else}失效{/if}</p>
+                            <p class="hornmintroduce">分类：{$v['note']}-{$v['typename']}&nbsp;&nbsp;&nbsp;时间：{date('Y-m-d',$v['cc_addtime'])}</p>
+                            <p class="hornmintroduce">状态：
+                                {if $v['cc_status']==0}
+                                    <span style="color:#ea554f">不通过</span>
+                                {else}
+                                    <span style="color:#03b887">通过</span>
+                                {/if}
+                                &nbsp;&nbsp;&nbsp;金额：<span style="color:#ea554f">{doubleval($v['discountfee'])}</span>元
+                            </p>
+                            {if $v['cc_status']==0}
+                            <p class="hornmintroduce"><span style="color:#ea554f">原因：{$v['cc_note']}</span></p>
+                            {/if}
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                </li>
+                {/loop}
             {/if}
-            {if $list && $page<$totalpage}
-            <article class="pullUpLabel">继续拉动加载更多</article>
-            {/if}
-        <ul>
-    </section>
+        </ul>
+
+    </article>
+    {if $list && $page<$totalpage}
+    <article class="pullUpLabel" style="border-top:0px;">加载中···</article>
+    {/if}
 </section>
 <script src="{DT_SKIN}js/popup.js"></script>
-<script src="{DT_SKIN}js/iscroll.js"></script>
 <script>
     var page = 1;
     function get_collect(){
@@ -53,99 +73,13 @@
     }
 
     /* 列表顶部下拉刷新，底部上拉加载更多 */
-    (function() {
-        var className, getList, i, j, len, list, pullUpLabel, ref, refreshList, windows;
-
-        list = {
-            lists: [],
-            element: '.mh-home',
-            className: 'mh-home',
-            addListElement: $('.pullUpLabel'),
-            thresholdValue: 45,
-            addTip: {
-                initialize: '继续拉动加载更多',
-                load: '正在加载...',
-                soonLoad: '释放手指加载更多',
-                state: false
-            },
-            refreshTip: {
-                element: $('.pullDownLabel'),
-                initialize: '继续下拉刷新列表',
-                soonLoad: '释放手指刷新列表',
-                state: false
-            }
-        };
-
-        windows = {
-            width: $(window).width(),
-            height: $(window).height()
-        };
-
-        $(list.element).css({
-            height: windows.height - 101 + 'px'
-        });
-
-
-        /*
-         ajax 下拉请求列表
-         fn {Function} 回调函数
-         i {Number} 当前滚动的列表索引值
-         */
-        getList = function(fn) {
+    var s = true;
+    $(window).scroll(function() {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height() && s) {
+            s = false;
             get_collect();
-            return fn();
-        };
-
-
-        pullUpLabel = function(i) {
-            list.addListElement.text(list.addTip.load);
-            return getList(function() {
-                list.lists[i].refresh();
-                return list.addListElement.text(list.addTip.initialize);
-            }, i);
-        };
-
-        refreshList = function(element, i) {
-            var scroll;
-            scroll = new iScroll(element, {
-                useTransform: true,
-                fadeScrollbars: false,
-                onRefresh: function() {},
-                onScrollMove: function() {
-                    if (this.y < (this.maxScrollY - list.thresholdValue)) {
-                        list.addListElement.text(list.addTip.soonLoad);
-                        list.addTip.state = true;
-                    } else {
-                        list.addListElement.text(list.addTip.initialize);
-                        list.addTip.state = false;
-                    }
-                    if (this.y > list.thresholdValue) {
-                        list.refreshTip.element.text(list.refreshTip.soonLoad);
-                        return list.refreshTip.state = true;
-                    } else {
-                        list.refreshTip.element.text(list.refreshTip.initialize);
-                        return list.refreshTip.state = false;
-                    }
-                },
-                onScrollEnd: function() {
-                    if (list.addTip.state) {
-                        pullUpLabel(i);
-                    }
-                    if (list.refreshTip.state) {
-                        return location.reload();
-                    }
-                }
-            });
-            return list.lists.push(scroll);
-        };
-
-        ref = $(list.element);
-        for (i = j = 0, len = ref.length; j < len; i = ++j) {
-            className = ref[i];
-            refreshList(document.getElementsByClassName(list.className)[i], i);
+            s = true;
         }
-
-    }).call(this);
+    });
 </script>
-</body>
-</html>
+{template 'footer','mobile'}

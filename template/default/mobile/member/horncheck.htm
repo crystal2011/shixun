@@ -1,12 +1,17 @@
 {template 'top','mobile/member'}
-<section class="mu mu-info-list">
-    <a href="horncheck.php?at=checklist&checktype=0" class="db">餐饮供应{if $num0}<span style="color:#ea554f;">{$num0}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php?at=checklist&checktype=1" class="db">商家优惠{if $num1}<span style="color:#ea554f;">{$num1}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php?at=checklist&checktype=2" class="db">招聘信息{if $num2}<span style="color:#ea554f;">{$num2}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php?at=checklist&checktype=3" class="db">店铺转让{if $num3}<span style="color:#ea554f;">{$num3}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php?at=checklist&checktype=4" class="db">名厨学堂{if $num4}<span style="color:#ea554f;">{$num4}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php?at=checklist&checktype=5" class="db">美食分享{if $num5}<span style="color:#ea554f;">{$num5}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
-    <a href="horncheck.php?at=checklist&checktype=6" class="db">文章发布{if $num6}<span style="color:#ea554f;">{$num6}</span>{/if}<i class="fa fa-angle-right fr"></i></a>
+<style>
+    body {background-color:#f5f5f5;}
+</style>
+<div class="hornmembershow">内容审核号：<span>{$horninfo['code']}</span></div>
+<div class="line" style="border:0px;"></div>
+<div class="line" style="border:0px;"></div>
+<section class="mu mu-info-list mu-info-list1">
+    <a href="horncheck.php?at=checklist&checktype=0" class="db"><img src="{DT_SKIN}image/mobile/gmodule1.png" style="vertical-align: middle;margin-right:3px;" />餐饮供应<i class="fa fa-angle-right fr"></i>{if $num0}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num0}</i>{/if}</a>
+    <a href="horncheck.php?at=checklist&checktype=1" class="db"><img src="{DT_SKIN}image/mobile/gmodule2.png" style="vertical-align: middle;margin-right:3px;"  />商家优惠<i class="fa fa-angle-right fr"></i>{if $num1}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num1}</i>{/if}</a>
+    <a href="horncheck.php?at=checklist&checktype=2" class="db"><img src="{DT_SKIN}image/mobile/gmodule3.png" style="vertical-align: middle;margin-right:3px;"  />招聘信息<i class="fa fa-angle-right fr"></i>{if $num2}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num2}</i>{/if}</a>
+    <a href="horncheck.php?at=checklist&checktype=3" class="db"><img src="{DT_SKIN}image/mobile/gmodule4.png" style="vertical-align: middle;margin-right:3px;"  />店铺转让<i class="fa fa-angle-right fr"></i>{if $num3}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num3}</i>{/if}</a>
+    <a href="horncheck.php?at=checklist&checktype=4" class="db"><img src="{DT_SKIN}image/mobile/gmodule5.png" style="vertical-align: middle;margin-right:3px;width:19px;"  />名厨学堂<i class="fa fa-angle-right fr"></i>{if $num4}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num4}</i>{/if}</a>
+    <a href="horncheck.php?at=checklist&checktype=5" class="db"><img src="{DT_SKIN}image/mobile/gmodule6.png" style="vertical-align: middle;margin-right:3px;width:19px;"  />美食分享<i class="fa fa-angle-right fr"></i>{if $num5}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num5}</i>{/if}</a>
+    <a href="horncheck.php?at=checklist&checktype=6" class="db"><img src="{DT_SKIN}image/mobile/gmodule7.png" style="vertical-align: middle;margin-right:3px;"  />文章发布<i class="fa fa-angle-right fr"></i>{if $num6}<i style="color:#ea554f;font-size:1em;margin-right:5px;" class="fr">{$num6}</i>{/if}</a>
 </section>
-</body>
-</html>
+{template 'footer','mobile'}

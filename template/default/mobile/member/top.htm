@@ -28,12 +28,19 @@
 <style>
     body {padding-top:0rem!important;background-color:#fff;}
 </style>
-{if !isset($notop)}
+{if !isset($notop) && !isset($ishorn)}
 <header id="page-headert" class="clear" style="position:relative;">
     <i onclick="history.go(-1)" class="fa fa-angle-left fl"></i>
     <h2 class="fl">{$topname}</h2>
     {if isset($moduleidtype)}  <!-- 头部右边显示需求发布的按钮 -->
-        <button id="release-btn" onclick="location.href='/mobile/share/publish.php?moduleidtype={$moduleidtype}'" style="background-color:#f60;color:#fff;padding:5px 10px;top:5px;right:10px;position:absolute" class="fr">发布</button>
+    <button id="release-btn" onclick="location.href='/mobile/share/publish.php?moduleidtype={$moduleidtype}'" style="background-color:#f60;color:#fff;padding:5px 10px;top:5px;right:10px;position:absolute" class="fr">发布</button>
     {/if}
+</header>
+{/if}
+
+{if isset($ishorn)}
+<header id="horn-headert" style="position:relative;font-size:0px;">
+    <img onclick="history.go(-1)" src="{DT_SKIN}image/mobile/userleft.png" class="userleft" />
+    <img src="{DT_SKIN}image/mobile/horntou.jpg" style="width:100%;height:auto;max-height:238px;" />
 </header>
 {/if}

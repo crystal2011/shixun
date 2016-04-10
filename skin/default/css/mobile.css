@@ -411,13 +411,19 @@ i {font-style:normal;}
     width:25%;
     display:block;
     float:left;
+    text-align:center;
 }
 #footer .footer a img{
-    width:100%;
+    width:30%;
+    min-width:90px;
     height:auto;
     max-width:180px;
+    margin:0 auto;
 }
-
+.hornmtitle {font-size:1.6em;border-bottom:1px solid #e6e6e6;line-height:1.2em;padding-bottom:5px;margin:0px;margin-bottom:10px;}
+.hornmtitle a {color:#000;font-size:1em;}
+.hornmintroduce {font-size:1.2em;line-height:1em;margin:0px;line-height:1.6em;}
+.hornmintroduce span {font-size:1em;}
 #header1 {
     background-color:#fff;
     vertical-align:middle;
@@ -943,6 +949,7 @@ a img {font-size:0px;}
     display:block;
     color:#818181;
 }
+.userleft {position:absolute;top:15px;left:15px;width:20px;height:auto;}
 
 .comul li .lidiv .handle {
     margin-top:0px;
@@ -979,3 +986,27 @@ a img {font-size:0px;}
 #publishform .textinput {height:100px;}
 #publishform p{margin:5px 0px 0px 0px;}
 #publishform select {margin-bottom:5px;background-color:#fff;color:#000;}
+
+.hornmembershow {
+    background-color:#fff;
+    text-align:center;
+    font-size:1.6em;
+    line-height:2em;
+    color:#4a4949;
+}
+.hornmembershow span{
+    color:#f85049;
+    font-size:1em;
+}
+.horntoptitle {
+    text-align:center;
+    font-size:1.8em;
+    color:#000;
+    padding:20px 0px;
+}
+.guangli table {width:100%;text-align:center;}
+.guangli table td {border-top:1px solid #e6e6e6;}
+.guangli a{display:block;font-size:1.2em;line-height:2.6em;color:#000;}
+.guangli img {vertical-align: middle;margin-right:3px;margin-top: -2px}
+
+#footer {position:fixed; bottom:0;left:0px; z-index:999;width:100%;}

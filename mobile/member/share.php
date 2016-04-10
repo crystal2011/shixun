@@ -2,7 +2,8 @@
 require '../../member/config.inc.php';
 require '../../common.inc.php';
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
-
+require DT_ROOT.'/include/post.func.php';
+require DT_ROOT.'/include/module.func.php';
 require_once DT_ROOT.'/module/buy/buy.class.php';
 $oBuy = new buy(6);
 

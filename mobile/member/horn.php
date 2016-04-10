@@ -13,6 +13,14 @@ if(!$horninfo = $oSpecial->checkHasUser()) $action=='ajax'?exit(json_encode(arra
 
 $where = ' c.codeid = '.$horninfo['itemid'];
 list($list,$totalpage) = $oSpecial->codeList($where,'10');
+if($list){
+    foreach($list as $k=>$v){
+        $table = $oSpecial->codetable($v['type']);
+        $list[$k]['iteminfo'] = $db->get_one("select title from {$db->pre}{$table} where itemid = ".$v['id']);
+        $list[$k]['urlarr'] = $oSpecial->urlarr($v['type'],$v['id'],'wap');
+    }
+}
+
 require_once DT_ROOT.'/module/member/member.class.php';
 $member_do = new member;
 $getListUser = $member_do->getListUser($list,'username');
@@ -21,19 +29,26 @@ if($action=='ajax'){
     if($list){
         foreach($list as $k=>$v){
             $strs = $v['cc_status']==0?'<span style="color:#ea554f">不通过</span>':'<span style="color:#03b887">通过</span>';
-            $bastrs = $v['cc_status']==0?'<tr class="bottomtr"><td colspan="2"><span style="color:#ea554f">原因：'.$v['cc_note'].'</span></td></tr>':'';
-            $cstr = $v['cc_status']==0?'':'class="bottomtr"';
-            $str .= '<tr><td>'.$getListUser[$v['userid']]['username'].' </td><td>备注：'.$v['note'].'-'.$v['typename'].'</td></tr>
-                    <tr><td>总金额：'.doubleval($v['allmoney']).'元</td><td>实支金额：'.doubleval($v['money']).'元</td></tr>
-                    <tr><td>折扣：'.doubleval($v['discount']).'折</td><td>折扣金额：'.doubleval($v['discountfee']).'元</td></tr>
-                    <tr '.$cstr.'><td>审核时间：'.date('Y-m-d',$v['cc_addtime']).'</td><td>状态：'.$strs.'</td>'.$bastrs;
+            $bastrs = $v['cc_status']==0?'<p class="hornmintroduce"><span style="color:#ea554f">原因：'.$v['cc_note'].'</span></td></tr>':'';
+
+            $title = isset($v['iteminfo']['title'])?'<a href="'.$v['urlarr'].'" >'.$v['iteminfo']['title'].'</a>':'失效';
+            $str .= '<li>
+                    <div class="df">
+                        <div>
+                            <p class="hornmtitle">'.$title.'</p>
+                            <p class="hornmintroduce">分类：'.$v['note'].'-'.$v['typename'].'&nbsp;&nbsp;&nbsp;时间：'.date('Y-m-d',$v['cc_addtime']).'</p>
+                            <p class="hornmintroduce">状态：'.$strs.'&nbsp;&nbsp;&nbsp;金额：<span style="color:#ea554f">'.doubleval($v['discountfee']).'</span>元</p>'.$bastrs.'</div>
+                    </div>
+                    <div class="line"></div>
+                </li>
+                    ';
         }
     }
     exit(json_encode(array('status'=>'y','info'=>$str,'totalpage'=>$totalpage)));
 }
 
 
-
+$ishorn = true;
 $topname = '审核记录';
 $seo_title = '审核记录-会员中心-';
 include template('horn', 'mobile/'.$module);

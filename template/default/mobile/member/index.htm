@@ -13,20 +13,17 @@
     .usermoney {padding-right:20px;text-align:right;font-size:1rem;}
     .usermoney span {color:#e9544e;font-size:1rem;}
     .indetishi {padding-left:10px;font-size:1.2rem;line-height:2.4rem;border-bottom:2px solid #f1f1f1;}
-    .indetishi span {color:#e9544e;}
+    .indetishi span {color:#e9544e;font-size:1.2rem;line-height:2.4rem;padding:0 3px;}
     .userinfosl {padding:10px 0px;}
-    .userinfosl img {vertical-align: middle;margin-right:3px;}
+    .userinfosl img {vertical-align: middle;margin-right:3px;margin-top: -2px;}
     .userinfosl div {width:50%;text-align:center;}
-    .userinfosl div a {font-size:1.4rem;color:#000;}
+    .userinfosl div a {font-size:1.2rem;color:#000;}
     .userinfosl .fr {border-left:1px solid #000;}
     #index .module a span {font-size:1.1rem;}
     .channelheader {border-bottom:1px solid #e6e6e6;padding:0px 0px 10px 10px;}
     .channelheader span {font-size:1.4em;color:#03b887;}
-    .channelheader img {vertical-align: middle;}
-    .guangli table {width:100%;text-align:center;}
-    .guangli table td {border-top:1px solid #e6e6e6;}
-    .guangli a{display:block;font-size:1.2em;line-height:2.6em;}
-    .guangli img {vertical-align: middle;margin-right:3px;}
+    .channelheader img {margin-top: 3px;}
+
 </style>
 <script>
     function member_logo(val){
@@ -43,6 +40,7 @@
     }
     </script>
 <section style="background: url({DT_SKIN}image/mobile/back1.jpg) no-repeat;background-size:100%;padding-top:10px;" class="person">
+    <img onclick="history.go(-1)" src="{DT_SKIN}image/mobile/userleft.png" class="userleft" />
     <div class="bg-persons" >
         <span class="kuang">
             <img src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" style="border:3px solid #fff;width:100%;height:100%;border-radius: 50px;" id="member_logo" onclick="Dthumb(2,'','','',true,'','member_logo',200);thumbo();" />
@@ -55,7 +53,7 @@
 <section>
     <article class="indetishi">您已发布内容<span>{$_infopublishs}</span>次，已被<span>{$_infohits}</span>人阅读过。</article>
     <article class="line" style="border: 0px;"></article>
-    <article class="clear userinfosl"><div class="fl"><a href="info.php"><img src="{DT_SKIN}image/mobile/handle.png" />设置用户资料</a></div><div class="fr"><a href="safe.php"><img src="{DT_SKIN}image/mobile/sale.png" />用户安全中心</a></div></article>
+    <article class="clear userinfosl"><div class="fl"><a href="info.php"><img width="20px" src="{DT_SKIN}image/mobile/handle.png" />设置用户资料</a></div><div class="fr"><a href="safe.php"><img width="16px" src="{DT_SKIN}image/mobile/sale.png" />用户安全中心</a></div></article>
     <article class="line" style="border: 0px;"></article>
 </section>
 <section id="index">
@@ -69,50 +67,50 @@
         <ul class="clear">
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=0">
-                    <p><img src="{DT_SKIN}image/mobile/module-1.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module1.png"  /></p>
                     <span>餐饮供应</span>
                 </a>
             </li>
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=1">
-                    <p><img src="{DT_SKIN}image/mobile/module-2.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module2.png"  /></p>
                     <span>商家优惠</span>
                 </a>
             </li>
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=2">
-                    <p><img src="{DT_SKIN}image/mobile/module-3.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module3.png"  /></p>
                     <span>招聘信息</span>
                 </a>
             </li>
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=3">
-                    <p><img src="{DT_SKIN}image/mobile/module-4.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module4.png"  /></p>
                     <span>店铺转让</span>
                 </a>
             </li>
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=4">
-                    <p><img src="{DT_SKIN}image/mobile/module-5.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module5.png"  /></p>
                     <span>名厨学堂</span>
                 </a>
             </li>
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=5">
-                    <p><img src="{DT_SKIN}image/mobile/module-7.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module7.png"  /></p>
                     <span>美食分享</span>
                 </a>
             </li>
             <li>
                 <a href="/mobile/share/publish.php?moduleidtype=6">
-                    <p><img src="{DT_SKIN}image/mobile/module-6.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module9.png"  /></p>
                     <span>文章发布</span>
                 </a>
             </li>
             {if $horninfo}
             <li>
                 <a href="/mobile/member/hornindex.php">
-                    <p><img src="{DT_SKIN}image/mobile/module-6.png"  /></p>
+                    <p><img src="{DT_SKIN}image/mobile/module10.png"  /></p>
                     <span>内容审核</span>
                 </a>
             </li>

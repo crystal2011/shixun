@@ -252,7 +252,7 @@ $(function(){
         $("#commentscontent").focus();
     })
 
-
+    $(window).scrollTop(0);
 
 })
 

@@ -12,6 +12,7 @@ if(!$horninfo = $oSpecial->checkHasUser()) dalert($oSpecial->errmsg,'/mobile/mem
 list($codenumed,$codenewno,$applynum) = horncommon($horninfo['itemid']);
 $topname = '羊角会管理';
 $seo_title = '羊角会管理-会员中心-';
+$ishorn = true;
 include template('hornindex', 'mobile/'.$module);
 
 ?>
