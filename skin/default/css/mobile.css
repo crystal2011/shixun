@@ -374,6 +374,7 @@ i {font-style:normal;}
     background-color:#fff;
     margin-top:20px;
 }
+#footer {width:100%;}
 #footer .footerbutton {
     border-top:1px solid #d1d1d1;
     padding:30px 0px 10px 0px;
@@ -1009,4 +1010,4 @@ a img {font-size:0px;}
 .guangli a{display:block;font-size:1.2em;line-height:2.6em;color:#000;}
 .guangli img {vertical-align: middle;margin-right:3px;margin-top: -2px}
 
-#footer {position:fixed; bottom:0;left:0px; z-index:999;width:100%;}
+.footerfix {position:fixed; bottom:0;left:0px; z-index:999;}
