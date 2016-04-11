@@ -3,27 +3,35 @@
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/common.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/admin.js"></script>
-<header>
+<header style="border-bottom:1px solid #e6e6e6;">
     <article  id="header1" class="clear">
         <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{$topname}</span></a>
     </article>
 </header>
 <section class="publishform">
     <article>
-        <form id="publishform" method="post" action="/share/publish.php?isajax=1">
-            <div class="h3h">基本选项</div>
-            {template  'publishcommon','mobile/share'}
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>标题</span>
-                <span class="publishright">
-                    <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" placeholder="名称" class="input-text" />
+        <form id="publishform" method="post" action="/mobile/share/publish.php?isajax=1">
+            <p class="clearfix" style="margin-bottom:0px;">
+                <span class="publishleft publishnew" style="width:80px;"><i class="red">*</i>标题</span>
+                <span class="publishright publishrightnew" style="padding-left:80px;">
+                    <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" class="input-text" />
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>分类选择</span>
+            {template  'publishimg','mobile/share'}
+            <p class="clearfix" style="padding-top:5px">
+                <span class="publishleft"><i class="red"></i>描述</span>
                 <span class="publishright">
+                    <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
+                    <?php echo deditor(2, 'content','', '100%', 160); ?>
+
+                </span>
+            </p>
+            {template  'publishcommon','mobile/share'}
+            <p class="clearfix">
+                <span class="publishleft publishnew"><i class="red">*</i>分类选择</span>
+                <span class="publishright publishrightnew">
                     <select datatype="*" name="catid" class="input-text smallinput">
                         <option value="">选择分类</option>
                         <option value="22" <?php echo isset($info['catid']) && $info['catid']==22?'selected':''; ?>>饮食推荐</option>
@@ -33,24 +41,9 @@
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>上传图片</span>
-                <span class="publishright">
-                    <input name="thumb" style="width:70%;max-width:300px;" id="thumb" type="text" class="input-text" datatype="url" value="<?php echo isset($info['thumb'])?$info['thumb']:'' ?>" nullmsg="请上传图片" errormsg="格式有误" class="text-input"/>
-                    <span onclick="Dthumb(2,'','', Dd('thumb').value,true,'','',300);thumbo()" class="jt">[上传]</span>
-                    <br />
-                    <span class="Validform_checktip"></span>
-                </span>
-            </p>
 
-            <br />
 
-            <p class="clearfix">
-                <span class="publishleft"><i class="red"></i>详细内容</span>
-                <span class="publishright">
-                    <textarea class="input-text textinput" name="content" id="content"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                </span>
-            </p>
+
             <div class="btn-box">
                 <input  type="hidden" name="submit" value="1"/>
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
@@ -101,6 +94,8 @@
             return true;
         },
         beforeSubmit:function(curform){
+            var oEditor = FCKeditorAPI.GetInstance('content');
+            $("#content").html(oEditor.GetHTML());
             getToken();
             return true;
         },

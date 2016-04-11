@@ -16,6 +16,7 @@ switch($action){
         $oArticle->itemid = $itemid;
         $aArticle = $oArticle->get_one();
         if(!$aArticle || $aArticle['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aArticle['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $oArticle->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

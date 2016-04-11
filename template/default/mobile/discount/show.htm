@@ -50,33 +50,5 @@
         {/loop}
         {/if}
     </article>
-    <header class="channelheader clear" style="border-top: 1px solid #e6e6e6;">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门商家优惠</span></div>
-        <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
-    </header>
-    <article class="list">
-        {if $aHotFood}
-        {loop $aHotFood $k $v}
-        <div class="content">
-            <div class="clear info">
-                <a class="thumb" href="show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                <div class="text">
-                    <a class="title"  href="show.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="introduce">{area_pos($v['areaid'],'')}{$v['address']}</p>
-                    <p class="numviesshow clear">
-                            <span class="fl numtimes">
-                                {date('Y-m-d',$v['addtime'])}
-                            </span>
-                            <span class="numsviews">
-                                <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;
-                                <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
-                            </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        {/loop}
-        {/if}
-    </article>
 </section>
 {template 'footer','mobile'}

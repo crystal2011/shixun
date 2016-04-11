@@ -27,8 +27,8 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 $commenttypeid = 2;
-$aHotFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes,address,areaid,comments,addtime',3,'hits desc'); //热门
-$aRecommendFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes,address,areaid,comments,addtime',3,'address desc');  //推荐
+
+$aRecommendFood = $oBrand->getright('title,itemid,introduce,thumb,hits,likes,address,areaid,comments,addtime',10,'address desc');  //推荐
 //当时发布的code
 require_once '../../module/special/special.class.php';
 $oSpecial = new special(11);

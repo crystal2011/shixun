@@ -1,29 +1,36 @@
 <style>
-    body{background-color:#fff;}
-    #publishform .input-text {line-height:2.4em;height:2.4em;margin-top:-5px;}
+    body{background-color:#f5f5f5;}
+    .publishform {padding:0px;margin-bottom:40px;}
+    #publishform .input-text {line-height:2.4em;height:2.4em;margin-top:-2px;text-indent: 0.5em;}
     #publishform .textinput {height:100px;}
-    .jiaimage {width:80px;height:66px;}
+    .jiaimage {width:80px;height:66px;border:1px solid #f5f5f5;}
+    #editor_paste_tip {display:none;}
+    #publishform .publishnew {width:120px;padding-right:5px;line-height:1.8em;font-size:1.8em;}
+    #publishform .publishnew img {vertical-align: middle;margin-right:5px;width:20px;height:auto;}
+    #publishform .publishrightnew {padding-left:120px;}
+    #publishform p{background-color:#fff;padding:20px 10px 0px 10px;margin:0px 0px 10px 0px;}
+    .Validform_checktip {font-size:12px;line-height:12px;height:12px;}
 
 
 </style>
-<p class="clear">
-    <span class="publishleft"><i class="red">*</i>发布类目</span>
-        <span class="publishright">
+<p class="clearfix" style="padding-bottom:15px;">
+    <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish1.png" /><i class="red">*</i>发布类目</span>
+        <span class="publishright publishrightnew">
             <span class="clear publishtype">
                 <a {if $moduleidtype==0}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=0">餐饮供应</a>
                 <a {if $moduleidtype==1}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=1">商家优惠</a>
                 <a {if $moduleidtype==2}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=2">招聘信息</a>
                 <a {if $moduleidtype==3}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=3">店铺转让</a>
                 <a {if $moduleidtype==4}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=4">名厨学堂</a>
-                <a {if $moduleidtype==5}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=5">分享美食</a>
+                <a {if $moduleidtype==5}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=5">美食分享</a>
                 <a {if $moduleidtype==6}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=6">文章发布</a>
             </span>
         </span>
 </p>
 {if empty($itemid)}
 <p class="clearfix">
-    <span class="publishleft"><i class="red">*</i>审核号</span>
-    <span class="publishright">
+    <span class="publishleft publishnew" style="width:140px;"><img src="{DT_SKIN}image/mobile/moneylog.png" /><i class="red">*</i>内容审核号</span>
+    <span class="publishright publishrightnew" style="padding-left:140px;">
         <input type="text" class="input-text" errormsg="请输入正确优惠码" ajaxurl="/ajax.php?action=ajax&at=horncode&type={$moduleidtype}" name="code" datatype="n6-6" />
         <br />
         <span class="Validform_checktip"></span>

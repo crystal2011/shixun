@@ -15,7 +15,9 @@
                         {if $v['status']==1}
                         <span class="check-btn orange bk-white" onclick="location.href='/mobile/share/publish.php?moduleidtype=4&itemid={$v[itemid]}'" style="display:block;">修改</span>
                         {/if}
+                        {if $v['status']!=3}
                         <span  onclick="del({$v['itemid']},this)" class="check-btn orange bk-white" style="display:block;">删除</span>
+                        {/if}
                     </span>
                 </li>
                 {/loop}

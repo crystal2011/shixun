@@ -31,8 +31,7 @@ require_once '../../module/special/special.class.php';
 $oSpecial = new special(11);
 $codetishicode = $oSpecial->getShowCode($id,5);
 
-$aHotFood = $oBuy->getright('title,itemid,hits,likes,thumb,comments,address,areaid,address,addtime',3,'hits desc'); //热门
-$aRecommendFood = $oBuy->getright('title,itemid,hits,likes,thumb,comments,address,areaid,address,addtime',3,'addtime desc');  //推荐
+$aRecommendFood = $oBuy->getright('title,itemid,hits,likes,thumb,comments,address,areaid,address,addtime',10,'addtime desc');  //推荐
 $seo_title = $info['title'].'-美食分享-';
 $topname = '分享详情';
 $commenttypeid = 6;

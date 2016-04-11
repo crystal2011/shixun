@@ -15,6 +15,7 @@ switch($action){
         $oJob->itemid = $itemid;
         $aJob = $oJob->get_one();
         if(!$aJob || $aJob['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aJob['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $oJob->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

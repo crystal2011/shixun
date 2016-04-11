@@ -15,6 +15,7 @@ switch($action){
         $oBrand->itemid = $itemid;
         $aBrand = $oBrand->get_one();
         if(!$aBrand || $aBrand['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aBrand['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $oBrand->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

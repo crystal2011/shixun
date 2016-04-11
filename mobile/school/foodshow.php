@@ -31,8 +31,8 @@ $oMember->userid = $info['userid'];
 $aKnow = $oMember->get_one();
 
 
-$aHotFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb,votes',6,'hits desc'); //热门
-$aRecommendFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb,votes',6,'addtime desc');  //推荐
+
+$aRecommendFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb,votes',10,'addtime desc');  //推荐
 
 $memberlistHot = $oMember->getListUser($aHotFood);
 $memberlistRec = $oMember->getListUser($aRecommendFood);

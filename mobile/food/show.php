@@ -25,8 +25,8 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 
-$aHotFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',4,'hits desc'); //热门
-$aRecommendFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',4,'addtime desc');     //推荐
+
+$aRecommendFood = $oFood->getright('title,itemid,price,introduce,likes,hits,unit,thumb',10,'addtime desc');     //推荐
 
 //当时发布的code
 require_once '../../module/special/special.class.php';

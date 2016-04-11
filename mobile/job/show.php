@@ -25,7 +25,7 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 
-$aHotFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes,company,areaid',10,'hits desc'); //热门
+
 $aRecommendFood = $oJob->getright('title,itemid,introduce,thumb,hits,likes,company,areaid',10,'addtime desc');  //推荐
 
 //当时发布的code

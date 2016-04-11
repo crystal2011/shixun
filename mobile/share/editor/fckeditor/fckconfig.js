@@ -52,18 +52,10 @@ FCKConfig.TemplateReplaceAll = true;
 FCKConfig.TemplateReplaceCheckbox = true;
 FCKConfig.ToolbarLocation = 'In';
 FCKConfig.ToolbarSets["Default"] = [
-	['Source','-','PasteWord','PasteText','Preview','Print','-','Templates'],
-	['Cut','Copy','Paste','PasteText','PasteWord'],
-	['Undo','Redo','-','Find','Replace','-','RemoveFormat'],
-	'/',
-	['Link','Unlink','Anchor'],
-	['Image','Flash','Table','Rule','Smiley','SpecialChar'],
-	['OrderedList','UnorderedList','Outdent','Indent'],
-	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-	'/',
-	['Bold','Italic','Underline','StrikeThrough'],
-	['TextColor','BGColor','-','FontName','FontSize','Attach','FitWindow']
+    ['Source']
+
 ];
+
 if(!IsAdmin) FCKConfig.ToolbarSets["Default"][0].splice(0,2);
 
 FCKConfig.ToolbarSets["Destoon"] = [

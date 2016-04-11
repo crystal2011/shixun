@@ -27,8 +27,8 @@ if(isset($showtype)){   //预览
 }
 $likenum = 4;
 $commenttypeid = 4;
-$aHotFood = $oSell->getright('title,itemid,hits,likes,thumb,price,address,areaid,addtime,comments',3,'hits desc'); //热门
-$aRecommendFood = $oSell->getright('title,itemid,hits,likes,thumb,price,address,areaid,addtime,comments',3,'addtime desc');  //推荐
+
+$aRecommendFood = $oSell->getright('title,itemid,hits,likes,thumb,price,address,areaid,addtime,comments',10,'addtime desc');  //推荐
 
 //当时发布的code
 require_once '../../module/special/special.class.php';

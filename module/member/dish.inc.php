@@ -14,6 +14,7 @@ switch($action){
         $obj->itemid = $itemid;
         $aCai = $obj->get_one();
         if(!$aCai || $aCai['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aCai['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $obj->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

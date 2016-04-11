@@ -4,73 +4,46 @@
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/common.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/admin.js"></script>
-<header>
+<header style="border-bottom:1px solid #e6e6e6;">
     <article  id="header1" class="clear">
         <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{$topname}</span></a>
     </article>
 </header>
 <section class="publishform">
     <article>
-        <form id="publishform" method="post" action="/share/publish.php?isajax=1">
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>标题</span>
-                <span class="publishright">
+        <form id="publishform" method="post" action="/mobile/share/publish.php?isajax=1">
+            <p class="clearfix" style="margin-bottom:0px;">
+                <span class="publishleft publishnew" style="width:80px;"><i class="red">*</i>标题</span>
+                <span class="publishright publishrightnew" style="padding-left:80px;">
                     <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" class="input-text" />
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            <script>
-                function show_logo(val,type){
-                    if(val){
-                        $("#thumb"+type).attr("src",val);
-                    }
-                }
-                function thumb1(val){show_logo(val,1);}
-                function thumb2(val){show_logo(val,2);}
-                function thumb3(val){show_logo(val,3);}
-                function thumb4(val){show_logo(val,4);}
-                function thumb5(val){show_logo(val,5);}
-                function thumb6(val){show_logo(val,6);}
-                function thumb7(val){show_logo(val,7);}
-                function thumb8(val){show_logo(val,8);}
-                function thumb9(val){show_logo(val,9);}
-
-            </script>
-            <p class="clearfix">
-                <span class="imagedivjia">
-                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb1" onclick="Dthumb(2,'','','',true,'','thumb1',200);thumbo();" />
-                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb2" onclick="Dthumb(2,'','','',true,'','thumb2',200);thumbo();" />
-                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb3" onclick="Dthumb(2,'','','',true,'','thumb3',200);thumbo();" />
-                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb4" onclick="Dthumb(2,'','','',true,'','thumb4',200);thumbo();" />
-                    <img src="{DT_SKIN}image/mobile/uploadjia.png" class="jiaimage" id="thumb5" onclick="Dthumb(2,'','','',true,'','thumb5',200);thumbo();" />
-                </span>
-                <span class="Validform_checktip"></span>
-
-            </p>
-            <p class="clearfix">
+            {template  'publishimg','mobile/share'}
+            <p class="clearfix" style="padding-top:5px">
                 <span class="publishleft"><i class="red"></i>描述</span>
-
-            </p>
-            <p>
-                <textarea name="content" id="content" class="dsn"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                <?php echo deditor(2, 'content','', '100%', 350);  ?>
-            </p>
-            {template  'publishcommon','mobile/share'}
-
-
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>分类选择</span>
                 <span class="publishright">
+                    <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
+                    <?php echo deditor(2, 'content','', '100%', 160); ?>
+
+                </span>
+            </p>
+
+            {template  'publishcommon','mobile/share'}
+            <p class="clearfix">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/searchsmall.png" /><i class="red">*</i>分类选择</span>
+                <span class="publishright publishrightnew">
                     {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 23,'class="input-text smallinput"')}
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
 
+
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>价格</span>
-                <span class="publishright">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish2.png" /><i class="red">*</i>供应价格</span>
+                <span class="publishright publishrightnew">
                     <input type="text" class="input-text smallinput" value="<?php echo isset($info['price'])?doubleval($info['price']):0; ?>" name="price" type="text" datatype="money" placeholder="1000.00"/>
                     <span style="font-size:0.8em;">元</span><span class="Validform_checktip"></span>
                     <br /><span style="font-size:0.8em;">( 注：价格面议请填写为0 )</span>
@@ -78,8 +51,8 @@
                 </span>
             </p>
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>单位</span>
-                <span class="publishright">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/shares.png" /><i class="red">*</i>价格单位</span>
+                <span class="publishright publishrightnew">
                     <input type="text" class="input-text smallinput" value="<?php echo isset($info['unit'])?$info['unit']:'' ?>" name="unit" datatype="*1-5" type="text" placeholder="位/份"/>
                     <span class="Validform_checktip"></span>
                     <br />
@@ -87,31 +60,30 @@
                 </span>
             </p>
             <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>供应商</span>
-                <span class="publishright">
-                    <input type="text" class="input-text" name="company" value="<?php echo isset($info['company'])?$info['company']:'' ?>" type="text" datatype="*2-50" placeholder="公司"/>
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/gmodule4.png" /><i class="red">*</i>公司名称</span>
+                <span class="publishright publishrightnew">
+                    <input type="text" class="input-text" name="company" value="<?php echo isset($info['company'])?$info['company']:'' ?>" type="text" datatype="*2-50" placeholder="公司名称"/>
+                    <br />
                 </span>
             </p>
-            <br />
-            <div class="h3h">联系方式</div>
             <p class="clearfix">
-                <span class="publishleft">电话</span>
-                <span class="publishright">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/phone.png" style="width:22px;" /><i class="red">&nbsp;</i>联系电话</span>
+                <span class="publishright publishrightnew">
                     <input type="text" class="input-text" name="mobile" value="<?php echo isset($info['phone'])?$info['phone']:(isset($info['telephone'])?$info['telephone']:'') ?>" maxlength="15"  placeholder="134****3456/020-0000111"/>
                 </span>
                 <br />
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>地区</span>
-                <span class="publishright">
+            <p class="clearfix" style="margin-bottom:0px;">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish3.png" /><i class="red">*</i>发布地区</span>
+                <span class="publishright publishrightnew">
                     {ajax_area_select('areaid', '请选择', isset($info['areaid'])?$info['areaid']:0,'isarea="1" class="input-text smallinput"')}
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            <p class="clearfix">
-                <span class="publishleft"><i class="red">*</i>地址</span>
-                <span class="publishright">
+            <p class="clearfix" style="padding-top:0px;">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish4.png" style="width:24px;" /><i class="red">*</i>详细地址</span>
+                <span class="publishright publishrightnew">
                     <input datatype="*3-50" maxlength="50" value="<?php echo isset($info['address'])?$info['address']:'' ?>" class="input-text" name="address" type="text" placeholder="详细地址"/>
                     <br />
                     <span class="Validform_checktip"></span>
@@ -124,7 +96,7 @@
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
                 <input  type="hidden" name="beforeurl" value="<?php echo $forward; ?>"/>
                 <input type="hidden" name="moduleidtype" value="0" />
-                <input style="background:#ea5550;margin-left:150px;border:1px solid #f1f1f1;color:#fff;padding:10px 25px;border-radius:5px;margin-top:10px;font-size:1.4em;" type="submit" value="提交"/>
+                <input style="background:#ea5550;margin-left:150px;border:1px solid #f1f1f1;color:#fff;padding:10px 25px;border-radius:5px;margin-top:10px;font-size:1.4em;" type="submit" value="确定发布"/>
             </div>
         </form>
     </article>
@@ -132,12 +104,7 @@
 <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
 <script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
 <script>
-    //实例化编辑器
-    var ue = UE.getEditor('editor', {
-        toolbars: [
-            ['inserttitle','undo', 'redo','|', 'link','unlink','|','bold','searchreplace','insertimage','|','blockquote','titlebar',]
-        ]
-    });
+
     $("#publishform").Validform({
         tiptype: 3,
         postonce:true,
@@ -175,6 +142,8 @@
             return true;
         },
         beforeSubmit:function(curform){
+            var oEditor = FCKeditorAPI.GetInstance('content');
+            $("#content").html(oEditor.GetHTML());
             getToken();
             return true;
         },

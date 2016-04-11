@@ -37,26 +37,6 @@
         </table>
         {/if}
     </article>
-    <article class="line" style="border-top-width: 0px;"></article>
-    <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/hot.png"><span>热门招聘信息</span></div>
-        <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
-    </header>
-    <article class="list">
-        {if $aHotFood}
-        <table class="jobtable">
-            <tr><th>职位名称</th><th>公司名称</th><th>月薪</th><th>工作地</th></tr>
-            {loop $aHotFood $k $v}
-            <tr>
-                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['title'],16)}</a></td>
-                <td><a href="show.php?id={$v['itemid']}">{dsubstr($v['company'],8)}</a></td>
-                <td align="center"><a href="show.php?id={$v['itemid']}">面议</a></td>
-                <td align="center"><a href="show.php?id={$v['itemid']}">{implode('/',array_slice(explode('/',area_pos($v['areaid'],'/')),1,2))}</a></td>
-            </tr>
-            {/loop}
-        </table>
-        {/if}
-    </article>
 </section>
 <article class="line" style="border-top-width: 0px;"></article>
 {template 'footer','mobile'}

@@ -234,7 +234,7 @@ class food {
 			$this->itemid = $itemid;
 			$item = $this->get_one();
 			$editdate = timetodate($DT_TIME, 3);
-			$this->db->query("UPDATE {$this->table} SET status=3,hits=hits+1,editor='$_username',edittime=$DT_TIME,editdate='$editdate' WHERE itemid=$itemid");
+			$this->db->query("UPDATE {$this->table} SET status=3,edittime=$DT_TIME WHERE itemid=$itemid");
             horncode(0,$itemid);
 
 			return true;
@@ -246,7 +246,7 @@ class food {
 		if(is_array($itemid)) {
 			foreach($itemid as $v) { $this->reject($v); }
 		} else {
-			$this->db->query("UPDATE {$this->table} SET status=1,editor='$_username' WHERE itemid=$itemid");
+			$this->db->query("UPDATE {$this->table} SET status=1 WHERE itemid=$itemid");
 			return true;
 		}
 	}

@@ -20,7 +20,6 @@ if (!$checkJob = $oResume->checkBuy($info)) {
 }
 $oResume->editHits();  //更新浏览量
 
-$aHotFood = $oResume->getright('*',10,'hits desc'); //热门
 $aRecommendFood = $oResume->getright('*',10,'addtime desc');  //推荐
 
 $aCacheCat9 = cache_read('category-9.php');

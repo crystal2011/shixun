@@ -28,9 +28,11 @@ $pagesize = 4;
 $aCai = $oCai->get_list($where.' and status = 3');
 $aSchool = $oMember->getListUser($aCai);
 
-//在线分享
-require_once '../module/buy/buy.class.php';
-$oBuy = new buy(6);
-$aHotFood = $oBuy->getright('title,itemid,thumb',6,'addtime desc');
+
+
+//餐饮供应
+require_once '../module/food/food.class.php';
+$oFood = new food(23);
+$aHotFood = $oFood->getright('title,itemid,price,likes,hits,unit,thumb',6,'addtime desc');
 
 include template('index','mobile');

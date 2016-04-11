@@ -142,8 +142,8 @@
 
     <article class="foodchannel" style="margin-top:0px;">
         <header class="channelheader clear">
-            <div class="fl"><img src="{DT_SKIN}image/mobile/foodchannel.png" /><span>在线分享</span></div>
-            <a class="fr" href="/mobile/share/index.php">查看全部&nbsp;&gt;</a>
+            <div class="fl"><img src="{DT_SKIN}image/mobile/foodchannel.png" style="margin-top:5px;" /><span>餐饮供应</span></div>
+            <a class="fr" href="/mobile/food/index.php">查看全部&nbsp;&gt;</a>
         </header>
         <ul class="comul clear">
 
@@ -151,8 +151,11 @@
             {loop $aHotFood $k $v}
             <li class="clear">
                 <div class="lidiv">
-                    <a class="schoola" href="/mobile/share/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
-                    <a class="title" href="/mobile/share/show.php?id={$v['itemid']}">{$v['title']}</a>
+                    <a class="schoola" href="/mobile/food/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="/mobile/food/show.php?id={$v['itemid']}">{$v['title']}</a>
+                    <p class="handle clear">
+                        <i class="num pricesdf"><i>{$v['price']}元/{$v['unit']}</i></i>
+                    </p>
                 </div>
             </li>
             {/loop}

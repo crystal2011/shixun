@@ -15,6 +15,7 @@ switch($action){
         $oFood->itemid = $itemid;
         $aFood = $oFood->get_one();
         if(!$aFood || $aFood['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aFood['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $oFood->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

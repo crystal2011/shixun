@@ -14,6 +14,7 @@ switch($action){
         $oBuy->itemid = $itemid;
         $aBuy = $oBuy->get_one();
         if(!$aBuy || $aBuy['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aBuy['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $oBuy->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

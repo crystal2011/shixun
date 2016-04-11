@@ -21,7 +21,7 @@ if(!$checkInfo = $oInfo->checkInfo($info)){
     dalert($oInfo->errmsg,'/mobile/horn/index.php');
 }
 
-$aHotFood = $oInfo->getright('title,itemid,addtime',10,'hits desc'); //热门
+
 $aRecommendFood = $oInfo->getright('title,itemid,addtime',10,'addtime desc');  //推荐
 $seo_title = $info['title'].'-羊角会-';
 $topname = '羊角会';

@@ -70,32 +70,6 @@
         {/if}
             </ul>
     </article>
-    <article class="line" style="border-top-width: 0px;"></article>
-    <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote2.png"><span>热门菜系</span></div>
-        <a class="fr" href="food.php">查看全部&nbsp;&gt;</a>
-    </header>
-    <article class="list">
-        <ul class="comul clear">
-        {if $aHotFood}
-        {loop $aHotFood $k $v}
-        <li class="clear">
-            <div class="lidiv">
-                <a class="schoola" href="/mobile/school/foodshow.php?id={$v['itemid']}">
-                    <img src="{$v['thumb']}" />
-                    <span>名厨：{$memberlistRec[$v['userid']]['truename']}</span>
-                    <span class="hiddensl">名厨：{$memberlistRec[$v['userid']]['truename']}</span>
-                </a>
-                <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
-                <p class="handle clear">
-                    <img onclick="vote({$v['itemid']},2,this)" class="votes" src="{DT_SKIN}image/mobile/vote.png" />
-                    <i class="num">票数：<i>{$v['votes']}</i></i>
-                </p>
-            </div>
-        </li>
-        {/loop}
-        {/if}
-            </ul>
-    </article>
+
 </section>
 {template 'footer','mobile'}

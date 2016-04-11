@@ -1,0 +1,50 @@
+<script>
+    function show_logo(val,type){
+        if(val){
+            $("#thumb"+type).attr("src",val);
+            var dataid = parseInt(type)+1;
+            $("#thumb"+dataid).css("display",'inline-block');
+            $("#thumbinput"+type).val(val);
+
+        }
+    }
+    function thumb1(val){show_logo(val,1);}
+    function thumb2(val){show_logo(val,2);}
+    function thumb3(val){show_logo(val,3);}
+    function thumb4(val){show_logo(val,4);}
+    function thumb5(val){show_logo(val,5);}
+    function thumb6(val){show_logo(val,6);}
+    function thumb7(val){show_logo(val,7);}
+    function thumb8(val){show_logo(val,8);}
+    function thumb9(val){show_logo(val,9);}
+</script>
+<p class="clearfix" style="margin-bottom:0px;padding-top:0px;padding-left:50px;">
+                <span class="imagedivjia">
+                    {if !isset($isjob)}
+                    <img src="{if isset($info['thumb'])}{$info['thumb']}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb1" onclick="Dthumb(2,'','','',true,'','thumb1',200);thumbo();" />
+                    {/if}
+                    <img src="{if isset($thumbinputarr[0])}{$thumbinputarr[0]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb2" {if !isset($isjob) && !isset($info['thumb'])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb2',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[1])}{$thumbinputarr[1]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb3" {if !isset($thumbinputarr[0])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb3',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[2])}{$thumbinputarr[2]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb4" {if !isset($thumbinputarr[1])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb4',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[3])}{$thumbinputarr[3]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb5" {if !isset($thumbinputarr[2])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb5',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[4])}{$thumbinputarr[4]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb6" {if !isset($thumbinputarr[3])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb6',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[5])}{$thumbinputarr[5]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb7" {if !isset($thumbinputarr[4])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb7',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[6])}{$thumbinputarr[6]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb8" {if !isset($thumbinputarr[5])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb8',200);thumbo();" />
+                    <img src="{if isset($thumbinputarr[7])}{$thumbinputarr[7]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}" class="jiaimage" id="thumb9" {if !isset($thumbinputarr[6])}style="display:none;"{/if} onclick="Dthumb(2,'','','',true,'','thumb9',200);thumbo();" />
+                    {if !isset($isjob)}
+                    <input type="hidden" name="thumb" datatype="url" errormsg="请上传图片" nullmsg="请上传图片" value="{if isset($info['thumb'])}{$info['thumb']}{/if}" id="thumbinput1" />
+                    <br />
+                    <span class="Validform_checktip"></span>
+                    {/if}
+                    <input type="hidden" name="thumbinput[]" id="thumbinput2" value="{if isset($thumbinputarr[0])}{$thumbinputarr[0]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput3" value="{if isset($thumbinputarr[1])}{$thumbinputarr[1]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput4" value="{if isset($thumbinputarr[2])}{$thumbinputarr[2]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput5" value="{if isset($thumbinputarr[3])}{$thumbinputarr[3]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput6" value="{if isset($thumbinputarr[4])}{$thumbinputarr[4]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput7" value="{if isset($thumbinputarr[5])}{$thumbinputarr[5]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput8" value="{if isset($thumbinputarr[6])}{$thumbinputarr[6]}{/if}" />
+                    <input type="hidden" name="thumbinput[]" id="thumbinput9" value="{if isset($thumbinputarr[7])}{$thumbinputarr[7]}{/if}" />
+
+                </span>
+
+</p>

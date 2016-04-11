@@ -15,6 +15,7 @@ switch($action){
         $oSell->itemid = $itemid;
         $aSell = $oSell->get_one();
         if(!$aSell || $aSell['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aSell['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $oSell->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;

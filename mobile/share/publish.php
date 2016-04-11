@@ -31,6 +31,7 @@ switch($moduleidtype) {
         $obj = new job(9);
         $checkName = 'checkJob';
         $sitetitle .= '招聘信息';
+        $isjob = true;
         break;
     case 3: //店铺转让
         require_once DT_ROOT.'/module/sell/sell.class.php';
@@ -48,13 +49,13 @@ switch($moduleidtype) {
         require_once DT_ROOT.'/module/buy/buy.class.php';
         $obj = new buy(6);
         $checkName = 'checkBuy';
-        $sitetitle .= '分享';
+        $sitetitle .= '美食分享';
         break;
     case 6: //文章
         require_once DT_ROOT.'/module/article/article.class.php';
         $obj = new article();
         $checkName = 'checkUserEdit';
-        $sitetitle .= '文章';
+        $sitetitle .= '美食文章';
         break;
     default:
         exit;
@@ -67,10 +68,26 @@ if($itemid){
     $info = $obj->get_one();
     $check = is_can_edit($info);
     if($check!==true) $isajax?exit(json_encode(array('status'=>'n','info'=>$check))):dalert($check,$forward);
+    $thumbinputarr = array();
+    if($info['content']){
+        preg_match("/<div.*class=\"womdnlsandh\".*>(.*)<\\/div>/iU",$info['content'],$msd);
+        if(isset($msd[1])){
+            preg_match_all("/<img.*src=\"(.*)\".*>/iU",$msd[1],$dgd);
+            if(isset($dgd[1])){
+                $thumbinputarr = $dgd[1];
+            }
+        }
+        $info['content'] = preg_replace("/<div.*class=\"womdnlsandh\">(.*)<\\/div>/iU","$2",$info['content']);
+    }
+
     $sitetitle = '信息编辑—'.$sitetitle;
 }else{
     $sitetitle = '信息发布—'.$sitetitle;
 }
+
+
+
+
 
 if($submit){
 
@@ -85,6 +102,18 @@ if($submit){
     $oSpecial->table_data = $db->pre.'special_data';
     if(!check_token()) exit(json_encode(array('status'=>'n','info'=>'操作失效，请重试')));
 
+    $thumbinput = isset($thumbinput) && is_array($thumbinput)?$thumbinput:array();
+    $contentimage = '';
+
+    if($thumbinput){
+        $contentimage .= '<div class="womdnlsandh">';
+        foreach($thumbinput as $k=>$v){
+            if($v && is_image($v)){
+                $contentimage .= dstripslashes('<img src="'.$v.'" style="display:block;margin:0 auto;" />');
+            }
+        }
+        $contentimage .= '</div>';
+    }
 
     $arr = array(
         'title' => isset($title)?$title:'',
@@ -93,11 +122,12 @@ if($submit){
         'telephone' => isset($mobile)?$mobile:'',
         'areaid' => isset($areaid)?$areaid:'',
         'address' => isset($address)?$address:'',
-        'content' => isset($content)?$content:'',
+        'content' => $contentimage.(isset($content)?$content:''),
         'userid'=>$_userid,
         'istop' => isset($istop) && $istop?1:0,  //置顶
         'status'=>2
     );
+
     $codeinfo = array();
     if(empty($itemid)){
         $arr['code'] = isset($code)?$code:'';

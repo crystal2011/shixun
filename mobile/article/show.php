@@ -27,8 +27,8 @@ if(isset($showtype)){   //预览
     addHits($info['userid']);
 }
 $islikenum = true;
-$aHotFood = $oArticle->getright('title,itemid,introduce,hits,thumb,addtime,comments',3,'hits desc'); //热门
-$aRecommendFood = $oArticle->getright('title,itemid,introduce,hits,thumb,addtime,comments',3,'addtime desc');  //推荐
+
+$aRecommendFood = $oArticle->getright('title,itemid,introduce,hits,thumb,addtime,comments',10,'addtime desc');  //推荐
 $seo_title = $info['title'].'-文章详情-';
 $topname = '文章详情';
 $commenttypeid = 9;

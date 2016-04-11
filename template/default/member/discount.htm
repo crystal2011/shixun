@@ -41,7 +41,9 @@
                                         {if $v['status']==1}
                                         <span class="del" onclick="location.href='/share/publish.php?moduleidtype=1&itemid={$v[itemid]}'">修改</span> |
                                         {/if}
+                                        {if $v['status']!=3}
                                         <span class="del delindex" data-id="{$v['itemid']}">删除</span>
+                                        {/if}
                                     </li>
                                 </ul>
                             </div>

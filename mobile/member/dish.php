@@ -15,6 +15,7 @@ switch($action){
         $obj->itemid = $itemid;
         $aCai = $obj->get_one();
         if(!$aCai || $aCai['userid']!=$_userid) exit(json_encode(array('status'=>'n','info'=>'信息已失效')));
+        if($aCai['status']==3) exit(json_encode(array('status'=>'n','info'=>'信息不能删除')));
         $obj->recycle($itemid);
         exit(json_encode(array('status'=>'y','info'=>'删除成功')));
         break;
@@ -30,13 +31,17 @@ switch($action){
                 if($v['status']==1) {
                     $deurl = '<span class="check-btn orange bk-white" onclick = "location.href=\'/mobile/share/publish.php?moduleidtype=4&itemid='.$v[itemid].'\'" style = "display:block;" > 修改</span >';
                 }
+                $delsurl = '';
+                if($v['status']!=3) {
+                    $delsurl = '<span  onclick = "del('.$v['itemid'].',this)" class="check-btn orange bk-white" style = "display:block;" > 删除</span >';
+                }
                 $statusname = status_show($v['status']);
                 $str .= '<li class="clear">
                     <a href="/mobile/school/foodshow.php?id='.$v['itemid'].'"  target="_blank" style="background-image: url('.$v['thumb'].');background-size:100%" class="mucollect-img db fl" title="'.$v['title'].'"></a>
                     <div class="message fl">
                         <span class="info db"><a href="/mobile/school/foodshow.php?id='.$v['itemid'].'"  target="_blank">'.dsubstr($v['title'],40).'</a></span><span class="money db">分类：'.$catname.'&nbsp;&nbsp;&nbsp;状态：'.$statusname.'</span>
                         </div>
-                    <span class="fr  tc ">'.$deurl.'<span  onclick="del('.$v['itemid'].',this)" class="check-btn orange bk-white" style="display:block;">删除</span></span>
+                    <span class="fr  tc ">'.$deurl.$delsurl.'</span>
                 </li>';
             }
         }

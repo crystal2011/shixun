@@ -1,5 +1,6 @@
 <?php
 defined('IN_DESTOON') or exit('Access Denied');
+
 $moddir = defined('DT_ADMIN') ? $MODULE[2]['moduledir'].'/editor/' : 'editor/';
 $draft = $textareaid == 'content' && $_userid && $DT['save_draft'];
 if($DT['save_draft'] == 2 && !defined('DT_ADMIN')) $draft = false;
