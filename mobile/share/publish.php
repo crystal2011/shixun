@@ -89,7 +89,7 @@ if($itemid){
 
 
 
-if($submit){
+if($isajax){
 
     //如果开启了价格  就提示功能未实现
     /*if($DT['publishfee']!==0 || $DT['stickfee']!==0){
