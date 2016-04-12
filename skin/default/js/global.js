@@ -48,6 +48,32 @@ function like(id,type,_this,typeid){
     })
     _this.removeAttr("disabled");
 }
+function catonchange(_this){
+    var _this = $(_this);
+    var spanobj = _this.prev();
+    var val = _this.val();
+    spanobj.attr("data-id",val).html(_this.find("option:selected").text());
+    var olddataid = spanobj.attr("olddata-id");
+    $("#catmontable td span").css({"color":"#000","background-color":"#fff"});
+    if(parseInt(olddataid)==parseInt(val)){
+        $("#selectcatnow").removeAttr("data-id");
+    }else{
+        $("#selectcatnow").attr("data-id",val).html(_this.find("option:selected").text());
+
+        spanobj.css({"color":"#fff","background-color":"#e9544e"})
+    }
+
+}
+
+function lfdtd(_this){
+    var _this = $(_this);
+    if(_this.find('select').size()==0){
+        var spanobj = _this.find('span');
+        $("#selectcatnow").attr("data-id",spanobj.attr('data-id')).html(spanobj.text());
+        $("#catmontable td span").css({"color":"#000","background-color":"#fff"});
+        spanobj.css({"color":"#fff","background-color":"#e9544e"});
+    }
+}
 
 /**
  * @name 获取token

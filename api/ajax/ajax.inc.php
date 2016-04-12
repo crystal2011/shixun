@@ -207,4 +207,38 @@ switch($at){
         $info .= $allmoney != $feedfs?'，发布优惠价：'.$feedfs.'元':'';
         exit(json_encode(array('status'=>'y','info'=>$info)));
         break;
+    case 'category':
+        $moduleid = isset($moduleid)?$moduleid:0;
+        $catid = isset($catid)?$catid:0;
+        $list = get_maincat($catid,$moduleid);
+        $info = '<header style="border-bottom:1px solid #e6e6e6;">
+                    <article id="header1" class="clear" style="background-color:#e9544e;position:relative">
+                        <a class="forback fl" href="history(-1)"><img style="width:20px;" src="'.DT_SKIN.'image/mobile/userleft.png"></a>
+                        <span style="text-align:center;color:#fff;font-size:1.6em;position:absolute;width:100%;">信息发布—选择目录</span>
+                    </article>
+                </header>';
+        if($list){
+            $info .= '<div style="margin-top:20px;background-color:#fff;height:50px;">&nbsp;</div><table id="catmontable" style="width:100%;border-top:1px solid #d5d5d5;background-color:#fff;">';
+            foreach($list as $k=>$v){
+                $str = '';
+                if($v['child']){
+                    $lists = get_maincat($v['catid'],$moduleid);
+                    $str .= '<select onchange="catonchange(this)" style="position:absolute;width:100%;height:100%;filter: alpha(opacity=0);-khtml-opacity: 0;opacity: 0;top:0px;left:0px;"><option value="'.$v['catid'].'" data-name="'.$v['catname'].'">'.$v['catname'].'</option>';
+                    foreach($lists as $key=>$val){
+                        $str .= '<option value="'.$val['catid'].'">'.$val['catname'].'</option>';
+                    }
+                    $str .= '</select>';
+                }
+                if(($k+1)%2!=0) $info .= '<tr><td style="border-right:1px solid #d5d5d5;border-bottom:1px solid #d5d5d5;">&nbsp;</td>';
+                $info .= '<td  style="border-right:1px solid #d5d5d5;text-align:center;width:150px;font-size:1.4em;line-height:2.2em;border-bottom:1px solid #d5d5d5;position:relative;" onclick="lfdtd(this)"><span style="display:block;" data-id="'.$v['catid'].'" olddata-id="'.$v['catid'].'">'.$v['catname'].'</span>'.$str.'</td>';
+                if(($k+1)%2==0) $info .= '<td style="border-bottom:1px solid #d5d5d5;">&nbsp;</td></tr>';
+            }
+            if(count($list)%2!=0){
+                $info .= '<td data-id="'.$v['catid'].'" style="border-right:1px solid #d5d5d5;width:150px;border-bottom:1px solid #d5d5d5;">&nbsp;</td><td style="border-bottom:1px solid #d5d5d5;">&nbsp;</td></tr>';
+            }
+            $info .= '</table><div style="display:none;" id="selectcatnow"></div><div style="background-color:#fff;height:50px;">&nbsp;</div>';
+            $info .= '<p style="text-align:center;margin-top:100px;"><span class="publishsure" style="padding:10px 30px;font-size:1.4em;background-color:#ea554f;color:#fff;">确认</span></p>';
+        }
+        exit(json_encode(array('status'=>'y','info'=>$info)));
+        break;
 }
