@@ -21,7 +21,7 @@ switch($action){
     default:
         if(!$_userid) dheader('/member/login.php');
         $where = ' userid = '.$_userid;
-        list($aCai,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status',$where.' and (status=3 or status = 2 or status = 1)','hits desc','10');
+        list($aCai,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status,coofee',$where.' and (status=3 or status = 2 or status = 1)','hits desc','10');
 
         $active = 'dish';
         $seo_title = '名厨学堂管理-会员中心-';

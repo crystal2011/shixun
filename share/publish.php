@@ -141,6 +141,7 @@ if($submit){
             $arr['acreage'] = isset($acreage)?$acreage:'';
             break;
         case 4://名厨学堂
+            $arr['coofee'] = isset($coofee)?$coofee:'';
             break;
         case 5://分享
             unset($arr['mobile']);

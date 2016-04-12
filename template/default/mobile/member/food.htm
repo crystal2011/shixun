@@ -8,7 +8,8 @@
                 <li class="clear">
                     <a href="/mobile/food/show.php?id={$v['itemid']}"  target="_blank"style="background-image: url({$v['thumb']});background-size:100%" class="mucollect-img db fl" title="{$v['title']}"></a>
                     <div class="message fl">
-                        <span class="info db"><a href="/mobile/food/show.php?id={$v['itemid']}"  target="_blank">{dsubstr($v['title'],40)}</a></span><span class="money orange db">价格：{$v['price']}元/{$v['unit']}</span>
+                        <span class="info db"><a href="/mobile/food/show.php?id={$v['itemid']}"  target="_blank">{dsubstr($v['title'],40)}</a></span>
+                        <span class="money orange db">价格：{$v['price']}元/{$v['unit']}</span>
                         分类：{if isset($aCatCache[$v['catid']])}{$aCatCache[$v['catid']]['catname']}{/if}&nbsp;&nbsp;&nbsp;状态：{status_show($v['status'])}
                     </div>
                     <span class="fr  tc ">

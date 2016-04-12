@@ -7,14 +7,15 @@ $moduleid = 6;
 require '../../common.inc.php';
 require DT_ROOT.'/include/post.func.php';
 require DT_ROOT.'/include/module.func.php';
-$moduleidtype = isset($moduleidtype)?$moduleidtype:0;
+$moduleidtype = isset($moduleidtype)?$moduleidtype:'';
 $isajax = isset($isajax)?true:false;
 if(!$_userid){
     $isajax?exit(json_encode(array('status'=>'n','info'=>'请先登录'))):dalert('请先登录','/mobile/member/login.php');
 }
+
 $sitetitle = '';
 switch($moduleidtype) {
-    case 0: //餐饮供应
+    case '0': //餐饮供应
         require_once DT_ROOT.'/module/food/food.class.php';
         $obj = new food(23);
         $checkName = 'checkFood';
@@ -58,9 +59,10 @@ switch($moduleidtype) {
         $sitetitle .= '美食文章';
         break;
     default:
-        exit;
+        dheader('/mobile/member/index.php');
         break;
 }
+
 $info = array();
 $itemid = isset($itemid)?intval($itemid):0;
 if($itemid){
@@ -171,6 +173,7 @@ if($isajax){
             $arr['acreage'] = isset($acreage)?$acreage:'';
             break;
         case 4://名厨学堂
+            $arr['coofee'] = isset($coofee)?$coofee:'';
             break;
         case 5://分享
             unset($arr['mobile']);

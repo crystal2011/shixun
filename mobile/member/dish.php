@@ -22,7 +22,7 @@ switch($action){
     case 'ajax':
         if(!$_userid) exit(json_encode(array('status'=>'n','info'=>'请先登录')));
         $where = ' userid = '.$_userid;
-        list($list,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status',$where.' and (status=3 or status = 2 or status = 1)','addtime desc','10');
+        list($list,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status,coofee',$where.' and (status=3 or status = 2 or status = 1)','addtime desc','10');
         $str = '';
         if($list){
             foreach($list as $k=>$v){
@@ -31,6 +31,7 @@ switch($action){
                 if($v['status']==1) {
                     $deurl = '<span class="check-btn orange bk-white" onclick = "location.href=\'/mobile/share/publish.php?moduleidtype=4&itemid='.$v[itemid].'\'" style = "display:block;" > 修改</span >';
                 }
+
                 $delsurl = '';
                 if($v['status']!=3) {
                     $delsurl = '<span  onclick = "del('.$v['itemid'].',this)" class="check-btn orange bk-white" style = "display:block;" > 删除</span >';
@@ -39,7 +40,9 @@ switch($action){
                 $str .= '<li class="clear">
                     <a href="/mobile/school/foodshow.php?id='.$v['itemid'].'"  target="_blank" style="background-image: url('.$v['thumb'].');background-size:100%" class="mucollect-img db fl" title="'.$v['title'].'"></a>
                     <div class="message fl">
-                        <span class="info db"><a href="/mobile/school/foodshow.php?id='.$v['itemid'].'"  target="_blank">'.dsubstr($v['title'],40).'</a></span><span class="money db">分类：'.$catname.'&nbsp;&nbsp;&nbsp;状态：'.$statusname.'</span>
+                        <span class="info db"><a href="/mobile/school/foodshow.php?id='.$v['itemid'].'"  target="_blank">'.dsubstr($v['title'],40).'</a></span>
+                        <span class="money db">技术合作费：'.$v['coofee'].'元</span>
+                        <span class="money db">分类：'.$catname.'&nbsp;&nbsp;&nbsp;状态：'.$statusname.'</span>
                         </div>
                     <span class="fr  tc ">'.$deurl.$delsurl.'</span>
                 </li>';
@@ -50,7 +53,7 @@ switch($action){
     default:
         if(!$_userid) dheader('/mobile/member/login.php');
         $where = ' userid = '.$_userid;
-        list($list,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status',$where.' and (status=3 or status = 2 or status = 1)','addtime desc','10');
+        list($list,$totalpage) = $obj->schoolList('thumb,title,itemid,catid,userid,status,coofee',$where.' and (status=3 or status = 2 or status = 1)','addtime desc','10');
         $seo_title = '名厨学堂管理-会员中心-';
         $topname = '名厨学堂管理';
         $moduleidtype = 4;

@@ -17,7 +17,7 @@ class know {
 		$this->table_data = $db->pre.'know_data';
 		$this->split = '';
 		$this->db = &$db;
-		$this->fields = array('catid','istop','code','userid','level','title','introduce','linkurl','thumb','status','hits','addtime','edittime');
+		$this->fields = array('catid','istop','code','userid','level','title','introduce','linkurl','thumb','status','hits','addtime','edittime','coofee');
     }
 
     function adddelComments($addordel){
@@ -70,6 +70,7 @@ class know {
         if(!is_length($post['title'],2,50)) return $this->_('标题输入有误');
         $catinfo = get_cat($post['catid']);
         if(!$catinfo || $catinfo['moduleid']!=13 || $catinfo['child']) return $this->_('分类选择有误');
+        if(strlen($post['coofee'])!=0 && !is_price($post['coofee'])) return $this->_('价格合作费输入有误');
         if(!is_url($post['thumb'])) return $this->_('图片上传有误');
         if(DT_MAX_LEN && strlen($post['content']) > DT_MAX_LEN) return $this->_(lang('message->pass_max'));
         return $post;

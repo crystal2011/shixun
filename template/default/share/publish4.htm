@@ -37,6 +37,14 @@
                     <span class="Validform_checktip" style="display:inline-block"></span>
                 </span>
             </p>
+            <p class="clearfix">
+                <span class="publish-title fl">
+                    <em>&nbsp;</em><label>技术合作费：</label>
+                </span>
+                <span class="fl">
+                    <input style="width: 100px;" class="text-input" value="<?php echo isset($info['coofee'])?doubleval($info['coofee']):0; ?>" name="coofee" type="text" datatype="empty|money" placeholder="1000.00"/>&nbsp;&nbsp;元
+                </span>
+            </p>
             <h3>详细内容</h3>
             <textarea name="content" id="content" class="dsn"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
             <?php echo deditor(2, 'content','', '100%', 350); ?>

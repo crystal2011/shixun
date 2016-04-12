@@ -24,7 +24,12 @@ show_menu($menus);
 <td class="tl"><span class="f_red">*</span> 图片</td>
 <td><input name="post[thumb]" id="thumb" type="text" size="60" datatype="url" errormsg="请上传图片" value="<?php echo $thumb;?>"/>&nbsp;&nbsp;<span onclick="Dthumb(<?php echo $moduleid;?>,'','', Dd('thumb').value,true);" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[删除]</span></td>
 </tr>
-
+    <tr>
+        <td class="tl"><span class="f_red">*</span> 技术合作费</td>
+        <td class="tr">
+            <input type="text" name="post[coofee]" id="coofee" size="10" datatype="empty|money" value="<?php echo isset($coofee)?$coofee:0; ?>" >&nbsp;元<span id="dcoofee"  class="f_red"></span>
+        </td>
+    </tr>
 <tr>
 <td class="tl"><span class="f_hid">*</span> 简介</td>
 <td><textarea name="post[content]" id="content" class="dsn"><?php echo $content;?></textarea>
@@ -73,6 +78,10 @@ show_menu($menus);
                 'money':function(gets,obj,curform,regxp){
                     if(!is_price(gets)) return false;
                     return true;
+                },
+                'empty':function(gets,obj,curform,regxp){
+                    if(gets.length==0) return true;
+                    return false;
                 }
             },
             beforeCheck:function(curform){

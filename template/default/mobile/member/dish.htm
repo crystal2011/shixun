@@ -8,7 +8,9 @@
                 <li class="clear">
                     <a href="/mobile/school/foodshow.php?id={$v['itemid']}"  target="_blank" style="background-image: url({$v['thumb']});background-size:100%" class="mucollect-img db fl" title="{$v['title']}"></a>
                     <div class="message fl">
-                        <span class="info db"><a href="/mobile/school/foodshow.php?id={$v['itemid']}"  target="_blank">{dsubstr($v['title'],40)}</a></span><span class="money db">分类：{if isset($aCatCache[$v['catid']])}{$aCatCache[$v['catid']]['catname']}{/if}&nbsp;&nbsp;&nbsp;状态：{status_show($v['status'])}</span>
+                        <span class="info db"><a href="/mobile/school/foodshow.php?id={$v['itemid']}"  target="_blank">{dsubstr($v['title'],40)}</a></span>
+                        <span class="money db">技术合作费：{$v['coofee']}元</span>
+                        <span class="money db">分类：{if isset($aCatCache[$v['catid']])}{$aCatCache[$v['catid']]['catname']}{/if}&nbsp;&nbsp;&nbsp;状态：{status_show($v['status'])}</span>
 
                     </div>
                     <span class="fr  tc ">

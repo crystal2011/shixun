@@ -21,6 +21,9 @@
                 <em>浏览({$aCai['hits']})</em>
                 <i class="icon-pinlun"></i>
                 <em>评论({$aCai['comments']})</em>
+                {if doubleval($aCai['coofee'])}
+                <em style="color:#fb9208;margin-left:10px;">技术合作费：{doubleval($aCai['coofee'])}元</em>
+                {/if}
                 <div class="person-info-del">
                     <img src="{if $aKnow['thumb']}{$aKnow['thumb']}{else}{$DT['memberlogo']}{/if}" height="72" width="94" alt="">
                     <h3>名厨嘉宾：{$aKnow['truename']} </h3>

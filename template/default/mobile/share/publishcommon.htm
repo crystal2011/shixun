@@ -10,26 +10,16 @@
     #publishform .publishrightnew {padding-left:120px;}
     #publishform p{background-color:#fff;padding:20px 10px 0px 10px;margin:0px 0px 10px 0px;}
     .Validform_checktip {font-size:12px;line-height:12px;height:12px;}
+    .btn-box {
+        text-align: center;
+    }
     .quepublish {
         background:#ea5550;border:1px solid #f1f1f1;color:#fff;padding:10px 25px;border-radius:5px;margin-top:10px;font-size:1.4em;
     }
-    .btn-box {margin-top:40px}
-    .leftimagebtn {float:left;width:50%;display:block;text-align:center;}
-    .leftimagebtn input,.rightimagebtn input {width:70%;max-width:232px;height:auto;min-width:100px;}
-    .rightimagebtn {float:right;width:50%;display:block;text-align:center;}
-</style>
-<script>
-    function publishajax(url){
-        $.ajax({
-            type:'post',
-            url:url,
-            data:$("publishform").serialize(),
-            success:function(data){
 
-            }
-        })
-    }
-</script>
+</style>
+
+
 <p class="clearfix" style="padding-bottom:15px;">
     <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish1.png" /><i class="red">*</i>发布类目</span>
         <span class="publishright publishrightnew">

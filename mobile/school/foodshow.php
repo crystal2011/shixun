@@ -34,7 +34,6 @@ $aKnow = $oMember->get_one();
 
 $aRecommendFood = $oCai->getright('title,itemid,introduce,likes,hits,userid,thumb,votes',10,'addtime desc');  //推荐
 
-$memberlistHot = $oMember->getListUser($aHotFood);
 $memberlistRec = $oMember->getListUser($aRecommendFood);
 
 $seo_title = $info['title'].'-名厨学堂-名菜展示-';

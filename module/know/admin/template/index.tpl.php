@@ -43,6 +43,7 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 <th>分类</th>
 <th>标 题</th>
     <th>会员</th>
+    <th>技术合作费</th>
 <th width="130"><?php echo $timetype == 'add' ? '添加' : '更新';?>时间</th>
 <th>浏览</th>
 <th width="150">操作</th>
@@ -56,6 +57,7 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
     <td>
         <a href="javascript:_user('<?php echo $v['userid'];?>','userid');"><?php echo $getListUser[$v['userid']]['username'];?></a>
     </td>
+    <td><?php echo doubleval($v['coofee']);?></td>
     <?php if($timetype == 'add') {?>
 <td class="px11" title="更新时间<?php echo $v['editdate'];?>"><?php echo $v['adddate'];?></td>
 <?php } else { ?>

@@ -12,7 +12,7 @@ if(empty($id)){
 $oFood = new food(23);
 $oFood->itemid = $id;
 $aFood = $oFood->get_one();
-if(isset($showtype)){   //预览
+if(isset($showtype)){   //羊角会预览
     $s = chcekHorn($aFood,0);
     if($s!==true) dalert($s,$forward);
 }else {

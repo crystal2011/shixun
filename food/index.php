@@ -13,7 +13,6 @@ if($areainfo){
     $where .= " and areaid in (".$areainfo['arrchildid'].")";
 }
 
-
 //分类
 $aCacheCat23 = cache_read('category-23.php');
 $catinfo = isset($aCacheCat23[$catid])?$aCacheCat23[$catid]:array();

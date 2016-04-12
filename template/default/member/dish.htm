@@ -28,6 +28,7 @@
                                     <li><a href="/school/food.php?id={$v['itemid']}"  target="_blank"><img src="{$v['thumb']}" width="120px" height="120px" /></a></li>
                                     <li class="type width400">
                                         <h5><a href="/school/food.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">{dsubstr($v['title'],30)}</a></h5>
+                                        <p>技术合作费：<em>{doubleval($v['coofee'])}元</em></p>
                                         <p>分类：<em>{if isset($aCatCache[$v['catid']])}{$aCatCache[$v['catid']]['catname']}{/if}</em></p>
                                     </li>
                                     <li class="type width50">

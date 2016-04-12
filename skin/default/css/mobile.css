@@ -979,7 +979,7 @@ a img {font-size:0px;}
 #publishform .publishleft {color:#000;width:72px;font-size:1.6em;text-align:right;float:left;display:block;}
 #publishform .publishright {padding-left:80px;width:100%;display:block;color:#000;font-size:1.6em;}
 #publishform .publishtype {display:block;width:100%;}
-#publishform .publishtype a{padding:3px 5px;background-color:#fff;border:1px solid #f1f1f1;float:left;margin-right:3px;margin-bottom:3px;}
+#publishform .publishtype a{padding:5px 10px;background-color:#fff;border:1px solid #f1f1f1;float:left;margin-right:10px;margin-bottom:5px;}
 #publishform .red {color:#f50000;}
 #publishform .input-text {width:100%;line-height:2em;height:2em;border:1px solid #f1f1f1;border-radius: 3px;max-width:400px;}
 #publishform .publishtype a.active {background-color:#f50000;color:#fff;}
