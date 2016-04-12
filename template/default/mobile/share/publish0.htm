@@ -32,12 +32,12 @@
             </p>
 
             {template  'publishcommon','mobile/share'}
-            <p class="clearfix">
-                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/searchsmall.png" /><i class="red">*</i>分类选择</span>
-                <span class="publishright publishrightnew">
-                    {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 23,'class="input-text smallinput"')}
-                    <br />
+            <p class="clearfix" style="padding-bottom:10px;padding-top:10px;" onclick="showcat(23)">
+                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish1.png" /><i class="red">*</i>选择目录</span>
+                <span class="publishright publishrightnew" style="text-align:right;">
                     <span class="Validform_checktip"></span>
+                    <i id="showcat"></i><img src="{DT_SKIN}image/mobile/rightwhilt.png" style="width:12px;margin-top:10px;vertical-align: bottom;margin-left:20px;" />
+                    <input type="hidden" name="catid" nullmsg="请选择类目" errormsg="请选择类目" value="" datatype="*" />
                 </span>
             </p>
 

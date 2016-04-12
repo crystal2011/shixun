@@ -18,29 +18,16 @@
     }
 
 </style>
-
-
-<p class="clearfix" style="padding-bottom:15px;">
-    <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish1.png" /><i class="red">*</i>发布类目</span>
-        <span class="publishright publishrightnew">
-            <span class="clear publishtype">
-                <a {if $moduleidtype==0}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=0">餐饮供应</a>
-                <a {if $moduleidtype==1}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=1">商家优惠</a>
-                <a {if $moduleidtype==2}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=2">招聘信息</a>
-                <a {if $moduleidtype==3}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=3">店铺转让</a>
-                <a {if $moduleidtype==4}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=4">名厨学堂</a>
-                <a {if $moduleidtype==5}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=5">美食分享</a>
-                <a {if $moduleidtype==6}class="active"{/if} href="/mobile/share/publish.php?moduleidtype=6">文章发布</a>
-            </span>
-        </span>
-</p>
+<script>
+    function showcat(moduleid){
+        layer.open({
+            type: 1,
+            content: '可传入任何内容，支持html。一般用于手机页面中',
+            anim: 0,
+            style: 'position:fixed; bottom:0; left:0; width:100%; height:150px; padding:10px 0; border:none;'
+        });
+    }
+</script>
 {if empty($itemid)}
-<p class="clearfix">
-    <span class="publishleft publishnew" style="width:140px;"><img src="{DT_SKIN}image/mobile/moneylog.png" /><i class="red">*</i>内容审核号</span>
-    <span class="publishright publishrightnew" style="padding-left:140px;">
-        <input type="text" class="input-text" errormsg="请输入正确优惠码" ajaxurl="/ajax.php?action=ajax&at=horncode&type={$moduleidtype}" name="code" datatype="n6-6" />
-        <br />
-        <span class="Validform_checktip"></span>
-    </span>
-</p>
+        <input type="hidden" value="{$code}"  name="code"  />
 {/if}

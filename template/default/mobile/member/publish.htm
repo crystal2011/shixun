@@ -1,0 +1,182 @@
+{template 'top','mobile/member'}
+<script type="text/javascript" src="{DT_STATIC}lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/color.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<style>
+    body {background-color:#f5f5f5;}
+    .person {height:auto;}
+    .person .bg-persons {width:17%;max-width:5rem;margin:0 auto;}
+    .person .kuang {  width: 100%;display: block;position: relative;height: 0px;padding: 0px 0px 100%;}
+    .person .kuang img {  width: 100%;height: 100%;font-size: 10px;position: absolute;}
+    .person .name {font-size:1.8rem;padding-top:0rem;}
+    .usermoney {padding-right:20px;text-align:right;font-size:1rem;}
+    .usermoney span {color:#e9544e;font-size:1rem;}
+    .indetishi {padding-left:10px;font-size:1.2rem;line-height:2.4rem;border-bottom:2px solid #f1f1f1;}
+    .indetishi span {color:#e9544e;font-size:1.2rem;line-height:2.4rem;padding:0 3px;}
+    .userinfosl {padding:10px 0px;}
+    .userinfosl img {vertical-align: middle;margin-right:3px;margin-top: -2px;}
+    .userinfosl div {width:50%;text-align:center;}
+    .userinfosl div a {font-size:1.2rem;color:#000;}
+    .userinfosl .fr {border-left:1px solid #000;}
+
+
+    .mempublish {
+        border-bottom:1px solid #c5c4c4;
+        margin:20px 20px;
+        padding:20px 10px;
+    }
+    .mempublish .publishtitle {
+        text-align:center;
+        font-size:1.8em;
+        color:#202020;
+
+    }
+    .mempublish .publishinput {
+        text-align:center;
+    }
+    .mempublish .publishinput input{
+        width:44px;
+        margin-right:5px;
+        line-height:44px;
+        text-align:center;
+        border:1px solid #d4d4d4;
+        height:44px;
+    }
+    .mempublish .publishhandle span{
+        width:100px;
+    }
+    .mempublish .publishhandle {
+        text-align:center;
+        margin-top:30px;
+
+    }
+    .mempublish .publishhandle span,.mempublish .publishhandle a {
+        padding:10px 20px;
+        color:#fff;
+    }
+    .mempublish .publishhandle .publishsure{
+        background-color:#ea554f;
+        margin-right:50px;
+
+    }
+    .mempublish .publishhandle .publishquit {
+        background-color:#9d9d9d;
+    }
+    .publishtishi {
+        background-color:#fff;
+        padding:20px;
+        margin:20px;
+    }
+    .publishtishi p {
+        margin:0px;
+        font-size:1.2em;
+        line-height:1.8em;
+        color:#9d9d9d;
+    }
+    .publishhorn {
+        text-align:center;margin:30px 0px 50px 0px;
+    }
+    .publishhorn a {
+        color:#000;
+
+    }
+</style>
+<script>
+    function member_logo(val){
+        if(val){
+            $.ajax({
+                type:'post',
+                url:'/ajax.php?action=member&job=memberlogo&moduleid=2',
+                data:{'logo':val},
+                success:function(data){
+                    $("#member_logo").attr("src",val);
+                }
+            })
+        }
+    }
+    function memberlong(){
+        $("#upthumb").click();
+    }
+</script>
+<iframe name="UploadThumb" style="display:none;" src=""></iframe>
+<form method="post" target="UploadThumb" style="display:none;" enctype="multipart/form-data" action="/upload.php" onsubmit="return isUP('upthumb');">
+    <input type="hidden" name="moduleid" value="1">
+    <input type="hidden" name="jsfunction" value="member_logo">
+    <input type="hidden" name="from" value="thumb">
+    <input type="hidden" name="old" value="">
+    <input type="hidden" name="fid" value="thumb">
+    <input id="remote_0" type="hidden" name="isremote" value="0" checked="" onclick="ReLo(0, 'upthumb');">
+    <input id="upthumb" type="file" size="20" name="upthumb" onchange="if(isImg('upthumb')){this.form.submit();}">
+    <input type="hidden" size="3" name="width" value="">
+    <input type="hidden" size="3" name="height" value="">
+</form>
+<section style="background: url({DT_SKIN}image/mobile/back1.jpg) no-repeat;background-size:100%;padding-top:10px;" class="person">
+    <img onclick="history.go(-1)" src="{DT_SKIN}image/mobile/userleft.png" class="userleft" />
+    <div class="bg-persons" >
+        <span class="kuang">
+            <img src="{if $_thumb}{$_thumb}{else}{$DT['memberlogo']}{/if}" style="border:3px solid #fff;width:100%;height:100%;border-radius: 100%;-moz-border-radius:100%;
+-webkit-border-radius: 100%; " id="member_logo" onclick="memberlong()" />
+        </span>
+
+    </div>
+    <div class="name tc">{$_username} </div>
+    <div class="usermoney">账号资金：<span>0元</span></div>
+</section>
+<section style="background-color:#fff;">
+    <article class="indetishi">您已发布内容<span>{$_infopublishs}</span>次，已被<span>{$_infohits}</span>人阅读过。</article>
+    <article class="line" style="border: 0px;"></article>
+
+</section>
+<section>
+    <article class="mempublish" style="background-color:#fff;">
+        <p class="publishtitle">输入发布审核号</p>
+        <p class="publishinput">
+            <input type="text" id="publish1" maxlength="1" />
+            <input type="text" id="publish2" maxlength="1" />
+            <input type="text" id="publish3" maxlength="1" />
+            <input type="text" id="publish4" maxlength="1" />
+            <input type="text" id="publish5" maxlength="1" />
+            <input type="text" id="publish6" maxlength="1" />
+        </p>
+        <p  class="publishhandle">
+            <span class="publishsure">确认</span>
+            <span class="publishquit" onclick="history.go(-1)">取消</span>
+        </p>
+    </article>
+    <article class="publishtishi">
+        <p>提示：</p>
+        <p>请发布信息需通过羊角会成员审核，如无发布审核号，请联系羊角会成员。</p>
+    </article>
+    <article class="publishhorn"><a href="/mobile/horn/index.php">点击去羊角会</a></article>
+</section>
+<script>
+    $(".publishsure").click(function(){
+        var publish1 = $("#publish1").val();
+        var publish2 = $("#publish2").val();
+        var publish3 = $("#publish3").val();
+        var publish4 = $("#publish4").val();
+        var publish5 = $("#publish5").val();
+        var publish6 = $("#publish6").val();
+        var str = publish1+publish2+publish3+publish4+publish5+publish6;
+        var rge = /^[0-9]{6}$/;
+        if(!rge.test(str)){
+            alert('输入有误');
+        }
+        $.ajax({
+            type:'post',
+            url:'/ajax.php?action=ajax&at=horncode&type=0',
+            data:{'param':str},
+            dataType:'json',
+            success:function(data){
+                if(data.status=='n'){
+                    alert(data.info);
+                }else{
+                    location.href='/mobile/share/publish.php?code='+str+'&moduleidtype={$moduleidtype}';
+                }
+            }
+        })
+    })
+</script>
+{template 'footer','mobile'}

@@ -8,6 +8,10 @@ require '../../common.inc.php';
 require DT_ROOT.'/include/post.func.php';
 require DT_ROOT.'/include/module.func.php';
 $moduleidtype = isset($moduleidtype)?$moduleidtype:'';
+require_once DT_ROOT.'/module/special/special.class.php';
+$oSpecial = new special(11);
+$oSpecial->table = $db->pre.'special';
+$oSpecial->table_data = $db->pre.'special_data';
 $isajax = isset($isajax)?true:false;
 if(!$_userid){
     $isajax?exit(json_encode(array('status'=>'n','info'=>'请先登录'))):dalert('请先登录','/mobile/member/login.php');
@@ -84,6 +88,11 @@ if($itemid){
 
     $sitetitle = '信息编辑—'.$sitetitle;
 }else{
+    $code = isset($code)?$code:'';
+    $codeinfo = array();
+    if(strlen($code)==0 || !$codeinfo = $oSpecial->codeCheck($code)){
+        $isajax?exit(json_encode(array('status'=>'n','info'=>$oSpecial->errmsg))):dheader($CFG['url'].'mobile/member/publish.php?moduleidtype='.$moduleidtype);
+    }
     $sitetitle = '信息发布—'.$sitetitle;
 }
 
@@ -98,10 +107,7 @@ if($isajax){
         exit(json_encode(array('status'=>'n','info'=>'功能未实现')));
     }*/
 
-    require_once DT_ROOT.'/module/special/special.class.php';
-    $oSpecial = new special(11);
-    $oSpecial->table = $db->pre.'special';
-    $oSpecial->table_data = $db->pre.'special_data';
+
     if(!check_token()) exit(json_encode(array('status'=>'n','info'=>'操作失效，请重试')));
 
     $thumbinput = isset($thumbinput) && is_array($thumbinput)?$thumbinput:array();
@@ -130,12 +136,9 @@ if($isajax){
         'status'=>2
     );
 
-    $codeinfo = array();
+
     if(empty($itemid)){
-        $arr['code'] = isset($code)?$code:'';
-        if(!$codeinfo = $oSpecial->codeCheck($arr['code'])){
-            exit(json_encode(array('status'=>'n','info'=>$oSpecial->errmsg)));
-        }
+        $arr['code'] = $code;
     }
 
 

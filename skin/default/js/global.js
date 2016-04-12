@@ -69,6 +69,8 @@ function thumbo(){
     $("#upthumb").before('<span style="padding:3px 5px;color:#fff;background-color:red;position:absolute;top:0px;left:0px;width:200px">请选择文件<span>');
 }
 
+
+
 /**
  * @name 是否登录
  */
