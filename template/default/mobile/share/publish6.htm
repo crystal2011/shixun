@@ -30,20 +30,7 @@
                 </span>
             </p>
             {template  'publishcommon','mobile/share'}
-            <p class="clearfix">
-                <span class="publishleft publishnew"><i class="red">*</i>分类选择</span>
-                <span class="publishright publishrightnew">
-                    <select datatype="*" name="catid" class="input-text smallinput">
-                        <option value="">选择分类</option>
-                        <option value="22" <?php echo isset($info['catid']) && $info['catid']==22?'selected':''; ?>>饮食推荐</option>
-                        <option value="32" <?php echo isset($info['catid']) && $info['catid']==32?'selected':''; ?>>美食资讯</option>
-                    </select>
-                    <br />
-                    <span class="Validform_checktip"></span>
-                </span>
-            </p>
-
-
+            {template  'publishcat','mobile/share'}
 
             <div class="btn-box">
                 <input  type="hidden" name="submit" value="1"/>

@@ -284,6 +284,59 @@ $(function(){
 
 })
 
+function publishsuresdfs(type,url){
+    var catid = $("#selectcatnow").attr("data-id");
+    var catname = $("#selectcatnow").text();
+    if(typeof(catid)=='undefined' || catid==''){
+        alert('请选择分类');
+    }else{
+        if(type==0){
+            $("#showcat").html(catname);
+            $("#catid").val(catid);
+            $("#showcat").prev().removeClass('Validform_wrong').html('');
+            $(".layermbox").remove();
+        }else if(type==1){
+            location.href=url+'&catid='+catid;
+        }
+
+    }
+
+}
+
+function publishquitsdfs(type,url){
+    $(".layermbox").remove();
+}
+
+function publishallsdfs(type,url){
+    if(type==0){
+        $("#showcat").html('');
+        $("#catid").val('');
+        $(".layermbox").remove();
+    }else if(type==1){
+        location.href=url;
+    }
+
+}
+
+function showcat(moduleid,type,url){
+    $.ajax({
+        type:'post',
+        url:'/ajax.php?action=ajax&at=category',
+        data:{'moduleid':moduleid,'type':type,'url':url},
+        async:false,
+        dataType:'json',
+        success:function(data){
+            layer.open({
+                type: 1,
+                content: data.info,
+                anim: 0,
+                style: 'position:fixed; bottom:0; left:0; width:100%; height:100%;overflow-y:scroll;background-color:#e6e6e6; border:none;'
+            });
+        }
+    })
+
+}
+
 
 function goTop(){
     $(window).scrollTop(0);

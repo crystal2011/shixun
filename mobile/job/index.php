@@ -16,6 +16,7 @@ if($areainfo){
 }
 
 //分类
+$moduleidcat = 9;
 $aCacheCat9 = cache_read('category-9.php');
 $catinfo = isset($aCacheCat9[$catid])?$aCacheCat9[$catid]:array();
 if($catinfo){

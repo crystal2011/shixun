@@ -10,7 +10,7 @@
 <section>
     <article class="list">
         <div class="content">
-            <div class="clear info">
+            <div class="clear info" style="max-height:none;">
                 名厨简介：{$info['introduce']}
             </div>
             <div class="clear" style="padding:0px 20px;"><span class="fl" style="color:#989898;"><img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$info['hits']})</span><span class="fr" style="color:#ea5550;font-size:2.2em;">总票数：{$info['infonums']}</span></div>
@@ -19,22 +19,65 @@
     </article>
 </section>
 <section id="content">
-    <article class="line"></article>
-    {template 'view','mobile'}
-    <article class="line"></article>
+    <article class="shop">
+        <header class="header">联系方式</header>
+        <div class="shopinfo clear">
+            <img class="fr phone" onclick="window.location.href='tel:{if $info[mobile]}{$info[mobile]}{/if}'" src="{DT_SKIN}image/mobile/phone.png" />
+            <div class="shopndl">
+                <span class="fasdf">{area_pos($info['areaid'],'')}{$info['address']}</span>
+            </div>
+        </div>
+    </article>
+    <article class="line" style="border-bottom:0px;"></article>
+</section>
+<section class="contentlist">
+    <article class="list">
+        <ul class="clear">
+            {if $list}
+            {loop $list $k $v}
+            <li class="clear" style="background-color:#fff;margin-bottom:10px;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;padding:0px 20px 10px 20px;">
+                <p style="font-size:1.8em;line-height: 1.8em;height:1.8em;overflow:hidden;margin-bottom:10px;"><a style="width:100%;display:block;color:#000;font-size:1em;" href="/mobile/school/foodshow.php?id={$v['itemid']}">{$v['title']}</a></p>
+                <span class="numsviews" style="float:none;text-align:right;display:block;margin-bottom:5px;">
+                    <img src="{DT_SKIN}image/public/icon-liulan.png" />浏览({$v['hits']})&nbsp;&nbsp;&nbsp;
+                    <img src="{DT_SKIN}image/public/icon-pinlun.png" />评论({$v['comments']})
+                </span>
+                <a style="width:100%;display:block;" href="/mobile/school/foodshow.php?id={$v['itemid']}"><img style="width:100%;height:auto;" src="{$v['thumb']}" /></a>
+                <div class="lidiv">
+                    {if doubleval($v['coofee'])}
+                    <div class="handle clear hasbutton" style="border-bottom-width: 0px;padding-top:10px;padding-bottom:0px;text-align:right;">
+                        <span class="handle1 price1 " style="font-size:1.4em; color: #ff8125;">
+                            <img src="{DT_SKIN}image/mobile/yes.png" style="width:18px;height:auto;margin-right:0px;vertical-align: middle;" />
+                            技术合作费：{doubleval($v['coofee'])}元
+                        </span>
+                    </div>
+                    {/if}
+                    <div class="handle clear hasbutton" style="border-bottom-width: 0px;padding-top:0px;padding-bottom:10px;text-align:right;">
+                        <span class="handle1 price1 " style="width:100%;display:block;font-size:1.4em; color: #ff8125;">
+                         <img onclick="vote({$v['itemid']},2,this)" src="{DT_SKIN}image/mobile/bigvote.png" style="width: 20%;max-width: 100px;min-width:60px;vertical-align: middle;margin-right:5px;" class="bigvote" /><i class="num">票数：<i>{$v['votes']}</i></i>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            {/loop}
+            {/if}
+        </ul>
+    </article>
 </section>
 <section class="contentlist">
     <header class="channelheader clear">
-        <article class="schoolname">{$info['truename']}全部作品</article>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新菜系</span></div>
+        <a class="fr" href="food.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">
         <ul class="comul clear">
-            {if $list}
-            {loop $list $k $v}
+            {if $aRecommendFood}
+            {loop $aRecommendFood $k $v}
             <li class="clear">
                 <div class="lidiv">
                     <a class="schoola" href="/mobile/school/foodshow.php?id={$v['itemid']}">
                         <img src="{$v['thumb']}" />
+                        <span>名厨：{$memberlistRec[$v['userid']]['truename']}</span>
+                        <span class="hiddensl">名厨：{$memberlistRec[$v['userid']]['truename']}</span>
                     </a>
                     <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
                     <p class="handle clear">
@@ -47,10 +90,6 @@
             {/if}
         </ul>
     </article>
-    {if $list && $page!=$totalpage}
-    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/school/show.php?id={$id}',this,'comul')" data-page="1">
-        <a>查看更多>></a>
-    </article>
-    {/if}
+
 </section>
 {template 'footer','mobile'}

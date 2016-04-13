@@ -1,0 +1,8 @@
+<p class="clearfix" style="padding-bottom:15px;padding-top:10px;" onclick="showcat({$moduleidcat},0)">
+    <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish1.png" /><i class="red">*</i>选择目录</span>
+    <span class="publishright publishrightnew" style="text-align:right;margin-top:5px;">
+        <span class="Validform_checktip"></span>
+        <i id="showcat"><?php  if((isset($info['catid'])) && $catinfo = get_cat($info['catid'])){ echo $catinfo['catname'];} ?></i><img src="{DT_SKIN}image/mobile/rightwhilt.png" style="width:12px;vertical-align: middle;margin-left:20px;" />
+        <input type="hidden" name="catid" id="catid" nullmsg="请选择目录" errormsg="请选择目录" value="<?php echo isset($info['catid'])?$info['catid']:'' ?>" datatype="*" />
+    </span>
+</p>

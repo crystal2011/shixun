@@ -17,7 +17,7 @@ if($areainfo){
 
 //分类
 $aCacheCat23 = cache_read('category-23.php');
-
+$moduleidcat = 23;
 $catinfo = isset($aCacheCat23[$catid])?$aCacheCat23[$catid]:array();
 if($catinfo){
     $where .= " and catid in (".$catinfo['arrchildid'].")";

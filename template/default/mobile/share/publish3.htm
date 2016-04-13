@@ -31,14 +31,7 @@
             </p>
 
             {template  'publishcommon','mobile/share'}
-            <p class="clearfix">
-                <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/searchsmall.png" /><i class="red">*</i>分类选择</span>
-                <span class="publishright publishrightnew">
-                    {ajax_category_select('catid', '选择分类', isset($info['catid'])?$info['catid']:0, 13,'class="input-text smallinput"')}
-                    <br />
-                    <span class="Validform_checktip"></span>
-                </span>
-            </p>
+            {template  'publishcat','mobile/share'}
 
             <p class="clearfix">
                 <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish2.png"  /><i class="red">&nbsp;</i>转让价格</span>

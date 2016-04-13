@@ -24,18 +24,21 @@ switch($moduleidtype) {
         $obj = new food(23);
         $checkName = 'checkFood';
         $sitetitle .= '餐饮供应';
+        $moduleidcat = 23;
         break;
     case 1: //商家优惠
         require_once DT_ROOT.'/module/brand/brand.class.php';
         $obj = new brand(13);
         $checkName = 'checkJob';
         $sitetitle .= '商家优惠';
+        $moduleidcat = 13;
         break;
     case 2: //招聘信息
         require_once DT_ROOT.'/module/job/job.class.php';
         $obj = new job(9);
         $checkName = 'checkJob';
         $sitetitle .= '招聘信息';
+        $moduleidcat = 9;
         $isjob = true;
         break;
     case 3: //店铺转让
@@ -43,12 +46,14 @@ switch($moduleidtype) {
         $obj = new sell(5);
         $checkName = 'checkSell';
         $sitetitle .= '店铺转让';
+        $moduleidcat = 13;
         break;
     case 4: //名厨学堂 - 菜系
         require_once DT_ROOT.'/module/know/know.class.php';
         $obj = new know();
         $checkName = 'checkKnow';
         $sitetitle .= '名厨学堂-菜系';
+        $moduleidcat = 13;
         break;
     case 5: //分享
         require_once DT_ROOT.'/module/buy/buy.class.php';
@@ -61,6 +66,7 @@ switch($moduleidtype) {
         $obj = new article();
         $checkName = 'checkUserEdit';
         $sitetitle .= '美食文章';
+        $moduleidcat = 21;
         break;
     default:
         dheader('/mobile/member/index.php');
@@ -200,7 +206,7 @@ if($isajax){
     }
 
     if($handle){
-        if($codeinfo) $oSpecial->money($info,$codeinfo,$moduleidtype,$itemid);
+        if(isset($codeinfo) && $codeinfo) $oSpecial->money($info,$codeinfo,$moduleidtype,$itemid);
         exit(json_encode(array('status'=>'y','info'=>$note,'url'=>$url)));
     }else{
         exit(json_encode(array('status'=>'n','info'=>'提交失败')));

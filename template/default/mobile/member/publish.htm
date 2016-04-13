@@ -24,8 +24,8 @@
 
     .mempublish {
         border-bottom:1px solid #c5c4c4;
-        margin:20px 20px;
-        padding:20px 10px;
+        margin:20px 10px;
+        padding:20px 0px;
     }
     .mempublish .publishtitle {
         text-align:center;
@@ -37,12 +37,12 @@
         text-align:center;
     }
     .mempublish .publishinput input{
-        width:44px;
+        width:36px;
         margin-right:5px;
-        line-height:44px;
+        line-height:20px;
         text-align:center;
         border:1px solid #d4d4d4;
-        height:44px;
+        height:36px;
     }
     .mempublish .publishhandle span{
         width:100px;
@@ -67,7 +67,7 @@
     .publishtishi {
         background-color:#fff;
         padding:20px;
-        margin:20px;
+        margin:20px 10px;
     }
     .publishtishi p {
         margin:0px;
@@ -138,11 +138,11 @@
             <input type="text" id="publish3" maxlength="1" />
             <input type="text" id="publish4" maxlength="1" />
             <input type="text" id="publish5" maxlength="1" />
-            <input type="text" id="publish6" maxlength="1" />
+            <input type="text" id="publish6" maxlength="1" style="margin-right:0px;" />
         </p>
         <p  class="publishhandle">
             <span class="publishsure">确认</span>
-            <span class="publishquit" onclick="history.go(-1)">取消</span>
+            <span class="publishquit">取消</span>
         </p>
     </article>
     <article class="publishtishi">
@@ -163,6 +163,7 @@
         var rge = /^[0-9]{6}$/;
         if(!rge.test(str)){
             alert('输入有误');
+            return false;
         }
         $.ajax({
             type:'post',
@@ -178,5 +179,16 @@
             }
         })
     })
+
+    $(".publishinput input").keyup(function(){
+        if($(this).val()!=''){
+            $(this).next().focus();
+        }
+
+    });
+    $(".publishquit").click(function(){
+        $(".publishinput input").val('');
+    })
+
 </script>
 {template 'footer','mobile'}

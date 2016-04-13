@@ -14,7 +14,7 @@ $areainfo = isset($aCacheArea[$areaid])?$aCacheArea[$areaid]:array();
 if($areainfo){
     $where .= " and areaid in (".$areainfo['arrchildid'].")";
 }
-
+$moduleidcat = 13;
 //分类
 $aCacheCat13 = cache_read('category-13.php');
 $catinfo = isset($aCacheCat13[$catid])?$aCacheCat13[$catid]:array();

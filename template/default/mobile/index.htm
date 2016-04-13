@@ -67,8 +67,8 @@
                     </li>
                 </ul>
             </article>
-            <article class="swiper-slide abdf">{ad(100)}</article>
-            <article class="swiper-slide abdf">{ad(101)}</article>
+            <article class="swiper-slide abdf"><a href="/mobile/article/show.php?id={$aArticle[0]['itemid']}"><img src="{$aArticle[0]['thumb']}" /></a></article>
+            <article class="swiper-slide abdf"><a href="/mobile/article/show.php?id={$aArticle[1]['itemid']}"><img src="{$aArticle[1]['thumb']}" /></a></article>
         </div>
         <div class="swiper-pagination swiper-pagination-bullets">
             <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
@@ -168,8 +168,8 @@
         pagination : '.swiper-pagination',
         paginationHide :true
     })
-    $(function(){
+    window.onload = function(){
         $(".abdf img").css('height',$(".swiper-slide").eq(0).height());
-    })
+    };
 </script>
 {template 'footer','mobile'}

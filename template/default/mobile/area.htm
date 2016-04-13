@@ -15,6 +15,7 @@
             {/loop}
             {/if}
         </select>
+        <img src="{DT_SKIN}image/smallsanjiao.png" style="position:absolute;bottom:3px;right:3px;" />
     </span>
     <span>
         <?php $fiarea = '市级'; ?>
@@ -32,27 +33,16 @@
             {/loop}
             {/if}
         </select>
+        <img src="{DT_SKIN}image/smallsanjiao.png" style="position:absolute;bottom:3px;right:3px;" />
     </span>
-    <span>
-        <?php $fiarea = '区级'; ?>
-        {if isset($aArea[2])}
-            {loop $aArea[2] $k $v}
-            {if in_array($v['areaid'],$areaparentid)}<?php $fiarea = $v['areaname']; ?>{/if}
-            {/loop}
-        {/if}
-        {$fiarea}
-        <select>
-            <option value="0">区级</option>
-            {if isset($aArea[2])}
-            {loop $aArea[2] $k $v}
-            <option value="{$v['areaid']}" {if in_array($v['areaid'],$areaparentid)}selected{/if}>{$v['areaname']}</option>
-            {/loop}
-            {/if}
-        </select>
-    </span>
-    {if isset($moduleidtype)}
-    <span><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布</a></span>
+    {if isset($moduleidcat)}
+    <?php $dfaurl = isset($kw)?'&kw='.$kw:''; $dfaurl = '?areaid='.$areaid.$dfaurl; ?>
+    <span onclick="showcat({$moduleidcat},1,'{$dfaurl}')">{if $catinfo}{$catinfo['catname']}{else}筛选{/if}<img src="{DT_SKIN}image/smallsanjiao.png" style="position:absolute;bottom:3px;right:3px;" /></span>
     {/if}
+    {if isset($moduleidtype)}
+    <span><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布{if $moduleidtype==4}菜式{/if}</a></span>
+    {/if}
+
 </article>
 <script>
     var str = "{$catid}"==""?'':"&catid={$catid}";

@@ -2,14 +2,11 @@
 {template 'search','mobile'}
 
 <section>
-    <span class="ids">{ad(79)}</span>
-    {template 'category','mobile'}
-    <article class="line" style="border-width:0px;"></article>
-    {template 'area','mobile'}
-    <article class="line" style="border-bottom-width:0px;"></article>
     <article id="areaselect" class="clear">
-        <span ><a href="/mobile/job/index.php" style="background-color:#e9544e;color:#fff;display:block;">招聘信息</a></span>
+        <span><a href="/mobile/job/index.php" style="background-color:#fe0018;color:#fff;display:block;border:1px solid #fff;border-radius: 10px;width:70%;margin:0 auto;min-width:80px;">招聘信息</a></span>
         <span ><a href="/mobile/job/resume.php" style="color:#6d6d6d;display:block;">求职信息</a></span>
+        <span onclick="showcat({$moduleidcat},1,'?')">{if $catinfo}{$catinfo['catname']}{else}筛选{/if}<img src="{DT_SKIN}image/smallsanjiao.png" style="position:absolute;bottom:3px;right:3px;" /></span>
+        <span><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布</a></span>
     </article>
     <article class="list">
         {if $list}

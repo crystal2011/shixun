@@ -28,7 +28,11 @@ $pagesize = 4;
 $aCai = $oCai->get_list($where.' and status = 3');
 $aSchool = $oMember->getListUser($aCai);
 
-
+//有图片的最新两个文章
+$pagesize = 2;
+$offset = 0;
+$where = " thumb!='' ";
+$aArticle = $oArticle->get_list($where .' and status = 3');
 
 //餐饮供应
 require_once '../module/food/food.class.php';
