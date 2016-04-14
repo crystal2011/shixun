@@ -1013,3 +1013,22 @@ a img {font-size:0px;}
 .guangli img {vertical-align: middle;margin-right:3px;margin-top: -2px}
 
 .footerfix {position:fixed; bottom:0;left:0px; z-index:999;}
+
+#publishform .imagemodule {margin-bottom:0px;padding-top:0px;padding-left:50px;}
+#publishform .imagedivjia .imagspe {position:relative;display:block;float:left;margin-right:5px;}
+#publishform .remove {position:absolute;top:50%;left:50%;margin-top:-3px;margin-left:-7px;width:15px;height:3px;}
+#publishform #choose {position:absolute;top:0px;left:0px;width:80px;height:66px;opacity: 0}
+#gundong {position:fixed;top:50%;text-align:center;width:100%;margin-top:-16px;display:none;}
+#publishform .jiaimage {width:80px;height:66px;border:1px solid #f5f5f5;}
+#publishform .input-text {line-height:2.4em;height:2.4em;margin-top:-2px;text-indent: 0.5em;}
+#publishform .textinput {height:100px;}
+
+#publishform .publishnew {width:120px;padding-right:5px;line-height:1.8em;font-size:1.8em;}
+#publishform .publishnew img {vertical-align: middle;margin-right:5px;width:20px;height:auto;}
+#publishform .publishrightnew {padding-left:120px;}
+#publishform p{background-color:#fff;padding:20px 10px 0px 10px;margin:0px 0px 20px 0px;border-top:1px solid #b9b9b9;border-bottom:1px solid #b9b9b9;}
+#publishform .quepublish {background:#ea5550;border:1px solid #f1f1f1;color:#fff;padding:10px 25px;border-radius:5px;margin-top:10px;font-size:1.4em;  }
+#publishform .btn-box {text-align: center;}
+#publishform .Validform_checktip {font-size:12px;line-height:12px;height:12px;}
+.publishformfdfd {padding:0px;margin-bottom:40px;}
+#publishform #editor_paste_tip {display:none;}

@@ -1,39 +1,76 @@
-<style>
-    .imagedivjia .imagspe {position:relative;display:block;float:left;margin-right:5px;}
-    .remove {position:absolute;top:50%;left:50%;margin-top:-3px;margin-left:-7px;width:15px;height:3px;}
-    #choose {position:absolute;top:0px;left:0px;width:80px;height:66px;opacity: 0}
-</style>
-
-<p class="clearfix" style="margin-bottom:0px;padding-top:0px;padding-left:50px;">
+<p class="clearfix imagemodule" style="border:0px;">
     <span class="imagedivjia clear">
-        <span style="position:relative;display:block;float:left;" id="chooseimg">
-            <img src="{DT_SKIN}image/mobile/uploadjia.png"  class="jiaimage" onclick="memberlong('thumb1');" />
-            <input type="file" id="choose" />
-        </span>
         {if !isset($isjob)}
-        <input type="hidden" name="thumb" datatype="url" errormsg="请上传图片" nullmsg="请上传图片" value="{if isset($info['thumb'])}{$info['thumb']}{/if}" id="thumbinput1" />
-        <br />
-        <span class="Validform_checktip"></span>
+        <span class="imagspe" id="thumb1" {if !(isset($info['thumb']) && $info['thumb'])} onclick="addiamge(this,1)" {else} onclick="removeiamge(this,1)" {/if}>
+            <img src="{if isset($info['thumb']) && $info['thumb']}{$info['thumb']}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !(isset($info['thumb']) && $info['thumb'])}style="display:none;"{/if}  class="remove" />
+        </span>
         {/if}
-        <input type="hidden" name="thumbinput[]" id="thumbinput2" value="{if isset($thumbinputarr[0])}{$thumbinputarr[0]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput3" value="{if isset($thumbinputarr[1])}{$thumbinputarr[1]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput4" value="{if isset($thumbinputarr[2])}{$thumbinputarr[2]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput5" value="{if isset($thumbinputarr[3])}{$thumbinputarr[3]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput6" value="{if isset($thumbinputarr[4])}{$thumbinputarr[4]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput7" value="{if isset($thumbinputarr[5])}{$thumbinputarr[5]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput8" value="{if isset($thumbinputarr[6])}{$thumbinputarr[6]}{/if}" />
-        <input type="hidden" name="thumbinput[]" id="thumbinput9" value="{if isset($thumbinputarr[7])}{$thumbinputarr[7]}{/if}" />
+        <span class="imagspe" id="thumb2" {if !isset($isjob) && empty($info['thumb'])}style="display:none;"  {/if} {if !isset($thumbinputarr[0])} onclick="addiamge(this,2)" {else}  onclick="removeiamge(this,2)" {/if}>
+            <img src="{if isset($thumbinputarr[0])}{$thumbinputarr[0]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[0])}style="display:none;"{/if}  class="remove" />
+        </span>
+        <span class="imagspe" id="thumb3" {if !isset($thumbinputarr[0])} style="display:none;"  {/if} {if !isset($thumbinputarr[1])}  onclick="addiamge(this,3)" {else} onclick="removeiamge(this,3)" {/if}>
+            <img src="{if isset($thumbinputarr[1])}{$thumbinputarr[1]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[1])}style="display:none;"{/if}  class="remove" />
+        </span>
+        <span class="imagspe" id="thumb4" {if !isset($thumbinputarr[1])} style="display:none;"  {/if} {if !isset($thumbinputarr[2])}  onclick="addiamge(this,4)" {else} onclick="removeiamge(this,4)" {/if}>
+            <img src="{if isset($thumbinputarr[2])}{$thumbinputarr[2]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[2])}style="display:none;"{/if}   class="remove" />
+        </span>
+        <span class="imagspe" id="thumb5" {if !isset($thumbinputarr[2])} style="display:none;" {/if} {if !isset($thumbinputarr[3])}  onclick="addiamge(this,5)" {else} onclick="removeiamge(this,5)" {/if}>
+            <img src="{if isset($thumbinputarr[3])}{$thumbinputarr[3]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[3])}style="display:none;"{/if}  class="remove" />
+        </span>
+        <span class="imagspe" id="thumb6" {if !isset($thumbinputarr[3])} style="display:none;"  {/if} {if !isset($thumbinputarr[4])}  onclick="addiamge(this,6)" {else} onclick="removeiamge(this,6)" {/if}>
+            <img src="{if isset($thumbinputarr[4])}{$thumbinputarr[4]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[4])}style="display:none;"{/if}   class="remove" />
+        </span>
+        <span class="imagspe" id="thumb7" {if !isset($thumbinputarr[4])} style="display:none;"  {/if} {if !isset($thumbinputarr[5])}  onclick="addiamge(this,7)" {else} onclick="removeiamge(this,7)" {/if}>
+            <img src="{if isset($thumbinputarr[5])}{$thumbinputarr[5]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[5])}style="display:none;"{/if}   class="remove" />
+        </span>
+        <span class="imagspe" id="thumb8" {if !isset($thumbinputarr[5])} style="display:none;"  {/if} {if !isset($thumbinputarr[6])}  onclick="addiamge(this,8)" {else} onclick="removeiamge(this,8)" {/if}>
+            <img src="{if isset($thumbinputarr[6])}{$thumbinputarr[6]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[6])}style="display:none;"{/if}   class="remove" />
+        </span>
+        <span class="imagspe" id="thumb9" {if !isset($thumbinputarr[6])} style="display:none;" {/if} {if !isset($thumbinputarr[7])} onclick="addiamge(this,9)" {else} onclick="removeiamge(this,9)" {/if}">
+            <img src="{if isset($thumbinputarr[7])}{$thumbinputarr[7]}{else}{DT_SKIN}image/mobile/uploadjia.png{/if}"  class="jiaimage" >
+            <img src="{DT_SKIN}image/mobile/remove.gif" {if !isset($thumbinputarr[7])}style="display:none;"{/if}   class="remove" />
+        </span>
+        <input type="file" id="choose" style="display:none;" />
+
     </span>
+    {if !isset($isjob)}
+    <input type="hidden" name="thumb" datatype="url" errormsg="请上传图片" nullmsg="请上传图片" value="{if isset($info['thumb'])}{$info['thumb']}{/if}" id="thumbinput1" />
+    <span class="Validform_checktip"></span>
+    {/if}
+    <input type="hidden" name="thumbinput[]" id="thumbinput2" value="{if isset($thumbinputarr[0])}{$thumbinputarr[0]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput3" value="{if isset($thumbinputarr[1])}{$thumbinputarr[1]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput4" value="{if isset($thumbinputarr[2])}{$thumbinputarr[2]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput5" value="{if isset($thumbinputarr[3])}{$thumbinputarr[3]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput6" value="{if isset($thumbinputarr[4])}{$thumbinputarr[4]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput7" value="{if isset($thumbinputarr[5])}{$thumbinputarr[5]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput8" value="{if isset($thumbinputarr[6])}{$thumbinputarr[6]}{/if}" />
+    <input type="hidden" name="thumbinput[]" id="thumbinput9" value="{if isset($thumbinputarr[7])}{$thumbinputarr[7]}{/if}" />
 </p>
-<div style="position:fixed;top:50%;text-align:center;width:100%;margin-top:-16px;display:none;" id="gundong"><img src="{DT_SKIN}image/20.gif" /></div>
+<div id="gundong"><img src="{DT_SKIN}image/20.gif" /></div>
 <script>
-    function removeiamge(_this){
+    var nameid = 0;
+    function addiamge(_this,nameids){
+        nameid = nameids;
+        $("#choose").click();
+    }
+    function removeiamge(_this,typeid){
         var _this = $(_this);
         if(confirm('您确定删除该图片')){
             _this.find('.jiaimage').attr('src',"{DT_SKIN}image/mobile/uploadjia.png");
-            _this.find('.remove').remove();
+            _this.find('.remove').css("display","none");
+            $("#thumbinput"+typeid+"").val('');
+            _this.attr("onclick",'addiamge(this,'+typeid+')');
         }
     }
+
 
     var filechooser = document.getElementById("choose");
 
@@ -143,13 +180,12 @@
                 var data = JSON.parse(xhr.responseText);
                 if(data.status=='y'){
                     $("#gundong").css("display","none");
-                    $("#chooseimg").before('<span class="imagspe" onclick="removeiamge(this)"><img src="' + data.path + '"  class="jiaimage" ><img src="{DT_SKIN}image/mobile/remove.gif"  class="remove" /> </span>');
-                    $("input[name='thumbinput[]']").each(function(k,v){
-                        if($(this).val()==''){
-                            $(this).val(data.path);
-                            return false;
-                        }
-                    })
+                    $("#thumbinput"+nameid+"").val(data.path);
+                    $("#thumb"+nameid+" .jiaimage").attr("src",data.path);
+                    $("#thumb"+nameid+"").attr("onclick","removeiamge(this,"+nameid+")");
+                    $("#thumb"+nameid+" .remove").css('display','block');
+                    var sdnameid = parseInt(nameid)+1;
+                    $("#thumb"+sdnameid+"").css("display","block");
                 }else if(data.status=='n'){
                     $("#gundong").css("display","none");
                     alert(data.info);

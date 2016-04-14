@@ -1,4 +1,7 @@
 {template 'header','mobile'}
+<style>
+    body{background-color:#f5f5f5;}
+</style>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>lang/<?php echo DT_LANG;?>/lang.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/common.js"></script>
@@ -9,7 +12,7 @@
         <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{$topname}</span></a>
     </article>
 </header>
-<section class="publishform" >
+<section class="publishform publishformfdfd" >
     <article>
         <form id="publishform" method="post" action="/mobile/share/publish.php?isajax=1">
             <p class="clearfix" style="margin-bottom:0px;">
@@ -29,7 +32,6 @@
 
                 </span>
             </p>
-            {template  'publishcommon','mobile/share'}
             {template  'publishcat','mobile/share'}
             <p class="clearfix">
                 <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/gmodule4.png" /><i class="red">*</i>公司名称</span>
@@ -120,11 +122,12 @@
 
             </p>
 
-            <div class="btn-box">
+            <div class="btn-box clear">
                 <input  type="hidden" name="submit" value="2"/>
                 <input  type="hidden" name="itemid" value="<?php echo $itemid ?>"/>
                 <input  type="hidden" name="beforeurl" value="<?php echo $forward; ?>"/>
                 <input type="hidden" name="moduleidtype" value="2" />
+                <input type="hidden" value="{if isset($code)}{$code}{/if}"  name="code"  />
                 <input class="quepublish" type="submit" value="确定发布"/>
             </div>
         </form>
