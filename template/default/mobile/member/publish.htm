@@ -4,6 +4,7 @@
 <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
 <script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
 <script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<script src="{DT_SKIN}js/zepto.js"></script>
 <style>
     body {background-color:#f5f5f5;}
     .person {height:auto;}
@@ -133,12 +134,12 @@
     <article class="mempublish" style="background-color:#fff;">
         <p class="publishtitle">输入发布审核号</p>
         <p class="publishinput">
-            <input type="text" id="publish1" maxlength="1" />
-            <input type="text" id="publish2" maxlength="1" />
-            <input type="text" id="publish3" maxlength="1" />
-            <input type="text" id="publish4" maxlength="1" />
-            <input type="text" id="publish5" maxlength="1" />
-            <input type="text" id="publish6" maxlength="1" style="margin-right:0px;" />
+            <input type="text" id="publish1" maxlength="1"  />
+            <input type="text" id="publish2" maxlength="1"  />
+            <input type="text" id="publish3" maxlength="1"  />
+            <input type="text" id="publish4" maxlength="1"  />
+            <input type="text" id="publish5" maxlength="1"  />
+            <input type="text" id="publish6" maxlength="1"  style="margin-right:0px;" />
         </p>
         <p  class="publishhandle">
             <span class="publishsure">确认</span>
@@ -180,9 +181,11 @@
         })
     })
 
-    $(".publishinput input").keyup(function(){
+    $("#publish2").focus().select();
+    
+    $(".publishinput input").bind('input propertychange',function(){
         if($(this).val()!=''){
-            $(this).next().focus();
+
         }
 
     });

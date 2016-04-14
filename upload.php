@@ -6,6 +6,16 @@
 @set_time_limit(0);
 require 'common.inc.php';
 if($DT_BOT) dhttp(403);
+
+
+/* 获取图片的64编码 */
+$filename = time().'.'.'jpg';
+$filePath = DT_ROOT.'/'.$filename;
+$urlPath = $CFG['url'].$filename;
+move_uploaded_file($_FILES['imagefile']['tmp_name'],$filePath);
+exit(json_encode(array('status'=>'y','path'=>$urlPath)));
+
+
 $from = isset($from) ? trim($from) : '';
 $width = isset($width) ? intval($width) : 0;
 $height = isset($height) ? intval($height) : 0;
