@@ -67,8 +67,8 @@
                     </li>
                 </ul>
             </article>
-            <article class="swiper-slide abdf"><a href="/mobile/article/show.php?id={$aArticle[0]['itemid']}"><img src="{$aArticle[0]['thumb']}" /></a></article>
-            <article class="swiper-slide abdf"><a href="/mobile/article/show.php?id={$aArticle[1]['itemid']}"><img src="{$aArticle[1]['thumb']}" /></a></article>
+            <article class="swiper-slide abdf">{ad(100)}</article>
+            <article class="swiper-slide abdf">{ad(101)}</article>
         </div>
         <div class="swiper-pagination swiper-pagination-bullets">
             <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
@@ -76,12 +76,23 @@
             <span class="swiper-pagination-bullet"></span>
         </div>
     </div>
+    <article class="schoolchannel">
+        <ul class="comul clear" style="background-color:#fff;">
+
+            <li class="clear" style="margin-bottom:0px;">
+                <div class="lidiv">
+                    <a class="schoola" href="/mobile/article/show.php?id={$aArticle[0]['itemid']}"><img src="{$aArticle[0]['thumb']}" /></a>
+                </div>
+            </li>
+            <li class="clear"  style="margin-bottom:0px;">
+                <div class="lidiv">
+                    <a class="schoola" href="/mobile/article/show.php?id={$aArticle[1]['itemid']}"><img src="{$aArticle[1]['thumb']}" /></a>
+                </div>
+            </li>
+        </ul>
+    </article>
     <article class="article">
-        <div class="clear">
-            <span class="fl articleimgleft">{ad(86)}</span>
-            <span class="fl articleimgright">{ad(87)}</span>
-        </div>
-        <div class="articlelist">
+        <div class="articlelist" style="margin-top:0px;">
             <ul>
                 {if $aNewsNew}
                 {loop $aNewsNew $k $v}
