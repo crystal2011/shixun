@@ -1,21 +1,9 @@
 {template 'header','mobile'}
-<style>
-    body{background-color:#f5f5f5;}
-</style>
-<script type="text/javascript" src="<?php echo DT_STATIC;?>lang/<?php echo DT_LANG;?>/lang.js"></script>
-<script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
-<script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/common.js"></script>
-<script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/admin.js"></script>
 {template 'phblishform','mobile/share'}
-<header style="border-bottom:1px solid #e6e6e6;">
-    <article  id="header1" class="clear">
-        <a class="forback fl" href="{$forward}"><img src="{DT_SKIN}image/mobile/leftpoint.png" />{$topname}</span></a>
-    </article>
-</header>
 <section class="publishform publishformfdfd">
     <article>
         <form id="publishform" method="post" action="/mobile/share/publish.php?isajax=1">
-            <p class="clearfix" style="margin-bottom:0px;">
+            <p class="clearfix" style="margin-bottom:0px;border:0px;">
                 <span class="publishleft publishnew" style="width:80px;"><i class="red">*</i>标题</span>
                 <span class="publishright publishrightnew" style="padding-left:80px;">
                     <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" class="input-text" />
@@ -24,7 +12,7 @@
                 </span>
             </p>
             {template  'publishimg','mobile/share'}
-            <p class="clearfix" style="padding-top:5px">
+            <p class="clearfix" style="padding-top:5px;border-top:0px;padding-bottom:10px;">
                 <span class="publishleft"><i class="red"></i>描述</span>
                 <span class="publishright">
                     <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>

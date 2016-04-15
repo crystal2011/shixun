@@ -9,14 +9,14 @@ if($DT_BOT) dhttp(403);
 
 
 /* 获取图片的64编码 */
-$filename = time().'.'.'jpg';
+/*$filename = time().'.'.'jpg';
 $filePath = DT_ROOT.'/'.$filename;
 $urlPath = $CFG['url'].$filename;
 move_uploaded_file($_FILES['imagefile']['tmp_name'],$filePath);
-exit(json_encode(array('status'=>'y','path'=>$urlPath)));
+exit(json_encode(array('status'=>'y','path'=>$urlPath)));*/
 
-
-$from = isset($from) ? trim($from) : '';
+$adnfl = isset($adnfl)?true:false;
+$from = isset($from) ? trim($from) : 'thumb';
 $width = isset($width) ? intval($width) : 0;
 $height = isset($height) ? intval($height) : 0;
 $swfupload = isset($swfupload) ? 1 : 0;
@@ -32,7 +32,7 @@ if($swfupload) {//Fix FlashPlayer Bug
 			$_company = convert($swf_company, 'utf-8', DT_CHARSET);
 			$MG = cache_read('group-'.$_groupid.'.php');
 		} else {
-			$errmsg = 'Error(0)'.'SWFUpload Denied';
+			$errmsg = 'SWFUpload Denied';
 			if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 			dalert($errmsg);
 		}
@@ -40,19 +40,19 @@ if($swfupload) {//Fix FlashPlayer Bug
 }
 $upload_table = $DT_PRE.'upload_'.($_userid%10);
 if(!in_array($from, array('thumb', 'album', 'photo', 'editor', 'attach', 'file'))) {
-	$errmsg = 'Error(1)'.'Access Denied';
+	$errmsg = 'Access Denied';
 	if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 	dalert($errmsg);
 }
 
 if($MG['uploadcredit'] > 0 && $_credit < $MG['uploadcredit']) {
-	$errmsg = 'Error(3)'.lang('message->upload_credit', array($MG['uploadcredit'], $_credit));
+	$errmsg = lang('message->upload_credit', array($MG['uploadcredit'], $_credit));
 	if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 	dalert($errmsg);
 }
 $remote = isset($remote) ? trim($remote) : '';
 if(!$_FILES && !$remote) {
-	$errmsg = 'Error(4)'.lang('message->upload_fail');
+	$errmsg = lang('message->upload_fail');
 	if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 	dalert($errmsg);
 }
@@ -61,7 +61,7 @@ if(!$_FILES && !$remote) {
 	$condition .= $_username ? " AND username='$_username'" : " AND ip='$DT_IP'";
 	$r = $db->get_one("SELECT COUNT(*) AS num FROM {$upload_table} WHERE $condition");
 	if($r['num'] >= $MG['uploadday']) {
-		$errmsg = 'Error(5)'.lang('message->upload_limit_day', array($MG['uploadday'], $r['num']));
+		$errmsg = lang('message->upload_limit_day', array($MG['uploadday'], $r['num']));
 		if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 		dalert($errmsg);
 	}
@@ -90,7 +90,7 @@ if($do->save()) {
 	$total = isset($_SESSION['uploads']) ? count($_SESSION['uploads']) : 0;
 	/*if($limit && $total > $limit - 1) {
 		file_del(DT_ROOT.'/'.$do->saveto);
-		$errmsg = 'Error(6)'.lang('message->upload_limit', array($limit));
+		$errmsg = lang('message->upload_limit', array($limit));
 		if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 		dalert($errmsg, '', $errjs);
 	}*/
@@ -105,14 +105,14 @@ if($do->save()) {
 		}
 		if($upload_bad) {
 			file_del(DT_ROOT.'/'.$do->saveto);
-			$errmsg = 'Error(7)'.lang('message->upload_bad');
+			$errmsg = lang('message->upload_bad');
 			if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 			dalert($errmsg, '', $errjs);
 		}
 	}
 	if(in_array($do->ext, array('jpg', 'jpeg')) && $img_info['channels'] == 4) {
 		file_del(DT_ROOT.'/'.$do->saveto);
-		$errmsg = 'Error(8)'.lang('message->upload_cmyk');
+		$errmsg = lang('message->upload_cmyk');
 		if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 		dalert($errmsg, '', $errjs);
 	}
@@ -122,7 +122,7 @@ if($do->save()) {
 		if($do->ext == 'gif' && in_array($from, array('thumb', 'album', 'photo'))) {
 			if(!function_exists('imagegif') || !function_exists('imagecreatefromgif')) {
 				file_del(DT_ROOT.'/'.$do->saveto);
-				$errmsg = 'Error(9)'.lang('message->upload_jpg');
+				$errmsg = lang('message->upload_jpg');
 				if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 				dalert($errmsg, '', $errjs);
 			}
@@ -243,16 +243,20 @@ if($do->save()) {
 	if($swfupload) exit('FILEID:'.$saveto);
 	$pr = 'parent.document.getElementById';
 	if($from == 'thumb') {
-
-        $jsfunction = isset($jsfunction)?$jsfunction:'';
-        if($jsfunction && $jsfunction!='undefined'){
-            $js .= 'window.parent.'.$jsfunction.'("'.$saveto.'");';
-            $js .= 'window.parent.cDialog();';
-        }else{
-            $js .= 'try{'.$pr.'("d'.$fid.'").src="'.$saveto.'";}catch(e){}';
-            $js .= $pr.'("'.$fid.'").value="'.$saveto.'";';
-            $js .= 'window.parent.cDialog();';
+            if($adnfl){
+                exit(json_encode(array('status'=>'y','path'=>$saveto)));
+            }else{
+            $jsfunction = isset($jsfunction)?$jsfunction:'';
+            if($jsfunction && $jsfunction!='undefined'){
+                $js .= 'window.parent.'.$jsfunction.'("'.$saveto.'");';
+                $js .= 'window.parent.cDialog();';
+            }else{
+                $js .= 'try{'.$pr.'("d'.$fid.'").src="'.$saveto.'";}catch(e){}';
+                $js .= $pr.'("'.$fid.'").value="'.$saveto.'";';
+                $js .= 'window.parent.cDialog();';
+            }
         }
+
 
 	} else if($from == 'album' || $from == 'photo') {
 		$js .= 'window.parent.getAlbum("'.$saveto.'", "'.$fid.'");';
@@ -276,9 +280,14 @@ if($do->save()) {
 	}
 	dalert('', '', $js);
 } else {
-	$errmsg = 'Error(10)'.$do->errmsg;
-	if($swfupload) exit(convert($errmsg, DT_CHARSET, 'UTF-8'));
-	if($action == 'kindeditor') exit('{"error":1,"message":"'.$errmsg.'"}');
-	dalert($errmsg, '', $errjs);
+	$errmsg = $do->errmsg;
+    if($adnfl){
+        exit(json_encode(array('status'=>'n','info'=>$errmsg)));
+    }else{
+        if($swfupload) exit(convert($errmsg, DT_CHARSET, 'UTF-8'));
+        if($action == 'kindeditor') exit('{"error":1,"message":"'.$errmsg.'"}');
+        dalert($errmsg, '', $errjs);
+    }
+
 }
 ?>

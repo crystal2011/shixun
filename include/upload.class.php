@@ -27,7 +27,7 @@ class upload {
 		global $DT, $_userid;
 		foreach($_file as $file) {
 			$this->file = $file['tmp_name'];
-			$this->file_name = $file['name'];
+			$this->file_name = $file['name']=='blob'?time().'.jpg':$file['name'];
 			$this->file_size = $file['size'];
 			$this->file_type = $file['type'];
 			$this->file_error = $file['error'];
@@ -42,14 +42,14 @@ class upload {
 
 	function save() {
 		include load('include.lang');
-        if($this->file_error) return $this->_('Error(21)'.$L['upload_failed'].' ('.$L['upload_error_'.$this->file_error].')');
-		if($this->maxsize > 0 && $this->file_size > $this->maxsize) return $this->_('Error(22)'.$L['upload_size_limit'].' ('.intval($this->maxsize/1024).'Kb)');
-        if(!$this->is_allow()) return $this->_('Error(23)'.$L['upload_not_allow']);
+        if($this->file_error) return $this->_($L['upload_failed'].' ('.$L['upload_error_'.$this->file_error].')');
+		if($this->maxsize > 0 && $this->file_size > $this->maxsize) return $this->_($L['upload_size_limit'].' ('.intval($this->maxsize/1024).'Kb)');
+        if(!$this->is_allow()) return $this->_($L['upload_not_allow']);
         $this->set_savepath($this->savepath);
         $this->set_savename($this->savename);
-        if(!is_writable(DT_ROOT.'/'.$this->savepath)) return $this->_('Error(24)'.$L['upload_unwritable']);
-		if(!is_uploaded_file($this->file)) return $this->_('Error(25)'.$L['upload_failed']);
-		if(!move_uploaded_file($this->file, DT_ROOT.'/'.$this->saveto)) return $this->_('Error(26)'.$L['upload_failed']);
+        if(!is_writable(DT_ROOT.'/'.$this->savepath)) return $this->_($L['upload_unwritable']);
+		if(!is_uploaded_file($this->file)) return $this->_($L['upload_failed']);
+		if(!move_uploaded_file($this->file, DT_ROOT.'/'.$this->saveto)) return $this->_($L['upload_failed']);
 		$this->image = $this->is_image();
 		if(DT_CHMOD) @chmod(DT_ROOT.'/'.$this->saveto, DT_CHMOD);
         return true;

@@ -12,7 +12,7 @@
     .person .kuang {  width: 100%;display: block;position: relative;height: 0px;padding: 0px 0px 100%;}
     .person .kuang img {  width: 100%;height: 100%;font-size: 10px;position: absolute;}
     .person .name {font-size:1.8rem;padding-top:0rem;}
-    .usermoney {padding-right:20px;text-align:right;font-size:1rem;}
+    .usermoney {text-align:right;font-size:1rem;position:absolute;right:10px;bottom:0px;}
     .usermoney span {color:#e9544e;font-size:1rem;}
     .indetishi {padding-left:10px;font-size:1.2rem;line-height:2.4rem;border-bottom:2px solid #f1f1f1;}
     .indetishi span {color:#e9544e;font-size:1.2rem;line-height:2.4rem;padding:0 3px;}
@@ -25,7 +25,6 @@
 
     .mempublish {
         border-bottom:1px solid #c5c4c4;
-        margin:20px 10px;
         padding:20px 0px;
     }
     .mempublish .publishtitle {
@@ -36,12 +35,14 @@
     }
     .mempublish .publishinput {
         text-align:center;
+        padding:0 5px
     }
     .mempublish .publishinput input{
-        width:36px;
-        margin-right:5px;
+        width:10%;
         line-height:20px;
+        max-width:36px;
         text-align:center;
+        margin-right:3px;
         border:1px solid #d4d4d4;
         height:36px;
     }
@@ -68,7 +69,6 @@
     .publishtishi {
         background-color:#fff;
         padding:20px;
-        margin:20px 10px;
     }
     .publishtishi p {
         margin:0px;
@@ -77,7 +77,8 @@
         color:#9d9d9d;
     }
     .publishhorn {
-        text-align:center;margin:30px 0px 50px 0px;
+        text-align:center;
+        margin:30px 0px 50px 0px;
     }
     .publishhorn a {
         color:#000;
@@ -113,7 +114,7 @@
     <input type="hidden" size="3" name="width" value="">
     <input type="hidden" size="3" name="height" value="">
 </form>
-<section style="background: url({DT_SKIN}image/mobile/back1.jpg) no-repeat;background-size:100%;padding-top:10px;" class="person">
+<section style="background: url({DT_SKIN}image/mobile/back1.jpg) no-repeat;background-size:100%;padding-top:10px;position:relative;" class="person">
     <img onclick="history.go(-1)" src="{DT_SKIN}image/mobile/userleft.png" class="userleft" />
     <div class="bg-persons" >
         <span class="kuang">
@@ -130,16 +131,11 @@
     <article class="line" style="border: 0px;"></article>
 
 </section>
-<section>
+<section >
     <article class="mempublish" style="background-color:#fff;">
         <p class="publishtitle">输入发布审核号</p>
         <p class="publishinput">
-            <input type="text" id="publish1" maxlength="1"  />
-            <input type="text" id="publish2" maxlength="1"  />
-            <input type="text" id="publish3" maxlength="1"  />
-            <input type="text" id="publish4" maxlength="1"  />
-            <input type="text" id="publish5" maxlength="1"  />
-            <input type="text" id="publish6" maxlength="1"  style="margin-right:0px;" />
+            <input type="text" id="publish1" class="abcd" data-id="0" maxlength="6"  /><input type="text" id="publish2" class="abcd" data-id="1" maxlength="6"  /><input type="text" id="publish3" class="abcd" data-id="2" maxlength="6"  /><input type="text" id="publish4" class="abcd" data-id="3" maxlength="6"  /><input type="text" id="publish5" class="abcd" data-id="4" maxlength="6"  /><input type="text" id="publish6" class="abcd" data-id="5" maxlength="6" style="margin-right:0px;" />
         </p>
         <p  class="publishhandle">
             <span class="publishsure">确认</span>
@@ -154,13 +150,10 @@
 </section>
 <script>
     $(".publishsure").click(function(){
-        var publish1 = $("#publish1").val();
-        var publish2 = $("#publish2").val();
-        var publish3 = $("#publish3").val();
-        var publish4 = $("#publish4").val();
-        var publish5 = $("#publish5").val();
-        var publish6 = $("#publish6").val();
-        var str = publish1+publish2+publish3+publish4+publish5+publish6;
+        var str = 1;
+        $(".abcd").each(function(k,v){
+            str += $(this).val();
+        })
         var rge = /^[0-9]{6}$/;
         if(!rge.test(str)){
             alert('输入有误');
@@ -181,17 +174,42 @@
         })
     })
 
-    $("#publish2").focus().select();
-    
-    $(".publishinput input").bind('input propertychange',function(){
-        if($(this).val()!=''){
-
-        }
-
-    });
-    $(".publishquit").click(function(){
-        $(".publishinput input").val('');
+    $(function(){
+        $(".mempublish .publishinput input").css("height",$("#publish1").css('width'));
     })
 
+
+    var dataid = '';
+    $(document).on('focus','.mempublish .publishinput input',function(){
+        var s = $(this);
+        $(this).val('');
+        dataid = $(this).attr('data-id');
+        $(this).next().before(s.clone());
+        $(this).css({'left':'-50px',position:'absolute'}).removeClass('abcd');
+    })
+
+    $(document).on('keyup','.mempublish .publishinput input',function(){
+        var str = $(this).val();
+        var j = 0;
+        var d = str.length;
+        dataid = parseInt(dataid);
+        var oEvent = window.event; if (oEvent.keyCode == 8){
+            if(dataid>0){
+                dataid = dataid-1;
+                $(this).attr("data-id",dataid);
+                $(".abcd").eq(parseInt(dataid)).val('');
+            }
+
+            return ;
+        }else{
+            var ds = dataid!=0?dataid-$(this).attr('data-id'):0;
+
+            if(ds!=d){
+                $(".abcd").eq(dataid).val(str.substr(ds,1));
+                dataid = parseInt(dataid)+1;
+            }
+
+        }
+    })
 </script>
 {template 'footer','mobile'}

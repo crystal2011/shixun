@@ -28,6 +28,7 @@ define('DT_ROOT', str_replace("\\", '/', dirname(__FILE__)));
 if(defined('DT_REWRITE')) include DT_ROOT.'/include/rewrite.inc.php';
 $CFG = array();
 require DT_ROOT.'/config.inc.php';
+$CFG['url'] = 'http://'.$_SERVER['HTTP_HOST'].'/';
 define('DT_PATH', $CFG['url']);
 define('DT_STATIC', $CFG['static'] ? $CFG['static'] : $CFG['url']);
 define('DT_DOMAIN', $CFG['cookie_domain'] ? substr($CFG['cookie_domain'], 1) : '');

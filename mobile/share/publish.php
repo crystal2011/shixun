@@ -52,7 +52,7 @@ switch($moduleidtype) {
         require_once DT_ROOT.'/module/know/know.class.php';
         $obj = new know();
         $checkName = 'checkKnow';
-        $sitetitle .= '名厨学堂-菜系';
+        $sitetitle .= '名厨学堂';
         $moduleidcat = 13;
         break;
     case 5: //分享
