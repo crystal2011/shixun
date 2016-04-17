@@ -11,7 +11,7 @@ $oComment = new comment;
 $typeid = isset($typeid)?intval($typeid):0;
 $id = isset($id)?intval($id):0;
 
-list($list,$HasNextPage) = $oComment->commentList($id,$typeid,$page);
+list($list,$HasNextPage) = $oComment->commentList($id,$typeid,$page,15);
 if($action=='ajax'){
     $info = '';
     if($list){
@@ -42,13 +42,13 @@ if($action=='ajax'){
             $checkName = 'checkFood';
             $url = '/mobile/food/show.php?id=';
             break;
-        case 2: //商家优惠
+        case 2: //餐饮优惠
             require_once DT_ROOT.'/module/brand/brand.class.php';
             $obj = new brand(13);
             $checkName = 'checkJob';
             $url = '/mobile/discount/show.php?id=';
             break;
-        case 3: //招聘信息
+        case 3: //餐饮招聘
             require_once DT_ROOT.'/module/job/job.class.php';
             $obj = new job(9);
             $checkName = 'checkJob';
@@ -94,12 +94,33 @@ if($action=='ajax'){
             $checkName = 'checkArticle';
             $url = '/mobile/article/hornshow.php?id=';
             break;
+        case 10: //求职信息
+            require_once DT_ROOT.'/module/job/resume.class.php';
+            $obj = new resume(9);
+            $checkName = 'checkBuy';
+            $url = '/mobile/job/resumeshow.php?id=';
+            break;
+        case 11: //名厨
+            require_once DT_ROOT.'/module/member/member.class.php';
+            $obj = new member();
+            $checkName = 'checkKnow';
+            $url = '/mobile/school/show.php?id=';
+            break;
         default:
             dalert('操作失误',$forward);
             break;
     }
-    $obj->itemid = $id;
-    $info = $obj->get_one();
+    if($typeid==11){
+        $obj->userid = $id;
+        $info = $obj->get_one();
+        $info['content'] = $info['introduce'];
+        $info['title'] = $info['truename'];
+    }else{
+        $obj->itemid = $id;
+        $info = $obj->get_one();
+    }
+
+
     $check = $obj->$checkName($info);
     if(!$check) dalert($obj->errmsg,$forward);
 

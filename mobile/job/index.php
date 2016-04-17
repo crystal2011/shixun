@@ -1,6 +1,6 @@
 <?php
 /**
- * 手机端-招聘信息-首页
+ * 手机端-餐饮招聘-首页
  */
 define('DT_REWRITE', true);
 require '../../common.inc.php';
@@ -43,8 +43,10 @@ if($action=='ajax'){
     $aArea = showAllArea($areainfo);  //列表选择显示地区
     $aCatList = array_chunk(showCat($catinfo,9),4);     //列表选择显示分类
     $areaparentid = $areainfo?explode(',',$areainfo['arrparentid'].','.$areainfo['areaid']):array();
-    $seo_title = '招聘信息-';
-    $topname = '招聘信息';
+    $seo_title = '餐饮招聘-';
+    $topname = '餐饮招聘';
     $moduleidtype = 2;
+    $backurl = '/mobile/index.php';
+    $isresume = true;
     include template('job/index','mobile');
 }

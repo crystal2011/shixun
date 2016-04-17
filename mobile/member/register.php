@@ -37,5 +37,6 @@ if($submit) {
     $seo_title = '注册-';
     $topname = '注册';
     $nav_selected = 'register';
+    $backurl = '/mobile/member/login.php';
     include template('register', 'mobile/'.$module);
 }

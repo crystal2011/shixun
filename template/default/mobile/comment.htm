@@ -1,24 +1,26 @@
-{template 'header','mobile'}
-{template 'search','mobile'}
 <section class="commentlist">
-    {if $list}
-    {loop $list $k $v}
-    <article class="comlist ">
-        <div class="comlistp clearfix">
-            <img class="comimage fl" src="{if $v['thumb']}{$v['thumb']}{else}{$DT['memberlogo']}{/if}"  >
-            <div class="cominfo">
-                <p class="comname">{if $v['truename']}{$v['truename']}{else}{$v['username']}{/if}</p>
-                <p  class="comtime">{date('Y-m-d',$v['addtime'])}</p>
+        <?php
+          require_once DT_ROOT.'/module/extend/comment.class.php';
+            $oComment = new comment;
+            list($commentlist,$HasCommentNextPage) = $oComment->commentList($id,$commenttypeid);
+         ?>
+        {if $commentlist}
+        {loop $commentlist $k $v}
+        <article class="comlist ">
+            <div class="comlistp clearfix">
+                <img class="comimage fl" src="{if $v['thumb']}{$v['thumb']}{else}{$DT['memberlogo']}{/if}"  >
+                <div class="cominfo">
+                    <p class="comname">{if $v['truename']}{$v['truename']}{else}{$v['username']}{/if}</p>
+                    <p  class="comtime">{date('Y-m-d',$v['addtime'])}</p>
+                </div>
             </div>
-        </div>
-        <div class="commentcon">{$v['content']}</div>
-    </article>
-    {/loop}
-    {/if}
-    {if $HasNextPage}
-    <article class="readmore" onclick="getmorecomment('{$CFG[url]}mobile/comment.php?typeid={$typeid}&id={$id}',this)" data-page="1">
-        <a>查看更多>></a>
-    </article>
-    {/if}
+            <div class="commentcon">{$v['content']}</div>
+        </article>
+        {/loop}
+        {/if}
+        {if $HasCommentNextPage}
+        <article style="border-top:1px solid #e6e6e6;" class="readmore" onclick="getmorecomment('{$CFG[url]}mobile/comment.php?typeid={$commenttypeid}&id={$id}',this)" data-page="1">
+            <a>查看更多>></a>
+        </article>
+        {/if}
 </section>
-{template 'footer','mobile'}

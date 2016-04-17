@@ -38,6 +38,6 @@ $typeid = 2;
 list($aComment,$HasNextPage) = $oComment->commentList($id,$typeid);
 
 $nav_selected = 'discount';
-$seo_title = $aBrand['title'].'-商家优惠-';
+$seo_title = $aBrand['title'].'-餐饮优惠-';
 include template('show', 'discount');
 ?>

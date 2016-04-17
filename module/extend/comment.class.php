@@ -19,21 +19,16 @@ class comment {
 	function pass($post) {
 		global $L;
 		if(!is_array($post)) return false;
-		if(!$post['content']) return $this->_($L['comment_pass_content']);
+        if(!$this->itemid){
+            if(!$post['content']) return $this->_($L['comment_pass_content']);
+        }
+
 		return true;
 	}
 
 	function set($post) {
 		global $DT_TIME, $_username;
-		$post['hidden'] = isset($post['hidden']) ? 1 : 0;
 		$post['status'] = $post['status'] == 3 ? 3 : 2;
-		$post['star'] = intval($post['star']);
-		in_array($post['star'], array(1, 2, 3)) or $post['star'] = 3;
-		if($post['reply']) {
-			$post['replytime'] = $DT_TIME;
-			$post['reply'] = trim($post['reply']);
-		}
-		$post['editor'] = $_username;
 		return array_map("trim", $post);
 	}
 
@@ -60,12 +55,6 @@ class comment {
 	function edit($post) {
 		$post = $this->set($post);
 		$r = $this->get_one();
-		if($r['star'] != $post['star']) {
-			$star = 'star'.$r['star'];
-			$this->db->query("UPDATE {$this->table_stat} SET `{$star}`=`{$star}`-1 WHERE itemid=$r[item_id] AND moduleid=$r[item_mid]");
-			$star = 'star'.$post['star'];
-			$this->db->query("UPDATE {$this->table_stat} SET `{$star}`=`{$star}`+1 WHERE itemid=$r[item_id] AND moduleid=$r[item_mid]");
-		}
 		$sql = '';
 		foreach($post as $k=>$v) {
 			$sql .= ",$k='$v'";
@@ -110,15 +99,15 @@ class comment {
                     require_once DT_ROOT.'/module/food/food.class.php';
                     $obj = new food(23);
                     break;
-                case 2: //商家优惠
+                case 2: //餐饮优惠
                     require_once DT_ROOT.'/module/brand/brand.class.php';
                     $obj = new brand(13);
                     break;
-                case 3: //招聘信息
+                case 3: //餐饮招聘
                     require_once DT_ROOT.'/module/job/job.class.php';
                     $obj = new job(9);
                     break;
-                case 4: //招聘信息
+                case 4: //餐饮招聘
                     require_once DT_ROOT.'/module/sell/sell.class.php';
                     $obj = new sell(5);
                     break;
@@ -145,13 +134,24 @@ class comment {
                     require_once DT_ROOT.'/module/article/article.class.php';
                     $obj = new article(21);
                     break;
+                case 10: //求职信息
+                    require_once DT_ROOT.'/module/job/resume.class.php';
+                    $obj = new resume(9);
+                    break;
+                case 11://名厨
+                    require_once DT_ROOT.'/module/member/member.class.php';
+                    $obj = new member();
+                    break;
                 default:
                     exit(json_encode(array('status'=>'n','info'=>'操作失误')));
                     break;
             }
             $obj->itemid = $info['id'];
-            $obj->adddelComments($status==3?'add':'del');
-			$this->db->query("UPDATE {$this->table} SET status=$status WHERE itemid=$itemid");
+            if($info['status']!=$status){
+                $obj->adddelComments($status==3?'add':'del');
+                $this->db->query("UPDATE {$this->table} SET status=$status WHERE itemid=$itemid");
+            }
+
 		}
 	}
 
@@ -231,8 +231,7 @@ class comment {
         return true;
     }
 
-    function commentList($id,$type,$page=1){
-        $limit = 10;
+    function commentList($id,$type,$page=1,$limit=10){
         $slimit = $limit+1;
         $offset = ($page-1)*$limit;
         $result = $this->db->query("select c.content,m.thumb,c.addtime,m.truename,m.username from {$this->table} c inner join {$this->db->pre}member m on m.userid = c.userid and m.groupid = 5 where c.type = ".$type." and c.id = ".$id." and c.status = 3 order by addtime desc limit $offset,$slimit");

@@ -1,8 +1,11 @@
 {template 'header','mobile'}
 {template 'search','mobile'}
+<style>
+    .channelheader img {margin-top:5px;}
+</style>
 <section class="contentlist">
     <header class="channelheader clear" style="background-color:#f5f5f5;">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/foodcat.png"><span >餐饮供应分类</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/gmodule1.png"><span >餐饮供应</span></div>
     </header>
 </section>
 <section>
@@ -22,7 +25,7 @@
 </section>
 <section class="contentlist">
     <header class="channelheader clear" style="background-color:#f5f5f5;">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/foodpromote.png"><span>菜系分类</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/gmodule2.png"><span>餐饮优惠</span></div>
     </header>
 </section>
 <section>
@@ -42,7 +45,7 @@
 </section>
 <section class="contentlist">
     <header class="channelheader clear" style="background-color:#f5f5f5;">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/school.png"><span style="">招聘分类</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/gmodule3.png"><span style="">餐饮招聘</span></div>
     </header>
 </section>
 <section>
@@ -60,5 +63,46 @@
         </table>
     </article>
 </section>
+<section class="contentlist">
+    <header class="channelheader clear" style="background-color:#f5f5f5;">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/gmodule4.png"><span style="">店铺转让</span></div>
+    </header>
+</section>
+<section>
+    <article id="categoryselect">
+        <table>
+            {if $aCatList13}
+            {loop $aCatList13 $key $val}
+            <tr>
+                {loop $val $k $v}
+                <td><a href="/mobile/cession/index.php?catid={$v['catid']}">{$v['catname']}</a></td>
+                {/loop}
+            </tr>
+            {/loop}
+            {/if}
+        </table>
+    </article>
+</section>
+<section class="contentlist">
+    <header class="channelheader clear" style="background-color:#f5f5f5;">
+        <div class="fl"><img src="{DT_SKIN}image/mobile/gmodule5.png"><span>名厨学堂</span></div>
+    </header>
+</section>
+<section>
+    <article id="categoryselect">
+        <table>
+            {if $aCatList13}
+            {loop $aCatList13 $key $val}
+            <tr>
+                {loop $val $k $v}
+                <td><a href="/mobile/discount/show.php?catid={$v['catid']}">{$v['catname']}</a></td>
+                {/loop}
+            </tr>
+            {/loop}
+            {/if}
+        </table>
+    </article>
+</section>
+
 <article class="line" style="border: 0px;"></article>
 {template 'footer','mobile'}

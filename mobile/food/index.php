@@ -59,6 +59,8 @@ if($action=='ajax'){
     $seo_title = '餐饮供应-';
     $topname = '餐饮供应';
     $moduleidtype = 0;
+    $backurl = '/mobile/index.php';
+    $areaid =
     include template('food/index','mobile');
 }
 

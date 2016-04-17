@@ -1,6 +1,6 @@
 <?php
 /**
- * 商家优惠
+ * 餐饮优惠
  */
 require 'config.inc.php';
 require '../common.inc.php';

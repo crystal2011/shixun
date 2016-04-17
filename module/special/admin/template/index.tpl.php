@@ -72,6 +72,7 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
     <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=edit&itemid=<?php echo $v['itemid'];?>"><img src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;
     <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=delete&itemid=<?php echo $v['itemid'];?>" onclick="return _delete();"><img src="admin/image/delete.png" width="16" height="16" title="删除" alt=""/></a>
     <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=userds&code=<?php echo $v['code'];?>">使用记录</a>&nbsp;
+    <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=month&codeid=<?php echo $v['itemid'];?>">月度汇总</a>&nbsp;
 
 </td>
 </tr>

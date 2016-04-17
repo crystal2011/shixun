@@ -62,10 +62,11 @@ if($at=='check'){
     $member_do = new member;
     $getListUser = $member_do->getListUser($list,'username');
 
-    $topnamea = array('餐饮供应','商家优惠','招聘信息','店铺转让','名厨学堂','美食分享','文章发布');
+    $topnamea = array('餐饮供应','餐饮优惠','餐饮招聘','店铺转让','名厨学堂','美食分享','文章发布');
     $seo_title = '审核'.$topnamea[$checktype].'-会员中心-';
     $topname = '审核'.$topnamea[$checktype];
     $ishorn = true;
+    $backurl = '/mobile/member/horncheck.php';
     include template('checklist', 'mobile/'.$module);
 }else{
     if(!$_userid) dalert('请先登录','/mobile/member/login.php');
@@ -74,6 +75,7 @@ if($at=='check'){
     $topname = '待审核';
     $oSpecial->codenewno($horninfo['itemid']);
     $ishorn = true;
+    $backurl = '/mobile/member/hornindex.php';
     include template('horncheck', 'mobile/'.$module);
 }
 ?>

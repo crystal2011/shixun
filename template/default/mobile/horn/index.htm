@@ -77,13 +77,16 @@
                     </li>
                     {/loop}
                 {/if}
+                <li class="more" style="line-height:3em;font-size:1.2em;height:3em;">
+                    <label onclick="location.href='/mobile/horn/list.php'">更多&nbsp;<i class="fa fa-angle-right" style="line-height:1em;vertical-align: middle;"></i></label>
+                </li>
             </ul>
         </div>
     </article>
 </section>
 <section class="contentlist">
     <article class="list">
-        <ul class="comul clear">
+        <ul class="comul clear comulages">
             {if $list}
             {loop $list $k $v}
             <li class="clear">
@@ -101,10 +104,36 @@
     </article>
 
     {if $list && $page!=$totalpage}
-    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/horn/index.php?catid={$catid}&areaid={$areaid}',this,'comul')" data-page="1">
+    <article style="border:1px solid #e6e6e6;" class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/horn/index.php?dfn=1',this,'comulages')" data-page="1">
         <a>查看更多>></a>
     </article>
     {/if}
 </section>
+<section class="contentlist" style="margin-top:50px;">
+    <article class="list">
+        <ul class="comul clear gadagsg">
+            {if $talist}
+            {loop $talist $k $v}
+            <li class="clear">
+                <div class="lidiv">
+                    <a class="schoola" href="hornshow.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
+                    <a class="title" href="hornshow.php?id={$v['itemid']}">{$v['title']}</a>
+                    <a class="title">内容审核号：<span class="lnfh">{$v['code']}</span></a>
+                    <a class="introudce" href="hornshow.php?id={$v['itemid']}">{$v['introduce']}</a>
+                    <p class="clear fndklf"><span class="fl"><img src="{DT_SKIN}image/mobile/hit.png" style="width:16px;" />{$v['hits']}</span><span class="fr">人气榜：{$v['userds']}</span></p>
+                </div>
+            </li>
+            {/loop}
+            {/if}
+        </ul>
+    </article>
+
+    {if $talist && $page!=$tatotalpage}
+    <article class="readmore" style="border:1px solid #e6e6e6;" onclick="getmorecommont('{$CFG[url]}/mobile/horn/index.php',this,'gadagsg')" data-page="1">
+        <a>查看更多>></a>
+    </article>
+    {/if}
+</section>
+
 
 {template 'footer','mobile'}

@@ -174,8 +174,8 @@ $today_endtime = strtotime(date('Y-m-d', $DT_TIME).' 23:59:59');
 $seo_file = $seo_title = $head_title = $head_keywords = $head_description = $head_canonical = $head_mobile = '';
 if($catid) $CAT = get_cat($catid);
 if($areaid) $ARE = get_area($areaid);
-$_userid = $_admin = $_aid = $_message = $_chat = $_sound = $_online = $_money = $_credit = $_sms = $_ischu = $_infohits = $_infopublishs = 0;
-$_username = $_company = $_passport = $_truename = $_thumb = $_email = '';
+$_userid = $_admin = $_aid = $_message = $_chat = $_sound = $_online = $_money = $_credit = $_sms = $_ischu = $_infohits = $_infopublishs = $_areaid = 0;
+$_username = $_company = $_passport = $_truename = $_thumb = $_email = $_address = '';
 $_groupid = 3;
 $session = new dsession();
 
@@ -193,7 +193,7 @@ if($destoon_auth) {
 	$_userid = isset($_dauth[0]) ? intval($_dauth[0]) : 0;
 	if($_userid) {
 		$_password = isset($_dauth[1]) ? trim($_dauth[1]) : '';
-		$USER = $db->get_one("SELECT username,password,groupid,loginip,edittime,thumb,ischu,email,infohits,infopublishs FROM {$DT_PRE}member WHERE userid=$_userid");
+		$USER = $db->get_one("SELECT username,password,groupid,loginip,edittime,thumb,ischu,email,infohits,areaid,address,infopublishs FROM {$DT_PRE}member WHERE userid=$_userid");
 		if($USER && $USER['password'] == $_password) {
 			if($USER['groupid'] == 2) dalert(lang('message->common_forbidden'));
 			if($USER['loginip'] != $DT_IP && ($DT['ip_login'] == 2 || ($DT['ip_login'] == 1 && IN_ADMIN))) {

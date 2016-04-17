@@ -51,6 +51,7 @@ if($action=='ajax'){
 $ishorn = true;
 $topname = '审核记录';
 $seo_title = '审核记录-会员中心-';
+$backurl = '/mobile/member/hornindex.php';
 include template('horn', 'mobile/'.$module);
 
 ?>

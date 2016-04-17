@@ -47,5 +47,6 @@ if($action=='ajax'){
     $seo_title = '名厨学堂-名菜列表-';
     $topname = '名厨学堂-名菜列表';
     $moduleidtype = 4;
+    $backurl = '/mobile/school/index.php';
     include template('school/food','mobile');
 }

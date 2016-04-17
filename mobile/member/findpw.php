@@ -41,6 +41,7 @@ if($submit) {
     $seo_title = '忘记密码-';
     $topname = '忘记密码';
     $nav_selected = 'findpw';
+    $backurl = '/mobile/member/login.php';
     include template('findpw', 'mobile/'.$module);
 }
 ?>

@@ -48,30 +48,34 @@ function like(id,type,_this,typeid){
     })
     _this.removeAttr("disabled");
 }
-function catonchange(_this){
+function catonchange(_this,type,url){
     var _this = $(_this);
-    var spanobj = _this.prev();
     var val = _this.val();
-    spanobj.attr("data-id",val).html(_this.find("option:selected").text());
-    var olddataid = spanobj.attr("olddata-id");
-    $("#catmontable td span").css({"color":"#000","background-color":"#fff"});
-    if(parseInt(olddataid)==parseInt(val)){
-        $("#selectcatnow").removeAttr("data-id");
-    }else{
-        $("#selectcatnow").attr("data-id",val).html(_this.find("option:selected").text());
-
-        spanobj.css({"color":"#fff","background-color":"#e9544e"})
+    if(val==0){
+        _this.prev().html(_this.attr('dataname'));
+    }else if(type==0){
+        $("#showcat").html(_this.find("option:selected").text());
+        $("#catid").val(val);
+        $("#showcat").prev().removeClass('Validform_wrong').html('');
+        $(".layermbox").remove();
+    }else if(type==1){
+        location.href=url+'&catid='+val;
     }
-
 }
 
-function lfdtd(_this){
+
+function lfdtd(_this,type,url){
     var _this = $(_this);
     if(_this.find('select').size()==0){
-        var spanobj = _this.find('span');
-        $("#selectcatnow").attr("data-id",spanobj.attr('data-id')).html(spanobj.text());
-        $("#catmontable td span").css({"color":"#000","background-color":"#fff"});
-        spanobj.css({"color":"#fff","background-color":"#e9544e"});
+        var val = _this.find('span').attr('data-id');
+        if(type==0){
+            $("#showcat").html(_this.find("span").text());
+            $("#catid").val(val);
+            $("#showcat").prev().removeClass('Validform_wrong').html('');
+            $(".layermbox").remove();
+        }else if(type==1){
+            location.href=url+'&catid='+val;
+        }
     }
 }
 

@@ -1,18 +1,40 @@
-<article class="comment">
+<article class="comment " {if isset($nocode)}style="padding-bottom:20px;"{/if}>
     <div class="buttonlist clear">
         <span><a href="{$CFG['url']}mobile/comment.php?action=publish&typeid={$commenttypeid}&id={$id}"><img src="{DT_SKIN}image/mobile/commentbutton.png" /></a></span>
         <span><img src="{DT_SKIN}image/mobile/sharebutton.png" onclick="goShare()" /></span>
+        {if isset($moduleidtype)}
         <span><a href="{$CFG['url']}mobile/share/publish.php?moduleidtype={$moduleidtype}"><img src="{DT_SKIN}image/mobile/publishbutton.png" /></a></span>
+        {elseif $commenttypeid==10}
+        <span><a href="{$CFG['url']}mobile/member/resume.php"><img src="{DT_SKIN}image/mobile/publishbutton.png" /></a></span>
+        {/if}
     </div>
     {if !isset($nocode)}
     <div class="codetishi">重要提示：发布请输入  <span class="codetishicode">{$codetishicode}</span>  审核号</div>
     {/if}
-    <a class="comment_view clear" href="{$CFG['url']}mobile/comment.php?typeid={$commenttypeid}&id={$id}">
-        {if $info['comments']}
-        <span class="fl">查看全部{$info['comments']}评价</span>
-        <span class="fr"><img src="{DT_SKIN}image/mobile/rightred.png" /></span>
-        {else}
-        <span class="fl">暂无评论</span>
-        {/if}
-    </a>
 </article>
+<section class="commentlist">
+    <?php
+          require_once DT_ROOT.'/module/extend/comment.class.php';
+            $oComment = new comment;
+            list($commentlist,$HasCommentNextPage) = $oComment->commentList($id,$commenttypeid,1,15);
+    ?>
+    {if $commentlist}
+    {loop $commentlist $k $v}
+    <article class="comlist ">
+        <div class="comlistp clearfix">
+            <img class="comimage fl" src="{if $v['thumb']}{$v['thumb']}{else}{$DT['memberlogo']}{/if}"  >
+            <div class="cominfo">
+                <p class="comname">{if $v['truename']}{$v['truename']}{else}{$v['username']}{/if}</p>
+                <p  class="comtime">{date('Y-m-d',$v['addtime'])}</p>
+            </div>
+        </div>
+        <div class="commentcon">{$v['content']}</div>
+    </article>
+    {/loop}
+    {/if}
+    {if $HasCommentNextPage}
+    <article style="border-top:1px solid #e6e6e6;" class="readmore" onclick="getmorecomment('{$CFG[url]}mobile/comment.php?typeid={$commenttypeid}&id={$id}',this)" data-page="1">
+        <a>查看更多>></a>
+    </article>
+    {/if}
+</section>

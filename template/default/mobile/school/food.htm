@@ -1,11 +1,14 @@
 {template 'header','mobile'}
 {template 'search','mobile'}
+<style>
+    #areaselect span {width:25%;}
+</style>
 <section>
     <span class="ids">{ad(82)}</span>
     <article id="areaselect" class="clear">
+        <span onclick="showcat(13,1,'?')">{if $catinfo}{$catinfo['catname']}{else}分类筛选{/if}</span>
         <span ><a href="/mobile/school/index.php" style="background-color:#e9544e;color:#fff;display:block;">名厨风采</a></span>
         <span ><a href="/mobile/school/food.php" style="background-color:#00c19a;color:#fff;display:block;">名菜列表</a></span>
-        <span onclick="showcat(13,1,'?')">{if $catinfo}{$catinfo['catname']}{else}筛选{/if}</span>
         <span ><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}" style="color:#fff;display:block;color:#e9544e;">发布菜式</a></span>
     </article>
     <article class="list">

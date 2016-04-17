@@ -13,6 +13,7 @@ list($codenumed,$codenewno,$applynum) = horncommon($horninfo['itemid']);
 $topname = '羊角会管理';
 $seo_title = '羊角会管理-会员中心-';
 $ishorn = true;
+$backurl = '/mobile/member/index.php';
 include template('hornindex', 'mobile/'.$module);
 
 ?>

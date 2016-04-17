@@ -6,7 +6,7 @@ $menus = array (
     array('评论列表', '?moduleid='.$moduleid.'&file='.$file),
     array('评论审核', '?moduleid='.$moduleid.'&file='.$file.'&action=check'),
 );
-$cat_type = array('全部','餐饮供应','商家优惠','招聘信息','店铺转让','名厨学堂-菜系','分享美食','羊角会','羊角会成员','文章发布');
+$cat_type = array('全部','餐饮供应','餐饮优惠','餐饮招聘','店铺转让','名厨学堂-菜式','美食分享','羊角会','羊角会成员','文章发布','求职信息','名厨学堂');
 
 $this_forward = '?moduleid='.$moduleid.'&file='.$file;
 if(in_array($action, array('', 'check'))) {
@@ -52,6 +52,10 @@ switch($action) {
 			}
 		} else {
 			extract($do->get_one());
+            require_once DT_ROOT.'/module/member/member.class.php';
+            $mobj = new member();
+            $mobj->userid = $userid;
+            $memberinfo =  $mobj->get_one();
 			$addtime = timetodate($addtime);
 			$replytime = $replytime ? timetodate($replytime, 6) : '';
 			include tpl('comment_edit', $module);
@@ -86,6 +90,7 @@ switch($action) {
 	break;
 	default:
 		$lists = $do->get_list('status=3'.$condition, $dorder[$order]);
+
 		$menuid = 0;
 		include tpl('comment', $module);
 	break;

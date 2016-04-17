@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{DT_SKIN}css/food.css"/>
 <section class="home">
     <header class="sites">
-        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/job/index.php">招聘信息</a>&nbsp;&gt;&nbsp;<a href="/job/index.php?action=resume">简历</a>&nbsp;&gt;&nbsp;<a href="">详情</a>
+        <a>您现在的位置：</a><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/job/index.php">餐饮招聘</a>&nbsp;&gt;&nbsp;<a href="/job/index.php?action=resume">简历</a>&nbsp;&gt;&nbsp;<a href="">详情</a>
     </header>
 </section>
 <style>
@@ -19,6 +19,8 @@
                         <span style="font-size: 16px">{$aCacheCat9[$aJob['catid']]['catname']}</span>
                     </div>
                     <div class="fr">
+                        <i class="icon-pinlun"></i>
+                        <em>评论({$aJob['comments']})</em>
                         <i class="icon-liulan"></i>
                         <em>浏览({$aJob['hits']+1})</em>
                     </div>
@@ -74,7 +76,16 @@
             {$aJob['content']}
         </article>
     </section>
+
 </section>
+<section class="home clearfix">
+    <section class="food-del fl">
+    {template  'comment'}
+    </section>
+
+    {template  'right'}
+</section>
+
 <section class="foodad">{ad(36)}</section>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 {template  'footer'}

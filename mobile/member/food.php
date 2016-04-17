@@ -54,6 +54,7 @@ switch($action){
         $seo_title = '餐饮供应管理-会员中心-';
         $topname = '餐饮供应管理';
         $moduleidtype = 0;
+        $backurl = '/mobile/member/index.php';
         include template('food', 'mobile/'.$module);
         break;
 }

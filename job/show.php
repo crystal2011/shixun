@@ -44,6 +44,6 @@ list($aComment,$HasNextPage) = $oComment->commentList($id,$typeid);
 
 
 $nav_selected = 'job';
-$seo_title = $aJob['title'].'-招聘信息-';
+$seo_title = $aJob['title'].'-餐饮招聘-';
 include template('show', 'job');
 ?>

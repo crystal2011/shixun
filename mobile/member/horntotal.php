@@ -35,6 +35,7 @@ list($applylog,$totalpagess) = $oSpecial->codeListApplyList($where,'100');
 $topname = '月度汇总';
 $seo_title = '月度汇总-会员中心-';
 $ishorn = true;
+$backurl = '/mobile/member/hornindex.php';
 include template('horntotal', 'mobile/'.$module);
 
 ?>

@@ -57,6 +57,7 @@ switch($action){
         $seo_title = '名厨学堂管理-会员中心-';
         $topname = '名厨学堂管理';
         $moduleidtype = 4;
+        $backurl = '/mobile/member/index.php';
         $aCatCache = cache_read('category-13.php');
         include template('dish', 'mobile/'.$module);
         break;

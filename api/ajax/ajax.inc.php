@@ -73,12 +73,12 @@ switch($at){
                 $obj = new food(23);
                 $checkName = 'checkFood';
                 break;
-            case 2: //商家优惠
+            case 2: //餐饮优惠
                 require_once DT_ROOT.'/module/brand/brand.class.php';
                 $obj = new brand(13);
                 $checkName = 'checkJob';
                 break;
-            case 3: //招聘信息
+            case 3: //餐饮招聘
                 require_once DT_ROOT.'/module/job/job.class.php';
                 $obj = new job(9);
                 $checkName = 'checkJob';
@@ -129,12 +129,12 @@ switch($at){
                 $obj = new food(23);
                 $checkName = 'checkFood';
                 break;
-            case 2: //商家优惠
+            case 2: //餐饮优惠
                 require_once DT_ROOT.'/module/brand/brand.class.php';
                 $obj = new brand(13);
                 $checkName = 'checkJob';
                 break;
-            case 3: //招聘信息
+            case 3: //餐饮招聘
                 require_once DT_ROOT.'/module/job/job.class.php';
                 $obj = new job(9);
                 $checkName = 'checkJob';
@@ -173,11 +173,26 @@ switch($at){
                 $obj = new article(21);
                 $checkName = 'checkArticle';
                 break;
+            case 10: //求职信息
+                require_once DT_ROOT.'/module/job/resume.class.php';
+                $obj = new resume(9);
+                $checkName = 'checkBuy';
+                break;
+            case 11://名厨
+                require_once DT_ROOT.'/module/member/member.class.php';
+                $obj = new member();
+                $checkName = 'checkKnow';
+                break;
             default:
                 exit(json_encode(array('status'=>'n','info'=>'操作失误')));
                 break;
         }
-        $obj->itemid = $id;
+        if($type==11){
+            $obj->userid = $id;
+        }else{
+            $obj->itemid = $id;
+        }
+
         $check = $obj->$checkName($obj->get_one());
         if(!$check) exit(json_encode(array('status'=>'n','info'=>$obj->errmsg)));
         $oComment->addComment($id,$type,$content);
@@ -222,32 +237,36 @@ switch($at){
         }
 
 
-        $info = '<header style="border-bottom:1px solid #e6e6e6;">
-                    <article id="header1" class="clear" style="background-color:#e9544e;text-align:center;color:#fff;font-size:1.6em;">
-                        信息发布—选择目录
-                    </article>
-                </header>';
+        $info = '<article id="header1" class="clear" style="background-color:#e9544e;position:relative;">
+                    <span style="left:0px;position:absolute;text-align:center;display:block;width:100%;color:#fff;font-size:2em;">信息发布—选择目录</span>
+                    <a style="position:relative;" class="forback" onclick="publishquitsdfs('.$type.',\''.$url.'\')"><img src="'.DT_SKIN.'image/mobile/userleft.png" style="width:20px;" /></a>
+                </article>';
+        array_unshift($list,array('catid'=>0,'catname'=>'全部','child'=>0));
         if($list){
-            $info .= '<div style="margin-top:20px;background-color:#fff;height:50px;">&nbsp;</div><table id="catmontable" style="width:100%;border-top:1px solid #d5d5d5;background-color:#fff;">';
+            $info .= '<div style="background-color:#fff;height:30px;">&nbsp;</div><table id="catmontable" style="width:100%;border-top:1px solid #d5d5d5;background-color:#fff;">';
             foreach($list as $k=>$v){
                 $str = '';
                 if($v['child']){
                     $lists = get_maincat($v['catid'],$moduleid);
-                    $str .= '<select onchange="catonchange(this)" style="position:absolute;width:100%;height:100%;filter: alpha(opacity=0);-khtml-opacity: 0;opacity: 0;top:0px;left:0px;"><option value="'.$v['catid'].'" data-name="'.$v['catname'].'">'.$v['catname'].'</option>';
+                    $dn = '';
+                    if($type==0){
+                        $dn = 'disabled';
+                    }
+                    $str .= '<select onchange="catonchange(this,'.$type.',\''.$url.'\')" style="position:absolute;width:100%;height:100%;filter: alpha(opacity=0);-khtml-opacity: 0;opacity: 0;top:0px;left:0px;"><option value="0" selected dataname="'.$v['catname'].'">选择分类</option><option '.$dn.' value="'.$v['catid'].'" data-name="'.$v['catname'].'">'.$v['catname'].'</option>';
                     foreach($lists as $key=>$val){
                         $str .= '<option value="'.$val['catid'].'">'.$val['catname'].'</option>';
                     }
                     $str .= '</select><img src="'.DT_SKIN.'image/smalljiao.png" style="position:absolute;bottom:2px;right:2px;" />';
                 }
                 if(($k+1)%2!=0) $info .= '<tr><td style="border-right:1px solid #d5d5d5;border-bottom:1px solid #d5d5d5;">&nbsp;</td>';
-                $info .= '<td  style="border-right:1px solid #d5d5d5;text-align:center;width:150px;font-size:1.4em;line-height:2.2em;border-bottom:1px solid #d5d5d5;position:relative;" onclick="lfdtd(this)"><span style="display:block;" data-id="'.$v['catid'].'" olddata-id="'.$v['catid'].'">'.$v['catname'].'</span>'.$str.'</td>';
+
+                $info .= '<td  style="border-right:1px solid #d5d5d5;text-align:center;width:150px;font-size:1.4em;line-height:2.2em;border-bottom:1px solid #d5d5d5;position:relative;" onclick="lfdtd(this,'.$type.',\''.$url.'\')"><span style="display:block;" data-id="'.$v['catid'].'" olddata-id="'.$v['catid'].'">'.$v['catname'].'</span>'.$str.'</td>';
                 if(($k+1)%2==0) $info .= '<td style="border-bottom:1px solid #d5d5d5;">&nbsp;</td></tr>';
             }
             if(count($list)%2!=0){
                 $info .= '<td data-id="'.$v['catid'].'" style="border-right:1px solid #d5d5d5;width:150px;border-bottom:1px solid #d5d5d5;">&nbsp;</td><td style="border-bottom:1px solid #d5d5d5;">&nbsp;</td></tr>';
             }
             $info .= '</table><div style="display:none;" id="selectcatnow"></div><div style="background-color:#fff;height:50px;">&nbsp;</div>';
-            $info .= '<p style="text-align:center;margin-top:100px;"><span onclick="publishsuresdfs('.$type.',\''.$url.'\')" style="padding:8px 20px;font-size:1.4em;background-color:#ea554f;color:#fff;margin-right:10px;">确认</span> <span onclick="publishallsdfs('.$type.',\''.$url.'\')" style="padding:8px 20px;font-size:1.4em;background-color:#000;color:#fff;margin-right:10px;">全部</span> <span onclick="publishquitsdfs('.$type.',\''.$url.'\')" style="padding:8px 20px;font-size:1.4em;background-color:#03b887;color:#fff;">取消</span> </p>';
         }
         $info .= '<div style="height:150px;">&nbsp;</div>';
         exit(json_encode(array('status'=>'y','info'=>$info)));

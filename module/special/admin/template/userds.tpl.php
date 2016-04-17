@@ -31,8 +31,9 @@ show_menu($menus);
             <tr>
                 <th width="50"><input type="checkbox" onclick="checkall(this.form);"/></th>
                 <th>会员</th>
+                <th>内容审核号</th>
                 <th>折扣</th>
-                <th>总总额</th>
+                <th>总金额</th>
                 <th>应付金额</th>
                 <th>折扣金额</th>
                 <th>类型</th>
@@ -43,6 +44,7 @@ show_menu($menus);
                 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
                     <td><?php echo $v['itemid'];?></td>
                     <td><a href="javascript:_user('<?php echo $v['userid'];?>','userid');"><?php echo $getListUser[$v['userid']]['username'];?></a></td>
+                    <td><?php echo $v['code'];?></td>
                     <td><?php echo doubleval($v['discount']);?>折</td>
                     <td><?php echo $v['allmoney'];?></td>
                     <td><?php echo $v['money'];?></td>

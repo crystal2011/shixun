@@ -52,9 +52,10 @@ switch($action){
         if(!$_userid) dheader('/mobile/member/login.php');
         $where = ' userid = '.$_userid;
         list($list,$totalpage) = $oBrand->brandList('thumb,title,itemid,catid,company,fromtime,totime,status',$where.' and ( status=3 or status = 2 or status = 1) ','addtime desc','10');
-        $seo_title = '商家优惠管理-会员中心-';
-        $topname = '商家优惠管理';
+        $seo_title = '餐饮优惠管理-会员中心-';
+        $topname = '餐饮优惠管理';
         $moduleidtype = 1;
+        $backurl = '/mobile/member/index.php';
         include template('discount', 'mobile/'.$module);
         break;
 }

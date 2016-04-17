@@ -13,4 +13,5 @@ $aCatList9 = array_chunk(showCat(array(),9),4);
 
 $topname = '分类';
 $seo_title = '分类-';
+$backurl = '/mobile/index.php';
 include template('cat','mobile');

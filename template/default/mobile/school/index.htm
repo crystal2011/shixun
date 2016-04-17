@@ -4,16 +4,21 @@
     .comul li .lidiv .handle .num {font-size:1.6em;}
     .comul li .lidiv .title {color:#434343;}
     .numsviews {font-size:10px;margin-top:5px;}
-
+    #areaselect span {width:25%;}
 </style>
 <section>
     <span class="ids">{ad(81)}</span>
-    {template 'area','mobile'}
-    <article class="line" style="border-bottom-width:0px;"></article>
-    <article id="areaselect" class="clear">
+    <article id="areaselect"  class="clear">
+        <span onclick="location.href='/mobile/area.php'">
+            {if isset($areainfo) && $areainfo}{$areainfo['areaname']}{else}选择城市{/if}
+            <img src="{DT_SKIN}image/smallsanjiao.png" style="position:absolute;bottom:3px;right:3px;" />
+        </span>
         <span ><a href="/mobile/school/index.php" style="background-color:#00c19a;color:#fff;display:block;">名厨风采</a></span>
         <span ><a href="/mobile/school/food.php" style="background-color:#e9544e;color:#fff;display:block;">名菜列表</a></span>
+        <span><a href="/mobile/share/publish.php?moduleidtype={$moduleidtype}">发布菜式</a></span>
     </article>
+
+    <article class="line" style="border-bottom-width:0px;"></article>
     <article class="list">
         <ul class="comul clear">
             {if $list}
@@ -30,7 +35,7 @@
                         </span>
                     </a>
                     <p class="handle clear">
-                        <i class="num">票数：<i>{$v['infonums']}</i></i>
+                        <i class="num">总票数：<i>{$v['infonums']}</i></i>
                     </p>
                 </div>
             </li>

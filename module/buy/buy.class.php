@@ -292,10 +292,10 @@ class buy {
     }
     function checkBuy($aBuy){
         if(!$aBuy){
-            return $this->_('分享信息不存在');
+            return $this->_('美食分享不存在');
         }
         if($aBuy['status']!=3){
-            return $this->_('分享信息已下架');
+            return $this->_('美食分享已下架');
         }
         return true;
     }

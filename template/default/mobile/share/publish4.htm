@@ -4,24 +4,26 @@
     <article>
         <form id="publishform" method="post" action="/mobile/share/publish.php?isajax=1">
             <p class="clearfix" style="margin-bottom:0px;border:0px;">
-                <span class="publishleft publishnew" style="width:80px;"><i class="red">*</i>名称</span>
-                <span class="publishright publishrightnew" style="padding-left:80px;">
+                <span class="publishleft publishnew" style="width:55px;"><i class="red">*</i>标题</span>
+                <span class="publishright publishrightnew" style="padding-left:55px;">
                     <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" class="input-text" />
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
             {template  'publishimg','mobile/share'}
-            <p class="clearfix" style="padding-top:5px;border-top:0px;padding-bottom:10px;">
-                <span class="publishleft"><i class="red"></i>描述</span>
-                <span class="publishright">
+            <p class="clear" style="padding-top:5px;margin-bottom:0px;border:0px;">
+                <span class="publishleft" style="width:50px;"><i class="red"></i>描述</span>
+            </p>
+            <p class="clear" style="padding-left:20px;border-top:0px;padding-bottom:10px;padding-right:20px;">
+                <span>
                     <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                    <?php echo deditor(2, 'content','', '100%', 160); ?>
+                    <?php echo deditor(2, 'content','', '100%', 110); ?>
 
                 </span>
             </p>
             {template  'publishcat','mobile/share'}
-            <p class="clearfix" style="margin-bottom:0px;">
+            <p class="clearfix">
                 <span class="publishleft publishnew" style="width:140px;"><img src="{DT_SKIN}image/mobile/publish2.png" /><i class="red">&nbsp;</i>技术合作费</span>
                 <span class="publishright publishrightnew" style="padding-left:140px;">
                     <input type="text" name="coofee" value="<?php echo isset($info['coofee'])?$info['coofee']:0; ?>" maxlength="50" datatype="empty|money" class="input-text smallinput" />
@@ -36,7 +38,8 @@
                 <input  type="hidden" name="beforeurl" value="<?php echo $forward; ?>"/>
                 <input type="hidden" name="moduleidtype" value="4" />
                 <input type="hidden" value="{if isset($code)}{$code}{/if}"  name="code"  />
-                <input class="quepublish" type="submit" value="确定发布"/>
+                <span  class="publishleftyulan fl"><input  type="image" src="{DT_SKIN}image/mobile/yulan.png" /></span>
+                <span class="publishleftsure fr"><input  type="image" src="{DT_SKIN}image/mobile/fabu.png"  /></span>
             </div>
         </form>
     </article>
@@ -44,10 +47,10 @@
 <script src="{DT_SKIN}js/jquery-1.9.1.min.js"></script>
 <script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
 <script>
+    getToken();
     $("#publishform").Validform({
         tiptype: 3,
         postonce:true,
-        ajaxPost:true,
         datatype:{
             "mobile":function(gets,obj,curform,regxp){
                 if(!is_mobile(gets) && !is_phone(gets)) return '输入错误';
@@ -79,32 +82,16 @@
             })
             if(!isnotselect) return false;
             return true;
-        },
-        beforeSubmit:function(curform){
-            var oEditor = FCKeditorAPI.GetInstance('content');
-            $("#content").html(oEditor.GetHTML());
-            getToken();
-            return true;
-        },
-        callback:function(data){
-            layer.open({
-                content: data.info,
-                title:'提示'
-            });
-            if(data.status=='y'){
-                window.setTimeout("locationhref('"+data.url+"')",1000);
-            }
         }
     })
     $(document).on("change","select",function(){
         $(this).parent().parent().find('.Validform_checktip').removeClass('Validform_wrong').html('');
     })
-    function locationhref(url){
-        if(url!='aa'){
-            location.href = url;
-        }else{
-            location.reload();
-        }
-    }
+    $("#publishform .btn-box .publishleftyulan input").click(function(){
+        $("#publishform").attr('action','/mobile/school/foodshow.php?isajax=1');
+    })
+    $("#publishform .btn-box .publishleftsure input").click(function(){
+        $("#publishform").attr('action','/mobile/share/publish.php?isajax=1');
+    })
 </script>
 {template 'footer','mobile'}

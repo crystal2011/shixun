@@ -1,5 +1,6 @@
 <style>
     body{background-color:#f5f5f5;}
+    #load_area_1 select {width:130px !important;}
 </style>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>lang/<?php echo DT_LANG;?>/lang.js"></script>
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
@@ -7,7 +8,8 @@
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/admin.js"></script>
 <header>
     <article id="header1" class="clear" style="background-color:#e9544e;position:relative;">
-        <a class="forback" href="{$forward}"><img src="{DT_SKIN}image/mobile/userleft.png" style="width:20px;" /></a>
-        <span style="position:absolute;text-align:center;display:block;width:100%;color:#fff;font-size:2em;">{$topname}</span>
+        <span style="left:0px;position:absolute;text-align:center;display:block;width:100%;color:#fff;font-size:2em;">{$topname}</span>
+        <a class="forback" style="position:relative;" href="{if !$itemid}/mobile/member/index.php{else}{$forward}{/if}"><img src="{DT_SKIN}image/mobile/userleft.png" style="width:20px;" /></a>
+
     </article>
 </header>

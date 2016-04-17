@@ -133,7 +133,7 @@ X
         <td><input name="setting[stickfee]" type="text" value="<?php echo isset($stickfee)?$stickfee:0;?>" size="10"/> 元</td>
     </tr>
 <tr>
-<td class="tl">首页招聘信息数量</td>
+<td class="tl">首页餐饮招聘数量</td>
 <td><input type="text" size="3" name="setting[page_ijob]" value="<?php echo $page_ijob;?>"/></td>
 </tr>
 
@@ -360,7 +360,7 @@ X
 <td><?php echo group_checkbox('setting[group_list][]', $group_list);?></td>
 </tr>
 <tr>
-<td class="tl">允许浏览招聘信息</td>
+<td class="tl">允许浏览餐饮招聘</td>
 <td><?php echo group_checkbox('setting[group_show][]', $group_show);?></td>
 </tr>
 

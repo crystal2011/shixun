@@ -22,7 +22,7 @@ if($catinfo){
 }
 
 $oResume = new resume(9);
-list($list,$totalpage) = $oResume->jobList('truename,education,itemid,catid,areaid,experience',$where.'','edittime desc','20');
+list($list,$totalpage) = $oResume->jobList('truename,education,itemid,catid,areaid,experience',$where.' and situation = 1 and status=3 ','edittime desc','20');
 $aSetting = cache_read('module-9.php');
 $aSetting['education'] = explode('|',$aSetting['education']);
 if($action=='ajax'){
@@ -46,7 +46,8 @@ if($action=='ajax'){
     $areaparentid = $areainfo?explode(',',$areainfo['arrparentid'].','.$areainfo['areaid']):array();
     $seo_title = '求职信息-';
     $topname = '求职信息';
-
+    $backurl = '/mobile/job/index.php';
     $moduleidtype = 2;
+    dsubstr()
     include template('job/resume','mobile');
 }

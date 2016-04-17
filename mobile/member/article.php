@@ -52,6 +52,7 @@ switch($action){
         $seo_title = '文章管理-会员中心-';
         $topname = '文章管理';
         $moduleidtype = 6;
+        $backurl = '/mobile/member/index.php';
         include template('article', 'mobile/'.$module);
         break;
 }

@@ -23,7 +23,7 @@ if(!$oSpecial->checkSpecial($info)){
 }
 
 
-$aRecommendFood = $oSpecial->getright('title,itemid,introduce,hits,thumb,code,userds',10,'addtime desc');  //推荐
+$aRecommendFood = $oSpecial->getright('title,itemid,introduce,hits,thumb,code,userds',4,'addtime desc');  //推荐
 
 //更新浏览量
 $oSpecial->editHits();
@@ -32,4 +32,5 @@ $topname = '羊角会成员';
 $islikenum = true;
 $commenttypeid = 8;
 $nocode = true;
+$backurl = '/mobile/horn/index.php';
 include template('horn/hornshow','mobile');

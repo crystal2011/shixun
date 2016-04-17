@@ -10,6 +10,7 @@ $menus = array (
     array('回收站', '?moduleid='.$moduleid.'&action=recycle'),
     array('优惠码使用记录', '?moduleid='.$moduleid.'&action=userds'),
     array('结算记录', '?moduleid='.$moduleid.'&action=apply'),
+    array('月度汇总', '?moduleid='.$moduleid.'&action=month'),
 );
 
 if(in_array($action, array('', 'check', 'reject', 'recycle'))) {
@@ -220,10 +221,23 @@ switch($action) {
         $member_do = new member;
         $getListUser = $member_do->getListUser($lists,'username');
 
-        $arr = array('餐饮供应','优惠价格','招聘信息','店铺转让','名厨学堂','分享','文章');
+        $arr = array('餐饮供应','餐饮优惠','餐饮招聘','店铺转让','名厨学堂','美食分享','文章发布');
 
         include tpl('userds', $module);
 
+        break;
+    case 'month':
+        //月度汇总
+        $codeid = isset($codeid)?intval($codeid):0;
+        $where = ' status = 6  ';
+        if($codeid){
+            $where .= ' and codeid = '.$codeid;
+            $do->itemid = $codeid;
+            $codeuserinfo = $do->get_one();
+        }
+        list($list,$totalpage) = $do->codeListGroup($where,100);
+        $menuid = 5;
+        include tpl('month', $module);
         break;
     case 'apply':
         $condition = '';

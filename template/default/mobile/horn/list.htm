@@ -1,0 +1,25 @@
+{template 'header','mobile'}
+{template 'search1','mobile'}
+<section id="index" style="border-top:1px solid #e6e6e6">
+    <article class="article" style="padding:10px 10px 0px 10px;">
+        <div class="articlelist" style="margin-top:0px;">
+            <ul class="dfasdf">
+                {if $list}
+                {loop $list $k $v}
+                <li class="clear"  style="border-bottom:1px solid #e6e6e6;padding-top:5px;">
+                    <span class="fr">{date('m-d',$v['addtime'])}</span>
+                    <article><a href="show.php?id={$v['itemid']}" >·{$v['title']}</a></article>
+                </li>
+                {/loop}
+                {/if}
+            </ul>
+        </div>
+    </article>
+    {if $list && $page!=$totalpage}
+    <article class="readmore" style="border-bottom:1px solid #e6e6e6" onclick="getmorecommont('{$CFG[url]}/mobile/horn/list.php',this,'dfasdf')" data-page="1">
+        <a>查看更多>></a>
+    </article>
+    {/if}
+</section>
+
+{template 'footer','mobile'}

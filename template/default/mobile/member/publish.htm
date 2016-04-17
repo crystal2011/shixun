@@ -135,7 +135,7 @@
     <article class="mempublish" style="background-color:#fff;">
         <p class="publishtitle">输入发布审核号</p>
         <p class="publishinput">
-            <input type="text" id="publish1" class="abcd" data-id="0" maxlength="6"  /><input type="text" id="publish2" class="abcd" data-id="1" maxlength="6"  /><input type="text" id="publish3" class="abcd" data-id="2" maxlength="6"  /><input type="text" id="publish4" class="abcd" data-id="3" maxlength="6"  /><input type="text" id="publish5" class="abcd" data-id="4" maxlength="6"  /><input type="text" id="publish6" class="abcd" data-id="5" maxlength="6" style="margin-right:0px;" />
+            <input type="text" id="publish1" class="abcd" data-id="0" indexid="0" maxlength="6"  /><input type="text" indexid="1" id="publish2" class="abcd" data-id="1" maxlength="6"  /><input type="text" indexid="2" id="publish3" class="abcd" data-id="2" maxlength="6"  /><input indexid="3" type="text" id="publish4" class="abcd" data-id="3" maxlength="6"  /><input type="text" indexid="4" id="publish5" class="abcd" data-id="4" maxlength="6"  /><input type="text" indexid="5" id="publish6" class="abcd" data-id="5" maxlength="6" style="margin-right:0px;" /><input type="hidden" />
         </p>
         <p  class="publishhandle">
             <span class="publishsure">确认</span>
@@ -150,7 +150,7 @@
 </section>
 <script>
     $(".publishsure").click(function(){
-        var str = 1;
+        var str = '';
         $(".abcd").each(function(k,v){
             str += $(this).val();
         })
@@ -179,13 +179,15 @@
     })
 
 
-    var dataid = '';
+    var dataid = 0;
+    var indexid = 0;
     $(document).on('focus','.mempublish .publishinput input',function(){
         var s = $(this);
         $(this).val('');
-        dataid = $(this).attr('data-id');
+        indexid = $(this).attr('indexid');
+        dataid = 0;
         $(this).next().before(s.clone());
-        $(this).css({'left':'-50px',position:'absolute'}).removeClass('abcd');
+        $(this).css({'left':'-100px',position:'absolute',width:'100px'}).removeClass('abcd');
     })
 
     $(document).on('keyup','.mempublish .publishinput input',function(){
@@ -193,22 +195,23 @@
         var j = 0;
         var d = str.length;
         dataid = parseInt(dataid);
+        indexid = parseInt(indexid);
         var oEvent = window.event; if (oEvent.keyCode == 8){
             if(dataid>0){
+                indexid = indexid-1;
+                $(".abcd").eq(indexid).val('');
                 dataid = dataid-1;
-                $(this).attr("data-id",dataid);
-                $(".abcd").eq(parseInt(dataid)).val('');
             }
-
             return ;
         }else{
-            var ds = dataid!=0?dataid-$(this).attr('data-id'):0;
 
-            if(ds!=d){
-                $(".abcd").eq(dataid).val(str.substr(ds,1));
-                dataid = parseInt(dataid)+1;
+            if(d+parseInt($(this).attr('data-id'))>6) {  //控制当前输入框最大输入值
+                $(this).val(str.substr(0, 6 - parseInt($(this).attr('data-id'))));
+            }else if(dataid<6){
+                $(".abcd").eq(indexid).val(str.substr(dataid,1));
+                dataid = dataid+1;
+                indexid = indexid+1;
             }
-
         }
     })
 </script>

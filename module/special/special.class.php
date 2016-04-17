@@ -475,7 +475,7 @@ class special {
     function codeListGroup($condition='1=1',$limit=10){
         global $page;
         $offset = ($page-1)*$limit;
-        $result = $this->db->query("select sum(allmoney) as allmoney,sum(money) as money,sum(discountfee) as discountfee,ym,checktime from {$this->db->pre}code where $condition  group by ym order by checktime desc limit $offset,$limit");
+        $result = $this->db->query("select sum(allmoney) as allmoney,sum(money) as money,sum(discount) as discount,sum(discountfee) as discountfee,ym,checktime from {$this->db->pre}code where $condition  group by ym order by checktime desc limit $offset,$limit");
         $list = array();
         while($r = $this->db->fetch_array($result)){
             $list[] = $r;
@@ -579,7 +579,7 @@ class special {
     }
 
     function typearr($type){
-        $arr = array('餐饮供应','优惠价格','招聘信息','店铺转让','名厨学堂','分享','菜系');
+        $arr = array('餐饮供应','餐饮优惠','餐饮招聘','店铺转让','名厨学堂','美食分享','菜式');
         return $arr[$type];
     }
 

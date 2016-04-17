@@ -17,13 +17,15 @@
     {template 'shop','mobile'}
     <article class="line"></article>
     {template 'view','mobile'}
+    {if !isset($isajax) || !$isajax}
     <article class="line"></article>
     {template 'commentlist','mobile'}
+    {/if}
     <article class="line"></article>
 </section>
 <section class="contentlist">
     <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新商家优惠</span></div>
+        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新餐饮优惠</span></div>
         <a class="fr" href="index.php">查看全部&nbsp;&gt;</a>
     </header>
     <article class="list">

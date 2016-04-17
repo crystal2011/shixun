@@ -20,17 +20,17 @@ switch($moduleidtype) {
         $checkName = 'checkFood';
         $sitetitle .= '餐饮供应';
         break;
-    case 1: //商家优惠
+    case 1: //餐饮优惠
         require_once DT_ROOT.'/module/brand/brand.class.php';
         $obj = new brand(13);
         $checkName = 'checkJob';
-        $sitetitle .= '商家优惠';
+        $sitetitle .= '餐饮优惠';
         break;
-    case 2: //招聘信息
+    case 2: //餐饮招聘
         require_once DT_ROOT.'/module/job/job.class.php';
         $obj = new job(9);
         $checkName = 'checkJob';
-        $sitetitle .= '招聘信息';
+        $sitetitle .= '餐饮招聘';
         break;
     case 3: //店铺转让
         require_once DT_ROOT.'/module/sell/sell.class.php';
@@ -48,7 +48,7 @@ switch($moduleidtype) {
         require_once DT_ROOT.'/module/buy/buy.class.php';
         $obj = new buy(6);
         $checkName = 'checkBuy';
-        $sitetitle .= '分享';
+        $sitetitle .= '美食分享';
         break;
     case 6: //文章
         require_once DT_ROOT.'/module/article/article.class.php';
@@ -118,12 +118,12 @@ if($submit){
             unset($arr['telephone']);
             break;
         case 1:
-            //商家优惠
+            //餐饮优惠
             $arr['company'] = isset($company)?$company:'';
             $arr['fromtime'] = isset($fromtime)?$fromtime:'';
             $arr['totime'] = isset($totime)?$totime:'';
             break;
-        case 2: //招聘信息
+        case 2: //餐饮招聘
 
             $arr['company'] = isset($company)?$company:'';
             $arr['total'] = isset($total)?$total:'';

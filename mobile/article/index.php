@@ -43,5 +43,6 @@ if($action=='ajax'){
     $seo_title = '文章发布-';
     $topname = '文章发布';
     $moduleidtype = 6;
+    $backurl = '/mobile/index.php';
     include template('article/index','mobile');
 }

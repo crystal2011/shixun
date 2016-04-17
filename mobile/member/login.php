@@ -31,6 +31,7 @@ if($submit) {
     set_cookie('forward_url', $forward);
     $seo_title = '登录-';
     $topname = '登录';
+    $backurl = $forward;
     include template('login', 'mobile/'.$module);
 }
 ?>

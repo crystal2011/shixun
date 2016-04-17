@@ -55,6 +55,7 @@ switch($action){
         $seo_title = '店铺转让管理-会员中心-';
         $topname = '店铺转让管理';
         $moduleidtype = 3;
+        $backurl = '/mobile/member/index.php';
         include template('cession', 'mobile/'.$module);
         break;
 }

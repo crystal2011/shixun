@@ -9,6 +9,10 @@ require_once '../../module/sell/sell.class.php';
 
 $where = '1=1';
 //地区
+/*$areaid = empty($areaid) && isset($_GET['areaid'])?intval($_GET['areaid']):'';
+$areaid = $areaid==='' && isset($_POST['areaid'])?intval($_POST['areaid']):$areaid;
+$areaid = $areaid!==''?$areaid:($dtcity?$dtcity['areaid']:0);*/
+
 $areaid = $areaid?$areaid:($dtcity?$dtcity['areaid']:0);
 $aCacheArea = cache_read('area.php');
 $areainfo = isset($aCacheArea[$areaid])?$aCacheArea[$areaid]:array();
@@ -59,5 +63,6 @@ if($action=='ajax'){
     $seo_title = '店铺转让-';
     $topname = '店铺转让';
     $moduleidtype = 3;
+    $backurl = '/mobile/index.php';
     include template('cession/index','mobile');
 }

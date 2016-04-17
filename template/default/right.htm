@@ -7,7 +7,9 @@
     }
 </style>
 <aside class="food-menu fr">
+    {if !isset($norightimg)}
     <section class="foodshowright">{ad($foodshowright)}</section>
+    {/if}
     <section class="show-list border-box mt20">
         <header class="public-header show-head">
             <i class="icon-tuijian"></i>

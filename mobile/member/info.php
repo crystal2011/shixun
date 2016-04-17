@@ -13,6 +13,7 @@ $do->userid = $_userid;
 $member_info = $do->get_one();
 
 $action = isset($action)?$action:'';
+$backurl = '/mobile/member/info.php';
 switch($action){
     case 'username_edit':
         $seo_title = '修改用户名-';
@@ -47,6 +48,7 @@ switch($action){
     default:
         $seo_title = '个人信息-';
         $topname = '个人信息';
+        $backurl = '/mobile/member/index.php';
         include template('info', 'mobile/member');
         break;
 }

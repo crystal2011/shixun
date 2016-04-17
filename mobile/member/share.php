@@ -54,6 +54,7 @@ switch($action){
         $seo_title = '美食分享管理-会员中心-';
         $topname = '美食分享';
         $moduleidtype = 5;
+        $backurl = '/mobile/member/index.php';
         include template('share', 'mobile/'.$module);
         break;
 }

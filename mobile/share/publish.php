@@ -13,9 +13,8 @@ $oSpecial = new special(11);
 $oSpecial->table = $db->pre.'special';
 $oSpecial->table_data = $db->pre.'special_data';
 $isajax = isset($isajax)?true:false;
-if(!$_userid){
-    $isajax?exit(json_encode(array('status'=>'n','info'=>'请先登录'))):dalert('请先登录','/mobile/member/login.php');
-}
+if(!$_userid) dalert('请先登录','/mobile/member/login.php');
+
 
 $sitetitle = '';
 switch($moduleidtype) {
@@ -26,18 +25,18 @@ switch($moduleidtype) {
         $sitetitle .= '餐饮供应';
         $moduleidcat = 23;
         break;
-    case 1: //商家优惠
+    case 1: //餐饮优惠
         require_once DT_ROOT.'/module/brand/brand.class.php';
         $obj = new brand(13);
         $checkName = 'checkJob';
-        $sitetitle .= '商家优惠';
+        $sitetitle .= '餐饮优惠';
         $moduleidcat = 13;
         break;
-    case 2: //招聘信息
+    case 2: //餐饮招聘
         require_once DT_ROOT.'/module/job/job.class.php';
         $obj = new job(9);
         $checkName = 'checkJob';
-        $sitetitle .= '招聘信息';
+        $sitetitle .= '餐饮招聘';
         $moduleidcat = 9;
         $isjob = true;
         break;
@@ -79,7 +78,7 @@ if($itemid){
     $obj->itemid=$itemid;
     $info = $obj->get_one();
     $check = is_can_edit($info);
-    if($check!==true) $isajax?exit(json_encode(array('status'=>'n','info'=>$check))):dalert($check,$forward);
+    if($check!==true) dalert($check,$forward);
     $thumbinputarr = array();
     if($info['content']){
         preg_match("/<div.*class=\"womdnlsandh\".*>(.*)<\\/div>/iU",$info['content'],$msd);
@@ -97,7 +96,7 @@ if($itemid){
     $code = isset($code)?$code:'';
     $codeinfo = array();
     if(strlen($code)==0 || !$codeinfo = $oSpecial->codeCheck($code)){
-        $isajax?exit(json_encode(array('status'=>'n','info'=>$oSpecial->errmsg))):dheader($CFG['url'].'mobile/member/publish.php?moduleidtype='.$moduleidtype);
+        dheader($CFG['url'].'mobile/member/publish.php?moduleidtype='.$moduleidtype);
     }
     $sitetitle = '信息发布—'.$sitetitle;
 }
@@ -114,7 +113,7 @@ if($isajax){
     }*/
 
 
-    if(!check_token()) exit(json_encode(array('status'=>'n','info'=>'操作失效，请重试')));
+    if(!check_token()) dalert('操作失效，请重试',$forward);
 
     $thumbinput = isset($thumbinput) && is_array($thumbinput)?$thumbinput:array();
     $contentimage = '';
@@ -159,12 +158,12 @@ if($isajax){
             unset($arr['telephone']);
             break;
         case 1:
-            //商家优惠
+            //餐饮优惠
             $arr['company'] = isset($company)?$company:'';
             $arr['fromtime'] = isset($fromtime)?$fromtime:'';
             $arr['totime'] = isset($totime)?$totime:'';
             break;
-        case 2: //招聘信息
+        case 2: //餐饮招聘
 
             $arr['company'] = isset($company)?$company:'';
             $arr['total'] = isset($total)?$total:'';
@@ -193,23 +192,21 @@ if($isajax){
             exit();
             break;
     }
-    if(!$arr = $obj->pass($arr,false)) exit(json_encode(array('status'=>'n','info'=>$obj->errmsg)));
+    if(!$arr = $obj->pass($arr,false)) dalert($obj->errmsg,$forward);
     if($itemid){
         $handle = $obj->edit($arr);
-        $url = $beforeurl;
+        $forward = $beforeurl;
         $note = '修改成功';
     }else{
         $handle = $obj->add($arr);
-        $url = 'aa';
-        $itemid = $handle;
         $note = '提交成功，待审核...';
     }
 
     if($handle){
         if(isset($codeinfo) && $codeinfo) $oSpecial->money($info,$codeinfo,$moduleidtype,$itemid);
-        exit(json_encode(array('status'=>'y','info'=>$note,'url'=>$url)));
+        dalert($note,$forward);
     }else{
-        exit(json_encode(array('status'=>'n','info'=>'提交失败')));
+        dalert('提交失败',$forward);
     }
 }else{
     $topname = $seo_title = $sitetitle;

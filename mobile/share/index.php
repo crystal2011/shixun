@@ -40,5 +40,6 @@ if($action=='ajax'){
     $seo_title = '美食分享-';
     $topname = '美食分享';
     $moduleidtype = 5;
+    $backurl = '/mobile/index.php';
     include template('share/index','mobile');
 }

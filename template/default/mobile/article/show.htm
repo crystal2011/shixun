@@ -15,8 +15,10 @@
     </article>
     <article class="line"></article>
     {template 'view','mobile'}
+    {if !isset($isajax) || !$isajax}
     <article class="line"></article>
     {template 'commentlist','mobile'}
+    {/if}
     <article class="line"></article>
 </section>
 <section class="contentlist">

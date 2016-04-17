@@ -1,6 +1,6 @@
 <?php
 /**
- * 招聘信息
+ * 餐饮招聘
  */
 require 'config.inc.php';
 require '../common.inc.php';

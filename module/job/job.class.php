@@ -309,10 +309,10 @@ class job {
 
     function checkJob($aJob){
         if(!$aJob){
-            return $this->_('招聘信息不存在');
+            return $this->_('餐饮招聘不存在');
         }
         if($aJob['status']!=3){
-            return $this->_('招聘信息已下架');
+            return $this->_('餐饮招聘已下架');
         }
         return true;
     }

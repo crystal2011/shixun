@@ -28,4 +28,5 @@ $topname = '羊角会';
 $commenttypeid = 7;
 $nocode = true;
 $islikenum = true;
+$backurl = '/mobile/horn/list.php';
 include template('horn/show','mobile');

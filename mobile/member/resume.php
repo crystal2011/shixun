@@ -66,6 +66,7 @@ switch($action){
         $aSetting9['type'] = explode('|',$aSetting9['type']);
         $aSetting9['marriage'] = explode('|',$aSetting9['marriage']);
         $aSetting9['situation'] = explode('|',$aSetting9['situation']);
+        $backurl = '/mobile/member/index.php';
         include template('resume', 'mobile/'.$module);
         break;
 }

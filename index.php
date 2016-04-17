@@ -71,13 +71,16 @@ $pagesize = 4;
 $aCai = $oCai->get_list($where.' and status = 3');
 $aSchool = $oMember->getListUser($aCai);
 
-//商家优惠
+//餐饮优惠
 require_once 'module/brand/brand.class.php';
 $oBrand = new brand();
 $pagesize =1;
 $aBrandHot = $oBrand->get_list($where.' and status = 3','edittime desc');
 $pagesize =10;
-$aBrandHotCor = $oBrand->get_list($where.' and status = 3 and itemid != '.$aBrandHot[0]['itemid'],'edittime desc');
+$aBrandHotCor = array();
+if($aBrandHot){
+    $aBrandHotCor = $oBrand->get_list($where.' and status = 3 and itemid != '.$aBrandHot[0]['itemid'],'edittime desc');
+}
 
 //在线分享
 require_once 'module/buy/buy.class.php';

@@ -22,6 +22,7 @@ if($submit){
     $topname = '安全中心';
     $active = 'safe';
     $nav_selected='member';
+    $backurl = '/mobile/member/index.php';
     include template('safe', 'mobile/'.$module);
 }
 ?>

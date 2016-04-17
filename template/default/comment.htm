@@ -2,8 +2,10 @@
     <header class="discuss-head clearfix">
         <a class="btn-discuss fl" id="roll-bottom">评论</a>
         <div class="discuss-head-item fr">
+            {if !isset($snf)}
             <a class="btn-share" id="roll-top">分享</a>
-            <a class="btn-publish" href="/share/publish.php">我要发布</a>
+            {/if}
+            <a class="btn-publish" href="{if isset($snf) && $snf=='job'}/member/resume.php{else}/share/publish.php{/if}">我要发布</a>
         </div>
     </header>
     <article class="discuss-main">

@@ -34,7 +34,7 @@ if($action=='ajax'){
                             </span>
                         </a>
                         <p class="handle clear">
-                            <i class="num">票数：<i>'.$v['infonums'].'</i></i>
+                            <i class="num">总票数：<i>'.$v['infonums'].'</i></i>
                         </p>
                     </div>
                 </li>';
@@ -47,5 +47,6 @@ if($action=='ajax'){
     $moduleidtype = 4;
     $seo_title = '名厨学堂-';
     $topname = '名厨学堂-名厨风采';
+    $backurl = '/mobile/index.php';
     include template('school/index', 'mobile');
 }

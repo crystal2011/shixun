@@ -24,7 +24,7 @@ switch($action){
         $where = ' userid = '.$_userid;
         list($aBrand,$totalpage) = $oBrand->brandList('thumb,title,itemid,catid,company,fromtime,totime,status',$where.' and ( status=3 or status = 2 or status = 1) ','hits desc','10');
         $active = 'discount';
-        $seo_title = '商家优惠管理-会员中心-';
+        $seo_title = '餐饮优惠管理-会员中心-';
         $nav_selected='member';
         include template('discount', $module);
         break;

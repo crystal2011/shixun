@@ -24,6 +24,16 @@ class member {
         $this->db->query("update {$this->table_member} set hits = hits + 1 where userid = $this->userid");
     }
 
+    function adddelComments($addordel){
+        if($addordel=='add'){
+            $this->db->query("update {$this->table} set comments=comments+1 where itemid = ".$this->itemid);
+        }else{
+            $this->db->query("update {$this->table} set comments=comments-1 where itemid = ".$this->itemid);
+        }
+        return true;
+    }
+
+
     function checkKnow($aKnow){
         if(!$aKnow){
             return $this->_('名厨不存在');

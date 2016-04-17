@@ -17,9 +17,18 @@ class resume {
 		$this->fields = array('catid','areaid','level','title','style','fee','introduce','truename','userid','gender','birthday','age','marriage','height', 'weight','education','school','major','skill','language','minsalary','maxsalary','situation','type','experience','mobile','telephone','address','email','msn','qq','ali','skype','thumb','username','addtime','editor','edittime','ip','template','status','hits','open','note');
     }
 
+    function adddelComments($addordel){
+        if($addordel=='add'){
+            $this->db->query("update {$this->table} set comments=comments+1 where itemid = ".$this->itemid);
+        }else{
+            $this->db->query("update {$this->table} set comments=comments-1 where itemid = ".$this->itemid);
+        }
+        return true;
+    }
+
     function getright($field='*',$limit,$order=''){
         global $dtcity;
-        $where = ' status=3 ';
+        $where = ' situation = 1 and status=3 ';
         if($dtcity){
             $info = get_area($dtcity['areaid']);
             $arrchildid = $info['arrchildid'];
@@ -171,6 +180,9 @@ class resume {
         }
         if($aBuy['status']!=3){
             return $this->_('简历信息不存在');
+        }
+        if($aBuy['situation']!=1){
+            return $this->_('简历信息不能访问');
         }
         return true;
     }

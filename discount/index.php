@@ -39,6 +39,6 @@ $catname = '优惠';
 $foodshowright = 44;
 
 $nav_selected = 'discount';
-$seo_title = '商家优惠-';
+$seo_title = '餐饮优惠-';
 include template('index', 'discount');
 ?>

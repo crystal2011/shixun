@@ -16,11 +16,12 @@ $oResume->itemid = $id;
 $info = $oResume->get_one();
 
 if (!$checkJob = $oResume->checkBuy($info)) {
-    dalert($oJob->errmsg, '/mobile/job/resume.php');
+    dalert($oResume->errmsg, '/mobile/job/resume.php');
 }
+
 $oResume->editHits();  //更新浏览量
 
-$aRecommendFood = $oResume->getright('*',10,'addtime desc');  //推荐
+$aRecommendFood = $oResume->getright('*',20,'addtime desc');  //推荐
 
 $aCacheCat9 = cache_read('category-9.php');
 
@@ -30,5 +31,7 @@ $aSetting['type'] = explode('|',$aSetting['type']);
 
 $seo_title = $info['truename'].'-求职信息-';
 $topname = '求职信息';
-
+$commenttypeid = 10;
+$nocode = true;
+$backurl = '/mobile/job/resume.php';
 include template('job/resumeshow','mobile');

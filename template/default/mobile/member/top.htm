@@ -1,9 +1,8 @@
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
 <html>
 <head>
-
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <!-- Mobile Devices Support @begin -->
     <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
     <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
@@ -32,7 +31,7 @@
 </style>
 {if !isset($notop) && !isset($ishorn)}
 <header id="page-headert" class="clear" style="position:relative;">
-    <i onclick="history.go(-1)" class="fa fa-angle-left fl"></i>
+    <i onclick="location.href='{$backurl}'" class="fa fa-angle-left fl"></i>
     <h2 class="fl">{$topname}</h2>
     {if isset($moduleidtype)}  <!-- 头部右边显示需求发布的按钮 -->
     <button id="release-btn" onclick="location.href='/mobile/share/publish.php?moduleidtype={$moduleidtype}'" style="background-color:#f60;color:#fff;padding:5px 10px;top:5px;right:10px;position:absolute" class="fr">发布</button>
@@ -42,7 +41,7 @@
 
 {if isset($ishorn)}
 <header id="horn-headert" style="position:relative;font-size:0px;">
-    <img onclick="history.go(-1)" src="{DT_SKIN}image/mobile/userleft.png" class="userleft" />
+    <img onclick="location.href='{$backurl}'" src="{DT_SKIN}image/mobile/userleft.png" class="userleft" />
     <img src="{DT_SKIN}image/mobile/horntou.jpg" style="width:100%;height:auto;max-height:238px;" />
 </header>
 {/if}

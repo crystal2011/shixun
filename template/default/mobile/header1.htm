@@ -1,6 +1,6 @@
 <header id="index-page">
     <h2>{$DT['sitename']}</h2>
-    <a class="fl area" href="/mobile/city.php">{if $dtcity}{$dtcity['name']}{else}全国{/if}<i class="fa fa-angle-down"></i></a>
+    <a class="fl area" href="/mobile/city.php">{if $dtcity}{dsubstr($dtcity['name'],6)}{if mb_strlen($dtcity['name'],'utf-8')>3}...{/if}{else}全国{/if}<i class="fa fa-angle-down"></i></a>
     {if $_userid}
     <span class="user fr"><a href="/mobile/member/index.php">会员中心</a> <span>
     {else}

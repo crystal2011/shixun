@@ -51,8 +51,9 @@ switch($action){
         if(!$_userid) dheader('/mobile/member/login.php');
         $where = ' userid = '.$_userid;
         list($list,$totalpage) = $oJob->jobList('thumb,title,itemid,catid,company,status',$where.' and (status=3 or status = 2 or status = 1)','addtime desc','10');
-        $seo_title = '招聘信息管理-会员中心-';
+        $seo_title = '餐饮招聘管理-会员中心-';
         $moduleidtype = 2;
+        $backurl = '/mobile/member/index.php';
         include template('job', 'mobile/'.$module);
         break;
 }

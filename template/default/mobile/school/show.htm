@@ -28,8 +28,12 @@
             </div>
         </div>
     </article>
+
+    <article class="line"></article>
+    {template 'commentlist','mobile'}
     <article class="line" style="border-bottom:0px;"></article>
 </section>
+
 <section class="contentlist">
     <article class="list">
         <ul class="clear">
@@ -62,34 +66,11 @@
             {/if}
         </ul>
     </article>
-</section>
-<section class="contentlist">
-    <header class="channelheader clear">
-        <div class="fl"><img src="{DT_SKIN}image/mobile/promote1.png"><span>最新菜系</span></div>
-        <a class="fr" href="food.php">查看全部&nbsp;&gt;</a>
-    </header>
-    <article class="list">
-        <ul class="comul clear">
-            {if $aRecommendFood}
-            {loop $aRecommendFood $k $v}
-            <li class="clear">
-                <div class="lidiv">
-                    <a class="schoola" href="/mobile/school/foodshow.php?id={$v['itemid']}">
-                        <img src="{$v['thumb']}" />
-                        <span>名厨：{$memberlistRec[$v['userid']]['truename']}</span>
-                        <span class="hiddensl">名厨：{$memberlistRec[$v['userid']]['truename']}</span>
-                    </a>
-                    <a class="title" href="/mobile/school/foodshow.php?id={$v['itemid']}">{$v['title']}</a>
-                    <p class="handle clear">
-                        <img onclick="vote({$v['itemid']},2,this)" class="votes" src="{DT_SKIN}image/mobile/vote.png" />
-                        <i class="num">票数：<i>{$v['votes']}</i></i>
-                    </p>
-                </div>
-            </li>
-            {/loop}
-            {/if}
-        </ul>
+    {if $list && $totalpage!=1}
+    <article class="readmore" onclick="getmorecommont('{$CFG[url]}/mobile/school/show.php?id={$id}',this)" data-page="1">
+        <a>查看更多>></a>
     </article>
-
+    {/if}
 </section>
+
 {template 'footer','mobile'}

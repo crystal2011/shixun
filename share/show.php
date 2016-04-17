@@ -26,7 +26,7 @@ if(isset($showtype)){   //预览
 
 $aHotFood = $oBuy->getLevelBuy('title,itemid,introduce,addtime',11,0,4); //热门
 $aRecommendFood = $oBuy->getLevelBuy('title,itemid,addtime',10,0,5);  //推荐
-$catname='分享';
+$catname='美食分享';
 $foodshowright = 56;
 
 $truenameshow = get_user($aBuy['userid'],'userid','truename');
@@ -39,6 +39,6 @@ $typeid = 6;
 list($aComment,$HasNextPage) = $oComment->commentList($id,$typeid);
 
 $nav_selected = 'share';
-$seo_title = $aBuy['title'].'-分享-';
+$seo_title = $aBuy['title'].'-美食分享-';
 include template('show', 'share');
 ?>

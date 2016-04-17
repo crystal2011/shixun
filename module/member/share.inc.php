@@ -23,7 +23,7 @@ switch($action){
         $where = ' userid = '.$_userid;
         list($aBuy,$totalpage) = $oBuy->buyList('thumb,title,itemid,status',$where.' and ( status=3 or status=2 or status=1) ','hits desc','10');
         $active = 'share';
-        $seo_title = '分享管理-会员中心-';
+        $seo_title = '美食分享管理-会员中心-';
         $nav_selected='member';
         include template('share', $module);
         break;

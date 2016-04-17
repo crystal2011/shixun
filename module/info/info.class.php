@@ -110,6 +110,19 @@ class info {
 		return $lists;
 	}
 
+    function foodList($field='*',$condition='1=1',$order='itemid desc',$limit=10){
+        global $page;
+        $offset = ($page-1)*$limit;
+        $result = $this->db->query("select {$field} from {$this->table} where $condition order by $order limit $offset,$limit");
+        $list = array();
+        while($r = $this->db->fetch_array($result)){
+            $list[] = $r;
+        }
+        $count = $this->db->get_one("select count(*) as num from {$this->table} where $condition");
+        $totalpage = ceil($count['num']/$limit);
+        return array($list,$totalpage);
+    }
+
 	function add($post) {
 		global $MOD;
 		$post = $this->set($post);

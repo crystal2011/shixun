@@ -48,6 +48,6 @@ $catname='招聘';
 $foodshowright = 33;
 
 $nav_selected = 'job';
-$seo_title = '招聘信息-';
+$seo_title = '餐饮招聘-';
 include template('index', 'job');
 ?>
