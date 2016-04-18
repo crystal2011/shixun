@@ -61,7 +61,7 @@ if($isajax){  //用户发布、编辑预览
         //更新浏览量
         $oCai->editHits();
         addHits($info['userid']);
-        $backurl = '/mobile/school/show.php?id='.$aKnow['userid'];
+        $backurl = '/mobile/school/show.php?id='.$info['userid'];
     }
     $seo_title = $info['title'].'-名厨学堂-名菜展示-';
     $topname = '名厨学堂-名菜展示';
