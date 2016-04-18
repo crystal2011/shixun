@@ -16,19 +16,18 @@
                 <span class="publishleft" style="width:50px;"><i class="red"></i>描述</span>
             </p>
             <p class="clear" style="padding-left:20px;border-top:0px;padding-bottom:10px;padding-right:20px;">
-                <span>
-                    <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                    <?php echo deditor(2, 'content','', '100%', 110); ?>
+                <textarea name="content" id="content" class="input-text" style="height:110px;line-height:1.4em;font-size:1.4em;"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
 
-                </span>
             </p>
             {template  'publishcat','mobile/share'}
             <p class="clearfix">
                 <span class="publishleft publishnew"><img src="{DT_SKIN}image/mobile/publish2.png" /><i class="red">*</i>供应价格</span>
                 <span class="publishright publishrightnew">
                     <input type="text" class="input-text smallinput" value="<?php echo isset($info['price'])?doubleval($info['price']):0; ?>" name="price" type="text" datatype="money" placeholder="1000.00"/>
-                    <span style="font-size:0.8em;">元</span><span class="Validform_checktip"></span>
-                    <br /><span style="font-size:0.8em;">( 注：价格面议请填写为0 )</span>
+                    <span style="font-size:0.8em;">元</span>
+                    <br />
+                    <span class="Validform_checktip"></span>
+
 
                 </span>
             </p>

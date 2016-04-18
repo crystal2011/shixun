@@ -4,22 +4,20 @@
     <article>
         <form id="publishform" method="post" action="/mobile/share/publish.php?isajax=1">
             <p class="clearfix" style="margin-bottom:0px;border:0px;">
-                <span class="publishleft publishnew" style="width:55px;"><i class="red">*</i>标题</span>
+                <span class="publishleft publishnew" style="width:55px;"><i class="red">*</i>岗位</span>
                 <span class="publishright publishrightnew" style="padding-left:55px;">
                     <input type="text" name="title" value="<?php echo isset($info['title'])?$info['title']:''; ?>" maxlength="50" datatype="*2-50" class="input-text" />
                     <br />
                     <span class="Validform_checktip"></span>
                 </span>
             </p>
-            {template  'publishimg','mobile/share'}
+
             <p class="clear" style="padding-top:5px;margin-bottom:0px;border:0px;">
                 <span class="publishleft" style="width:50px;"><i class="red"></i>描述</span>
             </p>
             <p class="clear" style="padding-left:20px;border-top:0px;padding-bottom:10px;padding-right:20px;">
                 <span>
-                    <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                    <?php echo deditor(2, 'content','', '100%', 110); ?>
-
+                    <textarea name="content" id="content" class="input-text" style="height:110px;line-height:1.4em;font-size:1.4em;"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
                 </span>
             </p>
             {template  'publishcat','mobile/share'}

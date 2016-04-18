@@ -18,9 +18,7 @@
             </p>
             <p class="clear" style="padding-left:20px;border-top:0px;padding-bottom:10px;padding-right:20px;">
                 <span>
-                    <textarea name="content" id="content" class="input-text"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
-                    <?php echo deditor(2, 'content','', '100%', 110); ?>
-
+                    <textarea name="content" id="content" class="input-text" style="height:110px;line-height:1.4em;font-size:1.4em;"><?php echo isset($info['content'])?$info['content']:'' ?></textarea>
                 </span>
             </p>
             {template  'publishcat','mobile/share'}
