@@ -165,7 +165,7 @@
                     <a class="schoola" href="/mobile/food/show.php?id={$v['itemid']}"><img src="{$v['thumb']}" /></a>
                     <a class="title" href="/mobile/food/show.php?id={$v['itemid']}">{$v['title']}</a>
                     <p class="handle clear">
-                        <i class="num pricesdf"><i>{$v['price']}元/{$v['unit']}</i></i>
+                        <i class="num pricesdf"><i>{if doubleval($v['price'])}{doubleval($v['price'])}元/{$v['unit']}{else}面议{/if}</i></i>
                     </p>
                 </div>
             </li>

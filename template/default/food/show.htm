@@ -22,7 +22,7 @@
                     <span title="{$aFood['title']}">{dsubstr($aFood['title'],50)}</span>
                 </div>
                 <div class="food-del-price">
-                    <label>供应价格：</label><span>{$aFood['price']}元/{$aFood['unit']}</span>
+                    <label>供应价格：</label><span>{if doubleval($aFood['price'])}{doubleval($aFood['price'])}元/{$aFood['unit']}{else}面议{/if}</span>
                     <i class="icon-liulan"></i>
                     <em>浏览({$aFood['hits']})</em>
                     <i class="icon-pinlun"></i>

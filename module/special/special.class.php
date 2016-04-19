@@ -341,7 +341,6 @@ class special {
         }*/
 
         list($allmoney,$discountfee,$feedfs) = $this->moneyji($fee,$codeinfo['discount']);
-
         //保存记录
         $this->db->query("insert into {$this->db->pre}code (code,type,userid,id,addtime,codeid,discount,allmoney,money,discountfee,note,status) values ('{$codeinfo['code']}',$type,$_userid,$itemid,$DT_TIME,{$codeinfo['itemid']},".doubleval($codeinfo['discount']).",$allmoney,$feedfs,$discountfee,'$note',2)");
 

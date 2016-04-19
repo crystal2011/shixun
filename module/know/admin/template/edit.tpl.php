@@ -62,7 +62,10 @@ show_menu($menus);
 <input type="radio" name="post[status]" value="0" <?php if($status == 0) echo 'checked';?> id="status_0"/><label for="status_0">  删除</label>
 </td>
 </tr>
-
+    <tr>
+        <td class="tl"> 票数</td>
+        <td><input name="post[votes]" type="text" size="20" value="<?php echo $votes?$votes:0;?>" id="votes"/> </td>
+    </tr>
 </table>
 <div class="sbt"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></div>
 </form>

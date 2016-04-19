@@ -25,12 +25,12 @@ switch($at){
         $id = isset($id)?$id:0;
         if(empty($id)) exit(json_encode(array('status'=>'n','info'=>'操作失误')));
         if(check_token()===false) exit(json_encode(array('status'=>'n','info'=>'操作失误,请重试')));
-        if(empty($_userid)) exit(json_encode(array('status'=>'n','info'=>'请登录后再投票')));
 
-        //检测是否该会员在24小时内是否有点击
+        //检测是否该会员在24小时内是否有点击  不要这功能
+        //改为  IP 24小时
         require_once DT_ROOT.'/module/extend/vote.class.php';
         $oVote = new vote();
-        if(!$oVote->isVoted($id,$type)) exit(json_encode(array('status'=>'n','info'=>$oVote->errmsg)));
+        if(!$oVote->isVotedIp($id,$type)) exit(json_encode(array('status'=>'n','info'=>$oVote->errmsg)));
 
         switch($type){
             case 1: //名厨
@@ -238,7 +238,7 @@ switch($at){
 
 
         $info = '<article id="header1" class="clear" style="background-color:#e9544e;position:relative;">
-                    <span style="left:0px;position:absolute;text-align:center;display:block;width:100%;color:#fff;font-size:2em;">信息发布—选择目录</span>
+                    <span style="left:0px;position:absolute;text-align:center;display:block;width:100%;color:#fff;font-size:1.4em;">信息发布—选择目录</span>
                     <a style="position:relative;" class="forback" onclick="publishquitsdfs('.$type.',\''.$url.'\')"><img src="'.DT_SKIN.'image/mobile/userleft.png" style="width:20px;" /></a>
                 </article>';
         array_unshift($list,array('catid'=>0,'catname'=>'全部','child'=>0));

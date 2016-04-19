@@ -66,7 +66,7 @@
                         <a href="/food/show.php?id={$v['itemid']}" title="{$v['title']}" target="_blank">
                             <img src="{$v['thumb']}" width="160" height="120" alt=""/>
                             <h2>{dsubstr($v['title'],36,'...')}</h2>
-                            <h3>供应价格：<span style="color:#ea554f;">{$v['price']}元</span>/{$v['unit']}</h3>
+                            <h3>供应价格：{if doubleval($v['price'])}<span style="color:#ea554f;">{doubleval($v['price'])}元</span>/{$v['unit']}{else}面议{/if}</h3>
                         </a>
                     </li>
                 {/loop}

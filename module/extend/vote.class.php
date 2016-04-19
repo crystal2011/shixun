@@ -162,11 +162,25 @@ class vote {
         return true;
     }
 
+    /**
+     * 是否已经投过票  够期限了吗
+     */
+    function isVotedIp($id,$type){
+        global $_userid,$DT_TIME,$DT_IP;
+        $aVote = $this->db->get_one("select addtime from {$this->table} where ip='".$DT_IP."' and type = ".$type." and id = ".$id." order by addtime desc");
+        if($aVote && $DT_TIME-$aVote['addtime']<=3600*24){
+            return $this->_('明天再来，一个ip24小时内只能投一次');
+        }
+        return true;
+    }
+
     function addVote($id,$type,$userid){
-        global $_userid,$DT_TIME;
-        $this->db->query("insert into {$this->table} (id,type,userid,addtime) values ($id,$type,$_userid,$DT_TIME)");
+        global $_userid,$DT_TIME,$DT_IP;
+        $this->db->query("insert into {$this->table} (id,type,userid,addtime,ip) values ($id,$type,$_userid,$DT_TIME,'$DT_IP')");
         $this->db->query("update {$this->db->pre}member set infonums = infonums + 1 where userid = ".$userid);
         return true;
     }
+
+
 }
 ?>

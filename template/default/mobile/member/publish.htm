@@ -149,6 +149,9 @@
     <article class="publishhorn"><a href="/mobile/horn/index.php">点击去羊角会</a></article>
 </section>
 <script>
+    $(function(){
+        $(".mempublish input").val('');
+    })
     $(".publishsure").click(function(){
         var str = '';
         $(".abcd").each(function(k,v){

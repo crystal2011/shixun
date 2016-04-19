@@ -16,7 +16,7 @@ if($areainfo){
     $where .= " and areaid in (".$areainfo['arrchildid'].")";
 }
 
-list($list,$totalpage) = $oMember->memberList('truename,userid,thumb,infonums,introduce,hits',$where.' and groupid=5 and ischu=1','regtime desc','14');
+list($list,$totalpage) = $oMember->memberList('truename,userid,thumb,infonums,introduce,hits',$where.' and groupid=5 and ischu=1','infonums desc','14');
 
 if($action=='ajax'){
     $info = '';

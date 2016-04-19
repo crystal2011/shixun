@@ -37,6 +37,7 @@ if($action=='ajax'){
     $info = '';
     if($list){
         foreach($list as $k=>$v){
+            $priceshow = doubleval($v['price'])?doubleval($v['price']).'元/'.$v['unit']:'面议';
             $info .= '<li class="clear">
                         <div class="lidiv">
                             <a class="schoola" href="/mobile/food/show.php?id='.$v['itemid'].'">
@@ -44,7 +45,7 @@ if($action=='ajax'){
                             </a>
                             <a class="title" href="/mobile/food/show.php?id='.$v['itemid'].'">'.$v['title'].'</a>
                             <p class="handle clear">
-                                <i class="num pricesdf"><i>'.doubleval($v['price']).'元/'.$v['unit'].'</i></i>
+                                <i class="num pricesdf"><i>'.$priceshow.'</i></i>
                             </p>
                         </div>
                     </li>

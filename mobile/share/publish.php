@@ -199,6 +199,7 @@ if($isajax){
         $note = '修改成功';
     }else{
         $handle = $obj->add($arr);
+        $itemid = $handle;
         $note = '提交成功，待审核...';
     }
 

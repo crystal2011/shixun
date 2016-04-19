@@ -17,7 +17,7 @@ class know {
 		$this->table_data = $db->pre.'know_data';
 		$this->split = '';
 		$this->db = &$db;
-		$this->fields = array('catid','istop','code','userid','level','title','introduce','linkurl','thumb','status','hits','addtime','edittime','coofee');
+		$this->fields = array('catid','istop','code','userid','votes','level','title','introduce','linkurl','thumb','status','hits','addtime','edittime','coofee');
     }
 
     function adddelComments($addordel){
@@ -63,6 +63,7 @@ class know {
             }else{
                 $post['userid'] = $aUser['userid'];
             }
+            $post['votes'] = abs(intval($post['votes']));
         }else{
             $post['clear_link'] = true;
             $post['save_remotepic'] = true;
@@ -186,6 +187,12 @@ class know {
 		clear_upload($post['content'].$post['thumb'], $this->itemid);
         $this->setChu($post['userid']);
         addPublishs($post['userid']);
+
+        if(isset($post['votes'])){
+            $this->db->query("update {$this->db->pre}member set infonums = infonums + ".$post['votes']." where userid = ".$post['userid']);
+        }
+
+
 		return $this->itemid;
 	}
 
@@ -198,6 +205,17 @@ class know {
 		}
         $sql = substr($sql, 1);
 
+        if(isset($post['votes'])){
+            $info = $this->get_one();
+            $votes = $post['votes']-$info['votes'];
+            if($votes>0){
+                $this->db->query("update {$this->db->pre}member set infonums = infonums + ".$votes." where userid = ".$post['userid']);
+
+            }else if($votes<0){
+                $this->db->query("update {$this->db->pre}member set infonums = infonums - ".abs($votes)." where userid = ".$post['userid']);
+            }
+        }
+
 	    $this->db->query("UPDATE {$this->table} SET $sql WHERE itemid=$this->itemid");
 		$content_table = content_table($this->moduleid, $this->itemid, $this->split, $this->table_data);
 		$this->db->query("REPLACE INTO {$content_table} (itemid,content) VALUES ('$this->itemid', '$post[content]')");
@@ -206,6 +224,8 @@ class know {
         if(isset($post['status']) && $post['status']==3){
             horncode(4,$this->itemid);
         }
+
+
 		return true;
 	}
 

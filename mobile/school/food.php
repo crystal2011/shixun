@@ -15,7 +15,7 @@ if($catinfo){
 }
 
 $oCai = new know(10);
-list($list,$totalpage) = $oCai->schoolList('*',$where.' and status=3 ','addtime desc','14');
+list($list,$totalpage) = $oCai->schoolList('*',$where.' and status=3 ','votes desc','14');
 
 require_once '../../module/member/member.class.php';
 $oMember = new member();
