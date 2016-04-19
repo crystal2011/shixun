@@ -178,6 +178,7 @@
         xhr.open('post', '/upload.php?adnfl=1');
 
         xhr.onreadystatechange = function() {
+
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
                 if(data.status=='y'){
