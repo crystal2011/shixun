@@ -8,14 +8,30 @@ require 'common.inc.php';
 if($DT_BOT) dhttp(403);
 
 
-/* 获取图片的64编码 */
-/*$filename = time().'.'.'jpg';
-$filePath = DT_ROOT.'/'.$filename;
-$urlPath = $CFG['url'].$filename;
-move_uploaded_file($_FILES['imagefile']['tmp_name'],$filePath);
-exit(json_encode(array('status'=>'y','path'=>$urlPath)));*/
+
 
 $adnfl = isset($adnfl)?true:false;
+if($adnfl){
+    /* 获取图片的64编码 */
+    $filename = time().'.'.'jpg';
+    $filePath = DT_ROOT.'/'.$filename;
+    $urlPath = $CFG['url'].$filename;
+//move_uploaded_file($_FILES['imagefile']['tmp_name'],$filePath);
+    if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $_FILES['imagefile']['name'], $result)) {
+        $type = $result[2];
+        if (file_put_contents($filePath, base64_decode(str_replace($result[1], '', $_FILES['imagefile']['name'])))) {
+            exit(json_encode(array('status'=>'y','path'=>$urlPath)));
+        }else{
+            exit(json_encode(array('status'=>'n','path'=>'格式错误')));
+        }
+    }else{
+        exit(json_encode(array('status'=>'n','path'=>'格式错误')));
+    }
+}
+
+
+
+
 $from = isset($from) ? trim($from) : 'thumb';
 $width = isset($width) ? intval($width) : 0;
 $height = isset($height) ? intval($height) : 0;

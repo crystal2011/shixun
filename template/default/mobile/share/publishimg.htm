@@ -1,3 +1,4 @@
+
 <p class="clearfix imagemodule" style="border:0px;">
     <span class="imagedivjia clear">
         {if !isset($isjob)}
@@ -91,7 +92,11 @@
         }
         $("#gundong").css("display","block");
         files.forEach(function(file, i) {
-            if (!/\/(?:jpeg|png|gif|jpg)/i.test(file.type)) return;
+
+            /*if (!/\/(?:jpeg|png|gif|jpg)/i.test(file.type)) {
+                alert('文件格式不正确');
+                return;
+            }*/
             var reader = new FileReader();
             //获取图片大小
             var size = file.size / 1024 > 1024 ? (~~(10 * file.size / 1024 / 1024)) / 10 + "MB" : ~~(file.size / 1024) + "KB";
@@ -162,6 +167,7 @@
         tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
         return ndata;
     }
+
     //图片上传，将base64的图片转成二进制对象，塞进formdata上传
     function upload(basestr, type) {
         var text = window.atob(basestr.split(",")[1]);
@@ -171,8 +177,11 @@
             buffer[i] = text.charCodeAt(i);
         }
         var blob = getBlob([buffer], type);
+        blob['name'] = basestr;
+
         var xhr = new XMLHttpRequest();
         var formdata = getFormData();
+
 
         formdata.append('imagefile', blob);
         xhr.open('post', '/upload.php?adnfl=1');
@@ -181,7 +190,10 @@
 
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
+
+
                 if(data.status=='y'){
+
                     $("#gundong").css("display","none");
                     $("#thumbinput"+nameid+"").val(data.path);
                     $("#thumb"+nameid+" .jiaimage").attr("src",data.path);
