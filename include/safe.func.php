@@ -38,7 +38,7 @@ function strip_sql($string, $type = 1) {
 		if($type) {
 			global $DT_PRE;
 			$string = preg_replace("/\/\*([\s\S]*?)\*\//", "", $string);
-			$string = preg_replace("/0x([a-f0-9]{2,})/i", '0&#120;\\1', $string);
+			//$string = preg_replace("/0x([a-f0-9]{2,})/i", '0&#120;\\1', $string);
 			$string = preg_replace_callback("/(select|update|replace|delete|drop)([\s\S]*?)({$DT_PRE}|from)/i", 'strip_wd', $string);
 			$string = preg_replace_callback("/(load_file|substring|substr|reverse|trim|space|left|right|mid|lpad|concat|concat_ws|make_set|ascii|bin|oct|hex|ord|char|conv)([^a-z]?)\(/i", 'strip_wd', $string);
 			$string = preg_replace_callback("/(union|where|having|outfile|dumpfile|{$DT_PRE})/i", 'strip_wd', $string);

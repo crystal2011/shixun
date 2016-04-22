@@ -11,23 +11,37 @@ if($DT_BOT) dhttp(403);
 
 
 $adnfl = isset($adnfl)?true:false;
+$basestr = $_POST['basestr'];
 if($adnfl){
-    /* 获取图片的64编码 */
-    $filename = time().'.'.'jpg';
+     //获取图片的64编码
+
+    require DT_ROOT.'/include/post.func.php';
+    $filename = 'file/upload/'.timetodate($DT_TIME, $DT['uploaddir']).'/';
+    is_dir(DT_ROOT.'/'.$filename) or dir_create(DT_ROOT.'/'.$filename);
+    $filename .= time().rand(11,99).'.'.'jpg';
+
+
     $filePath = DT_ROOT.'/'.$filename;
     $urlPath = $CFG['url'].$filename;
-//move_uploaded_file($_FILES['imagefile']['tmp_name'],$filePath);
-    if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $_FILES['imagefile']['name'], $result)) {
+    $_SESSION['uploads'][] = $urlPath;
+    if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $basestr, $result)) {
         $type = $result[2];
-        if (file_put_contents($filePath, base64_decode(str_replace($result[1], '', $_FILES['imagefile']['name'])))) {
+        if (file_put_contents($filePath, base64_decode(str_replace($result[1], '', $basestr)))) {
+            $filesize = filesize($filePath);
+            $ext = 'jpg';
+            $img_info = @getimagesize($filePath);
+            $upload_table = $DT_PRE.'upload_'.($_userid%10);
+
+            if($DT['uploadlog']) $db->query("INSERT INTO {$upload_table} (item,fileurl,filesize,fileext,upfrom,width,height,moduleid,username,ip,addtime,itemid) VALUES ('".md5($urlPath)."','$urlPath','$filesize','$ext','blob','$img_info[0]','$img_info[1]','7','$_username','$DT_IP','$DT_TIME','0')");
             exit(json_encode(array('status'=>'y','path'=>$urlPath)));
         }else{
-            exit(json_encode(array('status'=>'n','path'=>'格式错误')));
+            exit(json_encode(array('status'=>'n','info'=>'格式错误1')));
         }
     }else{
-        exit(json_encode(array('status'=>'n','path'=>'格式错误')));
+        exit(json_encode(array('status'=>'n','info'=>'格式错误2')));
     }
 }
+
 
 
 
@@ -271,11 +285,6 @@ if($do->save()) {
     $_saveto = $swfupload ? str_replace('.thumb.'.$do->ext, '', $saveto) : $saveto;
     $_SESSION['uploads'][] = $_saveto;
     if($DT['uploadlog']) $db->query("INSERT INTO {$upload_table} (item,fileurl,filesize,fileext,upfrom,width,height,moduleid,username,ip,addtime,itemid) VALUES ('".md5($saveto)."','$saveto','$do->file_size','$do->ext','$from','$img_w','$img_h','$moduleid','$_username','$DT_IP','$do->uptime','$itemid')");
-    if($MG['uploadcredit'] > 0) {
-        require DT_ROOT.'/include/module.func.php';
-        credit_add($_username, -$MG['uploadcredit']);
-        credit_record($_username, -$MG['uploadcredit'], 'system', $L['upload'], $from);
-    }
     if($swfupload) exit('FILEID:'.$saveto);
     $pr = 'parent.document.getElementById';
     if($from == 'thumb') {

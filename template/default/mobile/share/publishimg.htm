@@ -170,30 +170,14 @@
 
     //图片上传，将base64的图片转成二进制对象，塞进formdata上传
     function upload(basestr, type) {
-        var text = window.atob(basestr.split(",")[1]);
-        var buffer = new Uint8Array(text.length);
-        var pecent = 0, loop = null;
-        for (var i = 0; i < text.length; i++) {
-            buffer[i] = text.charCodeAt(i);
-        }
-        var blob = getBlob([buffer], type);
-        blob['name'] = basestr;
-
-        var xhr = new XMLHttpRequest();
-        var formdata = getFormData();
-
-
-        formdata.append('imagefile', blob);
-        xhr.open('post', '/upload.php?adnfl=1');
-
-        xhr.onreadystatechange = function() {
-
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var data = JSON.parse(xhr.responseText);
-
-
+        $.ajax({
+            type:'post',
+            url:'/upload.php?adnfl=1',
+            data:{'basestr':basestr},
+            async:false,
+            dataType:'json',
+            success:function(data){
                 if(data.status=='y'){
-
                     $("#gundong").css("display","none");
                     $("#thumbinput"+nameid+"").val(data.path);
                     $("#thumb"+nameid+" .jiaimage").attr("src",data.path);
@@ -204,12 +188,9 @@
                 }else if(data.status=='n'){
                     $("#gundong").css("display","none");
                     alert(data.info);
-                }else{
-                    return;
                 }
             }
-        };
-        xhr.send(formdata);
+        })
     }
     /**
      * 获取blob对象的兼容性写法
