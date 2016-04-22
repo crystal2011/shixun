@@ -1,6 +1,7 @@
 {template 'header'}
 <style>
     #openPhoneNumber span {width:300px;display:block;}
+
 </style>
 <link rel="stylesheet" href="{DT_SKIN}css/personal_center.css"/>
 <section class="homenew">
@@ -157,8 +158,8 @@
     //弹出框集合
     function openPhoneNumber (d) {
         var cont = '<form id="openPhoneNumber" action="/ajax.php?action=member&moduleid=2&job=saveinfo&field=mobile"><div class="clearfix" style="height:60px;"><span style="float:left;width: 94px;text-align: right;">'+
-                '绑定手机：</span><input type="text" value="'+d+'" class="mobile" id="mobile" name="mobile" datatype="mobile"/><br /><span class="Validform_checktip" style="font-size:12px;line-height:22px;height:22px;"></span></div>' +
-                '<div class="clearfix" style="height:60px;"><span style="float:left;width: 94px;text-align: right;">验证码：</span><input style="width:108px;" type="text" datatype="n6-6" name="code" /><button type="button" class="getCode send_mobile_to" onclick="send_mobile_to(this,3)"  id="check-btn" disabled>获取验证码</button><br /><span class="Validform_checktip" style="font-size:12px;line-height:22px;height:22px;"></span></div>' +
+                '绑定手机：</span><input type="text" value="'+d+'" class="mobile" id="mobile" name="mobile" datatype="mobile"/><br /><span class="Validform_checktip" style="font-size:12px;line-height:22px;height:22px;width:238px;"></span></div>' +
+                '<div class="clearfix" style="height:60px;"><span style="float:left;width: 94px;text-align: right;">验证码：</span><input style="width:108px;" type="text" datatype="n6-6" name="code" /><button type="button" class="getCode send_mobile_to" onclick="send_mobile_to(this,3)"  id="check-btn" disabled>获取验证码</button><br /><span class="Validform_checktip" style="font-size:12px;line-height:22px;height:22px;width:238px;"></span></div>' +
                 '<div class="clearfix"><span style="float:left;width: 94px;text-align: right; height: 28px;"></span><input type="submit" value="提交"/></div></form>';
 
         layer.open({
