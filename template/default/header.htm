@@ -7,8 +7,8 @@
     <title>{if isset($seo_title)}{$seo_title}{/if}{$DT['seo_title']}</title>
     <meta name="keywords" content="{$DT['seo_keywords']}">
     <meta name="description" content="{$DT['seo_description']}">
-    <link rel="icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
-    <link rel="shortcut icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon”>
+    <link rel="icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon">
+    <link rel="shortcut icon" href="{DT_SKIN}image/public/favicon.ico" mce_href="favicon.ico" type=image/x-icon">
     <link rel="stylesheet" href="{DT_SKIN}css/global.css"/>
     <!--[if lt IE 9]>
     <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
@@ -114,7 +114,7 @@
 </section>
 
 <nav>
-    <ul class="home clearfix">
+    <ul class="home clearfix" style="background-color:#ea554f;">
         <li <?php echo !isset($nav_selected)?'class="selected"':''; ?>><a href="/">首页</a></li>
         <li <?php echo isset($nav_selected) && $nav_selected=='food'?'class="selected"':''; ?>><a href="/food/index.php">餐饮供应</a></li>
         <li <?php echo isset($nav_selected) && $nav_selected=='discount'?'class="selected"':''; ?>><a href="/discount/index.php">餐饮优惠</a></li>

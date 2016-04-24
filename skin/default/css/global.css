@@ -199,6 +199,7 @@ footer{
     font-size: 14px;
     text-align: center;
     margin: 20px 0;
+    min-width:1100px;
 }
 .about-us a {
     height: 30px;
@@ -450,9 +451,9 @@ footer{
 /*侧边栏列表end*/
 .city-box{
     width:400px;
-    margin:20px auto;
+    margin:28px auto;
     border:1px solid #e2e2e2;
-    height:40px;
+    height:38px;
     padding:0 15px;
     position: absolute;
     right:251px;
