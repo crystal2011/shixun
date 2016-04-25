@@ -9,7 +9,7 @@
     <div class="person-info food-info border-box" style="position:relative;">
         <img src="{if $aKnow['thumb']}{$aKnow['thumb']}{else}{$DT['memberlogo']}{/if}" height="143" width="190" alt="">
         <h3>名厨嘉宾：{$aKnow['truename']} </h3>
-        <p style="width:450px;height:60px;">简介：{dsubstr($aKnow['introduce'],60)}</p>
+        <p style="width:450px;height:60px;">简介：{$aKnow['introduce']}</p>
         <header>
             <i class="num" style="margin:0px;">票数：<i>{$aKnow['infonums']}</i></i>
         </header>
