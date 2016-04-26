@@ -15,6 +15,9 @@ function AddFavorite(sURL, sTitle) {
         }
     }
 }
+function shareonclick(_this){
+    $(_this).prev().click();
+}
 
 /**
  * @name 点击喜欢
