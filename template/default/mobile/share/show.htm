@@ -10,6 +10,15 @@
         </span>
     </article>
     <article class="line"></article>
+    <article class="shop">
+        <header class="header">商家信息</header>
+        <div class="shopinfo clear" style="padding-top:10px;">
+            <div class="shopndl" style="padding-right:0px;">
+                <span class="fasdf">{area_pos($info['areaid'],'')}{$info['address']}</span>
+            </div>
+        </div>
+    </article>
+    <article class="line"></article>
     {template 'view','mobile'}
     {if !isset($isajax) || !$isajax}
     <article class="line"></article>

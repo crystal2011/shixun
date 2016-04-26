@@ -12,35 +12,10 @@ show_menu($menus);
 <div class="tt"><?php echo $action == 'add' ? '添加' : '修改';?><?php echo $MOD['name'];?></div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 所属分类</td>
-<td><?php echo category_select('post[catid]', '选择分类', $catid, $moduleid);?> <span id="dcatid" class="f_red"></span></td>
-</tr>
-<tr>
 <td class="tl"><span class="f_red">*</span> <?php echo $MOD['name'];?>标题</td>
-<td><input name="post[title]" type="text" id="title" size="60" value="<?php echo $title;?>"/> <?php echo level_select('post[level]', '级别', $level, 'id="level"');?> <?php echo dstyle('post[style]', $style);?> <br/><span id="dtitle" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_red">*</span> <?php echo $MOD['name'];?>日期</td>
-<td><?php echo dcalendar('post[fromtime]', $fromtime);?> 至 <?php echo dcalendar('post[totime]', $totime);?> <span id="dtime" class="f_red"></span></td>
+<td><input name="post[title]" type="text" id="title" size="60" value="<?php echo $title;?>"/> <?php echo level_select('post[level]', '级别', $level, 'id="level"');?> </td>
 </tr>
 
-<tr>
-<td class="tl"><span class="f_hid">*</span> 所在地区</td>
-<td><?php echo ajax_area_select('post[areaid]', '请选择', $areaid);?></td>
-</tr>
-
-<tr>
-<td class="tl"><span class="f_hid">*</span> 展出城市</td>
-<td><input name="post[city]" type="text" id="city" size="10" value="<?php echo $city;?>"/> <span id="dcity" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_red">*</span> 展出地址</td>
-<td><input name="post[address]" type="text" id="address" size="60" value="<?php echo $address;?>"/> <span id="daddress" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_red">*</span> 展馆名称</td>
-<td><input name="post[hallname]" type="text" id="hallname" size="40" value="<?php echo $hallname;?>"/> <span id="dhallname" class="f_red"></span></td>
-</tr>
 <?php if($CP) { ?>
 <script type="text/javascript">
 var property_catid = <?php echo $catid;?>;
@@ -59,69 +34,8 @@ var property_admin = 1;
 <?php echo deditor($moduleid, 'content', $MOD['editor'], '100%', 350);?><br/><span id="dcontent" class="f_red"></span>
 </td>
 </tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> <?php echo $MOD['name'];?>备注</td>
-<td><textarea name="post[remark]" style="width:90%;height:45px;"><?php echo $remark;?></textarea></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 标题图片</td>
-<td><input name="post[thumb]" id="thumb" type="text" size="60" value="<?php echo $thumb;?>"/>&nbsp;&nbsp;<span onclick="Dthumb(<?php echo $moduleid;?>,Dd('level').value==2 ? 300 : <?php echo $MOD['thumb_width'];?>,Dd('level').value==2 ? 225 : <?php echo $MOD['thumb_height'];?>, Dd('thumb').value);" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[删除]</span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_red">*</span> 主办单位</td>
-<td><input name="post[sponsor]" id="sponsor" type="text" size="60" value="<?php echo $sponsor;?>"/> <span id="dsponsor" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 承办单位</td>
-<td><input name="post[undertaker]" type="text" size="60" value="<?php echo $undertaker;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 官方网站</td>
-<td><input name="post[homepage]" type="text" size="60" value="<?php echo $homepage;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_red">*</span> 联系人</td>
-<td><input name="post[truename]" id="truename" type="text" size="10" value="<?php echo $truename;?>" /> <span id="dtruename" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_red">*</span> 联系电话</td>
-<td><input name="post[telephone]" id="telephone" type="text" size="30" value="<?php echo $telephone;?>" /> <span id="dtelephone" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 联系手机</td>
-<td><input name="post[mobile]" id="mobile" type="text" size="30" value="<?php echo $mobile;?>" /> <span id="dmobile" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 通讯地址</td>
-<td><input name="post[addr]" id="addr" type="text" size="60" value="<?php echo $addr;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 邮政编码</td>
-<td><input name="post[postcode]" id="postcode" type="text" size="10" value="<?php echo $postcode;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 联系传真</td>
-<td><input name="post[fax]" id="fax" type="text" size="30" value="<?php echo $fax;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 电子邮件</td>
-<td><input name="post[email]" id="email" type="text" size="30" value="<?php echo $email;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 联系MSN</td>
-<td><input name="post[msn]" id="msn" type="text" size="30" value="<?php echo $msn;?>" /></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 联系QQ</td>
-<td><input name="post[qq]" id="qq" type="text" size="30" value="<?php echo $qq;?>"/></td>
-</tr>
-<tr>
-<td class="tl"><span class="f_hid">*</span> 在线报名</td>
-<td>
-<input type="radio" name="post[sign]" value="1" <?php if($sign == 1) echo 'checked';?>/> 开启
-<input type="radio" name="post[sign]" value="0" <?php if(!$sign) echo 'checked';?>/> 关闭
-</td>
-</tr>
+
+
 <tr>
 <td class="tl"><span class="f_hid">*</span> <?php echo $MOD['name'];?>状态</td>
 <td>
