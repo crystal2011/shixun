@@ -141,7 +141,7 @@ if(isset($forward)) {
 
 $isMobile = isMobile();
 $isMobilestr = strpos($_SERVER['PHP_SELF'],'mobile');
-if($isMobile && $isMobilestr===false && strpos($_SERVER['PHP_SELF'],'ajax')===false){
+if($isMobile && $isMobilestr===false && strpos($_SERVER['PHP_SELF'],'ajax')===false  && strpos($_SERVER['PHP_SELF'],'upload')===false){
     dheader($CFG['url'].'mobile/index.php');
 }
 if($isMobile && $isMobilestr){
