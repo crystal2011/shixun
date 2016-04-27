@@ -16,11 +16,17 @@
         <article class="input-wrap"><span class="input-key">手机号码：</span>
             <input type="text" name="mobile" placeholder="请输入手机号" datatype="m,mobile" class="input-value mobile" autocomplete="off"/>
         </article>
-        <article class="input-phone-code clear">
-            <div class="input-wrap fl"><span class="tc">验&nbsp;证&nbsp;码：</span>
+        <article class="input-phone-code clear" style="margin-bottom:32px;">
+            <div class="input-wrap fl fdffaf"><span class="tc">验&nbsp;证&nbsp;码：</span>
                 <input type="text" placeholder="验证码" name="code"  datatype="n6-6" autocomplete="off"/>
-                <span class="Validform_checktip"></span>
+                <span class="Validform_checktip ddff"></span>
             </div>
+            <style>
+                #login-main .input-phone-code .fdffaf span.Validform_checktip {
+                    top:32px;
+                    left:0px;
+                }
+            </style>
             <button  class="get-code-btn fr" id="check-btn"  class="check-btn fr" onclick="send_mobile_to(this,1)" disabled type="button">获取验证码</button>
         </article>
         <article class="input-wrap"><span class="input-key">输入密码：</span>
