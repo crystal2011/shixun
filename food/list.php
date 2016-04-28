@@ -4,6 +4,19 @@ require 'config.inc.php';
 require '../common.inc.php';
 require_once '../module/food/food.class.php';
 
+
+
+require 'sphinxapi.php';
+$s = new SphinxClient();
+$s->SetServer('127.0.0.1', 9312);
+$s->SetFilter ( 'group_id', array(2));
+$result = $s->Query('test','index_isnew');
+
+print_r($result);
+exit;
+
+
+
 $where = '1=1';
 //地区
 $areaid = $areaid?$areaid:($dtcity?$dtcity['areaid']:0);

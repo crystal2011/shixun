@@ -9,15 +9,21 @@
 </style>
 <!-- 注册 第一步-->
 <section id="login-main">
-    <form id="res-form" action="/member/findpw.php" method="post">
+    <form id="res-form" action="/mobile/member/findpw.php" method="post">
         <article class="input-wrap"><span class="input-key">手机号码：</span>
-            <input type="text" name="username" placeholder="请输入手机号" datatype="m,mobile" class="input-value mobile" autocomplete="off"/>
+            <input type="text" name="username" placeholder="请输入手机号" datatype="m" class="input-value mobile" autocomplete="off"/>
         </article>
-        <article class="input-phone-code clear">
-            <div class="input-wrap fl"><span class="tc">验&nbsp;证&nbsp;码：</span>
+        <article class="input-phone-code clear " style="margin-bottom:32px;">
+            <div class="input-wrap fl fdffaf"><span class="tc">验&nbsp;证&nbsp;码：</span>
                 <input type="text" placeholder="验证码" name="code"  datatype="n6-6" autocomplete="off"/>
-                <span class="Validform_checktip"></span>
+                <span class="Validform_checktip ddff"></span>
             </div>
+            <style>
+                #res-form .input-phone-code .fdffaf span.Validform_checktip {
+                    top:32px;
+                    left:0px;
+                }
+            </style>
             <button  class="get-code-btn fr" id="check-btn"  class="check-btn fr" onclick="send_mobile_to(this,2)" disabled type="button">获取验证码</button>
         </article>
         <article class="input-wrap"><span class="input-key">输入密码：</span>
@@ -37,29 +43,17 @@
 <script src="{DT_SKIN}js/send.js"></script>
 <script type="text/javascript">
 
+    $("input[name='username']").keyup(function(){
+        if(is_mobile($(this).val())){
+            getCodeStatus = getCodeStatus=='10' || getCodeStatus=='00'?'01':getCodeStatus;
+            $("#check-btn").removeAttr("disabled");
+        }else{
+            $("#check-btn").attr("disabled",true);
+        }
+    })
+
     $("#res-form").Validform({
         tiptype: 3,
-        datatype:{
-            "mobile":function(gets,obj,curform,regxp){
-                var istrue = false;
-                $.ajax({
-                    type:'post',
-                    url:"/ajax.php?action=member&job=mobile&must_exists=1&moduleid=2&param="+gets,
-                    dataType:'json',
-                    async:false,
-                    success:function(data){
-                        if(data.status=='y'){
-                            istrue = true;
-                            getCodeStatus = getCodeStatus=='10' || getCodeStatus=='00'?'01':getCodeStatus;
-                            $("#check-btn").removeAttr("disabled");
-                        }else{
-                            istrue = data.info;
-                        }
-                    }
-                })
-                return istrue;
-            }
-        },
         postonce:true,
         ajaxPost:true,
         beforeSubmit:function(curform){

@@ -27,7 +27,7 @@
                     left:0px;
                 }
             </style>
-            <button  class="get-code-btn fr" id="check-btn"  class="check-btn fr" onclick="send_mobile_to(this,1)" disabled type="button">获取验证码</button>
+            <button  class="get-code-btn fr" id="check-btn"  class="check-btn fr" onclick="send_mobile_to(this,1)" type="button">获取验证码</button>
         </article>
         <article class="input-wrap"><span class="input-key">输入密码：</span>
             <input style="display:none">
@@ -46,30 +46,16 @@
 <script src="{DT_SKIN}js/Validform_v5.3.2_min.js"></script>
 <script src="{DT_SKIN}js/send.js"></script>
 <script type="text/javascript">
-
+    $("input[name='mobile']").keyup(function(){
+        if(is_mobile($(this).val())){
+            getCodeStatus = getCodeStatus=='10' || getCodeStatus=='00'?'01':getCodeStatus;
+            $("#check-btn").removeAttr("disabled");
+        }else{
+            $("#check-btn").attr("disabled",true);
+        }
+    })
     $("#res-form").Validform({
         tiptype: 3,
-        datatype:{
-            "mobile":function(gets,obj,curform,regxp){
-                var istrue = false;
-                $.ajax({
-                    type:'post',
-                    url:"/ajax.php?action=member&job=mobile&moduleid=2&param="+gets,
-                    dataType:'json',
-                    async:false,
-                    success:function(data){
-                        if(data.status=='y'){
-                            istrue = true;
-                            getCodeStatus = getCodeStatus=='10' || getCodeStatus=='00'?'01':getCodeStatus;
-                            $("#check-btn").removeAttr("disabled");
-                        }else{
-                            istrue = data.info;
-                        }
-                    }
-                })
-                return istrue;
-            }
-        },
         postonce:true,
         ajaxPost:true,
         beforeSubmit:function(curform){
