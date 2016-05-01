@@ -841,6 +841,9 @@ i {font-style:normal;}
     height:auto !important;
     margin-bottom:5px !important;
 }
+#content .viewinfo *{
+    max-width:100% !important;
+}
 .contentlist .channelheader{
     background-color:#fff;
 }

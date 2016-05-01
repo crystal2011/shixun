@@ -506,7 +506,7 @@ class special {
             $status = $status ? 3 : 1;
             $codestatus = $status==3 ? 3 : 2;
             if($checkcodestatus==1) $errormsg = '审核通过';
-            $this->db->query("update {$this->db->pre}{$table} set status = {$status} where itemid = " . $itemid);
+            $this->db->query("update {$this->db->pre}{$table} set status = {$status},addtime = {$DT_TIME} where itemid = " . $itemid);
             $this->db->query("update {$this->db->pre}code set errormsg='".$errormsg."',status={$codestatus},checktime = {$DT_TIME},ym=".date('Ym',$DT_TIME)." where codeid = " . $codeid . "  and id = " . $itemid);
             if($status==3) $this->addCodeEdit($codeid);
             if($checktype==4 && $status==3){
